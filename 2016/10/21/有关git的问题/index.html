@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="随记," />
+  <meta name="keywords" content="git," />
 
 
 
@@ -84,16 +84,19 @@
 
 
 
-<meta name="description" content="高山仰止，景行行止。虽不能至，心向往之">
+<meta name="description" content="合并代码是日常开发中经常做的一件事了，但有时候稍不注意，就会出现各种各样的冲突。。。
+然后你就陷入痛苦的解决冲突中，所以我还是把平时遇到的一些问题做个记录吧。。。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="初来乍到">
-<meta property="og:url" content="http://yoursite.com/2016/10/16/postName/index.html">
+<meta property="og:title" content="有关git冲突的问题">
+<meta property="og:url" content="http://yoursite.com/2016/10/21/有关git的问题/index.html">
 <meta property="og:site_name" content="行止由心">
-<meta property="og:description" content="高山仰止，景行行止。虽不能至，心向往之">
-<meta property="og:updated_time" content="2016-10-19T08:26:04.000Z">
+<meta property="og:description" content="合并代码是日常开发中经常做的一件事了，但有时候稍不注意，就会出现各种各样的冲突。。。
+然后你就陷入痛苦的解决冲突中，所以我还是把平时遇到的一些问题做个记录吧。。。">
+<meta property="og:updated_time" content="2016-10-26T01:43:38.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="初来乍到">
-<meta name="twitter:description" content="高山仰止，景行行止。虽不能至，心向往之">
+<meta name="twitter:title" content="有关git冲突的问题">
+<meta name="twitter:description" content="合并代码是日常开发中经常做的一件事了，但有时候稍不注意，就会出现各种各样的冲突。。。
+然后你就陷入痛苦的解决冲突中，所以我还是把平时遇到的一些问题做个记录吧。。。">
 
 
 
@@ -114,10 +117,10 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/10/16/postName/"/>
+  <link rel="canonical" href="http://yoursite.com/2016/10/21/有关git的问题/"/>
 
 
-  <title> 初来乍到 | 行止由心 </title>
+  <title> 有关git冲突的问题 | 行止由心 </title>
 </head>
 
 <body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
@@ -257,7 +260,7 @@
             
             
               
-                初来乍到
+                有关git冲突的问题
               
             
           </h1>
@@ -269,19 +272,38 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-10-16T21:16:39+08:00" content="2016-10-16">
-              2016-10-16
+            <time itemprop="dateCreated" datetime="2016-10-21T14:11:44+08:00" content="2016-10-21">
+              2016-10-21
             </time>
           </span>
 
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/git/" itemprop="url" rel="index">
+                    <span itemprop="name">git</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
           
 
           
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/10/16/postName/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/10/16/postName/" itemprop="commentsCount"></span>
+                <a href="/2016/10/21/有关git的问题/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/10/21/有关git的问题/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -291,7 +313,7 @@
 
           
           
-             <span id="/2016/10/16/postName/" class="leancloud_visitors" data-flag-title="初来乍到">
+             <span id="/2016/10/21/有关git的问题/" class="leancloud_visitors" data-flag-title="有关git冲突的问题">
                &nbsp; | &nbsp;
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -313,9 +335,12 @@
       
 
       
-        <blockquote class="blockquote-center">高山仰止，景行行止。虽不能至，心向往之</blockquote>
-
-<hr>
+        <p>合并代码是日常开发中经常做的一件事了，但有时候稍不注意，就会出现各种各样的冲突。。。</p>
+<p>然后你就陷入痛苦的解决冲突中，所以我还是把平时遇到的一些问题做个记录吧。。。</p>
+<a id="more"></a>
+<h4 id="合并代码时"><a href="#合并代码时" class="headerlink" title="合并代码时"></a>合并代码时</h4><h4 id="The-following-untracked-working-tree-files-would-be-overwritten-by-merge"><a href="#The-following-untracked-working-tree-files-would-be-overwritten-by-merge" class="headerlink" title="The following untracked working tree files would be overwritten by merge:"></a>The following untracked working tree files would be overwritten by merge:</h4><pre><code>git clean -d -fx &quot;&quot;
+</code></pre><p>这个操作一般是可以解决问题</p>
+<p>但是，有次是因为隐藏文件.DS_Store的问题，试了很多次都不行，然后我直接到coding上把这个隐藏文件删了，然后居然就好了。。。</p>
 
       
     </div>
@@ -359,7 +384,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/随记/" rel="tag">#随记</a>
+            <a href="/tags/git/" rel="tag">#git</a>
           
         </div>
       
@@ -368,16 +393,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/10/16/手把手教你在Mac上搭建Hexo博客/" rel="next" title="手把手教你在Mac上搭建Hexo博客">
-                <i class="fa fa-chevron-left"></i> 手把手教你在Mac上搭建Hexo博客
+              <a href="/2016/10/20/Hexo绑定顶级域名/" rel="next" title="Hexo绑定顶级域名">
+                <i class="fa fa-chevron-left"></i> Hexo绑定顶级域名
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/10/19/hexo美化之添加音乐播放器/" rel="prev" title="Hexo美化之添加音乐播放器">
-                Hexo美化之添加音乐播放器 <i class="fa fa-chevron-right"></i>
+              <a href="/2016/10/26/一些iOS学习网站和书籍/" rel="prev" title="一些iOS学习网站和书籍">
+                一些iOS学习网站和书籍 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -404,8 +429,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/10/16/postName/"
-           data-title="初来乍到" data-url="http://yoursite.com/2016/10/16/postName/">
+      <div class="ds-thread" data-thread-key="2016/10/21/有关git的问题/"
+           data-title="有关git冲突的问题" data-url="http://yoursite.com/2016/10/21/有关git的问题/">
       </div>
     
   </div>
@@ -525,7 +550,7 @@
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#合并代码时"><span class="nav-number">1.</span> <span class="nav-text">合并代码时</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#The-following-untracked-working-tree-files-would-be-overwritten-by-merge"><span class="nav-number">2.</span> <span class="nav-text">The following untracked working tree files would be overwritten by merge:</span></a></li></ol></div>
             
           </div>
         </section>
