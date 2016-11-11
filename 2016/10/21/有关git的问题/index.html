@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next muse use-motion">
+<html class="theme-next pisces use-motion">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
@@ -92,7 +92,7 @@
 <meta property="og:site_name" content="行止由心">
 <meta property="og:description" content="合并代码是日常开发中经常做的一件事了，但有时候稍不注意，就会出现各种各样的冲突。。。
 然后你就陷入痛苦的解决冲突中，所以我还是把平时遇到的一些问题做个记录吧。。。">
-<meta property="og:updated_time" content="2016-10-26T01:47:09.000Z">
+<meta property="og:updated_time" content="2016-10-31T04:42:39.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="有关git冲突的问题">
 <meta name="twitter:description" content="合并代码是日常开发中经常做的一件事了，但有时候稍不注意，就会出现各种各样的冲突。。。
@@ -103,7 +103,7 @@
 <script type="text/javascript" id="hexo.configuration">
   var NexT = window.NexT || {};
   var CONFIG = {
-    scheme: 'Muse',
+    scheme: 'Pisces',
     sidebar: {"position":"right","display":"post"},
     fancybox: true,
     motion: true,
@@ -340,7 +340,7 @@
 <a id="more"></a>
 <h4 id="合并代码时"><a href="#合并代码时" class="headerlink" title="合并代码时"></a>合并代码时</h4><h5 id="The-following-untracked-working-tree-files-would-be-overwritten-by-merge"><a href="#The-following-untracked-working-tree-files-would-be-overwritten-by-merge" class="headerlink" title="The following untracked working tree files would be overwritten by merge:"></a>The following untracked working tree files would be overwritten by merge:</h5><pre><code>git clean -d -fx &quot;&quot;
 </code></pre><p>这个操作一般是可以解决问题</p>
-<p>但是，有次是因为隐藏文件.DS_Store的问题，试了很多次都不行，然后我直接到coding上把这个隐藏文件删了，然后居然就好了。。。</p>
+<p>但是，有次是因为隐藏文件.DS_Store的问题，试了很多次都不行，然后我直接到coding上把这个隐藏文件删了，然后居然就好了。。。最有效的方法是配置.gitignore文件，然后引入到全局配置config文件中</p>
 
       
     </div>
@@ -475,7 +475,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">12</span>
+              <span class="site-state-item-count">13</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -483,7 +483,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-count">7</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -492,7 +492,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-count">9</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -583,7 +583,7 @@
 <div class="theme-info">
   主题 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Muse
+    NexT.Pisces
   </a>
 </div>
 
@@ -648,6 +648,13 @@
 
   
   
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.2"></script>
+
+
 
   
   <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
