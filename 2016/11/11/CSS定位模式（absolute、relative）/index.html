@@ -85,19 +85,24 @@
 
 
 <meta name="description" content="在用css控制排版过程中，定位一直是一个难点。效果总是出乎你的意料之外。。。
-深入理解其中常用的定位模式后，可以有效的帮助你完成网页排版">
+深入理解其中常用的定位模式后，可以有效的帮助你完成网页排版。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CSS定位模式（absolute、relative）">
 <meta property="og:url" content="http://yoursite.com/2016/11/11/CSS定位模式（absolute、relative）/index.html">
 <meta property="og:site_name" content="行止由心">
 <meta property="og:description" content="在用css控制排版过程中，定位一直是一个难点。效果总是出乎你的意料之外。。。
-深入理解其中常用的定位模式后，可以有效的帮助你完成网页排版">
+深入理解其中常用的定位模式后，可以有效的帮助你完成网页排版。">
 <meta property="og:image" content="http://7xosrq.com1.z0.glb.clouddn.com/QQ20161111-1.png?e=1478859652&token=BsduBndXasPKM3kxbowJ9Y6Gq-NTYlMJsNrrgMEy:FmNZgWc5XY4LrxFo6oyFY0SjkfY">
-<meta property="og:updated_time" content="2016-11-11T10:15:19.000Z">
+<meta property="og:image" content="http://7xosrq.com1.z0.glb.clouddn.com/QQ20161114-0.png?e=1479090761&token=BsduBndXasPKM3kxbowJ9Y6Gq-NTYlMJsNrrgMEy:TbNn0HNe91Q-OGxP5l5Yx3ZlKpI">
+<meta property="og:image" content="http://7xosrq.com1.z0.glb.clouddn.com/QQ20161114-1.png?e=1479091298&token=BsduBndXasPKM3kxbowJ9Y6Gq-NTYlMJsNrrgMEy:FVlx-KlzpUF75YvPg62aweeB8YY">
+<meta property="og:image" content="http://7xosrq.com1.z0.glb.clouddn.com/QQ20161114-2.png?e=1479092270&token=BsduBndXasPKM3kxbowJ9Y6Gq-NTYlMJsNrrgMEy:79ag9yqOYQtXoE8lC_17-roLdY4">
+<meta property="og:image" content="http://7xosrq.com1.z0.glb.clouddn.com/QQ20161114-3.png?e=1479092770&token=BsduBndXasPKM3kxbowJ9Y6Gq-NTYlMJsNrrgMEy:lLKkOxjamtcRGKJ39lVtdAxeZ6c">
+<meta property="og:image" content="http://7xosrq.com1.z0.glb.clouddn.com/QQ20161114-4.png?e=1479093079&token=BsduBndXasPKM3kxbowJ9Y6Gq-NTYlMJsNrrgMEy:15AIq-x6_hyxRcR0s998qodVtqA">
+<meta property="og:updated_time" content="2016-11-14T02:14:22.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CSS定位模式（absolute、relative）">
 <meta name="twitter:description" content="在用css控制排版过程中，定位一直是一个难点。效果总是出乎你的意料之外。。。
-深入理解其中常用的定位模式后，可以有效的帮助你完成网页排版">
+深入理解其中常用的定位模式后，可以有效的帮助你完成网页排版。">
 <meta name="twitter:image" content="http://7xosrq.com1.z0.glb.clouddn.com/QQ20161111-1.png?e=1478859652&token=BsduBndXasPKM3kxbowJ9Y6Gq-NTYlMJsNrrgMEy:FmNZgWc5XY4LrxFo6oyFY0SjkfY">
 
 
@@ -338,7 +343,7 @@
 
       
         <p>在用css控制排版过程中，定位一直是一个难点。效果总是出乎你的意料之外。。。</p>
-<p>深入理解其中常用的定位模式后，可以有效的帮助你完成网页排版</p>
+<p>深入理解其中常用的定位模式后，可以有效的帮助你完成网页排版。</p>
 <a id="more"></a>
 <p>css定位有四种模式：</p>
 <ul>
@@ -348,7 +353,12 @@
 <li>relative 相对定位</li>
 </ul>
 <p>开发中最常用的是absolute和relative。</p>
-<p><strong>绝对定位（absolute）：</strong> 将被赋予此定位方法的对象从文档流中拖出，使用left、right、top、bottom等属性相对于其最接近的一个有定位设置的父级对象进行绝对定位，如果对象的父级么有设置定位属性，即还是遵循HTML定位规则，则依据body对象左上角作为参考进行定位。绝对定位可层叠，层叠熟悉怒可通过z-index属性控制。<br><strong>相对定位（relativ）：</strong>对象不可层叠，依据left、right、top、bottom等属性在正常文档流中偏移自身位置。同样可以用z-index分层设计。</p>
+<ul>
+<li><strong>绝对定位（absolute）：</strong> 将被赋予此定位方法的对象从文档流中拖出，使用left、right、top、bottom等属性相对于其最接近的一个有定位设置的父级对象进行绝对定位，如果对象的父级么有设置定位属性，即还是遵循HTML定位规则，则依据body对象左上角作为参考进行定位。绝对定位可层叠，层叠熟悉怒可通过z-index属性控制。</li>
+</ul>
+<ul>
+<li><strong>相对定位（relativ）：</strong>对象不可层叠，依据left、right、top、bottom等属性在正常文档流中偏移自身位置。同样可以用z-index分层设计。</li>
+</ul>
 <p>下面通过几个例子进行说明：</p>
 <p>（1）无定位设置，对象遵循HTML定位规则。一般是子级不会跑出父级的外边去，子级一般是靠在父级左上角的，父级放在最下层。</p>
 <pre><code>&lt;!DOCTYPE html &gt;
@@ -375,8 +385,185 @@
 &lt;/div&gt;
 &lt;/body&gt;
 &lt;/html&gt;
-</code></pre><p>运行结果如下：<br><img src="http://7xosrq.com1.z0.glb.clouddn.com/QQ20161111-1.png?e=1478859652&amp;token=BsduBndXasPKM3kxbowJ9Y6Gq-NTYlMJsNrrgMEy:FmNZgWc5XY4LrxFo6oyFY0SjkfY" alt=""></p>
-<p>(2) 给设定了定位属性的对象指定</p>
+</code></pre><p>运行结果如下：</p>
+<p><img src="http://7xosrq.com1.z0.glb.clouddn.com/QQ20161111-1.png?e=1478859652&amp;token=BsduBndXasPKM3kxbowJ9Y6Gq-NTYlMJsNrrgMEy:FmNZgWc5XY4LrxFo6oyFY0SjkfY" alt=""></p>
+<p>(2) 给设定了定位属性的对象指定left、right、top、bottom属性中的至少一个，不然定位不起作用。下面例子中给box2设定了定位属性position：absolute，但是如果没有指定其中一个方位定位值top：0px，定位是不起作用的。</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;
+&lt;head&gt;
+&lt;title&gt;给定位对象指定一个方位数值&lt;/title&gt;
+&lt;style type=&quot;text/css&quot;&gt;
+
+.box1 {
+    background-color: #33CCFF;
+    height: 200px;
+    width: 200px;
+}
+.box2 {
+    background-color: #66CC66;
+    height: 100px;
+    width: 100px;
+    position: absolute;
+    top: 20px;/*如果没有指定一个方位定位属性和值,绝对定位不起作用,你可以删除这一项看一下效果*/
+}
+
+&lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+&lt;div class=&quot;box1&quot;&gt;
+  &lt;div class=&quot;box2&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><p>运行效果如图：</p>
+<p><img src="http://7xosrq.com1.z0.glb.clouddn.com/QQ20161114-0.png?e=1479090761&amp;token=BsduBndXasPKM3kxbowJ9Y6Gq-NTYlMJsNrrgMEy:TbNn0HNe91Q-OGxP5l5Yx3ZlKpI" alt=""></p>
+<p>(3) <strong>绝对定位对象可以层叠</strong>，层叠顺序用z-index，如果没有指定则遵循其父对象的定位方法，最好不要给z-index指定负值，因为不同浏览器最终解释的效果有所不同。</p>
+<pre><code>&lt;!DOCTYPE html &gt;
+&lt;head&gt;
+&lt;title&gt;绝对定位对象可以层叠,层叠顺序可用z-index控制,但最好不要用负值,因为FF不支持&lt;/title&gt;
+&lt;style type=&quot;text/css&quot;&gt;
+
+
+.box1 {
+    background-color: #33CCFF;
+    height: 200px;
+    width: 270px;
+    background-repeat: no-repeat;
+    background-position: center center;
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    z-index:-1;/*这里用了负值,在标准浏览器,如FF中是不能正常显示的*/
+}
+.box2 {
+    background-color: #66CC33;
+    height: 200px;
+    width: 270px;
+
+    background-repeat: no-repeat;
+    background-position: center center;
+    position: absolute;
+    left: 50px;
+    top: 50px;
+    z-index:2;
+
+}
+.box3 {
+    background-color: #996699;
+    height: 200px;
+    width: 270px;
+    background-repeat: no-repeat;
+    background-position: center center;
+    position: absolute;
+    left: 100px;
+    top: 100px;
+    z-index:3;
+}
+
+&lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;div class=&quot;box1&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;box2&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;box3&quot;&gt;&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><p>运行结果如图：</p>
+<p><img src="http://7xosrq.com1.z0.glb.clouddn.com/QQ20161114-1.png?e=1479091298&amp;token=BsduBndXasPKM3kxbowJ9Y6Gq-NTYlMJsNrrgMEy:FVlx-KlzpUF75YvPg62aweeB8YY" alt=""></p>
+<p>(4) <strong>相对定位对象会占据它原来位置</strong>，在下面例子中，没有设定相对定位前，绿色盒子是在蓝色盒子左上角的，<br>之前也设定了绿色盒子的浮动方式为左浮动，可以看到文本环绕在它右边，但是后来用相对定位把绿色盒子重定位到外面去了，它还是站着自己原来的位置，，因此这种直接的相对定位方法较少用。相对定位经常和绝对定位结合使用，一般是给父级设定相对定位方式，子级元素就可以相对它进行绝对定位了。</p>
+<pre><code>&lt;!DOCTYPE html &gt;
+&lt;head&gt;
+&lt;title&gt;相对定位对象会占据原有位置&lt;/title&gt;
+&lt;style type=&quot;text/css&quot;&gt;
+
+body {
+    margin:0px;
+    font-size: 9pt;
+    line-height:12pt;
+    margin-top: 150px;
+    margin-left: 150px;
+}
+.box1 {
+    background-color: #3CF;
+    height: 200px;
+    width: 200px;
+
+}
+.box2 {
+    background-color: #6C6;
+    height: 100px;
+    width: 100px;
+    position: relative;
+    float: left;
+    top:-120px;
+}
+
+&lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+     &lt;div class=&quot;box1&quot;&gt;
+      &lt;div class=&quot;box2&quot;&gt;
+      &lt;/div&gt;
+[相对定位对象会占据原有位置]现在绿色小盒子是以子盒子形式存在蓝色大盒子中，并设定了浮动方式为左浮动，所以这些文字能环绕在它右边，当绿色小盒子用相对定位方法重定位到外边去了，文字还是不能流入它的区域，即左上角空白区域，那是因为绿色盒子还占用着它原来位置。
+    &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><p>运行结果如图：</p>
+<p><img src="http://7xosrq.com1.z0.glb.clouddn.com/QQ20161114-2.png?e=1479092270&amp;token=BsduBndXasPKM3kxbowJ9Y6Gq-NTYlMJsNrrgMEy:79ag9yqOYQtXoE8lC_17-roLdY4" alt=""></p>
+<p>（5）<strong>相对定位的对象不可以重叠</strong>。这一点也许比较难理解，先来这样理解吧，因为相对定位的对像没有脱离文本流，就像两个还是住在同一层楼的人，任何时候，他们脚下踩的地方不可能被另一个人踩着的，如果可以就意味着两个人共享一块地方了。在下面的实例中，两个小盒子都刚好排在大盒子上方，所以在大盒子中输入的文字被挤到了下面。上面两个盒子我再用相对定位的方法对调了它们的位置，当前它们下方的空间其实不是自己的，也正因为它们没有重叠，所以盒子上方还是有两个盒子占用的空间，下面文字无法向上流动（我已对盒子设定了浮动属性的了，如果不设定，即使有空间文本也不会往上流，上面盒子是块级元素，会独立占据一行）。</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;head&gt;
+&lt;title&gt;相对定位对象不可层叠&lt;/title&gt;
+&lt;style type=&quot;text/css&quot;&gt;
+body {
+margin:0px;
+font-size: 9pt;
+line-height:12pt;
+margin-top: 150px;
+margin-left: 150px;
+}
+.box1 {
+    background-color: #33CCFF;
+    height: 200px;
+    width: 210px;
+    padding:5px;
+}
+.box2 {
+    background-color: #66CC66;
+    height: 100px;
+    width: 100px;
+    position: relative;
+    float: left;
+    left:100px;
+}
+.box3 {
+    background-color: #CC99FF;
+    height: 100px;
+    width: 100px;
+    position: relative;
+    float: left;
+    right:100px;
+}
+
+&lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+&lt;div class=&quot;box1&quot;&gt;
+  &lt;div class=&quot;box2&quot;&gt;我家在左边&lt;/div&gt;
+  &lt;div class=&quot;box3&quot;&gt;我家在右边&lt;/div&gt;
+  相对定位对象是在正常文本流中移动的，所以它的存在还是会影响文本流的布局， 如果是绝对定位，这些文本应向上流入上方两个盒子的底部了。
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><p>运行结果如图：</p>
+<p><img src="http://7xosrq.com1.z0.glb.clouddn.com/QQ20161114-3.png?e=1479092770&amp;token=BsduBndXasPKM3kxbowJ9Y6Gq-NTYlMJsNrrgMEy:lLKkOxjamtcRGKJ39lVtdAxeZ6c" alt=""></p>
+<p>（6）<strong>高度自适应的妙用</strong>。在下面实例中，右边的紫色小盒子高度是没有设定的，它的高度是随着里面内容的增加而增高的，但我们又可以通过绝对定位方法把它始终定位在父盒子的右上角。同理，我们也可以只设定高度而让宽度自动随内容增加而变宽。</p>
+<p>运行结果如图：</p>
+<p><img src="http://7xosrq.com1.z0.glb.clouddn.com/QQ20161114-4.png?e=1479093079&amp;token=BsduBndXasPKM3kxbowJ9Y6Gq-NTYlMJsNrrgMEy:15AIq-x6_hyxRcR0s998qodVtqA" alt=""></p>
 
       
     </div>

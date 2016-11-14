@@ -93,7 +93,7 @@
 <meta property="og:description" content="今天开开心心写完博客，部署完毕后，刷新页面，准备查看效果。。。
 然而这个是什么鬼！！！">
 <meta property="og:image" content="http://7xosrq.com1.z0.glb.clouddn.com/QQ20161111-2.png?e=1478863213&token=BsduBndXasPKM3kxbowJ9Y6Gq-NTYlMJsNrrgMEy:9JY1CP7iTQ-e5WpW5R6GQ2r8MIY">
-<meta property="og:updated_time" content="2016-11-11T10:26:44.000Z">
+<meta property="og:updated_time" content="2016-11-14T02:13:25.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="hexo部署后页面js和css部分无法加载">
 <meta name="twitter:description" content="今天开开心心写完博客，部署完毕后，刷新页面，准备查看效果。。。
@@ -329,12 +329,10 @@
 <p>首先修改source/vendors为source/lib，然后修改_config.yml，将 _internal: vendors修改为_internal:lib，然后修改next底下所有引用source/vendors路径为source/lib。<br>这些地方可以通过文件查找找出来。主要集中在这几个文件中。</p>
 <ul>
 <li>Hexo\themes\next.bowerrc </li>
-</ul>
-<ol>
 <li>Hexo\themes\next.gitignore </li>
 <li>Hexo\themes\next.javascript_ignore </li>
-<li>Hexo\themes\next\bower.json 。</li>
-</ol>
+<li>Hexo\themes\next\bower.json</li>
+</ul>
 <p>确保无误后重新部署一次就ok了！！！</p>
 
       
