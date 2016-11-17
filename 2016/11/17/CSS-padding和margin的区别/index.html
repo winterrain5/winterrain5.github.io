@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="css html," />
+  <meta name="keywords" content="css padding margin," />
 
 
 
@@ -84,26 +84,16 @@
 
 
 
-<meta name="description" content="在用css控制排版过程中，定位一直是一个难点。效果总是出乎你的意料之外。。。
-深入理解其中常用的定位模式后，可以有效的帮助你完成网页排版。">
+<meta name="description" content="何时用margin，何时用padding是初学者的一个困扰。。。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CSS定位模式（absolute、relative）">
-<meta property="og:url" content="http://yoursite.com/2016/11/11/CSS定位模式（absolute、relative）/index.html">
+<meta property="og:title" content="CSS-padding和margin的区别">
+<meta property="og:url" content="http://yoursite.com/2016/11/17/CSS-padding和margin的区别/index.html">
 <meta property="og:site_name" content="行止由心">
-<meta property="og:description" content="在用css控制排版过程中，定位一直是一个难点。效果总是出乎你的意料之外。。。
-深入理解其中常用的定位模式后，可以有效的帮助你完成网页排版。">
-<meta property="og:image" content="http://7xosrq.com1.z0.glb.clouddn.com/QQ20161111-1.png?e=1479093475&token=BsduBndXasPKM3kxbowJ9Y6Gq-NTYlMJsNrrgMEy:duBwjvl18wwZ-Sdy9ssymz9r8AM">
-<meta property="og:image" content="http://7xosrq.com1.z0.glb.clouddn.com/QQ20161114-0.png?e=1479090761&token=BsduBndXasPKM3kxbowJ9Y6Gq-NTYlMJsNrrgMEy:TbNn0HNe91Q-OGxP5l5Yx3ZlKpI">
-<meta property="og:image" content="http://7xosrq.com1.z0.glb.clouddn.com/QQ20161114-1.png?e=1479091298&token=BsduBndXasPKM3kxbowJ9Y6Gq-NTYlMJsNrrgMEy:FVlx-KlzpUF75YvPg62aweeB8YY">
-<meta property="og:image" content="http://7xosrq.com1.z0.glb.clouddn.com/QQ20161114-2.png?e=1479092270&token=BsduBndXasPKM3kxbowJ9Y6Gq-NTYlMJsNrrgMEy:79ag9yqOYQtXoE8lC_17-roLdY4">
-<meta property="og:image" content="http://7xosrq.com1.z0.glb.clouddn.com/QQ20161114-3.png?e=1479092770&token=BsduBndXasPKM3kxbowJ9Y6Gq-NTYlMJsNrrgMEy:lLKkOxjamtcRGKJ39lVtdAxeZ6c">
-<meta property="og:image" content="http://7xosrq.com1.z0.glb.clouddn.com/QQ20161114-4.png?e=1479093079&token=BsduBndXasPKM3kxbowJ9Y6Gq-NTYlMJsNrrgMEy:15AIq-x6_hyxRcR0s998qodVtqA">
-<meta property="og:updated_time" content="2016-11-14T02:18:46.000Z">
+<meta property="og:description" content="何时用margin，何时用padding是初学者的一个困扰。。。">
+<meta property="og:updated_time" content="2016-11-17T02:39:44.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="CSS定位模式（absolute、relative）">
-<meta name="twitter:description" content="在用css控制排版过程中，定位一直是一个难点。效果总是出乎你的意料之外。。。
-深入理解其中常用的定位模式后，可以有效的帮助你完成网页排版。">
-<meta name="twitter:image" content="http://7xosrq.com1.z0.glb.clouddn.com/QQ20161111-1.png?e=1479093475&token=BsduBndXasPKM3kxbowJ9Y6Gq-NTYlMJsNrrgMEy:duBwjvl18wwZ-Sdy9ssymz9r8AM">
+<meta name="twitter:title" content="CSS-padding和margin的区别">
+<meta name="twitter:description" content="何时用margin，何时用padding是初学者的一个困扰。。。">
 
 
 
@@ -124,10 +114,10 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/11/11/CSS定位模式（absolute、relative）/"/>
+  <link rel="canonical" href="http://yoursite.com/2016/11/17/CSS-padding和margin的区别/"/>
 
 
-  <title> CSS定位模式（absolute、relative） | 行止由心 </title>
+  <title> CSS-padding和margin的区别 | 行止由心 </title>
 </head>
 
 <body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
@@ -267,7 +257,7 @@
             
             
               
-                CSS定位模式（absolute、relative）
+                CSS-padding和margin的区别
               
             
           </h1>
@@ -279,8 +269,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-11-11T16:48:17+08:00" content="2016-11-11">
-              2016-11-11
+            <time itemprop="dateCreated" datetime="2016-11-17T10:07:04+08:00" content="2016-11-17">
+              2016-11-17
             </time>
           </span>
 
@@ -309,8 +299,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/11/11/CSS定位模式（absolute、relative）/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/11/CSS定位模式（absolute、relative）/" itemprop="commentsCount"></span>
+                <a href="/2016/11/17/CSS-padding和margin的区别/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/17/CSS-padding和margin的区别/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -320,7 +310,7 @@
 
           
           
-             <span id="/2016/11/11/CSS定位模式（absolute、relative）/" class="leancloud_visitors" data-flag-title="CSS定位模式（absolute、relative）">
+             <span id="/2016/11/17/CSS-padding和margin的区别/" class="leancloud_visitors" data-flag-title="CSS-padding和margin的区别">
                &nbsp; | &nbsp;
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -342,228 +332,115 @@
       
 
       
-        <p>在用css控制排版过程中，定位一直是一个难点。效果总是出乎你的意料之外。。。</p>
-<p>深入理解其中常用的定位模式后，可以有效的帮助你完成网页排版。</p>
+        <p>何时用margin，何时用padding是初学者的一个困扰。。。</p>
 <a id="more"></a>
-<p>css定位有四种模式：</p>
-<ul>
-<li>static 静态</li>
-<li>absolute 绝对定位</li>
-<li>fixed 固定定位</li>
-<li>relative 相对定位</li>
-</ul>
-<p>开发中最常用的是absolute和relative。</p>
-<ul>
-<li><strong>绝对定位（absolute）：</strong> 将被赋予此定位方法的对象从文档流中拖出，使用left、right、top、bottom等属性相对于其最接近的一个有定位设置的父级对象进行绝对定位，如果对象的父级么有设置定位属性，即还是遵循HTML定位规则，则依据body对象左上角作为参考进行定位。绝对定位可层叠，层叠熟悉怒可通过z-index属性控制。</li>
-</ul>
-<ul>
-<li><strong>相对定位（relativ）：</strong>对象不可层叠，依据left、right、top、bottom等属性在正常文档流中偏移自身位置。同样可以用z-index分层设计。</li>
-</ul>
-<p>下面通过几个例子进行说明：</p>
-<p>（1）无定位设置，对象遵循HTML定位规则。一般是子级不会跑出父级的外边去，子级一般是靠在父级左上角的，父级放在最下层。</p>
-<pre><code>&lt;!DOCTYPE html &gt;
-&lt;head&gt;
-&lt;title&gt;无定位设定,对象遵循HTML定位规则&lt;/title&gt;
-&lt;style type=&quot;text/css&quot;&gt;
-.box1 {
-    background-color: #33CCFF;
-    height: 200px;
-    width: 200px;
-}
-.box2 {
-    background-color: #66CC66;
-    height: 100px;
-    width: 100px;
-}
-
-&lt;/style&gt;
-&lt;/head&gt;
-
-&lt;body&gt;
-&lt;div class=&quot;box1&quot;&gt;
-  &lt;div class=&quot;box2&quot;&gt;&lt;/div&gt;
-&lt;/div&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-</code></pre><p>运行结果如下：</p>
-<p><img src="http://7xosrq.com1.z0.glb.clouddn.com/QQ20161111-1.png?e=1479093475&amp;token=BsduBndXasPKM3kxbowJ9Y6Gq-NTYlMJsNrrgMEy:duBwjvl18wwZ-Sdy9ssymz9r8AM" alt=""></p>
-<p>(2) 给设定了定位属性的对象指定left、right、top、bottom属性中的至少一个，不然定位不起作用。下面例子中给box2设定了定位属性position：absolute，但是如果没有指定其中一个方位定位值top：0px，定位是不起作用的。</p>
+<h3 id="padding：-内边距"><a href="#padding：-内边距" class="headerlink" title="padding： 内边距"></a><strong>padding：</strong> 内边距</h3><ul>
+<li><p>会影响盒子的大小,如下代码所示，添加了padding后，你看到的盒子的大小会多出20px.</p>
 <pre><code>&lt;!DOCTYPE html&gt;
-&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;
+&lt;html lang=&quot;en&quot;&gt;
 &lt;head&gt;
-&lt;title&gt;给定位对象指定一个方位数值&lt;/title&gt;
-&lt;style type=&quot;text/css&quot;&gt;
-
-.box1 {
-    background-color: #33CCFF;
-    height: 200px;
-    width: 200px;
-}
-.box2 {
-    background-color: #66CC66;
-    height: 100px;
-    width: 100px;
-    position: absolute;
-    top: 20px;/*如果没有指定一个方位定位属性和值,绝对定位不起作用,你可以删除这一项看一下效果*/
-}
-
-&lt;/style&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;Document&lt;/title&gt;
+    &lt;style type=&quot;text/css&quot;&gt;
+        .box1 {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+            padding-left: 20px;
+        }
+    &lt;/style&gt;
 &lt;/head&gt;
-
 &lt;body&gt;
-&lt;div class=&quot;box1&quot;&gt;
-  &lt;div class=&quot;box2&quot;&gt;&lt;/div&gt;
-&lt;/div&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-</code></pre><p>运行效果如图：</p>
-<p><img src="http://7xosrq.com1.z0.glb.clouddn.com/QQ20161114-0.png?e=1479090761&amp;token=BsduBndXasPKM3kxbowJ9Y6Gq-NTYlMJsNrrgMEy:TbNn0HNe91Q-OGxP5l5Yx3ZlKpI" alt=""></p>
-<p>(3) <strong>绝对定位对象可以层叠</strong>，层叠顺序用z-index，如果没有指定则遵循其父对象的定位方法，最好不要给z-index指定负值，因为不同浏览器最终解释的效果有所不同。</p>
-<pre><code>&lt;!DOCTYPE html &gt;
-&lt;head&gt;
-&lt;title&gt;绝对定位对象可以层叠,层叠顺序可用z-index控制,但最好不要用负值,因为FF不支持&lt;/title&gt;
-&lt;style type=&quot;text/css&quot;&gt;
+    &lt;div class=&quot;box1&quot;&gt;
 
-
-.box1 {
-    background-color: #33CCFF;
-    height: 200px;
-    width: 270px;
-    background-repeat: no-repeat;
-    background-position: center center;
-    position: absolute;
-    left: 10px;
-    top: 10px;
-    z-index:-1;/*这里用了负值,在标准浏览器,如FF中是不能正常显示的*/
-}
-.box2 {
-    background-color: #66CC33;
-    height: 200px;
-    width: 270px;
-
-    background-repeat: no-repeat;
-    background-position: center center;
-    position: absolute;
-    left: 50px;
-    top: 50px;
-    z-index:2;
-
-}
-.box3 {
-    background-color: #996699;
-    height: 200px;
-    width: 270px;
-    background-repeat: no-repeat;
-    background-position: center center;
-    position: absolute;
-    left: 100px;
-    top: 100px;
-    z-index:3;
-}
-
-&lt;/style&gt;
-&lt;/head&gt;
-
-&lt;body&gt;
-    &lt;div class=&quot;box1&quot;&gt;&lt;/div&gt;
-    &lt;div class=&quot;box2&quot;&gt;&lt;/div&gt;
-    &lt;div class=&quot;box3&quot;&gt;&lt;/div&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-</code></pre><p>运行结果如图：</p>
-<p><img src="http://7xosrq.com1.z0.glb.clouddn.com/QQ20161114-1.png?e=1479091298&amp;token=BsduBndXasPKM3kxbowJ9Y6Gq-NTYlMJsNrrgMEy:FVlx-KlzpUF75YvPg62aweeB8YY" alt=""></p>
-<p>(4) <strong>相对定位对象会占据它原来位置</strong>，在下面例子中，没有设定相对定位前，绿色盒子是在蓝色盒子左上角的，<br>之前也设定了绿色盒子的浮动方式为左浮动，可以看到文本环绕在它右边，但是后来用相对定位把绿色盒子重定位到外面去了，它还是站着自己原来的位置，，因此这种直接的相对定位方法较少用。相对定位经常和绝对定位结合使用，一般是给父级设定相对定位方式，子级元素就可以相对它进行绝对定位了。</p>
-<pre><code>&lt;!DOCTYPE html &gt;
-&lt;head&gt;
-&lt;title&gt;相对定位对象会占据原有位置&lt;/title&gt;
-&lt;style type=&quot;text/css&quot;&gt;
-
-body {
-    margin:0px;
-    font-size: 9pt;
-    line-height:12pt;
-    margin-top: 150px;
-    margin-left: 150px;
-}
-.box1 {
-    background-color: #3CF;
-    height: 200px;
-    width: 200px;
-
-}
-.box2 {
-    background-color: #6C6;
-    height: 100px;
-    width: 100px;
-    position: relative;
-    float: left;
-    top:-120px;
-}
-
-&lt;/style&gt;
-&lt;/head&gt;
-
-&lt;body&gt;
-     &lt;div class=&quot;box1&quot;&gt;
-      &lt;div class=&quot;box2&quot;&gt;
-      &lt;/div&gt;
-[相对定位对象会占据原有位置]现在绿色小盒子是以子盒子形式存在蓝色大盒子中，并设定了浮动方式为左浮动，所以这些文字能环绕在它右边，当绿色小盒子用相对定位方法重定位到外边去了，文字还是不能流入它的区域，即左上角空白区域，那是因为绿色盒子还占用着它原来位置。
     &lt;/div&gt;
 &lt;/body&gt;
 &lt;/html&gt;
-</code></pre><p>运行结果如图：</p>
-<p><img src="http://7xosrq.com1.z0.glb.clouddn.com/QQ20161114-2.png?e=1479092270&amp;token=BsduBndXasPKM3kxbowJ9Y6Gq-NTYlMJsNrrgMEy:79ag9yqOYQtXoE8lC_17-roLdY4" alt=""></p>
-<p>（5）<strong>相对定位的对象不可以重叠</strong>。这一点也许比较难理解，先来这样理解吧，因为相对定位的对像没有脱离文本流，就像两个还是住在同一层楼的人，任何时候，他们脚下踩的地方不可能被另一个人踩着的，如果可以就意味着两个人共享一块地方了。在下面的实例中，两个小盒子都刚好排在大盒子上方，所以在大盒子中输入的文字被挤到了下面。上面两个盒子我再用相对定位的方法对调了它们的位置，当前它们下方的空间其实不是自己的，也正因为它们没有重叠，所以盒子上方还是有两个盒子占用的空间，下面文字无法向上流动（我已对盒子设定了浮动属性的了，如果不设定，即使有空间文本也不会往上流，上面盒子是块级元素，会独立占据一行）。</p>
+</code></pre></li>
+<li><p>孩子会继承父亲的宽度，不继承高度。对于box2，只需要给高度即可，宽度继承自父亲，不显示</p>
+<p>  给出宽度，所以box2的宽度没有被撑开，只是内容平移20px。</p>
 <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
 &lt;head&gt;
-&lt;title&gt;相对定位对象不可层叠&lt;/title&gt;
-&lt;style type=&quot;text/css&quot;&gt;
-body {
-margin:0px;
-font-size: 9pt;
-line-height:12pt;
-margin-top: 150px;
-margin-left: 150px;
-}
-.box1 {
-    background-color: #33CCFF;
-    height: 200px;
-    width: 210px;
-    padding:5px;
-}
-.box2 {
-    background-color: #66CC66;
-    height: 100px;
-    width: 100px;
-    position: relative;
-    float: left;
-    left:100px;
-}
-.box3 {
-    background-color: #CC99FF;
-    height: 100px;
-    width: 100px;
-    position: relative;
-    float: left;
-    right:100px;
-}
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;Document&lt;/title&gt;
+    &lt;style type=&quot;text/css&quot;&gt;
+        .box1 {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
 
-&lt;/style&gt;
+        }
+        .box2 {
+            height: 200px;
+            background-color: red;
+            padding-left: 20px;
+        }
+    &lt;/style&gt;
 &lt;/head&gt;
-
 &lt;body&gt;
-&lt;div class=&quot;box1&quot;&gt;
-  &lt;div class=&quot;box2&quot;&gt;我家在左边&lt;/div&gt;
-  &lt;div class=&quot;box3&quot;&gt;我家在右边&lt;/div&gt;
-  相对定位对象是在正常文本流中移动的，所以它的存在还是会影响文本流的布局， 如果是绝对定位，这些文本应向上流入上方两个盒子的底部了。
-&lt;/div&gt;
+    &lt;div class=&quot;box1&quot;&gt;
+        &lt;div class=&quot;box2&quot;&gt;
+            123123123
+        &lt;/div&gt;
+    &lt;/div&gt;
 &lt;/body&gt;
 &lt;/html&gt;
-</code></pre><p>运行结果如图：</p>
-<p><img src="http://7xosrq.com1.z0.glb.clouddn.com/QQ20161114-3.png?e=1479092770&amp;token=BsduBndXasPKM3kxbowJ9Y6Gq-NTYlMJsNrrgMEy:lLKkOxjamtcRGKJ39lVtdAxeZ6c" alt=""></p>
-<p>（6）<strong>高度自适应的妙用</strong>。在下面实例中，右边的紫色小盒子高度是没有设定的，它的高度是随着里面内容的增加而增高的，但我们又可以通过绝对定位方法把它始终定位在父盒子的右上角。同理，我们也可以只设定高度而让宽度自动随内容增加而变宽。</p>
-<p>运行结果如图：</p>
-<p><img src="http://7xosrq.com1.z0.glb.clouddn.com/QQ20161114-4.png?e=1479093079&amp;token=BsduBndXasPKM3kxbowJ9Y6Gq-NTYlMJsNrrgMEy:15AIq-x6_hyxRcR0s998qodVtqA" alt=""></p>
+</code></pre></li>
+<li><p>对于行内元素尽量不使用上下的padding和margin</p>
+</li>
+</ul>
+<h3 id="margin：外边距"><a href="#margin：外边距" class="headerlink" title="margin：外边距"></a><strong>margin：</strong>外边距</h3><ul>
+<li><p>给出margin，整个盒子相对于父亲平移20px;</p>
+</li>
+<li><p>对于孩子来说，给margin，也是相对于父亲平移20px，因为没有给宽度，所以看到宽度减少了20px，但是不会超出父亲。</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+    &lt;html lang=&quot;en&quot;&gt;
+    &lt;head&gt;
+        &lt;meta charset=&quot;UTF-8&quot;&gt;
+        &lt;title&gt;Document&lt;/title&gt;
+        &lt;style type=&quot;text/css&quot;&gt;
+            .box1 {
+                width: 200px;
+                height: 200px;
+                background-color: pink;
+
+        }
+        .box2 {
+            height: 200px;
+            background-color: red;
+            margin-left: 20px;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div class=&quot;box1&quot;&gt;
+        &lt;div class=&quot;box2&quot;&gt;
+            123123123
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre></li>
+</ul>
+<h3 id="根据网上经验总结"><a href="#根据网上经验总结" class="headerlink" title="根据网上经验总结"></a>根据网上经验总结</h3><p> <strong>何时用margin：</strong></p>
+<ul>
+<li>需要在border外侧添加空白时；</li>
+<li>空白处不需要背景（色）时；</li>
+<li><p>上下相连的两个盒子之间的空白，需要相互抵消时。</p>
+<p><strong>何时用padding：</strong></p>
+</li>
+<li><p>需要在border内测添加空白时；</p>
+</li>
+<li>空白处需要背景（色）时；</li>
+<li>上下相连的两个盒子之间的空白，希望等于两者之和时。 </li>
+</ul>
+<h3 id="个人认为"><a href="#个人认为" class="headerlink" title="个人认为"></a>个人认为</h3><ul>
+<li><p>margin是用来隔开元素与元素的间距的，使其互不相干。</p>
+</li>
+<li><p>padding是用于元素与内容之间的间隔。</p>
+</li>
+</ul>
 
       
     </div>
@@ -607,7 +484,7 @@ margin-left: 150px;
       
         <div class="post-tags">
           
-            <a href="/tags/css-html/" rel="tag">#css html</a>
+            <a href="/tags/css-padding-margin/" rel="tag">#css padding margin</a>
           
         </div>
       
@@ -616,17 +493,13 @@ margin-left: 150px;
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/10/31/Git中全局忽略-DS-Store文件/" rel="next" title="Git中全局忽略.DS_Store文件">
-                <i class="fa fa-chevron-left"></i> Git中全局忽略.DS_Store文件
+              <a href="/2016/11/16/css隐藏样式方法/" rel="next" title="css隐藏样式方法">
+                <i class="fa fa-chevron-left"></i> css隐藏样式方法
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/11/11/hexo部署后页面js和css部分无法加载/" rel="prev" title="hexo部署后页面js和css部分无法加载">
-                hexo部署后页面js和css部分无法加载 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -652,8 +525,8 @@ margin-left: 150px;
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/11/11/CSS定位模式（absolute、relative）/"
-           data-title="CSS定位模式（absolute、relative）" data-url="http://yoursite.com/2016/11/11/CSS定位模式（absolute、relative）/">
+      <div class="ds-thread" data-thread-key="2016/11/17/CSS-padding和margin的区别/"
+           data-title="CSS-padding和margin的区别" data-url="http://yoursite.com/2016/11/17/CSS-padding和margin的区别/">
       </div>
     
   </div>
@@ -773,7 +646,7 @@ margin-left: 150px;
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#padding：-内边距"><span class="nav-number">1.</span> <span class="nav-text">padding： 内边距</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#margin：外边距"><span class="nav-number">2.</span> <span class="nav-text">margin：外边距</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#根据网上经验总结"><span class="nav-number">3.</span> <span class="nav-text">根据网上经验总结</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#个人认为"><span class="nav-number">4.</span> <span class="nav-text">个人认为</span></a></li></ol></div>
             
           </div>
         </section>
