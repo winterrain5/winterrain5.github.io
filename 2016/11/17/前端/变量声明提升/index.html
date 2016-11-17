@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="逆水行舟，不进则退" />
+  <meta name="keywords" content="JavaScript," />
 
 
 
@@ -84,16 +84,52 @@
 
 
 
-<meta name="description" content="要做一个Nice的人">
-<meta property="og:type" content="website">
-<meta property="og:title" content="about">
-<meta property="og:url" content="http://yoursite.com/about/index.html">
+<meta name="description" content="什么是变量声明提升？
+在函数体内部，声明变量，会把改声明提升到函数体的最顶端。只提升变量声明，不赋值。
+function fun(){
+   console.log(num);
+   var num = 20;
+}
+相当于
+function fun(){
+    var num;
+    console.log(num);
+    Num = 20;
+}
+所以当调用fun()时会输出undefin">
+<meta property="og:type" content="article">
+<meta property="og:title" content="变量声明提升">
+<meta property="og:url" content="http://yoursite.com/2016/11/17/前端/变量声明提升/index.html">
 <meta property="og:site_name" content="行止由心">
-<meta property="og:description" content="要做一个Nice的人">
-<meta property="og:updated_time" content="2016-10-18T09:53:20.000Z">
+<meta property="og:description" content="什么是变量声明提升？
+在函数体内部，声明变量，会把改声明提升到函数体的最顶端。只提升变量声明，不赋值。
+function fun(){
+   console.log(num);
+   var num = 20;
+}
+相当于
+function fun(){
+    var num;
+    console.log(num);
+    Num = 20;
+}
+所以当调用fun()时会输出undefin">
+<meta property="og:updated_time" content="2016-11-17T03:40:17.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="about">
-<meta name="twitter:description" content="要做一个Nice的人">
+<meta name="twitter:title" content="变量声明提升">
+<meta name="twitter:description" content="什么是变量声明提升？
+在函数体内部，声明变量，会把改声明提升到函数体的最顶端。只提升变量声明，不赋值。
+function fun(){
+   console.log(num);
+   var num = 20;
+}
+相当于
+function fun(){
+    var num;
+    console.log(num);
+    Num = 20;
+}
+所以当调用fun()时会输出undefin">
 
 
 
@@ -114,16 +150,10 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/about/"/>
+  <link rel="canonical" href="http://yoursite.com/2016/11/17/前端/变量声明提升/"/>
 
 
-  <title>
-  
-
-  
-    about | 行止由心
-  
-</title>
+  <title> 变量声明提升 | 行止由心 </title>
 </head>
 
 <body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
@@ -144,7 +174,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-right  ">
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
@@ -244,9 +274,187 @@
 
   <div id="posts" class="posts-expand">
     
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
     
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                变量声明提升
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-11-17T11:36:01+08:00" content="2016-11-17">
+              2016-11-17
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/前端/" itemprop="url" rel="index">
+                    <span itemprop="name">前端</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/11/17/前端/变量声明提升/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/17/前端/变量声明提升/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/11/17/前端/变量声明提升/" class="leancloud_visitors" data-flag-title="变量声明提升">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
       
-    
+      
+
+      
+        <p>什么是变量声明提升？</p>
+<p>在函数体内部，声明变量，会把改声明提升到函数体的最顶端。只提升变量声明，不赋值。</p>
+<pre><code>function fun(){
+   console.log(num);
+   var num = 20;
+}
+</code></pre><p>相当于</p>
+<pre><code>function fun(){
+    var num;
+    console.log(num);
+    Num = 20;
+}
+</code></pre><p>所以当调用fun()时会输出undefined。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>请我喝杯豆浆！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="http://storage1.imgchr.com/images/FullSizeRendereb28d.jpg" alt="winterrain5 WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="http://storage1.imgchr.com/images/FullSizeRender2fa7e1.jpg" alt="winterrain5 Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/JavaScript/" rel="tag">#JavaScript</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/11/17/前端/CSS-padding和margin的区别/" rel="next" title="CSS-padding和margin的区别">
+                <i class="fa fa-chevron-left"></i> CSS-padding和margin的区别
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
   </div>
 
 
@@ -257,8 +465,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="about/index.html"
-           data-title="about" data-url="http://yoursite.com/about/index.html">
+      <div class="ds-thread" data-thread-key="2016/11/17/前端/变量声明提升/"
+           data-title="变量声明提升" data-url="http://yoursite.com/2016/11/17/前端/变量声明提升/">
       </div>
     
   </div>
@@ -282,8 +490,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="http://ww4.sinaimg.cn/mw690/9dac93ccjw9eymcefq449j202s042aa2.jpg"
@@ -362,6 +579,17 @@
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <p class="post-toc-empty">此文章未包含目录</p>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -465,6 +693,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
 
   
 
