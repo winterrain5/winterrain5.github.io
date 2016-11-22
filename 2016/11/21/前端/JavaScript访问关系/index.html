@@ -110,7 +110,7 @@ previousElementSibling 其他浏览器识别
 
 要想兼容所有浏览器，可以这样写：
 var div = document.getElementById(&amp;quot">
-<meta property="og:updated_time" content="2016-11-21T03:38:55.000Z">
+<meta property="og:updated_time" content="2016-11-22T01:18:24.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaScript访问关系">
 <meta name="twitter:description" content="父节点
@@ -182,7 +182,7 @@ var div = document.getElementById(&amp;quot">
       <span class="logo-line-after"><i></i></span>
     </a>
   </div>
-  <p class="site-subtitle">知识管理，自我管理，objective-c，swift</p>
+  <p class="site-subtitle">知识管理，自我管理#网站副标题</p>
 </div>
 
 <div class="site-nav-toggle">
@@ -382,7 +382,13 @@ var next = div.nextElementSibling || div.nextSibling
 <li><strong>lastElementChild</strong></li>
 </ul>
 <h3 id="所有子节点"><a href="#所有子节点" class="headerlink" title="所有子节点"></a>所有子节点</h3><ul>
-<li><strong>childNodes</strong> 返回指定元素的子元素集合，包括HTML节点、文本节点等。火狐、谷歌等高版本会把换行也看做子节点</li>
+<li><strong>childNodes</strong> </li>
+</ul>
+<p>返回指定元素的子元素集合，包括HTML节点、文本节点等。火狐、谷歌等高版本会把换行也看做子节点<br>一般情况下，我们只需要元素节点,可以通过nodeType来判断：   </p>
+<pre><code>nodeType == 1    元素节点     
+nodeType == 2    属性节点
+nodeType == 3    文本节点 
+</code></pre><ul>
 <li><strong>children</strong> 返回指定元素的标签节点。IE6、7、8会把注释节点也算进去</li>
 </ul>
 
