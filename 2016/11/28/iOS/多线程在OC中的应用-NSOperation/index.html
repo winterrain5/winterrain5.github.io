@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Sublime Text2," />
+  <meta name="keywords" content="NSOpetation 多线程 iOS," />
 
 
 
@@ -84,20 +84,31 @@
 
 
 
-<meta name="description" content="Package Control 插件是一个方便 Sublime text 管理插件的插件">
+<meta name="description" content="利用NSOperationh和NSOperationQueue实现多线程的步骤1、先将需要执行的操作封装到一个NSOperation的子类对象中
+2、然后将NSOperation对象添加到NSOperationQueue中
+3、系统会自动将NSOperationQueue中的NSOperation取出来
+4、将取出的NSOperation封装的操作放到一条新线程中执行
+
+NSOperation是个">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Sublime Text2 插件管理器安装">
-<meta property="og:url" content="http://yoursite.com/2016/10/30/编程工具/Sublime-Text2-插件管理器安装/index.html">
+<meta property="og:title" content="多线程在OC中的应用(NSOperation)">
+<meta property="og:url" content="http://yoursite.com/2016/11/28/iOS/多线程在OC中的应用-NSOperation/index.html">
 <meta property="og:site_name" content="行止由心">
-<meta property="og:description" content="Package Control 插件是一个方便 Sublime text 管理插件的插件">
-<meta property="og:image" content="http://7xosrq.com1.z0.glb.clouddn.com/QQ20161030-1.png?e=1477821787&token=BsduBndXasPKM3kxbowJ9Y6Gq-NTYlMJsNrrgMEy:Zfd_dD0q5ZzQDYcELgawaRX1dYg">
-<meta property="og:image" content="http://7xosrq.com1.z0.glb.clouddn.com/QQ20161030-0.png?e=1477821787&token=BsduBndXasPKM3kxbowJ9Y6Gq-NTYlMJsNrrgMEy:8cbqntVUGut_jcMHtap-vMvA66g">
-<meta property="og:image" content="http://7xosrq.com1.z0.glb.clouddn.com/QQ20161030-2.png?e=1477821787&token=BsduBndXasPKM3kxbowJ9Y6Gq-NTYlMJsNrrgMEy:xK4S7JlsCuds8KPR0EEDL5D9bqI">
-<meta property="og:updated_time" content="2016-10-30T09:13:49.000Z">
+<meta property="og:description" content="利用NSOperationh和NSOperationQueue实现多线程的步骤1、先将需要执行的操作封装到一个NSOperation的子类对象中
+2、然后将NSOperation对象添加到NSOperationQueue中
+3、系统会自动将NSOperationQueue中的NSOperation取出来
+4、将取出的NSOperation封装的操作放到一条新线程中执行
+
+NSOperation是个">
+<meta property="og:updated_time" content="2016-11-28T09:58:37.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Sublime Text2 插件管理器安装">
-<meta name="twitter:description" content="Package Control 插件是一个方便 Sublime text 管理插件的插件">
-<meta name="twitter:image" content="http://7xosrq.com1.z0.glb.clouddn.com/QQ20161030-1.png?e=1477821787&token=BsduBndXasPKM3kxbowJ9Y6Gq-NTYlMJsNrrgMEy:Zfd_dD0q5ZzQDYcELgawaRX1dYg">
+<meta name="twitter:title" content="多线程在OC中的应用(NSOperation)">
+<meta name="twitter:description" content="利用NSOperationh和NSOperationQueue实现多线程的步骤1、先将需要执行的操作封装到一个NSOperation的子类对象中
+2、然后将NSOperation对象添加到NSOperationQueue中
+3、系统会自动将NSOperationQueue中的NSOperation取出来
+4、将取出的NSOperation封装的操作放到一条新线程中执行
+
+NSOperation是个">
 
 
 
@@ -118,10 +129,10 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/10/30/编程工具/Sublime-Text2-插件管理器安装/"/>
+  <link rel="canonical" href="http://yoursite.com/2016/11/28/iOS/多线程在OC中的应用-NSOperation/"/>
 
 
-  <title> Sublime Text2 插件管理器安装 | 行止由心 </title>
+  <title> 多线程在OC中的应用(NSOperation) | 行止由心 </title>
 </head>
 
 <body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
@@ -261,7 +272,7 @@
             
             
               
-                Sublime Text2 插件管理器安装
+                多线程在OC中的应用(NSOperation)
               
             
           </h1>
@@ -273,8 +284,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-10-30T16:37:30+08:00" content="2016-10-30">
-              2016-10-30
+            <time itemprop="dateCreated" datetime="2016-11-28T17:10:16+08:00" content="2016-11-28">
+              2016-11-28
             </time>
           </span>
 
@@ -287,8 +298,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/编程工具/" itemprop="url" rel="index">
-                    <span itemprop="name">编程工具</span>
+                  <a href="/categories/objective-c/" itemprop="url" rel="index">
+                    <span itemprop="name">objective-c</span>
                   </a>
                 </span>
 
@@ -303,8 +314,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/10/30/编程工具/Sublime-Text2-插件管理器安装/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/10/30/编程工具/Sublime-Text2-插件管理器安装/" itemprop="commentsCount"></span>
+                <a href="/2016/11/28/iOS/多线程在OC中的应用-NSOperation/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/28/iOS/多线程在OC中的应用-NSOperation/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -314,7 +325,7 @@
 
           
           
-             <span id="/2016/10/30/编程工具/Sublime-Text2-插件管理器安装/" class="leancloud_visitors" data-flag-title="Sublime Text2 插件管理器安装">
+             <span id="/2016/11/28/iOS/多线程在OC中的应用-NSOperation/" class="leancloud_visitors" data-flag-title="多线程在OC中的应用(NSOperation)">
                &nbsp; | &nbsp;
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -336,18 +347,117 @@
       
 
       
-        <p>Package Control 插件是一个方便 Sublime text 管理插件的插件</p>
+        <h3 id="利用NSOperationh和NSOperationQueue实现多线程的步骤"><a href="#利用NSOperationh和NSOperationQueue实现多线程的步骤" class="headerlink" title="利用NSOperationh和NSOperationQueue实现多线程的步骤"></a>利用NSOperationh和NSOperationQueue实现多线程的步骤</h3><p>1、先将需要执行的操作封装到一个NSOperation的子类对象中</p>
+<p>2、然后将NSOperation对象添加到NSOperationQueue中</p>
+<p>3、系统会自动将NSOperationQueue中的NSOperation取出来</p>
+<p>4、将取出的NSOperation封装的操作放到一条新线程中执行</p>
+<blockquote>
+<p>NSOperation是个抽象类，并不具备封装操作的能力，必须使用它的子类</p>
+<p>使用NSOperation子类的方式有三种：</p>
+<ul>
+<li><p><strong>NSInvocationOperation</strong></p>
+</li>
+<li><p><strong>NSBlockOperation</strong></p>
+</li>
+<li><p><strong>自定义子类继承NSOperation，实现内部相应的方法</strong></p>
+</li>
+</ul>
+</blockquote>
 <a id="more"></a>
-<h3 id="打开sublime编辑器"><a href="#打开sublime编辑器" class="headerlink" title="打开sublime编辑器"></a>打开sublime编辑器</h3><p>按<strong>control+`</strong>打开控制台，将以下代码粘贴进去按enter执行</p>
-<pre><code>import urllib2,os; pf=&apos;Package Control.sublime-package&apos;; ipp = sublime.installed_packages_path(); os.makedirs( ipp ) if not os.path.exists(ipp) else None; urllib2.install_opener( urllib2.build_opener( urllib2.ProxyHandler( ))); open( os.path.join( ipp, pf), &apos;wb&apos; ).write( urllib2.urlopen( &apos;http://sublime.wbond.net/&apos; +pf.replace( &apos; &apos;,&apos;%20&apos; )).read()); print( &apos;Please restart Sublime Text to finish installation&apos;)
-</code></pre><p>如果你是Sublime Text3 请输入以下代码</p>
-<pre><code>import urllib.request,os; pf = &apos;Package Control.sublime-package&apos;; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); open(os.path.join(ipp, pf), &apos;wb&apos;).write(urllib.request.urlopen( &apos;http://sublime.wbond.net/&apos; + pf.replace(&apos; &apos;,&apos;%20&apos;)).read())
-</code></pre><p><img src="http://7xosrq.com1.z0.glb.clouddn.com/QQ20161030-1.png?e=1477821787&amp;token=BsduBndXasPKM3kxbowJ9Y6Gq-NTYlMJsNrrgMEy:Zfd_dD0q5ZzQDYcELgawaRX1dYg" alt="输入代码">    </p>
-<p>安装成功后会出现以下截图</p>
-<p><img src="http://7xosrq.com1.z0.glb.clouddn.com/QQ20161030-0.png?e=1477821787&amp;token=BsduBndXasPKM3kxbowJ9Y6Gq-NTYlMJsNrrgMEy:8cbqntVUGut_jcMHtap-vMvA66g" alt="安装成功"></p>
-<h3 id="打开Package-Control"><a href="#打开Package-Control" class="headerlink" title="打开Package Control"></a>打开Package Control</h3><p>然后你就可以随心所欲的使用它了。。。</p>
-<p><img src="http://7xosrq.com1.z0.glb.clouddn.com/QQ20161030-2.png?e=1477821787&amp;token=BsduBndXasPKM3kxbowJ9Y6Gq-NTYlMJsNrrgMEy:xK4S7JlsCuds8KPR0EEDL5D9bqI" alt=""></p>
-<p>以上</p>
+<h3 id="NSOperation"><a href="#NSOperation" class="headerlink" title="NSOperation"></a>NSOperation</h3><h4 id="NSInvocationOperation"><a href="#NSInvocationOperation" class="headerlink" title="NSInvocationOperation"></a>NSInvocationOperation</h4><p>1、<strong>创建</strong></p>
+<pre><code>NSInvocationOperation *op1 = [[NSInvocationOperation alloc] initWithTarget:self selector:@selector(yourSelector) object:nil] ;    
+</code></pre><p>2、<strong>执行</strong></p>
+<pre><code>// 默认情况下调用了star方法不会开启新的线程去执行操作，而是在当前线程同步执行操作
+// 只有将操作任务放到NSOperationQueue中，才会异步执行操作
+[op1 start];
+</code></pre><h4 id="NSBlockOperation"><a href="#NSBlockOperation" class="headerlink" title="NSBlockOperation"></a>NSBlockOperation</h4><p>1、<strong>创建</strong></p>
+<pre><code>// 1.封装操作
+NSBlockOperation *op1 = [NSBlockOperation blockOperationWithBlock:^{
+    NSLog(@&quot;1- %@&quot;, [NSThread currentThread]);
+}];
+</code></pre><p>2、<strong>添加操作</strong></p>
+<pre><code> // 2.添加操作
+[op1 addExecutionBlock:^{
+    NSLog(@&quot;2- %@&quot;, [NSThread currentThread]);
+}];
+[op1 addExecutionBlock:^{
+    NSLog(@&quot;3- %@&quot;, [NSThread currentThread]);
+}];
+</code></pre><p>3、<strong>执行操作</strong></p>
+<pre><code>// 如果只封装了一个操作, 那么默认会在主线程中执行
+// 如果封装了多个操作, 那么除了第一个操作以外, 其它的操作会在子线程中执行
+[op1 start];
+</code></pre><h4 id="自定义-NSOperation，继承NSOperation"><a href="#自定义-NSOperation，继承NSOperation" class="headerlink" title="自定义 NSOperation，继承NSOperation"></a>自定义 NSOperation，继承NSOperation</h4><blockquote>
+<p>如果是自定义类继承NSOperation，那么重写main方法，并需要将<strong>操作写到自定义类的main方法中</strong></p>
+<p><strong>注意</strong></p>
+<ul>
+<li><p>自己创建自动释放池，因为如果是异步操作，会无法访问主线程的自动释放池</p>
+</li>
+<li><p>经常通过<code>isCancelled</code>方法检测操作是否被取消，对取消做出响应</p>
+</li>
+</ul>
+</blockquote>
+<p>1、<strong>创建CSOperation，继承NSOperation</strong></p>
+<pre><code>#import &lt;Foundation/Foundation.h&gt;
+@interface CSOperation : NSOperation
+
+@end
+
+#import &quot;CSOperation.h&quot;
+
+@implementation CSOperation
+
+// 我们要重写main方法，封装操作
+- (void)main
+{
+    NSLog(@&quot;%s, %@&quot;, __func__,[NSThread currentThread]);
+}
+@end
+</code></pre><p>2、<strong>使用自定义类</strong></p>
+<pre><code>// 1.封装操作
+CSOperation *op1 = [[JPOperation alloc] init];
+// 2.执行操作
+[op1 start];
+
+CSOperation *op2 = [[JPOperation alloc] init];
+[op2 start];
+</code></pre><h3 id="NSOperationQueue"><a href="#NSOperationQueue" class="headerlink" title="NSOperationQueue"></a>NSOperationQueue</h3><blockquote>
+<p><strong>NSOperationQueue的作用</strong>：</p>
+<ul>
+<li><strong>NSOperation可以通过调用star执行操作，但默认是同步执行的</strong></li>
+<li><strong>将NSOperation添加到NSOperationQueue,即操作队列中，系统会自动异步执行队列中的操作</strong></li>
+</ul>
+</blockquote>
+<h4 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h4><ul>
+<li><p><code>addOperation</code></p>
+<pre><code> // 1.创建队列
+NSOperationQueue *queue = [[NSOperationQueue alloc] init];
+// 2.封装任务
+CSOperation *op1 = [[CSOperation alloc] init];
+CSOperation *op2 = [[CSOperation alloc] init];
+
+// 3.将任务添加到队列中
+[queue addOperation:op1];
+[queue addOperation:op2];
+</code></pre></li>
+</ul>
+<ul>
+<li><p><code>addOperationWithBlock</code></p>
+<pre><code>// 1.创建队列
+NSOperationQueue *queue = [[NSOperationQueue alloc] init];
+
+// 2.将任务添加到队列中
+// addOperationWithBlock方法会做两件事情
+// 1.根据传入的block, 创建一个NSBlockOperation对象
+// 2.将内部创建好的NSBlockOperation对象, 添加到队列中
+[queue addOperationWithBlock:^{
+    NSLog(@&quot;1 = %@&quot;, [NSThread currentThread]);
+}];
+[queue addOperationWithBlock:^{
+    NSLog(@&quot;2 = %@&quot;, [NSThread currentThread]);
+}];
+</code></pre></li>
+</ul>
 
       
     </div>
@@ -391,7 +501,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Sublime-Text2/" rel="tag">#Sublime Text2</a>
+            <a href="/tags/NSOpetation-多线程-iOS/" rel="tag">#NSOpetation 多线程 iOS</a>
           
         </div>
       
@@ -400,17 +510,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/10/28/转载/ChangeForSwift3-0/" rel="next" title="ChangeForSwift3.0">
-                <i class="fa fa-chevron-left"></i> ChangeForSwift3.0
+              <a href="/2016/11/28/前端/JQuery选择器/" rel="next" title="JQuery选择器">
+                <i class="fa fa-chevron-left"></i> JQuery选择器
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/10/31/git/Git源代码管理规范/" rel="prev" title="Git源代码管理规范">
-                Git源代码管理规范 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -436,8 +542,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/10/30/编程工具/Sublime-Text2-插件管理器安装/"
-           data-title="Sublime Text2 插件管理器安装" data-url="http://yoursite.com/2016/10/30/编程工具/Sublime-Text2-插件管理器安装/">
+      <div class="ds-thread" data-thread-key="2016/11/28/iOS/多线程在OC中的应用-NSOperation/"
+           data-title="多线程在OC中的应用(NSOperation)" data-url="http://yoursite.com/2016/11/28/iOS/多线程在OC中的应用-NSOperation/">
       </div>
     
   </div>
@@ -557,7 +663,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#打开sublime编辑器"><span class="nav-number">1.</span> <span class="nav-text">打开sublime编辑器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#打开Package-Control"><span class="nav-number">2.</span> <span class="nav-text">打开Package Control</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#利用NSOperationh和NSOperationQueue实现多线程的步骤"><span class="nav-number">1.</span> <span class="nav-text">利用NSOperationh和NSOperationQueue实现多线程的步骤</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NSOperation"><span class="nav-number">2.</span> <span class="nav-text">NSOperation</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#NSInvocationOperation"><span class="nav-number">2.1.</span> <span class="nav-text">NSInvocationOperation</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#NSBlockOperation"><span class="nav-number">2.2.</span> <span class="nav-text">NSBlockOperation</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#自定义-NSOperation，继承NSOperation"><span class="nav-number">2.3.</span> <span class="nav-text">自定义 NSOperation，继承NSOperation</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NSOperationQueue"><span class="nav-number">3.</span> <span class="nav-text">NSOperationQueue</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#使用"><span class="nav-number">3.1.</span> <span class="nav-text">使用</span></a></li></ol></li></ol></div>
             
           </div>
         </section>
