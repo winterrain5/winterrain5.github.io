@@ -100,7 +100,7 @@ NSOperation是个">
 4、将取出的NSOperation封装的操作放到一条新线程中执行
 
 NSOperation是个">
-<meta property="og:updated_time" content="2016-11-28T10:23:46.000Z">
+<meta property="og:updated_time" content="2016-11-28T13:06:33.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="多线程在OC中的应用(NSOperation)">
 <meta name="twitter:description" content="利用NSOperationh和NSOperationQueue实现多线程的步骤1、先将需要执行的操作封装到一个NSOperation的子类对象中
@@ -486,7 +486,90 @@ NSOperationQueue *queue = [[NSOperationQueue alloc] init];
 <li><p>恢复任务是从队列第一个没有被执行的任务开始恢复</p>
 </li>
 </ul>
-<h3 id="NSOperationQueue线程间通信"><a href="#NSOperationQueue线程间通信" class="headerlink" title="NSOperationQueue线程间通信"></a>NSOperationQueue线程间通信</h3>
+<h3 id="NSOperationQueue线程间通信"><a href="#NSOperationQueue线程间通信" class="headerlink" title="NSOperationQueue线程间通信"></a>NSOperationQueue线程间通信</h3><p>案例：开启子线程下载图片，下载完成后，回到主线程更新UI</p>
+<pre><code>NSOperationQueue *queue = [[NSOperationQueue alloc] init];
+[queue addOperationWithBlock:^{
+
+    // 子线程中下载图片
+    NSString *urlStr = @&quot;https://www.baidu.com/img/bd_logo1.png&quot;;
+    NSURL *url = [NSURL URLWithString:urlStr];
+    NSData *imageData = [NSData dataWithContentsOfURL:url];
+    UIImage *image = [UIImage imageWithData:imageData];
+    NSLog(@&quot;下载中。。。%@&quot;,image);
+    // 回到主线程更新UI
+    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+        NSLog(@&quot;更新UI&quot;);
+        self.imageView.image = image;
+    }];
+
+}];
+</code></pre><h3 id="操作依赖"><a href="#操作依赖" class="headerlink" title="操作依赖"></a>操作依赖</h3><blockquote>
+<ul>
+<li><p><strong>操作之间可以设置依赖来保证执行顺序</strong></p>
+</li>
+<li><p><strong>除了廷议队列操作之间可以建立依赖关系，不同的队列的操作之间也可以创建依赖</strong></p>
+</li>
+<li><p><strong>不能相互依赖</strong></p>
+</li>
+</ul>
+</blockquote>
+<p>案例：合成图片</p>
+<pre><code>NSOperationQueue *queue1 = [[NSOperationQueue alloc] init];
+NSOperationQueue *queue2 = [[NSOperationQueue alloc] init];
+
+__block UIImage *image1 = nil;
+__block UIImage *image2 = nil;
+
+// 开启一个线程下载第一张图片
+NSOperation *op1 = [NSBlockOperation blockOperationWithBlock:^{
+    NSURL *url = [NSURL URLWithString:@&quot;http://cdn.cocimg.com/assets/images/logo.png?v=201510272&quot;];
+    NSData *data = [NSData dataWithContentsOfURL:url];
+    // 2.生成下载好的图片
+    UIImage *image = [UIImage imageWithData:data];
+    image1 = image;
+}];
+
+// 开启第二个线程下载第二张图片
+NSOperation *op2 = [NSBlockOperation blockOperationWithBlock:^{
+    NSURL *url = [NSURL URLWithString:@&quot;https://www.baidu.com/img/bd_logo1.png&quot;];
+    NSData *data = [NSData dataWithContentsOfURL:url];
+    // 2.生成下载好的图片
+    UIImage *image = [UIImage imageWithData:data];
+    image2 = image;
+}];
+
+// 开启第三个线程合成图片
+NSOperation *op3 = [NSBlockOperation blockOperationWithBlock:^{
+    UIGraphicsBeginImageContext(CGSizeMake(200, 200));
+    [image1 drawInRect:CGRectMake(0, 0, 100, 200)];
+    [image2 drawInRect:CGRectMake(100, 0, 100, 200)];
+    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+
+    // 4.回到主线程更新UI
+    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+        NSLog(@&quot;回到主线程更新UI&quot;);
+        self.imageView.image = newImage;
+    }];
+}];
+
+// 监听任务是否执行完毕
+op1.completionBlock = ^{
+    NSLog(@&quot;第一张图片下载完毕&quot;);
+};
+op2.completionBlock = ^{
+    NSLog(@&quot;第二张图片下载完毕&quot;);
+};
+
+// 添加依赖
+[op3 addDependency:op1];
+[op3 addDependency:op2];
+
+// 将任务添加到队列
+[queue1 addOperation:op1];
+[queue1 addOperation:op2];
+[queue2 addOperation:op3];
+</code></pre>
       
     </div>
 
@@ -691,7 +774,7 @@ NSOperationQueue *queue = [[NSOperationQueue alloc] init];
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#利用NSOperationh和NSOperationQueue实现多线程的步骤"><span class="nav-number">1.</span> <span class="nav-text">利用NSOperationh和NSOperationQueue实现多线程的步骤</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NSOperation"><span class="nav-number">2.</span> <span class="nav-text">NSOperation</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#NSInvocationOperation"><span class="nav-number">2.1.</span> <span class="nav-text">NSInvocationOperation</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#NSBlockOperation"><span class="nav-number">2.2.</span> <span class="nav-text">NSBlockOperation</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#自定义-NSOperation，继承NSOperation"><span class="nav-number">2.3.</span> <span class="nav-text">自定义 NSOperation，继承NSOperation</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NSOperationQueue"><span class="nav-number">3.</span> <span class="nav-text">NSOperationQueue</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#使用"><span class="nav-number">3.1.</span> <span class="nav-text">使用</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NSOperationQueue的最大并发数"><span class="nav-number">4.</span> <span class="nav-text">NSOperationQueue的最大并发数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NSOperationQueue的暂停-恢复-取消"><span class="nav-number">5.</span> <span class="nav-text">NSOperationQueue的暂停-恢复-取消</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#取消队列所有操作cancelAlOperations"><span class="nav-number">5.1.</span> <span class="nav-text">取消队列所有操作cancelAlOperations</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#暂停和恢复队列"><span class="nav-number">5.2.</span> <span class="nav-text">暂停和恢复队列</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NSOperationQueue线程间通信"><span class="nav-number">6.</span> <span class="nav-text">NSOperationQueue线程间通信</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#利用NSOperationh和NSOperationQueue实现多线程的步骤"><span class="nav-number">1.</span> <span class="nav-text">利用NSOperationh和NSOperationQueue实现多线程的步骤</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NSOperation"><span class="nav-number">2.</span> <span class="nav-text">NSOperation</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#NSInvocationOperation"><span class="nav-number">2.1.</span> <span class="nav-text">NSInvocationOperation</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#NSBlockOperation"><span class="nav-number">2.2.</span> <span class="nav-text">NSBlockOperation</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#自定义-NSOperation，继承NSOperation"><span class="nav-number">2.3.</span> <span class="nav-text">自定义 NSOperation，继承NSOperation</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NSOperationQueue"><span class="nav-number">3.</span> <span class="nav-text">NSOperationQueue</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#使用"><span class="nav-number">3.1.</span> <span class="nav-text">使用</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NSOperationQueue的最大并发数"><span class="nav-number">4.</span> <span class="nav-text">NSOperationQueue的最大并发数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NSOperationQueue的暂停-恢复-取消"><span class="nav-number">5.</span> <span class="nav-text">NSOperationQueue的暂停-恢复-取消</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#取消队列所有操作cancelAlOperations"><span class="nav-number">5.1.</span> <span class="nav-text">取消队列所有操作cancelAlOperations</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#暂停和恢复队列"><span class="nav-number">5.2.</span> <span class="nav-text">暂停和恢复队列</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NSOperationQueue线程间通信"><span class="nav-number">6.</span> <span class="nav-text">NSOperationQueue线程间通信</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#操作依赖"><span class="nav-number">7.</span> <span class="nav-text">操作依赖</span></a></li></ol></div>
             
           </div>
         </section>
