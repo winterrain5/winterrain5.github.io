@@ -100,7 +100,7 @@ NSOperation是个">
 4、将取出的NSOperation封装的操作放到一条新线程中执行
 
 NSOperation是个">
-<meta property="og:updated_time" content="2016-11-28T09:58:37.000Z">
+<meta property="og:updated_time" content="2016-11-28T10:23:46.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="多线程在OC中的应用(NSOperation)">
 <meta name="twitter:description" content="利用NSOperationh和NSOperationQueue实现多线程的步骤1、先将需要执行的操作封装到一个NSOperation的子类对象中
@@ -458,7 +458,35 @@ NSOperationQueue *queue = [[NSOperationQueue alloc] init];
 }];
 </code></pre></li>
 </ul>
-
+<h3 id="NSOperationQueue的最大并发数"><a href="#NSOperationQueue的最大并发数" class="headerlink" title="NSOperationQueue的最大并发数"></a>NSOperationQueue的最大并发数</h3><ul>
+<li><p>maxConCurrentCount:最大并发数</p>
+</li>
+<li><p>默认等于-1，代表不限制，可以创建N多线程</p>
+</li>
+<li><p>alloc/init的队列默认就是并发，若实现串行，设置maxConCurrentCount = 1</p>
+</li>
+<li><p>不能设置为0，否则任务不执行</p>
+</li>
+</ul>
+<h3 id="NSOperationQueue的暂停-恢复-取消"><a href="#NSOperationQueue的暂停-恢复-取消" class="headerlink" title="NSOperationQueue的暂停-恢复-取消"></a>NSOperationQueue的暂停-恢复-取消</h3><h4 id="取消队列所有操作cancelAlOperations"><a href="#取消队列所有操作cancelAlOperations" class="headerlink" title="取消队列所有操作cancelAlOperations"></a>取消队列所有操作<code>cancelAlOperations</code></h4><ul>
+<li><p>也可以调用NSOperation的<code>cancel</code>方法取消单个操作</p>
+</li>
+<li><p>任务只要被取消，就不会再恢复</p>
+</li>
+<li><p>取消和暂停一样，不会取消当前正在执行的任务，只能取消还未执行的任务 </p>
+</li>
+</ul>
+<h4 id="暂停和恢复队列"><a href="#暂停和恢复队列" class="headerlink" title="暂停和恢复队列"></a>暂停和恢复队列</h4><blockquote>
+<p>-(void)setSuspended:(BOOL)b;//如果是YES, 代表需要暂停，NO代表代表不需要暂停 ==  恢复执行</p>
+<p>-(BOOL)isSuspended;</p>
+</blockquote>
+<ul>
+<li><p>如果在任务执行的过程中暂停队列的任务，那么当前正在执行的任务并不会被暂停，而是会暂停队列中的下一个任务</p>
+</li>
+<li><p>恢复任务是从队列第一个没有被执行的任务开始恢复</p>
+</li>
+</ul>
+<h3 id="NSOperationQueue线程间通信"><a href="#NSOperationQueue线程间通信" class="headerlink" title="NSOperationQueue线程间通信"></a>NSOperationQueue线程间通信</h3>
       
     </div>
 
@@ -663,7 +691,7 @@ NSOperationQueue *queue = [[NSOperationQueue alloc] init];
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#利用NSOperationh和NSOperationQueue实现多线程的步骤"><span class="nav-number">1.</span> <span class="nav-text">利用NSOperationh和NSOperationQueue实现多线程的步骤</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NSOperation"><span class="nav-number">2.</span> <span class="nav-text">NSOperation</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#NSInvocationOperation"><span class="nav-number">2.1.</span> <span class="nav-text">NSInvocationOperation</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#NSBlockOperation"><span class="nav-number">2.2.</span> <span class="nav-text">NSBlockOperation</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#自定义-NSOperation，继承NSOperation"><span class="nav-number">2.3.</span> <span class="nav-text">自定义 NSOperation，继承NSOperation</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NSOperationQueue"><span class="nav-number">3.</span> <span class="nav-text">NSOperationQueue</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#使用"><span class="nav-number">3.1.</span> <span class="nav-text">使用</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#利用NSOperationh和NSOperationQueue实现多线程的步骤"><span class="nav-number">1.</span> <span class="nav-text">利用NSOperationh和NSOperationQueue实现多线程的步骤</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NSOperation"><span class="nav-number">2.</span> <span class="nav-text">NSOperation</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#NSInvocationOperation"><span class="nav-number">2.1.</span> <span class="nav-text">NSInvocationOperation</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#NSBlockOperation"><span class="nav-number">2.2.</span> <span class="nav-text">NSBlockOperation</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#自定义-NSOperation，继承NSOperation"><span class="nav-number">2.3.</span> <span class="nav-text">自定义 NSOperation，继承NSOperation</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NSOperationQueue"><span class="nav-number">3.</span> <span class="nav-text">NSOperationQueue</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#使用"><span class="nav-number">3.1.</span> <span class="nav-text">使用</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NSOperationQueue的最大并发数"><span class="nav-number">4.</span> <span class="nav-text">NSOperationQueue的最大并发数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NSOperationQueue的暂停-恢复-取消"><span class="nav-number">5.</span> <span class="nav-text">NSOperationQueue的暂停-恢复-取消</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#取消队列所有操作cancelAlOperations"><span class="nav-number">5.1.</span> <span class="nav-text">取消队列所有操作cancelAlOperations</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#暂停和恢复队列"><span class="nav-number">5.2.</span> <span class="nav-text">暂停和恢复队列</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NSOperationQueue线程间通信"><span class="nav-number">6.</span> <span class="nav-text">NSOperationQueue线程间通信</span></a></li></ol></div>
             
           </div>
         </section>
