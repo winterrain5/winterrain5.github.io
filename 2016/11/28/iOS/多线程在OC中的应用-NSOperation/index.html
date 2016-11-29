@@ -100,7 +100,7 @@ NSOperation是个">
 4、将取出的NSOperation封装的操作放到一条新线程中执行
 
 NSOperation是个">
-<meta property="og:updated_time" content="2016-11-28T13:06:33.000Z">
+<meta property="og:updated_time" content="2016-11-29T00:42:04.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="多线程在OC中的应用(NSOperation)">
 <meta name="twitter:description" content="利用NSOperationh和NSOperationQueue实现多线程的步骤1、先将需要执行的操作封装到一个NSOperation的子类对象中
@@ -415,11 +415,11 @@ NSBlockOperation *op1 = [NSBlockOperation blockOperationWithBlock:^{
 @end
 </code></pre><p>2、<strong>使用自定义类</strong></p>
 <pre><code>// 1.封装操作
-CSOperation *op1 = [[JPOperation alloc] init];
+CSOperation *op1 = [[CSOperation alloc] init];
 // 2.执行操作
 [op1 start];
 
-CSOperation *op2 = [[JPOperation alloc] init];
+CSOperation *op2 = [[CSOperation alloc] init];
 [op2 start];
 </code></pre><h3 id="NSOperationQueue"><a href="#NSOperationQueue" class="headerlink" title="NSOperationQueue"></a>NSOperationQueue</h3><blockquote>
 <p><strong>NSOperationQueue的作用</strong>：</p>
