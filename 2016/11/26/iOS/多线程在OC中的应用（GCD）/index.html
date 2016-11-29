@@ -92,7 +92,7 @@
 <meta property="og:site_name" content="行止由心">
 <meta property="og:description" content="GCD 全称Grand Center Dispatch 
 是 Apple 开发的一个多核编程的解决方法，简单易用，效率高，速度快，基于C语言，更底层更高效，并且不是Cocoa框架的一部分，自动管理线程生命周期（创建线程、调度任务、销毁线程）。">
-<meta property="og:updated_time" content="2016-11-26T09:04:41.000Z">
+<meta property="og:updated_time" content="2016-11-29T09:34:05.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="多线程在OC中的应用（GCD）">
 <meta name="twitter:description" content="GCD 全称Grand Center Dispatch 
@@ -351,252 +351,94 @@
 </ul>
 <h3 id="The-main-queue-主线程队列"><a href="#The-main-queue-主线程队列" class="headerlink" title="The main queue(主线程队列)"></a>The main queue(主线程队列)</h3><p><strong><code>dispatch_sync</code>同步执行任务函数，不会开启新的线程，<code>dispatch_async</code>异步执行任务函数，会开启新的线程。</strong></p>
 <p>1、<strong>获取主线程串行队列</strong></p>
-<pre><code>dispatch_queue_t mainQueue = dispatch_get_main_queue();
-</code></pre><p>2、<strong>主线程串行队列执行同步任务，会产生死锁。程序一直处于等待状态，block中的代码将执行不到</strong></p>
-<pre><code>dispatch_queue_t mainQueue = dispathc_get_main_queue()
-dispatch_async(mainQueue,^{
-    // do something
-    NSLog(@&quot;main queue&quot;);
-});
-</code></pre><p>3、<strong>主线程串行队列异步执行任务，不会产生死锁。程序正常运行，block中的代码正常执行。</strong></p>
-<pre><code>dispatch_queue_t mainQueue = dispathc_get_main_queue()
-dispatch_sync(mainQueue,^{
-    // do something
-    NSLog(@&quot;main queue&quot;);
-});
-</code></pre><p>4、<strong>从子线程，异步返回主线程更新UI</strong></p>
-<pre><code>dispatch_queue_t globalQueue = dispatch_get_global_queue(DISPATHC_QUEUE_PRIORITY_DEFAULT,0);
-dispatch_async(globalQueue,^{
-    // 子线程执行下载任务，防止主线程卡顿
-    NSURl *url = [NSURL URLWithString:@&quot;http;//www.xxxx.xxx.com&quot;];
-    NSError *error;
-    NSString *data = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:&amp;error];
-    if (data != nil) {
-        dispatch_queue_t mainQueue = dispatch_get_main_queue();
-         //异步返回主线程，更新UI
-        dispatch_async(mainQueue, ^{
-        NSLog(@&quot;根据更新UI界面&quot;);
-        });
-    } else {
-        NSLog(@&quot;error when download:%@&quot;,error);
-    }
-
-});
-</code></pre><p>主线程串行队列有系统默认生成，无法调用<code>dispatch_resume()</code>和<code>dispatch_suspend()</code>来控制执行继续和中断。</p>
+<figure class="highlight objc"><table><tr><td class="code"><pre><div class="line"><span class="built_in">dispatch_queue_t</span> mainQueue = dispatch_get_main_queue();</div></pre></td></tr></table></figure>
+<p>2、<strong>主线程串行队列执行同步任务，会产生死锁。程序一直处于等待状态，block中的代码将执行不到</strong></p>
+<figure class="highlight objc"><table><tr><td class="code"><pre><div class="line"><span class="built_in">dispatch_queue_t</span> mainQueue = dispathc_get_main_queue()</div><div class="line"><span class="built_in">dispatch_async</span>(mainQueue,^&#123;</div><div class="line">	<span class="comment">// do something</span></div><div class="line">	<span class="built_in">NSLog</span>(<span class="string">@"main queue"</span>);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>3、<strong>主线程串行队列异步执行任务，不会产生死锁。程序正常运行，block中的代码正常执行。</strong></p>
+<figure class="highlight objc"><table><tr><td class="code"><pre><div class="line"><span class="built_in">dispatch_queue_t</span> mainQueue = dispathc_get_main_queue()</div><div class="line"><span class="built_in">dispatch_sync</span>(mainQueue,^&#123;</div><div class="line">	<span class="comment">// do something</span></div><div class="line">	<span class="built_in">NSLog</span>(<span class="string">@"main queue"</span>);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>4、<strong>从子线程，异步返回主线程更新UI</strong></p>
+<figure class="highlight objc"><table><tr><td class="code"><pre><div class="line"><span class="built_in">dispatch_queue_t</span> globalQueue = dispatch_get_global_queue(DISPATHC_QUEUE_PRIORITY_DEFAULT,<span class="number">0</span>);</div><div class="line"><span class="built_in">dispatch_async</span>(globalQueue,^&#123;</div><div class="line">	<span class="comment">// 子线程执行下载任务，防止主线程卡顿</span></div><div class="line">	<span class="built_in">NSURl</span> *url = [<span class="built_in">NSURL</span> URLWithString:<span class="string">@"http;//www.xxxx.xxx.com"</span>];</div><div class="line">	<span class="built_in">NSError</span> *error;</div><div class="line">	<span class="built_in">NSString</span> *data = [<span class="built_in">NSString</span> stringWithContentsOfURL:url encoding:<span class="built_in">NSUTF8StringEncoding</span> error:&amp;error];</div><div class="line">   	<span class="keyword">if</span> (data != <span class="literal">nil</span>) &#123;</div><div class="line">       	<span class="built_in">dispatch_queue_t</span> mainQueue = dispatch_get_main_queue();</div><div class="line">        	<span class="comment">//异步返回主线程，更新UI</span></div><div class="line">       	<span class="built_in">dispatch_async</span>(mainQueue, ^&#123;</div><div class="line">           <span class="built_in">NSLog</span>(<span class="string">@"根据更新UI界面"</span>);</div><div class="line">       	&#125;);</div><div class="line">   	&#125; <span class="keyword">else</span> &#123;</div><div class="line">       	<span class="built_in">NSLog</span>(<span class="string">@"error when download:%@"</span>,error);</div><div class="line">   	&#125;</div><div class="line">   &#125;);</div></pre></td></tr></table></figure>
+<p>主线程串行队列有系统默认生成，无法调用<code>dispatch_resume()</code>和<code>dispatch_suspend()</code>来控制执行继续和中断。</p>
 <h3 id="Global-queue（全局并发队列）"><a href="#Global-queue（全局并发队列）" class="headerlink" title="Global queue（全局并发队列）"></a>Global queue（全局并发队列）</h3><p>1、<strong>获取全局并发队列</strong></p>
-<pre><code>//DISPATCH_QUEUE_PRIORITY_DEFAULT,DISPATCH_QUEUE_PRIORITY_HIGH,DISPATCH_QUEUE_PRIORITY_LOW,TDISPATCH_QUEUE_PRIORITY_BACKGROUND
-// 一般选择默认的DEFAULT
-dispatch_queue_t globalQueue1 = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-</code></pre><p>2、<strong>全局并发队列同步执行任务，在主线程执行会导致页面卡顿。</strong></p>
-<pre><code>dispatch_queue_t globalQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-NSLog(@&quot;current task&quot;);
-dispatch_sync(globalQueue, ^{
-    sleep(2.0);
-    NSLog(@&quot;sleep 2.0s&quot;);
-});
-NSLog(@&quot;next task&quot;);
-</code></pre><p> 控制台输出如下：</p>
-<pre><code> 2016-11-26 11:07:23.350 gcd[2023:906461] current task
-2016-11-26 11:07:25.352 gcd[2023:906461] current thread = &lt;NSThread:         0x7fae31602f50&gt;{number = 1, name = main}
-2016-11-26 11:07:25.353 gcd[2023:906461] sleep 2.0s
-2016-11-26 11:07:25.353 gcd[2023:906461] next task
-</code></pre><p>可以看到，block中的当前线程是主线程，会先执行block中的代码，才会往后执行。</p>
+<figure class="highlight objc"><table><tr><td class="code"><pre><div class="line"><span class="comment">//DISPATCH_QUEUE_PRIORITY_DEFAULT,DISPATCH_QUEUE_PRIORITY_HIGH,DISPATCH_QUEUE_PRIORITY_LOW,TDISPATCH_QUEUE_PRIORITY_BACKGROUND</span></div><div class="line">	<span class="comment">// 一般选择默认的DEFAULT</span></div><div class="line">	<span class="built_in">dispatch_queue_t</span> globalQueue1 = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, <span class="number">0</span>);</div></pre></td></tr></table></figure>
+<p>2、<strong>全局并发队列同步执行任务，在主线程执行会导致页面卡顿。</strong></p>
+<figure class="highlight objc"><table><tr><td class="code"><pre><div class="line"><span class="built_in">dispatch_queue_t</span> globalQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, <span class="number">0</span>);</div><div class="line">    <span class="built_in">NSLog</span>(<span class="string">@"current task"</span>);</div><div class="line">    <span class="built_in">dispatch_sync</span>(globalQueue, ^&#123;</div><div class="line">        sleep(<span class="number">2.0</span>);</div><div class="line">        <span class="built_in">NSLog</span>(<span class="string">@"sleep 2.0s"</span>);</div><div class="line">    &#125;);</div><div class="line"><span class="built_in">NSLog</span>(<span class="string">@"next task"</span>);</div></pre></td></tr></table></figure>
+<p> 控制台输出如下：</p>
+ <figure class="highlight objc"><table><tr><td class="code"><pre><div class="line">	<span class="number">2016</span><span class="number">-11</span><span class="number">-26</span> <span class="number">11</span>:<span class="number">07</span>:<span class="number">23.350</span> gcd[<span class="number">2023</span>:<span class="number">906461</span>] current task</div><div class="line"><span class="number">2016</span><span class="number">-11</span><span class="number">-26</span> <span class="number">11</span>:<span class="number">07</span>:<span class="number">25.352</span> gcd[<span class="number">2023</span>:<span class="number">906461</span>] current thread = &lt;<span class="built_in">NSThread</span>:<span class="number">0x7fae31602f50</span>&gt;&#123;number = <span class="number">1</span>, name = main&#125;</div><div class="line"><span class="number">2016</span><span class="number">-11</span><span class="number">-26</span> <span class="number">11</span>:<span class="number">07</span>:<span class="number">25.353</span> gcd[<span class="number">2023</span>:<span class="number">906461</span>] sleep <span class="number">2.0</span>s</div><div class="line"><span class="number">2016</span><span class="number">-11</span><span class="number">-26</span> <span class="number">11</span>:<span class="number">07</span>:<span class="number">25.353</span> gcd[<span class="number">2023</span>:<span class="number">906461</span>] next task</div></pre></td></tr></table></figure>
+<p>可以看到，block中的当前线程是主线程，会先执行block中的代码，才会往后执行。</p>
 <p>3、<strong>全局并发队列异步执行任务，在主线程运行，会开启新的线程去执行任务，页面不会卡顿。</strong></p>
-<pre><code>dispatch_queue_t globalQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-NSLog(@&quot;current task&quot;);
-dispatch_async(globalQueue, ^{
-    sleep(2.0);
-    NSLog(@&quot;current thread = %@&quot;,[NSThread currentThread]);
-    NSLog(@&quot;sleep 2.0s&quot;);
-});
-NSLog(@&quot;next task&quot;);
-</code></pre><p>控制台输出如下：</p>
-<pre><code>2016-11-26 11:08:51.879 gcd[2048:908843] current task
-2016-11-26 11:08:51.880 gcd[2048:908843] next task
-2016-11-26 11:08:53.885 gcd[2048:908899] current thread = &lt;NSThread: 0x7f9610e04170&gt;{number = 2, name = (null)}
-2016-11-26 11:08:53.885 gcd[2048:908899] sleep 2.0s
-</code></pre><p>block中的线程是新开启的子线。</p>
+<figure class="highlight objc"><table><tr><td class="code"><pre><div class="line"><span class="built_in">dispatch_queue_t</span> globalQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, <span class="number">0</span>);</div><div class="line">    <span class="built_in">NSLog</span>(<span class="string">@"current task"</span>);</div><div class="line">    <span class="built_in">dispatch_async</span>(globalQueue, ^&#123;</div><div class="line">        sleep(<span class="number">2.0</span>);</div><div class="line">        <span class="built_in">NSLog</span>(<span class="string">@"current thread = %@"</span>,[<span class="built_in">NSThread</span> currentThread]);</div><div class="line">        <span class="built_in">NSLog</span>(<span class="string">@"sleep 2.0s"</span>);</div><div class="line">    &#125;);</div><div class="line"><span class="built_in">NSLog</span>(<span class="string">@"next task"</span>);</div></pre></td></tr></table></figure>
+<p>控制台输出如下：</p>
+<figure class="highlight objc"><table><tr><td class="code"><pre><div class="line"><span class="number">2016</span><span class="number">-11</span><span class="number">-26</span> <span class="number">11</span>:<span class="number">08</span>:<span class="number">51.879</span> gcd[<span class="number">2048</span>:<span class="number">908843</span>] current task</div><div class="line"><span class="number">2016</span><span class="number">-11</span><span class="number">-26</span> <span class="number">11</span>:<span class="number">08</span>:<span class="number">51.880</span> gcd[<span class="number">2048</span>:<span class="number">908843</span>] next task</div><div class="line"><span class="number">2016</span><span class="number">-11</span><span class="number">-26</span> <span class="number">11</span>:<span class="number">08</span>:<span class="number">53.885</span> gcd[<span class="number">2048</span>:<span class="number">908899</span>] current thread = &lt;<span class="built_in">NSThread</span>: <span class="number">0x7f9610e04170</span>&gt;&#123;number = <span class="number">2</span>, name = (null)&#125;</div><div class="line"><span class="number">2016</span><span class="number">-11</span><span class="number">-26</span> <span class="number">11</span>:<span class="number">08</span>:<span class="number">53.885</span> gcd[<span class="number">2048</span>:<span class="number">908899</span>] sleep <span class="number">2.0</span>s</div></pre></td></tr></table></figure>
+<p>block中的线程是新开启的子线。</p>
 <p>4、<strong>多个全局并发队列，异步执行任务。</strong></p>
-<pre><code>dispatch_queue_t globalQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-NSLog(@&quot;current task&quot;);
-dispatch_async(globalQueue, ^{
-
-    NSLog(@&quot;current thread = %@&quot;,[NSThread currentThread]);
-    NSLog(@&quot;最先加入队列&quot;);
-});
-dispatch_async(globalQueue, ^{
-
-    NSLog(@&quot;current thread = %@&quot;,[NSThread currentThread]);
-    NSLog(@&quot;其次加入队列&quot;);
-});
-NSLog(@&quot;next task&quot;);
-</code></pre><p>控制台输出：</p>
-<pre><code>2016-11-26 14:00:18.430 gcd[2213:1013033] current task
-2016-11-26 14:00:18.431 gcd[2213:1013033] next task
-2016-11-26 14:00:18.431 gcd[2213:1013245] current thread = &lt;NSThread: 0x7fc531d2ecc0&gt;{number = 2, name = (null)}
-2016-11-26 14:00:18.432 gcd[2213:1013245] 其次加入队列
-2016-11-26 14:00:18.431 gcd[2213:1013246] current thread = &lt;NSThread: 0x7fc531e0b120&gt;{number = 3, name = (null)}
-2016-11-26 14:00:18.432 gcd[2213:1013246] 最先加入队列
-</code></pre><p>异步线程的执行顺序是不确定的。</p>
+<figure class="highlight objc"><table><tr><td class="code"><pre><div class="line"><span class="built_in">dispatch_queue_t</span> globalQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, <span class="number">0</span>);</div><div class="line">    <span class="built_in">NSLog</span>(<span class="string">@"current task"</span>);</div><div class="line">    <span class="built_in">dispatch_async</span>(globalQueue, ^&#123;</div><div class="line">        <span class="built_in">NSLog</span>(<span class="string">@"current thread = %@"</span>,[<span class="built_in">NSThread</span> currentThread]);</div><div class="line">        <span class="built_in">NSLog</span>(<span class="string">@"最先加入队列"</span>);</div><div class="line">    &#125;);</div><div class="line">    <span class="built_in">dispatch_async</span>(globalQueue, ^&#123;</div><div class="line">        <span class="built_in">NSLog</span>(<span class="string">@"current thread = %@"</span>,[<span class="built_in">NSThread</span> currentThread]);</div><div class="line">        <span class="built_in">NSLog</span>(<span class="string">@"其次加入队列"</span>);</div><div class="line">    &#125;);</div><div class="line">    <span class="built_in">NSLog</span>(<span class="string">@"next task"</span>);</div></pre></td></tr></table></figure>
+<p>控制台输出：</p>
+<figure class="highlight objc"><table><tr><td class="code"><pre><div class="line"><span class="number">2016</span><span class="number">-11</span><span class="number">-26</span> <span class="number">14</span>:<span class="number">00</span>:<span class="number">18.430</span> gcd[<span class="number">2213</span>:<span class="number">1013033</span>] current task</div><div class="line"><span class="number">2016</span><span class="number">-11</span><span class="number">-26</span> <span class="number">14</span>:<span class="number">00</span>:<span class="number">18.431</span> gcd[<span class="number">2213</span>:<span class="number">1013033</span>] next task</div><div class="line"><span class="number">2016</span><span class="number">-11</span><span class="number">-26</span> <span class="number">14</span>:<span class="number">00</span>:<span class="number">18.431</span> gcd[<span class="number">2213</span>:<span class="number">1013245</span>] current thread = &lt;<span class="built_in">NSThread</span>: <span class="number">0x7fc531d2ecc0</span>&gt;&#123;number = <span class="number">2</span>, name = (null)&#125;</div><div class="line"><span class="number">2016</span><span class="number">-11</span><span class="number">-26</span> <span class="number">14</span>:<span class="number">00</span>:<span class="number">18.432</span> gcd[<span class="number">2213</span>:<span class="number">1013245</span>] 其次加入队列</div><div class="line"><span class="number">2016</span><span class="number">-11</span><span class="number">-26</span> <span class="number">14</span>:<span class="number">00</span>:<span class="number">18.431</span> gcd[<span class="number">2213</span>:<span class="number">1013246</span>] current thread = &lt;<span class="built_in">NSThread</span>: <span class="number">0x7fc531e0b120</span>&gt;&#123;number = <span class="number">3</span>, name = (null)&#125;</div><div class="line"><span class="number">2016</span><span class="number">-11</span><span class="number">-26</span> <span class="number">14</span>:<span class="number">00</span>:<span class="number">18.432</span> gcd[<span class="number">2213</span>:<span class="number">1013246</span>] 最先加入队列</div></pre></td></tr></table></figure>
+<p>异步线程的执行顺序是不确定的。</p>
 <p>全局并发队列由系统默认生成，无法调用<code>dispatch_resume()</code>和<code>dispatch_suspend()</code>来控制执行继续和中断。</p>
 <h3 id="Custom-queue（自定义队列）"><a href="#Custom-queue（自定义队列）" class="headerlink" title="Custom queue（自定义队列）"></a>Custom queue（自定义队列）</h3><p>1、<strong>自定义串行队列</strong></p>
 <ul>
 <li>获取自定义串行队列</li>
 </ul>
 <p><code>dispatch_queue_create(const char *label, dispatch_queue_attr_t attr)</code>函数中第一个参数是给这个queue起的<strong>标识</strong>，这个在调试的可以看到是哪个队列在执行，或者在crash日志中，也能做为提示。第二个是需要创建的<strong>队列类型</strong>，是串行的还是并发的</p>
-<pre><code>dispatch_queue_t serialQueue = dispatch_queue_create(&quot;com.wintrerain5.serialQueue&quot;, DISPATCH_QUEUE_SERIAL);
-NSLog(@&quot;%@&quot;,serialQueue);
-
-2016-11-26 14:19:07.134 gcd[2266:1032314] &lt;OS_dispatch_queue: com.wintrerain5.serialQueue[0x7ff701c09550]&gt;
-</code></pre><ul>
-<li><p>自定义串行队列同步执行任务</p>
-<pre><code>dispatch_queue_t serialQueue = dispatch_queue_create(&quot;com.wintrerain5.serialQueue&quot;, DISPATCH_QUEUE_SERIAL);
-NSLog(@&quot;current task&quot;);
-dispatch_sync(serialQueue, ^{
-    NSLog(@&quot;最先加入串行队列&quot;);
-});
-dispatch_sync(serialQueue, ^{
-    NSLog(@&quot;其次加入串行队列&quot;);
-});
-NSLog(@&quot;next task&quot;);
-</code></pre></li>
+<figure class="highlight objc"><table><tr><td class="code"><pre><div class="line"><span class="built_in">dispatch_queue_t</span> serialQueue = dispatch_queue_create(<span class="string">"com.wintrerain5.serialQueue"</span>, DISPATCH_QUEUE_SERIAL);</div><div class="line">    <span class="built_in">NSLog</span>(<span class="string">@"%@"</span>,serialQueue);</div><div class="line">    <span class="number">2016</span><span class="number">-11</span><span class="number">-26</span> <span class="number">14</span>:<span class="number">19</span>:<span class="number">07.134</span> gcd[<span class="number">2266</span>:<span class="number">1032314</span>] &lt;OS_dispatch_queue: com.wintrerain5.serialQueue[<span class="number">0x7ff701c09550</span>]&gt;</div></pre></td></tr></table></figure>
+<ul>
+<li>自定义串行队列同步执行任务</li>
 </ul>
+<figure class="highlight objc"><table><tr><td class="code"><pre><div class="line"><span class="built_in">dispatch_queue_t</span> serialQueue = dispatch_queue_create(<span class="string">"com.wintrerain5.serialQueue"</span>, DISPATCH_QUEUE_SERIAL);</div><div class="line">	    <span class="built_in">NSLog</span>(<span class="string">@"current task"</span>);</div><div class="line">	    <span class="built_in">dispatch_sync</span>(serialQueue, ^&#123;</div><div class="line">	        <span class="built_in">NSLog</span>(<span class="string">@"最先加入串行队列"</span>);</div><div class="line">	    &#125;);</div><div class="line">	    <span class="built_in">dispatch_sync</span>(serialQueue, ^&#123;</div><div class="line">	        <span class="built_in">NSLog</span>(<span class="string">@"其次加入串行队列"</span>);</div><div class="line">	    &#125;);</div><div class="line">	    <span class="built_in">NSLog</span>(<span class="string">@"next task"</span>);</div></pre></td></tr></table></figure>
 <p>控制台输出：</p>
-<pre><code>2016-11-26 14:26:45.013 gcd[2297:1040312] current task
-2016-11-26 14:26:45.015 gcd[2297:1040312] current thread = &lt;NSThread: 0x7fbe21401f20&gt;{number = 1, name = main}
-2016-11-26 14:26:45.015 gcd[2297:1040312] 最先加入串行队列
-2016-11-26 14:26:45.016 gcd[2297:1040312] current thread = &lt;NSThread: 0x7fbe21401f20&gt;{number = 1, name = main}
-2016-11-26 14:26:45.016 gcd[2297:1040312] 其次加入串行队列
-2016-11-26 14:26:45.017 gcd[2297:1040312] next task
-</code></pre><p>串行队列中先进来的线程先执行。</p>
+<figure class="highlight objc"><table><tr><td class="code"><pre><div class="line"><span class="number">2016</span><span class="number">-11</span><span class="number">-26</span> <span class="number">14</span>:<span class="number">26</span>:<span class="number">45.013</span> gcd[<span class="number">2297</span>:<span class="number">1040312</span>] current task</div><div class="line"><span class="number">2016</span><span class="number">-11</span><span class="number">-26</span> <span class="number">14</span>:<span class="number">26</span>:<span class="number">45.015</span> gcd[<span class="number">2297</span>:<span class="number">1040312</span>] current thread = &lt;<span class="built_in">NSThread</span>: <span class="number">0x7fbe21401f20</span>&gt;&#123;number = <span class="number">1</span>, name = main&#125;</div><div class="line"><span class="number">2016</span><span class="number">-11</span><span class="number">-26</span> <span class="number">14</span>:<span class="number">26</span>:<span class="number">45.015</span> gcd[<span class="number">2297</span>:<span class="number">1040312</span>] 最先加入串行队列</div><div class="line"><span class="number">2016</span><span class="number">-11</span><span class="number">-26</span> <span class="number">14</span>:<span class="number">26</span>:<span class="number">45.016</span> gcd[<span class="number">2297</span>:<span class="number">1040312</span>] current thread = &lt;<span class="built_in">NSThread</span>: <span class="number">0x7fbe21401f20</span>&gt;&#123;number = <span class="number">1</span>, name = main&#125;</div><div class="line"><span class="number">2016</span><span class="number">-11</span><span class="number">-26</span> <span class="number">14</span>:<span class="number">26</span>:<span class="number">45.016</span> gcd[<span class="number">2297</span>:<span class="number">1040312</span>] 其次加入串行队列</div><div class="line"><span class="number">2016</span><span class="number">-11</span><span class="number">-26</span> <span class="number">14</span>:<span class="number">26</span>:<span class="number">45.017</span> gcd[<span class="number">2297</span>:<span class="number">1040312</span>] next task</div></pre></td></tr></table></figure>
+<p>串行队列中先进来的线程先执行。</p>
 <ul>
 <li><p>自定义串行队列嵌套执行同步任务，产生死锁。</p>
-<pre><code>dispatch_queue_t serialQueue = dispatch_queue_create(&quot;com.wintrerain5.serialQueue&quot;, DISPATCH_QUEUE_SERIAL);
-dispatch_sync(serialQueue, ^{
-    NSLog(@&quot;会执行的代码&quot;);
-    // 后面的代码都不会执行，程序被死锁在这里
-    dispatch_sync(serialQueue, ^{
-        NSLog(@&quot;不会执行的代码&quot;);
-    });
-});
-</code></pre></li>
-<li><p>异步执行串行队列，嵌套同步执行串行队列，同步执行的串行队列中的任务将不会执行。</p>
+  <figure class="highlight objc"><table><tr><td class="code"><pre><div class="line"><span class="built_in">dispatch_queue_t</span> serialQueue = dispatch_queue_create(<span class="string">"com.wintrerain5.serialQueue"</span>, DISPATCH_QUEUE_SERIAL);</div><div class="line">   	<span class="built_in">dispatch_sync</span>(serialQueue, ^&#123;</div><div class="line">       	<span class="built_in">NSLog</span>(<span class="string">@"会执行的代码"</span>);</div><div class="line">       	<span class="comment">// 后面的代码都不会执行，程序被死锁在这里</span></div><div class="line">       	<span class="built_in">dispatch_sync</span>(serialQueue, ^&#123;</div><div class="line">          	 <span class="built_in">NSLog</span>(<span class="string">@"不会执行的代码"</span>);</div><div class="line">       	&#125;);</div><div class="line">   	&#125;);</div></pre></td></tr></table></figure>
 </li>
+</ul>
+<ul>
+<li>异步执行串行队列，嵌套同步执行串行队列，同步执行的串行队列中的任务将不会执行。</li>
 </ul>
 <p>2、<strong>自定义并发队列</strong></p>
 <ul>
 <li><p>获取自定义并发队列</p>
-<pre><code>dispatch_queue_t conCurrentQueue = dispatch_queue_create(&quot;com.wintrerain5.conCurrentQueue&quot;, DISPATCH_QUEUE_CONCURRENT);
-</code></pre></li>
+  <figure class="highlight objc"><table><tr><td class="code"><pre><div class="line"><span class="built_in">dispatch_queue_t</span> conCurrentQueue = dispatch_queue_create(<span class="string">"com.wintrerain5.conCurrentQueue"</span>, DISPATCH_QUEUE_CONCURRENT);</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
 <li><p>自定义并发队列执行同步任务</p>
-<pre><code>    dispatch_queue_t conCurrentQueue = dispatch_queue_create(&quot;com.wintrerain5.serialQueue&quot;, DISPATCH_QUEUE_CONCURRENT);
-NSLog(@&quot;current task&quot;);
-dispatch_sync(conCurrentQueue, ^{
-     NSLog(@&quot;先加入队列 currentThread=%@&quot;,[NSThread currentThread]);
-});
-dispatch_sync(conCurrentQueue, ^{
-    NSLog(@&quot;次加入队列 currentThread=%@&quot;,[NSThread currentThread]);
-});
-NSLog(@&quot;next task&quot;);
-</code></pre></li>
+  <figure class="highlight objc"><table><tr><td class="code"><pre><div class="line"><span class="built_in">dispatch_queue_t</span> conCurrentQueue = dispatch_queue_create(<span class="string">"com.wintrerain5.serialQueue"</span>, DISPATCH_QUEUE_CONCURRENT);</div><div class="line">    <span class="built_in">NSLog</span>(<span class="string">@"current task"</span>);</div><div class="line">    <span class="built_in">dispatch_sync</span>(conCurrentQueue, ^&#123;</div><div class="line">         <span class="built_in">NSLog</span>(<span class="string">@"先加入队列 currentThread=%@"</span>,[<span class="built_in">NSThread</span> currentThread]);</div><div class="line">    &#125;);</div><div class="line">    <span class="built_in">dispatch_sync</span>(conCurrentQueue, ^&#123;</div><div class="line">        <span class="built_in">NSLog</span>(<span class="string">@"次加入队列 currentThread=%@"</span>,[<span class="built_in">NSThread</span> currentThread]);</div><div class="line">    &#125;);</div><div class="line">    <span class="built_in">NSLog</span>(<span class="string">@"next task"</span>);</div></pre></td></tr></table></figure>
+</li>
 </ul>
 <p>控制台输出：</p>
-<pre><code>2016-11-26 14:47:06.142 gcd[2360:1059122] current task
-2016-11-26 14:47:06.143 gcd[2360:1059122] 先加入队列 currentThread=&lt;NSThread: 0x7f8969c05770&gt;{number = 1, name = main}
-2016-11-26 14:47:06.143 gcd[2360:1059122] 次加入队列 currentThread=&lt;NSThread: 0x7f8969c05770&gt;{number = 1, name = main}
-2016-11-26 14:47:06.144 gcd[2360:1059122] next task
-</code></pre><p>任务从上至下依次执行。</p>
+<figure class="highlight objc"><table><tr><td class="code"><pre><div class="line"><span class="number">2016</span><span class="number">-11</span><span class="number">-26</span> <span class="number">14</span>:<span class="number">47</span>:<span class="number">06.142</span> gcd[<span class="number">2360</span>:<span class="number">1059122</span>] current task</div><div class="line"><span class="number">2016</span><span class="number">-11</span><span class="number">-26</span> <span class="number">14</span>:<span class="number">47</span>:<span class="number">06.143</span> gcd[<span class="number">2360</span>:<span class="number">1059122</span>] 先加入队列 currentThread=&lt;<span class="built_in">NSThread</span>: <span class="number">0x7f8969c05770</span>&gt;&#123;number = <span class="number">1</span>, name = main&#125;</div><div class="line"><span class="number">2016</span><span class="number">-11</span><span class="number">-26</span> <span class="number">14</span>:<span class="number">47</span>:<span class="number">06.143</span> gcd[<span class="number">2360</span>:<span class="number">1059122</span>] 次加入队列 currentThread=&lt;<span class="built_in">NSThread</span>: <span class="number">0x7f8969c05770</span>&gt;&#123;number = <span class="number">1</span>, name = main&#125;</div><div class="line"><span class="number">2016</span><span class="number">-11</span><span class="number">-26</span> <span class="number">14</span>:<span class="number">47</span>:<span class="number">06.144</span> gcd[<span class="number">2360</span>:<span class="number">1059122</span>] next task</div></pre></td></tr></table></figure>
+<p>任务从上至下依次执行。</p>
 <ul>
 <li><p>自定义并发队列嵌套执行同步任务。</p>
-<pre><code> dispatch_queue_t conCurrentQueue = dispatch_queue_create(&quot;com.wintrerain5.serialQueue&quot;, DISPATCH_QUEUE_CONCURRENT);
-NSLog(@&quot;current task&quot;);
-dispatch_sync(conCurrentQueue, ^{
-    NSLog(@&quot;先加入队列 currentThread=%@&quot;,[NSThread currentThread]);
-    dispatch_sync(conCurrentQueue, ^{
-        NSLog(@&quot;次加入队列 currentThread=%@&quot;,[NSThread currentThread]);
-    });
-});
-
-NSLog(@&quot;next task&quot;);
-</code></pre></li>
+  <figure class="highlight objc"><table><tr><td class="code"><pre><div class="line"><span class="built_in">dispatch_queue_t</span> conCurrentQueue = dispatch_queue_create(<span class="string">"com.wintrerain5.serialQueue"</span>, DISPATCH_QUEUE_CONCURRENT);</div><div class="line">   <span class="built_in">NSLog</span>(<span class="string">@"current task"</span>);</div><div class="line">   <span class="built_in">dispatch_sync</span>(conCurrentQueue, ^&#123;</div><div class="line">       <span class="built_in">NSLog</span>(<span class="string">@"先加入队列 currentThread=%@"</span>,[<span class="built_in">NSThread</span> currentThread]);</div><div class="line">       <span class="built_in">dispatch_sync</span>(conCurrentQueue, ^&#123;</div><div class="line">           <span class="built_in">NSLog</span>(<span class="string">@"次加入队列 currentThread=%@"</span>,[<span class="built_in">NSThread</span> currentThread]);</div><div class="line">       &#125;);</div><div class="line">   &#125;);</div><div class="line">   <span class="built_in">NSLog</span>(<span class="string">@"next task"</span>);</div></pre></td></tr></table></figure>
+</li>
 </ul>
 <p>控制台输出：</p>
-<pre><code>2016-11-26 14:50:40.392 gcd[2376:1062512] current task
-2016-11-26 14:50:40.393 gcd[2376:1062512] 先加入队列 currentThread=&lt;NSThread: 0x7f8233703130&gt;{number = 1, name = main}
-2016-11-26 14:50:40.393 gcd[2376:1062512] 次加入队列 currentThread=&lt;NSThread: 0x7f8233703130&gt;{number = 1, name = main}
-2016-11-26 14:50:40.393 gcd[2376:1062512] next task
-</code></pre><p>不会产生死锁。</p>
+<figure class="highlight objc"><table><tr><td class="code"><pre><div class="line"><span class="number">2016</span><span class="number">-11</span><span class="number">-26</span> <span class="number">14</span>:<span class="number">50</span>:<span class="number">40.392</span> gcd[<span class="number">2376</span>:<span class="number">1062512</span>] current task</div><div class="line"><span class="number">2016</span><span class="number">-11</span><span class="number">-26</span> <span class="number">14</span>:<span class="number">50</span>:<span class="number">40.393</span> gcd[<span class="number">2376</span>:<span class="number">1062512</span>] 先加入队列 currentThread=&lt;<span class="built_in">NSThread</span>: <span class="number">0x7f8233703130</span>&gt;&#123;number = <span class="number">1</span>, name = main&#125;</div><div class="line"><span class="number">2016</span><span class="number">-11</span><span class="number">-26</span> <span class="number">14</span>:<span class="number">50</span>:<span class="number">40.393</span> gcd[<span class="number">2376</span>:<span class="number">1062512</span>] 次加入队列 currentThread=&lt;<span class="built_in">NSThread</span>: <span class="number">0x7f8233703130</span>&gt;&#123;number = <span class="number">1</span>, name = main&#125;</div><div class="line"><span class="number">2016</span><span class="number">-11</span><span class="number">-26</span> <span class="number">14</span>:<span class="number">50</span>:<span class="number">40.393</span> gcd[<span class="number">2376</span>:<span class="number">1062512</span>] next task</div></pre></td></tr></table></figure>
+<p>不会产生死锁。</p>
 <ul>
 <li><p>自定义并发队列执行异步任务</p>
-<pre><code>dispatch_queue_t conCurrentQueue = dispatch_queue_create(&quot;com.wintrerain5.serialQueue&quot;, DISPATCH_QUEUE_CONCURRENT);
-NSLog(@&quot;current task&quot;);
-dispatch_async(conCurrentQueue, ^{
-    NSLog(@&quot;先加入队列 currentThread=%@&quot;,[NSThread currentThread]);
-
-});
-dispatch_async(conCurrentQueue, ^{
-    NSLog(@&quot;次加入队列 currentThread=%@&quot;,[NSThread currentThread]);
-});
-NSLog(@&quot;next task&quot;);
-</code></pre></li>
+  <figure class="highlight objc"><table><tr><td class="code"><pre><div class="line"><span class="built_in">dispatch_queue_t</span> conCurrentQueue = dispatch_queue_create(<span class="string">"com.wintrerain5.serialQueue"</span>, DISPATCH_QUEUE_CONCURRENT);</div><div class="line">    <span class="built_in">NSLog</span>(<span class="string">@"current task"</span>);</div><div class="line">    <span class="built_in">dispatch_async</span>(conCurrentQueue, ^&#123;</div><div class="line">        <span class="built_in">NSLog</span>(<span class="string">@"先加入队列 currentThread=%@"</span>,[<span class="built_in">NSThread</span> currentThread]);	        </div><div class="line">    &#125;);</div><div class="line">    <span class="built_in">dispatch_async</span>(conCurrentQueue, ^&#123;</div><div class="line">        <span class="built_in">NSLog</span>(<span class="string">@"次加入队列 currentThread=%@"</span>,[<span class="built_in">NSThread</span> currentThread]);</div><div class="line">    &#125;);</div><div class="line">    <span class="built_in">NSLog</span>(<span class="string">@"next task"</span>);</div></pre></td></tr></table></figure>
+</li>
 </ul>
 <p>控制台输出：</p>
-<pre><code>2016-11-26 15:32:43.555 gcd[2509:1097328] current task
-2016-11-26 15:32:43.556 gcd[2509:1097328] next task
-2016-11-26 15:32:43.556 gcd[2509:1097404] 次加入队列 currentThread=&lt;NSThread: 0x7ffeaa52f2f0&gt;{number = 2, name = (null)}
-2016-11-26 15:32:43.556 gcd[2509:1097405] 先加入队列 currentThread=&lt;NSThread: 0x7ffeaa706a30&gt;{number = 3, name = (null)}
-</code></pre><p>异步执行任务，开启新的子线程，不影响当前线程任务的执行，并发队列中的任务，几乎是同步执行的，输出顺序不确定</p>
+<figure class="highlight objc"><table><tr><td class="code"><pre><div class="line"><span class="number">2016</span><span class="number">-11</span><span class="number">-26</span> <span class="number">15</span>:<span class="number">32</span>:<span class="number">43.555</span> gcd[<span class="number">2509</span>:<span class="number">1097328</span>] current task</div><div class="line"><span class="number">2016</span><span class="number">-11</span><span class="number">-26</span> <span class="number">15</span>:<span class="number">32</span>:<span class="number">43.556</span> gcd[<span class="number">2509</span>:<span class="number">1097328</span>] next task</div><div class="line"><span class="number">2016</span><span class="number">-11</span><span class="number">-26</span> <span class="number">15</span>:<span class="number">32</span>:<span class="number">43.556</span> gcd[<span class="number">2509</span>:<span class="number">1097404</span>] 次加入队列 currentThread=&lt;<span class="built_in">NSThread</span>: <span class="number">0x7ffeaa52f2f0</span>&gt;&#123;number = <span class="number">2</span>, name = (null)&#125;</div><div class="line"><span class="number">2016</span><span class="number">-11</span><span class="number">-26</span> <span class="number">15</span>:<span class="number">32</span>:<span class="number">43.556</span> gcd[<span class="number">2509</span>:<span class="number">1097405</span>] 先加入队列 currentThread=&lt;<span class="built_in">NSThread</span>: <span class="number">0x7ffeaa706a30</span>&gt;&#123;number = <span class="number">3</span>, name = (null)&#125;</div></pre></td></tr></table></figure>
+<p>异步执行任务，开启新的子线程，不影响当前线程任务的执行，并发队列中的任务，几乎是同步执行的，输出顺序不确定</p>
 <h3 id="Group-queue（队列组）"><a href="#Group-queue（队列组）" class="headerlink" title="Group queue（队列组）"></a>Group queue（队列组）</h3><p>当需要多个线程并发执行时，然后等多个线程都结束后，在汇总执行结果，可以使用group queue。</p>
 <p>1、<strong>使用场景：</strong>同时下载多个图片，所有图片下载完成之后去主线程更新UI，或者其他线程队列执行其他任务。</p>
 <p>2、<strong>多个组队并行执行</strong></p>
-<pre><code>// 全局队列
-dispatch_queue_t conCunrrentQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-NSLog(@&quot;current task&quot;);
-// 组队列
-dispatch_group_t groupQueue = dispatch_group_create();
-
-dispatch_group_async(groupQueue, conCunrrentQueue, ^{
-    NSLog(@&quot;并行任务1&quot;);
-});
-dispatch_group_async(groupQueue, conCunrrentQueue, ^{
-    NSLog(@&quot;并行任务2&quot;);
-});
-
-// 该方法可以监听groupQueue中的任务是否全都执行完毕
-dispatch_group_notify(groupQueue, dispatch_get_main_queue(), ^{
-    NSLog(@&quot;并行任务全部执行完毕&quot;);
-});
-NSLog(@&quot;next task&quot;);
-</code></pre><p>控制台输出：</p>
-<pre><code>2016-11-26 15:49:17.314 gcd[2550:1113913] current task
-2016-11-26 15:49:17.315 gcd[2550:1113913] next task
-2016-11-26 15:49:17.315 gcd[2550:1114044] 并行任务1
-2016-11-26 15:49:17.315 gcd[2550:1114045] 并行任务2
-2016-11-26 15:49:17.321 gcd[2550:1113913] 并行任务全部执行完毕
-</code></pre><p>3、<strong>在当前线程阻塞的同步等待dispatch_group_wait</strong></p>
-<pre><code> dispatch_group_t groupQueue = dispatch_group_create();
-dispatch_time_t delayTime = dispatch_time(DISPATCH_TIME_NOW, 10 * NSEC_PER_SEC);
-dispatch_queue_t conCurrentGlobalQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-NSLog(@&quot;current task&quot;);
-dispatch_group_async(groupQueue, conCurrentGlobalQueue, ^{
-
-    long isExecuteOver = dispatch_group_wait(groupQueue, delayTime);
-    if (isExecuteOver) {
-        NSLog(@&quot;wait over&quot;);
-    } else {
-        NSLog(@&quot;not over&quot;);
-    }
-    NSLog(@&quot;并行任务1&quot;);
-});
-dispatch_group_async(groupQueue, conCurrentGlobalQueue, ^{
-    NSLog(@&quot;并行任务2&quot;);
-});
-</code></pre><p>控制台输出：</p>
-<pre><code>2016-11-26 16:53:51.639 gcd[2653:1164546] current task
-2016-11-26 16:53:51.641 gcd[2653:1164709] 并行任务2
-2016-11-26 16:54:01.642 gcd[2653:1164712] wait over
-2016-11-26 16:54:01.642 gcd[2653:1164712] 并行任务1
-</code></pre><blockquote>
+<figure class="highlight objc"><table><tr><td class="code"><pre><div class="line"><span class="comment">// 全局队列</span></div><div class="line">    <span class="built_in">dispatch_queue_t</span> conCunrrentQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, <span class="number">0</span>);</div><div class="line">    <span class="built_in">NSLog</span>(<span class="string">@"current task"</span>);</div><div class="line">    <span class="comment">// 组队列</span></div><div class="line">    dispatch_group_t groupQueue = dispatch_group_create();</div><div class="line">    dispatch_group_async(groupQueue, conCunrrentQueue, ^&#123;</div><div class="line">        <span class="built_in">NSLog</span>(<span class="string">@"并行任务1"</span>);</div><div class="line">    &#125;);</div><div class="line">    dispatch_group_async(groupQueue, conCunrrentQueue, ^&#123;</div><div class="line">        <span class="built_in">NSLog</span>(<span class="string">@"并行任务2"</span>);</div><div class="line">    &#125;);</div><div class="line">    <span class="comment">// 该方法可以监听groupQueue中的任务是否全都执行完毕</span></div><div class="line">    dispatch_group_notify(groupQueue, dispatch_get_main_queue(), ^&#123;</div><div class="line">        <span class="built_in">NSLog</span>(<span class="string">@"并行任务全部执行完毕"</span>);</div><div class="line">    &#125;);</div><div class="line">    <span class="built_in">NSLog</span>(<span class="string">@"next task"</span>);</div></pre></td></tr></table></figure>
+<p>控制台输出：</p>
+<figure class="highlight objc"><table><tr><td class="code"><pre><div class="line"><span class="number">2016</span><span class="number">-11</span><span class="number">-26</span> <span class="number">15</span>:<span class="number">49</span>:<span class="number">17.314</span> gcd[<span class="number">2550</span>:<span class="number">1113913</span>] current task</div><div class="line"><span class="number">2016</span><span class="number">-11</span><span class="number">-26</span> <span class="number">15</span>:<span class="number">49</span>:<span class="number">17.315</span> gcd[<span class="number">2550</span>:<span class="number">1113913</span>] next task</div><div class="line"><span class="number">2016</span><span class="number">-11</span><span class="number">-26</span> <span class="number">15</span>:<span class="number">49</span>:<span class="number">17.315</span> gcd[<span class="number">2550</span>:<span class="number">1114044</span>] 并行任务<span class="number">1</span></div><div class="line"><span class="number">2016</span><span class="number">-11</span><span class="number">-26</span> <span class="number">15</span>:<span class="number">49</span>:<span class="number">17.315</span> gcd[<span class="number">2550</span>:<span class="number">1114045</span>] 并行任务<span class="number">2</span></div><div class="line"><span class="number">2016</span><span class="number">-11</span><span class="number">-26</span> <span class="number">15</span>:<span class="number">49</span>:<span class="number">17.321</span> gcd[<span class="number">2550</span>:<span class="number">1113913</span>] 并行任务全部执行完毕</div></pre></td></tr></table></figure>
+<p>3、<strong>在当前线程阻塞的同步等待dispatch_group_wait</strong></p>
+<figure class="highlight objc"><table><tr><td class="code"><pre><div class="line">dispatch_group_t groupQueue = dispatch_group_create();</div><div class="line">    dispatch_time_t delayTime = dispatch_time(DISPATCH_TIME_NOW, <span class="number">10</span> * <span class="built_in">NSEC_PER_SEC</span>);</div><div class="line">    <span class="built_in">dispatch_queue_t</span> conCurrentGlobalQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, <span class="number">0</span>);</div><div class="line">    <span class="built_in">NSLog</span>(<span class="string">@"current task"</span>);</div><div class="line">    dispatch_group_async(groupQueue, conCurrentGlobalQueue, ^&#123;</div><div class="line">        <span class="keyword">long</span> isExecuteOver = dispatch_group_wait(groupQueue, delayTime);</div><div class="line">        <span class="keyword">if</span> (isExecuteOver) &#123;</div><div class="line">            <span class="built_in">NSLog</span>(<span class="string">@"wait over"</span>);</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            <span class="built_in">NSLog</span>(<span class="string">@"not over"</span>);</div><div class="line">        &#125;</div><div class="line">        <span class="built_in">NSLog</span>(<span class="string">@"并行任务1"</span>);</div><div class="line">    &#125;);</div><div class="line">    dispatch_group_async(groupQueue, conCurrentGlobalQueue, ^&#123;</div><div class="line">        <span class="built_in">NSLog</span>(<span class="string">@"并行任务2"</span>);</div><div class="line">    &#125;);</div></pre></td></tr></table></figure>
+<p>控制台输出：</p>
+<figure class="highlight objc"><table><tr><td class="code"><pre><div class="line"><span class="number">2016</span><span class="number">-11</span><span class="number">-26</span> <span class="number">16</span>:<span class="number">53</span>:<span class="number">51.639</span> gcd[<span class="number">2653</span>:<span class="number">1164546</span>] current task</div><div class="line"><span class="number">2016</span><span class="number">-11</span><span class="number">-26</span> <span class="number">16</span>:<span class="number">53</span>:<span class="number">51.641</span> gcd[<span class="number">2653</span>:<span class="number">1164709</span>] 并行任务<span class="number">2</span></div><div class="line"><span class="number">2016</span><span class="number">-11</span><span class="number">-26</span> <span class="number">16</span>:<span class="number">54</span>:<span class="number">01.642</span> gcd[<span class="number">2653</span>:<span class="number">1164712</span>] wait over</div><div class="line"><span class="number">2016</span><span class="number">-11</span><span class="number">-26</span> <span class="number">16</span>:<span class="number">54</span>:<span class="number">01.642</span> gcd[<span class="number">2653</span>:<span class="number">1164712</span>] 并行任务<span class="number">1</span></div></pre></td></tr></table></figure>
+<blockquote>
 <p>dispatch_time(dispatch_time_t when, int64_t delta);</p>
 <p>参数注释：第一个参数一般是DISPATCH_TIME_NOW，表示从现在开始<br>第二个参数是延时的具体时间<br>延时1秒可以写成如下几种：<br>NSEC_PER_SEC—-每秒有多少纳秒<br>dispatch_time(DISPATCH_TIME_NOW, 1<em>NSEC_PER_SEC);<br>USEC_PER_SEC—-每秒有多少毫秒（注意是指在纳秒的基础上）<br>dispatch_time(DISPATCH_TIME_NOW, 1000</em>USEC_PER_SEC); //SEC—毫秒<br>NSEC_PER_USEC—-每毫秒有多少纳秒。<br>dispatch_time(DISPATCH_TIME_NOW, USEC_PER_SEC*NSEC_PER_USEC);SEC—纳秒</p>
 </blockquote>

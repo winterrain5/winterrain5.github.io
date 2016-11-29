@@ -100,7 +100,7 @@ NSOperation是个">
 4、将取出的NSOperation封装的操作放到一条新线程中执行
 
 NSOperation是个">
-<meta property="og:updated_time" content="2016-11-29T00:43:26.000Z">
+<meta property="og:updated_time" content="2016-11-29T09:22:34.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="多线程在OC中的应用(NSOperation)">
 <meta name="twitter:description" content="利用NSOperationh和NSOperationQueue实现多线程的步骤1、先将需要执行的操作封装到一个NSOperation的子类对象中
@@ -365,25 +365,16 @@ NSOperation是个">
 </blockquote>
 <a id="more"></a>
 <h3 id="NSOperation"><a href="#NSOperation" class="headerlink" title="NSOperation"></a>NSOperation</h3><h4 id="NSInvocationOperation"><a href="#NSInvocationOperation" class="headerlink" title="NSInvocationOperation"></a>NSInvocationOperation</h4><p>1、<strong>创建</strong></p>
-<pre><code>NSInvocationOperation *op1 = [[NSInvocationOperation alloc] initWithTarget:self selector:@selector(yourSelector) object:nil] ;    
-</code></pre><p>2、<strong>执行</strong></p>
+<figure class="highlight objc"><table><tr><td class="code"><pre><div class="line"><span class="built_in">NSInvocationOperation</span> *op1 = [[<span class="built_in">NSInvocationOperation</span> alloc] initWithTarget:<span class="keyword">self</span> selector:<span class="keyword">@selector</span>(yourSelector) object:<span class="literal">nil</span>] ;</div></pre></td></tr></table></figure>
+<p>2、<strong>执行</strong></p>
 <pre><code>// 默认情况下调用了star方法不会开启新的线程去执行操作，而是在当前线程同步执行操作
 // 只有将操作任务放到NSOperationQueue中，才会异步执行操作
 [op1 start];
 </code></pre><h4 id="NSBlockOperation"><a href="#NSBlockOperation" class="headerlink" title="NSBlockOperation"></a>NSBlockOperation</h4><p>1、<strong>创建</strong></p>
-<pre><code>// 1.封装操作
-NSBlockOperation *op1 = [NSBlockOperation blockOperationWithBlock:^{
-    NSLog(@&quot;1- %@&quot;, [NSThread currentThread]);
-}];
-</code></pre><p>2、<strong>添加操作</strong></p>
-<pre><code> // 2.添加操作
-[op1 addExecutionBlock:^{
-    NSLog(@&quot;2- %@&quot;, [NSThread currentThread]);
-}];
-[op1 addExecutionBlock:^{
-    NSLog(@&quot;3- %@&quot;, [NSThread currentThread]);
-}];
-</code></pre><p>3、<strong>执行操作</strong></p>
+<figure class="highlight objc"><table><tr><td class="code"><pre><div class="line"><span class="comment">// 1.封装操作</span></div><div class="line">   <span class="built_in">NSBlockOperation</span> *op1 = [<span class="built_in">NSBlockOperation</span> blockOperationWithBlock:^&#123;</div><div class="line">       <span class="built_in">NSLog</span>(<span class="string">@"1- %@"</span>, [<span class="built_in">NSThread</span> currentThread]);</div><div class="line">   &#125;];</div></pre></td></tr></table></figure>
+<p>2、<strong>添加操作</strong></p>
+<figure class="highlight objc"><table><tr><td class="code"><pre><div class="line"><span class="comment">// 2.添加操作</span></div><div class="line">  [op1 addExecutionBlock:^&#123;</div><div class="line">      <span class="built_in">NSLog</span>(<span class="string">@"2- %@"</span>, [<span class="built_in">NSThread</span> currentThread]);</div><div class="line">  &#125;];</div><div class="line">  [op1 addExecutionBlock:^&#123;</div><div class="line">      <span class="built_in">NSLog</span>(<span class="string">@"3- %@"</span>, [<span class="built_in">NSThread</span> currentThread]);</div><div class="line">  &#125;];</div></pre></td></tr></table></figure>
+<p>3、<strong>执行操作</strong></p>
 <pre><code>// 如果只封装了一个操作, 那么默认会在主线程中执行
 // 如果封装了多个操作, 那么除了第一个操作以外, 其它的操作会在子线程中执行
 [op1 start];
@@ -398,30 +389,10 @@ NSBlockOperation *op1 = [NSBlockOperation blockOperationWithBlock:^{
 </ul>
 </blockquote>
 <p>1、<strong>创建CSOperation，继承NSOperation</strong></p>
-<pre><code>#import &lt;Foundation/Foundation.h&gt;
-@interface CSOperation : NSOperation
-
-@end
-
-#import &quot;CSOperation.h&quot;
-
-@implementation CSOperation
-
-// 我们要重写main方法，封装操作
-- (void)main
-{
-    NSLog(@&quot;%s, %@&quot;, __func__,[NSThread currentThread]);
-}
-@end
-</code></pre><p>2、<strong>使用自定义类</strong></p>
-<pre><code>// 1.封装操作
-CSOperation *op1 = [[CSOperation alloc] init];
-// 2.执行操作
-[op1 start];
-
-CSOperation *op2 = [[CSOperation alloc] init];
-[op2 start];
-</code></pre><h3 id="NSOperationQueue"><a href="#NSOperationQueue" class="headerlink" title="NSOperationQueue"></a>NSOperationQueue</h3><blockquote>
+<figure class="highlight objc"><table><tr><td class="code"><pre><div class="line"><span class="meta">#import <span class="meta-string">&lt;Foundation/Foundation.h&gt;</span></span></div><div class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">CSOperation</span> : <span class="title">NSOperation</span></span></div><div class="line"><span class="keyword">@end</span></div><div class="line"><span class="meta">#import <span class="meta-string">"CSOperation.h"</span></span></div><div class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">CSOperation</span></span></div><div class="line"><span class="comment">// 我们要重写main方法，封装操作</span></div><div class="line">- (<span class="keyword">void</span>)main</div><div class="line">&#123;</div><div class="line">    <span class="built_in">NSLog</span>(<span class="string">@"%s, %@"</span>, __func__,[<span class="built_in">NSThread</span> currentThread]);</div><div class="line">&#125;</div><div class="line"><span class="keyword">@end</span></div></pre></td></tr></table></figure>
+<p>2、<strong>使用自定义类</strong></p>
+<figure class="highlight objc"><table><tr><td class="code"><pre><div class="line"><span class="comment">// 1.封装操作</span></div><div class="line">   CSOperation *op1 = [[CSOperation alloc] init];</div><div class="line">   <span class="comment">// 2.执行操作</span></div><div class="line">   [op1 start];</div><div class="line">   CSOperation *op2 = [[CSOperation alloc] init];</div><div class="line">   [op2 start];</div></pre></td></tr></table></figure>
+<h3 id="NSOperationQueue"><a href="#NSOperationQueue" class="headerlink" title="NSOperationQueue"></a>NSOperationQueue</h3><blockquote>
 <p><strong>NSOperationQueue的作用</strong>：</p>
 <ul>
 <li><strong>NSOperation可以通过调用star执行操作，但默认是同步执行的</strong></li>
@@ -430,33 +401,13 @@ CSOperation *op2 = [[CSOperation alloc] init];
 </blockquote>
 <h4 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h4><ul>
 <li><p><code>addOperation</code></p>
-<pre><code> // 1.创建队列
-NSOperationQueue *queue = [[NSOperationQueue alloc] init];
-// 2.封装任务
-CSOperation *op1 = [[CSOperation alloc] init];
-CSOperation *op2 = [[CSOperation alloc] init];
-
-// 3.将任务添加到队列中
-[queue addOperation:op1];
-[queue addOperation:op2];
-</code></pre></li>
+  <figure class="highlight objc"><table><tr><td class="code"><pre><div class="line"><span class="comment">// 1.创建队列</span></div><div class="line">  <span class="built_in">NSOperationQueue</span> *queue = [[<span class="built_in">NSOperationQueue</span> alloc] init];</div><div class="line">  <span class="comment">// 2.封装任务</span></div><div class="line">  CSOperation *op1 = [[CSOperation alloc] init];</div><div class="line">  CSOperation *op2 = [[CSOperation alloc] init];</div><div class="line">  <span class="comment">// 3.将任务添加到队列中</span></div><div class="line">  [queue addOperation:op1];</div><div class="line">  [queue addOperation:op2];</div></pre></td></tr></table></figure>
+</li>
 </ul>
 <ul>
 <li><p><code>addOperationWithBlock</code></p>
-<pre><code>// 1.创建队列
-NSOperationQueue *queue = [[NSOperationQueue alloc] init];
-
-// 2.将任务添加到队列中
-// addOperationWithBlock方法会做两件事情
-// 1.根据传入的block, 创建一个NSBlockOperation对象
-// 2.将内部创建好的NSBlockOperation对象, 添加到队列中
-[queue addOperationWithBlock:^{
-    NSLog(@&quot;1 = %@&quot;, [NSThread currentThread]);
-}];
-[queue addOperationWithBlock:^{
-    NSLog(@&quot;2 = %@&quot;, [NSThread currentThread]);
-}];
-</code></pre></li>
+  <figure class="highlight objc"><table><tr><td class="code"><pre><div class="line"><span class="comment">// 1.创建队列</span></div><div class="line">   <span class="built_in">NSOperationQueue</span> *queue = [[<span class="built_in">NSOperationQueue</span> alloc] init];</div><div class="line">   <span class="comment">// 2.将任务添加到队列中</span></div><div class="line">   <span class="comment">// addOperationWithBlock方法会做两件事情</span></div><div class="line">   <span class="comment">// 1.根据传入的block, 创建一个NSBlockOperation对象</span></div><div class="line">   <span class="comment">// 2.将内部创建好的NSBlockOperation对象, 添加到队列中</span></div><div class="line">   [queue addOperationWithBlock:^&#123;</div><div class="line">       <span class="built_in">NSLog</span>(<span class="string">@"1 = %@"</span>, [<span class="built_in">NSThread</span> currentThread]);</div><div class="line">   &#125;];</div><div class="line">   [queue addOperationWithBlock:^&#123;</div><div class="line">       <span class="built_in">NSLog</span>(<span class="string">@"2 = %@"</span>, [<span class="built_in">NSThread</span> currentThread]);</div><div class="line">   &#125;];</div></pre></td></tr></table></figure>
+</li>
 </ul>
 <h3 id="NSOperationQueue的最大并发数"><a href="#NSOperationQueue的最大并发数" class="headerlink" title="NSOperationQueue的最大并发数"></a>NSOperationQueue的最大并发数</h3><ul>
 <li><p>maxConCurrentCount:最大并发数</p>
@@ -487,23 +438,8 @@ NSOperationQueue *queue = [[NSOperationQueue alloc] init];
 </li>
 </ul>
 <h3 id="NSOperationQueue线程间通信"><a href="#NSOperationQueue线程间通信" class="headerlink" title="NSOperationQueue线程间通信"></a>NSOperationQueue线程间通信</h3><p>案例：开启子线程下载图片，下载完成后，回到主线程更新UI</p>
-<pre><code>NSOperationQueue *queue = [[NSOperationQueue alloc] init];
-[queue addOperationWithBlock:^{
-
-    // 子线程中下载图片
-    NSString *urlStr = @&quot;https://www.baidu.com/img/bd_logo1.png&quot;;
-    NSURL *url = [NSURL URLWithString:urlStr];
-    NSData *imageData = [NSData dataWithContentsOfURL:url];
-    UIImage *image = [UIImage imageWithData:imageData];
-    NSLog(@&quot;下载中。。。%@&quot;,image);
-    // 回到主线程更新UI
-    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-        NSLog(@&quot;更新UI&quot;);
-        self.imageView.image = image;
-    }];
-
-}];
-</code></pre><h3 id="操作依赖"><a href="#操作依赖" class="headerlink" title="操作依赖"></a>操作依赖</h3><blockquote>
+<figure class="highlight objc"><table><tr><td class="code"><pre><div class="line"><span class="built_in">NSOperationQueue</span> *queue = [[<span class="built_in">NSOperationQueue</span> alloc] init];</div><div class="line">[queue addOperationWithBlock:^&#123;</div><div class="line"> <span class="comment">// 子线程中下载图片</span></div><div class="line">    <span class="built_in">NSString</span> *urlStr = <span class="string">@"https://www.baidu.com/img/bd_logo1.png"</span>;</div><div class="line">    <span class="built_in">NSURL</span> *url = [<span class="built_in">NSURL</span> URLWithString:urlStr];</div><div class="line">    <span class="built_in">NSData</span> *imageData = [<span class="built_in">NSData</span> dataWithContentsOfURL:url];</div><div class="line">    <span class="built_in">UIImage</span> *image = [<span class="built_in">UIImage</span> imageWithData:imageData];</div><div class="line">    <span class="built_in">NSLog</span>(<span class="string">@"下载中。。。%@"</span>,image);</div><div class="line">    <span class="comment">// 回到主线程更新UI</span></div><div class="line">    [[<span class="built_in">NSOperationQueue</span> mainQueue] addOperationWithBlock:^&#123;</div><div class="line">        <span class="built_in">NSLog</span>(<span class="string">@"更新UI"</span>);</div><div class="line">        <span class="keyword">self</span>.imageView.image = image;</div><div class="line">    &#125;]; </div><div class="line">&#125;];</div></pre></td></tr></table></figure>
+<h3 id="操作依赖"><a href="#操作依赖" class="headerlink" title="操作依赖"></a>操作依赖</h3><blockquote>
 <ul>
 <li><p><strong>操作之间可以设置依赖来保证执行顺序</strong></p>
 </li>
@@ -514,62 +450,8 @@ NSOperationQueue *queue = [[NSOperationQueue alloc] init];
 </ul>
 </blockquote>
 <p>案例：合成图片</p>
-<pre><code>NSOperationQueue *queue1 = [[NSOperationQueue alloc] init];
-NSOperationQueue *queue2 = [[NSOperationQueue alloc] init];
+<figure class="highlight objc"><table><tr><td class="code"><pre><div class="line"><span class="built_in">NSOperationQueue</span> *queue1 = [[<span class="built_in">NSOperationQueue</span> alloc] init];</div><div class="line"><span class="built_in">NSOperationQueue</span> *queue2 = [[<span class="built_in">NSOperationQueue</span> alloc] init];</div><div class="line">__block <span class="built_in">UIImage</span> *image1 = <span class="literal">nil</span>;</div><div class="line">__block <span class="built_in">UIImage</span> *image2 = <span class="literal">nil</span>;</div><div class="line"><span class="comment">// 开启一个线程下载第一张图片</span></div><div class="line"><span class="built_in">NSOperation</span> *op1 = [<span class="built_in">NSBlockOperation</span> blockOperationWithBlock:^&#123;</div><div class="line">    <span class="built_in">NSURL</span> *url = [<span class="built_in">NSURL</span> URLWithString:<span class="string">@"http://cdn.cocimg.com/assets/images/logo.png?v=201510272"</span>];</div><div class="line">    <span class="built_in">NSData</span> *data = [<span class="built_in">NSData</span> dataWithContentsOfURL:url];</div><div class="line">    <span class="comment">// 2.生成下载好的图片</span></div><div class="line">    <span class="built_in">UIImage</span> *image = [<span class="built_in">UIImage</span> imageWithData:data];</div><div class="line">    image1 = image;</div><div class="line">&#125;];</div><div class="line"><span class="comment">// 开启第二个线程下载第二张图片</span></div><div class="line"><span class="built_in">NSOperation</span> *op2 = [<span class="built_in">NSBlockOperation</span> blockOperationWithBlock:^&#123;</div><div class="line">    <span class="built_in">NSURL</span> *url = [<span class="built_in">NSURL</span> URLWithString:<span class="string">@"https://www.baidu.com/img/bd_logo1.png"</span>];</div><div class="line">    <span class="built_in">NSData</span> *data = [<span class="built_in">NSData</span> dataWithContentsOfURL:url];</div><div class="line">    <span class="comment">// 2.生成下载好的图片</span></div><div class="line">    <span class="built_in">UIImage</span> *image = [<span class="built_in">UIImage</span> imageWithData:data];</div><div class="line">    image2 = image;</div><div class="line">&#125;];</div><div class="line"><span class="comment">// 开启第三个线程合成图片</span></div><div class="line"><span class="built_in">NSOperation</span> *op3 = [<span class="built_in">NSBlockOperation</span> blockOperationWithBlock:^&#123;</div><div class="line">   <span class="built_in">UIGraphicsBeginImageContext</span>(<span class="built_in">CGSizeMake</span>(<span class="number">200</span>, <span class="number">200</span>));</div><div class="line">   [image1 drawInRect:<span class="built_in">CGRectMake</span>(<span class="number">0</span>, <span class="number">0</span>, <span class="number">100</span>, <span class="number">200</span>)];</div><div class="line">   [image2 drawInRect:<span class="built_in">CGRectMake</span>(<span class="number">100</span>, <span class="number">0</span>, <span class="number">100</span>, <span class="number">200</span>)];</div><div class="line">   <span class="built_in">UIImage</span> *newImage = <span class="built_in">UIGraphicsGetImageFromCurrentImageContext</span>();</div><div class="line">   <span class="built_in">UIGraphicsEndImageContext</span>();</div><div class="line">   <span class="comment">// 4.回到主线程更新UI</span></div><div class="line">   [[<span class="built_in">NSOperationQueue</span> mainQueue] addOperationWithBlock:^&#123;</div><div class="line">       <span class="built_in">NSLog</span>(<span class="string">@"回到主线程更新UI"</span>);</div><div class="line">       <span class="keyword">self</span>.imageView.image = newImage;</div><div class="line">   &#125;];</div><div class="line">&#125;];</div><div class="line"><span class="comment">// 监听任务是否执行完毕</span></div><div class="line">op1.completionBlock = ^&#123;</div><div class="line">    <span class="built_in">NSLog</span>(<span class="string">@"第一张图片下载完毕"</span>);</div><div class="line">&#125;;</div><div class="line">op2.completionBlock = ^&#123;</div><div class="line">    <span class="built_in">NSLog</span>(<span class="string">@"第二张图片下载完毕"</span>);</div><div class="line">&#125;;</div><div class="line"><span class="comment">// 添加依赖</span></div><div class="line">[op3 addDependency:op1];</div><div class="line">[op3 addDependency:op2];</div><div class="line"><span class="comment">// 将任务添加到队列</span></div><div class="line">[queue1 addOperation:op1];</div><div class="line">[queue1 addOperation:op2];</div><div class="line">[queue2 addOperation:op3];</div></pre></td></tr></table></figure>
 
-__block UIImage *image1 = nil;
-__block UIImage *image2 = nil;
-
-// 开启一个线程下载第一张图片
-NSOperation *op1 = [NSBlockOperation blockOperationWithBlock:^{
-    NSURL *url = [NSURL URLWithString:@&quot;http://cdn.cocimg.com/assets/images/logo.png?v=201510272&quot;];
-    NSData *data = [NSData dataWithContentsOfURL:url];
-    // 2.生成下载好的图片
-    UIImage *image = [UIImage imageWithData:data];
-    image1 = image;
-}];
-
-// 开启第二个线程下载第二张图片
-NSOperation *op2 = [NSBlockOperation blockOperationWithBlock:^{
-    NSURL *url = [NSURL URLWithString:@&quot;https://www.baidu.com/img/bd_logo1.png&quot;];
-    NSData *data = [NSData dataWithContentsOfURL:url];
-    // 2.生成下载好的图片
-    UIImage *image = [UIImage imageWithData:data];
-    image2 = image;
-}];
-
-// 开启第三个线程合成图片
-NSOperation *op3 = [NSBlockOperation blockOperationWithBlock:^{
-    UIGraphicsBeginImageContext(CGSizeMake(200, 200));
-    [image1 drawInRect:CGRectMake(0, 0, 100, 200)];
-    [image2 drawInRect:CGRectMake(100, 0, 100, 200)];
-    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-
-    // 4.回到主线程更新UI
-    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-        NSLog(@&quot;回到主线程更新UI&quot;);
-        self.imageView.image = newImage;
-    }];
-}];
-
-// 监听任务是否执行完毕
-op1.completionBlock = ^{
-    NSLog(@&quot;第一张图片下载完毕&quot;);
-};
-op2.completionBlock = ^{
-    NSLog(@&quot;第二张图片下载完毕&quot;);
-};
-
-// 添加依赖
-[op3 addDependency:op1];
-[op3 addDependency:op2];
-
-// 将任务添加到队列
-[queue1 addOperation:op1];
-[queue1 addOperation:op2];
-[queue2 addOperation:op3];
-</code></pre>
       
     </div>
 
