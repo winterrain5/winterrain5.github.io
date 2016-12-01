@@ -92,7 +92,9 @@
 <meta property="og:description" content="在项目中我们经常会用到代理的设计模式，这是iOS中一种消息传递的方式，也可以通过这种方式来传递一些参数。">
 <meta property="og:image" content="http://cc.cocimg.com/api/uploads/20160316/1458097968368231.png">
 <meta property="og:image" content="http://cc.cocimg.com/api/uploads/20160316/1458097882278657.png">
-<meta property="og:updated_time" content="2016-12-01T05:57:36.000Z">
+<meta property="og:image" content="http://cc.cocimg.com/api/uploads/20160316/1458097660507240.png">
+<meta property="og:image" content="http://cc.cocimg.com/api/uploads/20160316/1458097647603160.png">
+<meta property="og:updated_time" content="2016-12-01T09:35:05.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="OC设计模式（代理）">
 <meta name="twitter:description" content="在项目中我们经常会用到代理的设计模式，这是iOS中一种消息传递的方式，也可以通过这种方式来传递一些参数。">
@@ -368,6 +370,32 @@
 <li>代理方，实现具体登录流程，委托方不需要知道实现细节。</li>
 </ul>
 <figure class="highlight objc"><table><tr><td class="code"><pre><div class="line"><span class="comment">// 遵守登录协议</span></div><div class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">ViewController</span> (<span class="title">LoginProtocol</span>)  </span></div><div class="line"><span class="keyword">@end</span></div><div class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">ViewController</span></span></div><div class="line">- (<span class="keyword">void</span>)viewDidLoad &#123;</div><div class="line">    [<span class="keyword">super</span> viewDidLoad];</div><div class="line">    LoginViewController *loginVC = [[LoginViewController alloc] init];</div><div class="line">    loginVC.delegate = <span class="keyword">self</span>;</div><div class="line">    [<span class="keyword">self</span>.navigationController pushViewController:loginVC animated:<span class="literal">YES</span>];</div><div class="line">&#125;</div><div class="line"><span class="comment">/**</span></div><div class="line"> *  代理方实现具体登录细节</div><div class="line"> */</div><div class="line">- (<span class="keyword">void</span>)userLoginWithUsername:(<span class="built_in">NSString</span> *)username password:(<span class="built_in">NSString</span> *)password &#123;</div><div class="line">    <span class="built_in">NSLog</span>(<span class="string">@"username : %@, password : %@"</span>, username, password);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="代理内存管理"><a href="#代理内存管理" class="headerlink" title="代理内存管理"></a>代理内存管理</h3><p><strong>为什么代理属性要设置为weak呢？</strong></p>
+<p>我们定义的指针默认都是strong类型的，而属性本质上也是一个成员变量和set、get方法构成的，strong类型的指针会造成强引用，必定会影响一个对象的生命周期，这也就会形成循环引用。</p>
+<p><strong>强引用</strong></p>
+<p><img src="http://cc.cocimg.com/api/uploads/20160316/1458097660507240.png" alt=""></p>
+<p>由于代理对象使用强引用指针，引用创建的委托方LoginVC对象，并且成为LoginVC的代理。这就会导致LoginVC的delegate属性强引用代理对象，导致循环引用的问题，最终两个对象都无法正常释放。</p>
+<p><strong>弱引用</strong></p>
+<p><img src="http://cc.cocimg.com/api/uploads/20160316/1458097647603160.png" alt=""></p>
+<p>将LoginVC对象的delegate属性，设置为弱引用属性。这样在代理对象生命周期存在时，可以正常为我们工作，如果代理对象被释放，委托方和代理对象都不会因为内存释放导致的Crash。</p>
+<blockquote>
+<p>下面两种方式都是若引用代理对象，但是第一种在代理对象被释放后不会导致崩溃，而第二种会导致崩溃。</p>
+<p><code>@property (nonatomic, weak) iddelegate;</code></p>
+<p><code>@property (nonatomic, assign) iddelegate;</code></p>
+<p>weak和assign是一种“非拥有关系”的指针，通过这两种修饰符修饰的指针变量，都不会改变被引用对象的引用计数。但是在一个对象呗释放后，weak会自动将指针置为nil，而assign则不会。在OC中，向nil发送消息是不会导致崩溃的，所以assign就会导致野指针的错误<code>unrecognized selector sent to instance</code>。</p>
+</blockquote>
+<h3 id="代理和block的选择"><a href="#代理和block的选择" class="headerlink" title="代理和block的选择"></a>代理和block的选择</h3><ul>
+<li><p>多个消息传递，应该使用delegate。</p>
+</li>
+<li><p>一个委托对象的代理属性只能有一个代理对象，如果想要委托对象调用对个代理对象的回调应该用block。</p>
+</li>
+<li><p>单例对象最好不要用delegate。单例对象由于时钟都只是同一个对象，如果使用delegate，就会造成delegate属性被重新赋值的问题，最终只能有一个对象可以正常响应代理方法。</p>
+</li>
+<li><p>代理更面向过程，block则更面向结果。</p>
+</li>
+<li><p>从性能上说，block的性能消耗略大于delegate。</p>
+</li>
+</ul>
 
       
     </div>
@@ -573,7 +601,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#代理的基本使用"><span class="nav-number">1.</span> <span class="nav-text">代理的基本使用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#代理的组成"><span class="nav-number">1.1.</span> <span class="nav-text">代理的组成</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#协议修饰符"><span class="nav-number">1.2.</span> <span class="nav-text">协议修饰符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#代理的判断"><span class="nav-number">1.3.</span> <span class="nav-text">代理的判断</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#代理的复用"><span class="nav-number">1.4.</span> <span class="nav-text">代理的复用</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#代理的基本使用"><span class="nav-number">1.</span> <span class="nav-text">代理的基本使用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#代理的组成"><span class="nav-number">1.1.</span> <span class="nav-text">代理的组成</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#协议修饰符"><span class="nav-number">1.2.</span> <span class="nav-text">协议修饰符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#代理的判断"><span class="nav-number">1.3.</span> <span class="nav-text">代理的判断</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#代理的复用"><span class="nav-number">1.4.</span> <span class="nav-text">代理的复用</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代理内存管理"><span class="nav-number">2.</span> <span class="nav-text">代理内存管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代理和block的选择"><span class="nav-number">3.</span> <span class="nav-text">代理和block的选择</span></a></li></ol></div>
             
           </div>
         </section>
