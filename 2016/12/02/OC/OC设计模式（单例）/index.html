@@ -1,0 +1,854 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="单例 设计模式," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2" />
+
+
+
+
+
+
+<meta name="description" content="在开发中经常会用到单例设计模式，目的是为了在程序的整个生命周期中，只会创建一个类的实例对象，而且只要程序不会不被杀死，该实例对象就不会被释放。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="OC设计模式（单例）">
+<meta property="og:url" content="http://yoursite.com/2016/12/02/OC/OC设计模式（单例）/index.html">
+<meta property="og:site_name" content="行止由心">
+<meta property="og:description" content="在开发中经常会用到单例设计模式，目的是为了在程序的整个生命周期中，只会创建一个类的实例对象，而且只要程序不会不被杀死，该实例对象就不会被释放。">
+<meta property="og:updated_time" content="2016-12-02T08:20:52.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="OC设计模式（单例）">
+<meta name="twitter:description" content="在开发中经常会用到单例设计模式，目的是为了在程序的整个生命周期中，只会创建一个类的实例对象，而且只要程序不会不被杀死，该实例对象就不会被释放。">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"right","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '6342373090747483000',
+      author: 'Author'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/12/02/OC/OC设计模式（单例）/"/>
+
+
+  <title> OC设计模式（单例） | 行止由心 </title>
+</head>
+
+<body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">行止由心</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">知识管理，自我管理</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                OC设计模式（单例）
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-12-02T15:21:43+08:00" content="2016-12-02">
+              2016-12-02
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Objective-C/" itemprop="url" rel="index">
+                    <span itemprop="name">Objective-C</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/12/02/OC/OC设计模式（单例）/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/02/OC/OC设计模式（单例）/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/12/02/OC/OC设计模式（单例）/" class="leancloud_visitors" data-flag-title="OC设计模式（单例）">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>在开发中经常会用到单例设计模式，目的是为了在程序的整个生命周期中，只会创建一个类的实例对象，而且只要程序不会不被杀死，该实例对象就不会被释放。</p>
+<a id="more"></a>
+<h3 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h3><ul>
+<li><p>保证程序在运行过程中，一个类只有一个实例对象</p>
+</li>
+<li><p>由于只有一个实例对象，所以节约系统资源</p>
+</li>
+</ul>
+<h3 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h3><ul>
+<li><p>资源共享的情况下，避免由于资源操作时导致的性能。如日志文件、应用配置等。</p>
+</li>
+<li><p>控制资源的情况下，方便资源之间的互相通信。入线程池等。</p>
+</li>
+</ul>
+<h3 id="创建单例"><a href="#创建单例" class="headerlink" title="创建单例"></a>创建单例</h3><p>有两种方法创建单例</p>
+<ul>
+<li><strong>GCD方式创建单例</strong></li>
+</ul>
+<figure class="highlight objc"><table><tr><td class="code"><pre><div class="line"><span class="keyword">static</span> <span class="keyword">id</span> _instance;</div><div class="line">+ (<span class="keyword">instancetype</span>)allocWithZone:(<span class="keyword">struct</span> _NSZone *)zone</div><div class="line">&#123;</div><div class="line">	<span class="keyword">static</span> <span class="built_in">dispatch_once_t</span> onceToken;</div><div class="line">	<span class="built_in">dispatch_once</span>(&amp;onceToken, ^&#123;</div><div class="line">	_instance = [<span class="keyword">super</span> allocWithZone:zone];</div><div class="line">	&#125;);</div><div class="line">	<span class="keyword">return</span> _instance;</div><div class="line">&#125;</div><div class="line">+ (<span class="keyword">instancetype</span>)sharedInstance</div><div class="line">&#123;</div><div class="line">	<span class="keyword">static</span> <span class="built_in">dispatch_once_t</span> onceToken;</div><div class="line">	<span class="built_in">dispatch_once</span>(&amp;onceToken, ^&#123;</div><div class="line">	_instance = [[<span class="keyword">self</span> alloc] init];</div><div class="line">	&#125;);</div><div class="line">	<span class="keyword">return</span> _instance;</div><div class="line">&#125;</div><div class="line">- (<span class="keyword">id</span>)copyWithZone:(<span class="built_in">NSZone</span> *)zone</div><div class="line">&#123;</div><div class="line">	<span class="keyword">return</span> _instance;</div><div class="line">&#125;</div><div class="line">- (<span class="keyword">id</span>)mutableCopyWithZone:(<span class="built_in">NSZone</span> *)zone &#123;</div><div class="line">	<span class="keyword">return</span> _instance;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li><strong>互斥锁方式创建单例</strong></li>
+</ul>
+<figure class="highlight objc"><table><tr><td class="code"><pre><div class="line"><span class="keyword">static</span> <span class="keyword">id</span> _instance;</div><div class="line">+ (<span class="keyword">instancetype</span>)allocWithZone:(<span class="keyword">struct</span> _NSZone *)zone</div><div class="line">&#123;</div><div class="line">	<span class="keyword">@synchronized</span>(<span class="keyword">self</span>) &#123;</div><div class="line">	<span class="keyword">if</span> (_instance == <span class="literal">nil</span>) &#123;</div><div class="line">	_instance = [<span class="keyword">super</span> allocWithZone:zone];</div><div class="line">	&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> _instance;</div><div class="line">&#125;</div><div class="line">+ (<span class="keyword">instancetype</span>)sharedInstance</div><div class="line">&#123;</div><div class="line">	<span class="keyword">@synchronized</span>(<span class="keyword">self</span>) &#123;</div><div class="line">	<span class="keyword">if</span> (_instance == <span class="literal">nil</span>) &#123;</div><div class="line">	_instance = [[<span class="keyword">self</span> alloc] init];</div><div class="line">	&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> _instance;</div><div class="line">&#125;</div><div class="line">- (<span class="keyword">id</span>)copyWithZone:(<span class="built_in">NSZone</span> *)zone</div><div class="line">&#123;</div><div class="line">	<span class="keyword">return</span> _instance;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>上面两种方式保证用户不管是通过shareInstance方法，还是alloc、copy方法得到的实例都是一样的。</p>
+<h3 id="多线程下的单例"><a href="#多线程下的单例" class="headerlink" title="多线程下的单例"></a>多线程下的单例</h3><p>上述代码的关键之处在于如何在多线程情况下保证创建的单例还是同一个。</p>
+<p>如果不使用dispatch_once和同步锁创建单例会出现什么问题，代码如下：</p>
+<figure class="highlight objc"><table><tr><td class="code"><pre><div class="line">+ (<span class="keyword">instancetype</span>)sharedInstance</div><div class="line">&#123;</div><div class="line">	<span class="keyword">if</span> (_instance == <span class="literal">nil</span>) &#123;</div><div class="line">	_instance = [[<span class="keyword">self</span> alloc] init];</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> _instance;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>假设此时有两条线程：线程1和线程2，都在调用shareInstance方法来创建单例，那么线程1运行到<code>if(_instance == nil)</code> 处发现_instance = nil,那么就会创建一个_instance，假设此时线程2也运行到if的判断处，此时线程1还没有创建完成实例对象，所以此时_instance = nil还是成立的，那么线程2又会创建一个实例。<br>此时就创建了两个实例对象，导致问题出现。</p>
+</blockquote>
+<ul>
+<li><strong>解决方法1：使用dispatch_once</strong></li>
+</ul>
+<p>dispatch_once保证在运行过程中只会被运行一次，那么假设此时线程1先执行shareInstance方法，创建一个实例对象，线程2就不会再去执行dispatch_once的代码了，从而保证了只会创建一个对象。</p>
+<ul>
+<li><strong>解决方法2：使用互斥锁</strong></li>
+</ul>
+<p>假设此时线程1在执行shareInstance方法，那么synchronize大括号内创建单例的代码就会被当做一个任务被加上一把锁。此时线程2若也想执行shareInstance方法，但是看到线程1加的互斥锁，就会进入睡眠模式。等到线程1执行完毕，才会被唤醒，然后去执行上面的代码，但是此时_instance != nil，所以不会再创建新的实例对象了。从而保证只会创建一个实例对象。</p>
+<p><strong>但是互斥锁会影响性能，所以最好还是使用GCD方式创建单例</strong></p>
+<h3 id="宏创建单例"><a href="#宏创建单例" class="headerlink" title="宏创建单例"></a>宏创建单例</h3><p>我们可以使用宏来封装单例的创建，这样需要创建的时候，一句代码就搞定了。</p>
+<figure class="highlight objc"><table><tr><td class="code"><pre><div class="line"><span class="meta">#define SingletonH(methodName) + (instancetype)shared##methodName;//.h文件的实现</span></div><div class="line"><span class="meta">#if __has_feature(objc_arc) // 是ARC  .m文件的实现</span></div><div class="line"><span class="meta">#define SingletonM(methodName) \</span></div><div class="line"><span class="keyword">static</span> <span class="keyword">id</span> _instace = <span class="literal">nil</span>; \</div><div class="line">+ (<span class="keyword">id</span>)allocWithZone:(<span class="keyword">struct</span> _NSZone *)zone \</div><div class="line">&#123; \</div><div class="line"><span class="keyword">if</span> (_instace == <span class="literal">nil</span>) &#123; \</div><div class="line"><span class="keyword">static</span> <span class="built_in">dispatch_once_t</span> onceToken; \</div><div class="line"><span class="built_in">dispatch_once</span>(&amp;onceToken, ^&#123; \</div><div class="line">_instace = [<span class="keyword">super</span> allocWithZone:zone]; \</div><div class="line">&#125;); \</div><div class="line">&#125; \</div><div class="line"><span class="keyword">return</span> _instace; \</div><div class="line">&#125; \</div><div class="line">\</div><div class="line">- (<span class="keyword">id</span>)init \</div><div class="line">&#123; \</div><div class="line"><span class="keyword">static</span> <span class="built_in">dispatch_once_t</span> onceToken; \</div><div class="line"><span class="built_in">dispatch_once</span>(&amp;onceToken, ^&#123; \</div><div class="line">_instace = [<span class="keyword">super</span> init]; \</div><div class="line">&#125;); \</div><div class="line"><span class="keyword">return</span> _instace; \</div><div class="line">&#125; \</div><div class="line">\</div><div class="line">+ (<span class="keyword">instancetype</span>)shared<span class="meta">##methodName \</span></div><div class="line">&#123; \</div><div class="line"><span class="keyword">return</span> [[<span class="keyword">self</span> alloc] init]; \</div><div class="line">&#125; \</div><div class="line">+ (<span class="keyword">id</span>)copyWithZone:(<span class="keyword">struct</span> _NSZone *)zone \</div><div class="line">&#123; \</div><div class="line"><span class="keyword">return</span> _instace; \</div><div class="line">&#125; \</div><div class="line">\</div><div class="line">+ (<span class="keyword">id</span>)mutableCopyWithZone:(<span class="keyword">struct</span> _NSZone *)zone \</div><div class="line">&#123; \</div><div class="line"><span class="keyword">return</span> _instace; \</div><div class="line">&#125;</div><div class="line"><span class="meta">#else // 不是ARC</span></div><div class="line"><span class="meta">#define SingletonM(methodName) \</span></div><div class="line"><span class="keyword">static</span> <span class="keyword">id</span> _instace = <span class="literal">nil</span>; \</div><div class="line">+ (<span class="keyword">id</span>)allocWithZone:(<span class="keyword">struct</span> _NSZone *)zone \</div><div class="line">&#123; \</div><div class="line"><span class="keyword">if</span> (_instace == <span class="literal">nil</span>) &#123; \</div><div class="line"><span class="keyword">static</span> <span class="built_in">dispatch_once_t</span> onceToken; \</div><div class="line"><span class="built_in">dispatch_once</span>(&amp;onceToken, ^&#123; \</div><div class="line">_instace = [<span class="keyword">super</span> allocWithZone:zone]; \</div><div class="line">&#125;); \</div><div class="line">&#125; \</div><div class="line"><span class="keyword">return</span> _instace; \</div><div class="line">&#125; \</div><div class="line">\</div><div class="line">- (<span class="keyword">id</span>)init \</div><div class="line">&#123; \</div><div class="line"><span class="keyword">static</span> <span class="built_in">dispatch_once_t</span> onceToken; \</div><div class="line"><span class="built_in">dispatch_once</span>(&amp;onceToken, ^&#123; \</div><div class="line">_instace = [<span class="keyword">super</span> init]; \</div><div class="line">&#125;); \</div><div class="line"><span class="keyword">return</span> _instace; \</div><div class="line">&#125; \</div><div class="line">\</div><div class="line">+ (<span class="keyword">instancetype</span>)shared<span class="meta">##methodName \</span></div><div class="line">&#123; \</div><div class="line"><span class="keyword">return</span> [[<span class="keyword">self</span> alloc] init]; \</div><div class="line">&#125; \</div><div class="line">\</div><div class="line">- (<span class="keyword">oneway</span> <span class="keyword">void</span>)release \</div><div class="line">&#123; \</div><div class="line">\</div><div class="line">&#125; \</div><div class="line">\</div><div class="line">- (<span class="keyword">id</span>)<span class="keyword">retain</span> \</div><div class="line">&#123; \</div><div class="line"><span class="keyword">return</span> <span class="keyword">self</span>; \</div><div class="line">&#125; \</div><div class="line">\</div><div class="line">- (<span class="built_in">NSUInteger</span>)retainCount \</div><div class="line">&#123; \</div><div class="line"><span class="keyword">return</span> <span class="number">1</span>; \</div><div class="line">&#125; \</div><div class="line">+ (<span class="keyword">id</span>)copyWithZone:(<span class="keyword">struct</span> _NSZone *)zone \</div><div class="line">&#123; \</div><div class="line">    <span class="keyword">return</span> _instace; \</div><div class="line">&#125; \</div><div class="line"> \</div><div class="line">+ (<span class="keyword">id</span>)mutableCopyWithZone:(<span class="keyword">struct</span> _NSZone *)zone \</div><div class="line">&#123; \</div><div class="line">    <span class="keyword">return</span> _instace; \</div><div class="line">&#125;</div><div class="line"><span class="meta">#endif</span></div></pre></td></tr></table></figure>
+<p><strong>如何使用</strong></p>
+<p>假设我们要在viewController中使用：</p>
+<figure class="highlight objc"><table><tr><td class="code"><pre><div class="line">viewcontroller.h文件</div><div class="line">===========================</div><div class="line"><span class="meta">#import</span></div><div class="line"><span class="meta">#import <span class="meta-string">"Singleton.h"</span></span></div><div class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">ViewController</span> : <span class="title">UIViewController</span></span></div><div class="line">SingletonH(viewController)</div><div class="line"><span class="keyword">@end</span></div><div class="line">viewcontroller.m文件</div><div class="line">===========================</div><div class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">ViewController</span> ()</span></div><div class="line"><span class="keyword">@end</span></div><div class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">ViewController</span></span></div><div class="line">SingletonM(ViewController)</div><div class="line">- (<span class="keyword">void</span>)viewDidLoad &#123;</div><div class="line">[<span class="keyword">super</span> viewDidLoad];</div><div class="line"><span class="built_in">NSLog</span>(<span class="string">@"%@ %@ %@ %@"</span>, [ViewController sharedViewController],[ViewController sharedViewController], [[ViewController alloc] init],[[ViewController alloc] init]);</div><div class="line">&#125;</div><div class="line"><span class="keyword">@end</span></div></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>请我喝杯豆浆！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="http://storage1.imgchr.com/images/FullSizeRendereb28d.jpg" alt="winterrain5 WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="http://storage1.imgchr.com/images/FullSizeRender2fa7e1.jpg" alt="winterrain5 Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/单例-设计模式/" rel="tag">#单例 设计模式</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/11/29/OC/OC设计模式（代理）/" rel="next" title="OC设计模式（代理）">
+                <i class="fa fa-chevron-left"></i> OC设计模式（代理）
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/12/04/swift/swift显示emoji表情/" rel="prev" title="swift显示emoji表情">
+                swift显示emoji表情 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/12/02/OC/OC设计模式（单例）/"
+           data-title="OC设计模式（单例）" data-url="http://yoursite.com/2016/12/02/OC/OC设计模式（单例）/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://ww4.sinaimg.cn/mw690/9dac93ccjw9eymcefq449j202s042aa2.jpg"
+               alt="winterrain5" />
+          <p class="site-author-name" itemprop="name">winterrain5</p>
+          <p class="site-description motion-element" itemprop="description">要做一个Nice的人</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">27</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">23</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/winterrain5" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/rain-winter-74" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/u/2645332940/home?topnav=1" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  微博
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#作用"><span class="nav-number">1.</span> <span class="nav-text">作用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用场景"><span class="nav-number">2.</span> <span class="nav-text">使用场景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建单例"><span class="nav-number">3.</span> <span class="nav-text">创建单例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多线程下的单例"><span class="nav-number">4.</span> <span class="nav-text">多线程下的单例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#宏创建单例"><span class="nav-number">5.</span> <span class="nav-text">宏创建单例</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">winterrain5</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"winterrain5"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("029tUpff0Ph7OrHFjawhv700-gzGzoHsz", "TyyMeX7RfM4IsJWWe33K8yCW");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+</body>
+</html>
