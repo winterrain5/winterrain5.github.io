@@ -85,30 +85,18 @@
 
 
 <meta name="description" content="动态伪类
-之所以被称为动态伪类，是因为他们并存在于HTML中，而是只有当用户和网站交互的时候才会呈现。有两类动态伪类：链接和用户行为。链接就是：link和visited，而用户行为包括：hover、active、focus。
-
-:link&amp;nbsp;&amp;nbsp;用于链接尚未被用户访问的时候。
-:visited&amp;nbsp;&amp;nbsp;用于用户访问过的链接，也就是说它们的用处是相反的。
-:hover&amp;">
+之所以被称为动态伪类，是因为他们并存在于HTML中，而是只有当用户和网站交互的时候才会呈现。有两类动态伪类：链接和用户行为。链接就是：link和visited，而用户行为包括：hover、active、focus。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CSS3伪类选择器">
 <meta property="og:url" content="http://yoursite.com/2016/12/06/前端/CSS3伪类选择器/index.html">
 <meta property="og:site_name" content="行止由心">
 <meta property="og:description" content="动态伪类
-之所以被称为动态伪类，是因为他们并存在于HTML中，而是只有当用户和网站交互的时候才会呈现。有两类动态伪类：链接和用户行为。链接就是：link和visited，而用户行为包括：hover、active、focus。
-
-:link&amp;nbsp;&amp;nbsp;用于链接尚未被用户访问的时候。
-:visited&amp;nbsp;&amp;nbsp;用于用户访问过的链接，也就是说它们的用处是相反的。
-:hover&amp;">
-<meta property="og:updated_time" content="2016-12-07T01:43:34.000Z">
+之所以被称为动态伪类，是因为他们并存在于HTML中，而是只有当用户和网站交互的时候才会呈现。有两类动态伪类：链接和用户行为。链接就是：link和visited，而用户行为包括：hover、active、focus。">
+<meta property="og:updated_time" content="2016-12-07T01:45:57.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CSS3伪类选择器">
 <meta name="twitter:description" content="动态伪类
-之所以被称为动态伪类，是因为他们并存在于HTML中，而是只有当用户和网站交互的时候才会呈现。有两类动态伪类：链接和用户行为。链接就是：link和visited，而用户行为包括：hover、active、focus。
-
-:link&amp;nbsp;&amp;nbsp;用于链接尚未被用户访问的时候。
-:visited&amp;nbsp;&amp;nbsp;用于用户访问过的链接，也就是说它们的用处是相反的。
-:hover&amp;">
+之所以被称为动态伪类，是因为他们并存在于HTML中，而是只有当用户和网站交互的时候才会呈现。有两类动态伪类：链接和用户行为。链接就是：link和visited，而用户行为包括：hover、active、focus。">
 
 
 
@@ -349,6 +337,7 @@
       
         <p><strong>动态伪类</strong></p>
 <p>之所以被称为动态伪类，是因为他们并存在于HTML中，而是只有当用户和网站交互的时候才会呈现。<br>有两类动态伪类：<strong>链接</strong>和<strong>用户行为</strong>。链接就是：link和visited，而用户行为包括：hover、active、focus。</p>
+<a id="more"></a>
 <ul>
 <li><strong>:link&nbsp;&nbsp;</strong>用于链接尚未被用户访问的时候。</li>
 <li><strong>:visited&nbsp;&nbsp;</strong>用于用户访问过的链接，也就是说它们的用处是相反的。</li>
@@ -370,15 +359,15 @@
 <p>2、可以使用表达式来定位子元素 ，比如，下面的表达式将从第四个开始匹配没第三个元素</p>
 <figure class="highlight html"><table><tr><td class="code"><pre><div class="line">ul li:nht-child(3n+4) &#123;</div><div class="line">	color: yellow;	</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>上面的例子中，第一个黄色的li元素将会是第四个。如果想从第一个开始匹配，表达式可以这样</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><div class="line">ul li:nht-child(3n) &#123;</div><div class="line">	color: yellow;	</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="code"><pre><div class="line">ul li:nth-child(3n) &#123;</div><div class="line">	color: yellow;	</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>这样的话，第一个黄色的li元素会是第三个子元素，然后是它后面每隔第三个。那如果只想匹配前4个呢</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><div class="line">ul li:nht-child(-n+4) &#123;</div><div class="line">	color: yellow;	</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="code"><pre><div class="line">ul li:nth-child(-n+4) &#123;</div><div class="line">	color: yellow;	</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>:nth-child的值也可以定义为“even”或“odd”,和“2n”(第偶数个)或“2n+1”(第奇数个)</p>
 <ul>
 <li><strong>:nth-last-child&nbsp;&nbsp;</strong>和:nth-child的作用基本相同，但是它从最后一个元素开始计算</li>
 </ul>
 <p>这个例子是匹配最后的四个元素</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><div class="line">ul li:nht-child(-n+4) &#123;</div><div class="line">	color: yellow;	</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="code"><pre><div class="line">ul li:nth-child(-n+4) &#123;</div><div class="line">	color: yellow;	</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <ul>
 <li><strong>:nth-of-type&nbsp;&nbsp;</strong>和:nth-child也很像，不同的是它只计算选择器中指定的那个元素</li>
 </ul>
