@@ -1,0 +1,878 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="伸缩布局," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2" />
+
+
+
+
+
+
+<meta name="description" content="原文地址                                    　　CSS3引入的布局模式Flexbox布局，主要思想是让容器有能力让其子项目能够改变其宽度，高度，以最佳方式填充可用空间。Flex容器使用Flex项目可以自动放大与收缩，用来填补可用的空闲空间。　　更重要的是，Flexbox布局方向不可预知，不像常规的布局(块级从上到下">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSS3 伸缩布局盒模型">
+<meta property="og:url" content="http://yoursite.com/2016/12/12/CSS3-伸缩布局盒模型/index.html">
+<meta property="og:site_name" content="行止由心">
+<meta property="og:description" content="原文地址                                    　　CSS3引入的布局模式Flexbox布局，主要思想是让容器有能力让其子项目能够改变其宽度，高度，以最佳方式填充可用空间。Flex容器使用Flex项目可以自动放大与收缩，用来填补可用的空闲空间。　　更重要的是，Flexbox布局方向不可预知，不像常规的布局(块级从上到下">
+<meta property="og:image" content="https://img.alicdn.com/imgextra/i2/2406102577/TB2qVpodVXXXXXLXpXXXXXXXXXX_!!2406102577.png">
+<meta property="og:image" content="https://img.alicdn.com/imgextra/i2/2406102577/TB2sCdFdVXXXXa_XXXXXXXXXXXX_!!2406102577.png">
+<meta property="og:image" content="https://img.alicdn.com/imgextra/i1/2406102577/TB2G9JIdVXXXXafXXXXXXXXXXXX_!!2406102577.png">
+<meta property="og:image" content="https://img.alicdn.com/imgextra/i3/2406102577/TB2SBRxdVXXXXcRXXXXXXXXXXXX_!!2406102577.png">
+<meta property="og:image" content="https://img.alicdn.com/imgextra/i3/2406102577/TB2wYtudVXXXXacXpXXXXXXXXXX_!!2406102577.png">
+<meta property="og:image" content="https://img.alicdn.com/imgextra/i4/2406102577/TB22r0zdVXXXXc5XXXXXXXXXXXX_!!2406102577.png">
+<meta property="og:image" content="https://img.alicdn.com/imgextra/i3/2406102577/TB2CLlOdVXXXXXiXXXXXXXXXXXX_!!2406102577.png">
+<meta property="og:image" content="https://img.alicdn.com/imgextra/i3/2406102577/TB2JxJMdVXXXXXSXXXXXXXXXXXX_!!2406102577.png">
+<meta property="og:image" content="https://img.alicdn.com/imgextra/i1/2406102577/TB2__0jdVXXXXb5XpXXXXXXXXXX_!!2406102577.png">
+<meta property="og:image" content="https://img.alicdn.com/imgextra/i1/2406102577/TB2ra0HdVXXXXa6XXXXXXXXXXXX_!!2406102577.png">
+<meta property="og:image" content="https://img.alicdn.com/imgextra/i4/2406102577/TB2ub0AdVXXXXcOXXXXXXXXXXXX_!!2406102577.png">
+<meta property="og:image" content="https://img.alicdn.com/imgextra/i1/2406102577/TB2qWhBdVXXXXcGXXXXXXXXXXXX_!!2406102577.png">
+<meta property="og:image" content="https://img.alicdn.com/imgextra/i3/2406102577/TB2QOXrdVXXXXaOXpXXXXXXXXXX_!!2406102577.png">
+<meta property="og:image" content="https://img.alicdn.com/imgextra/i4/2406102577/TB2TlhudVXXXXacXpXXXXXXXXXX_!!2406102577.png">
+<meta property="og:image" content="https://img.alicdn.com/imgextra/i2/2406102577/TB2hIRodVXXXXbFXpXXXXXXXXXX_!!2406102577.png">
+<meta property="og:image" content="https://img.alicdn.com/imgextra/i2/2406102577/TB2R_lIdVXXXXbEXXXXXXXXXXXX_!!2406102577.png">
+<meta property="og:image" content="https://img.alicdn.com/imgextra/i1/2406102577/TB27DVKdVXXXXbaXXXXXXXXXXXX_!!2406102577.png">
+<meta property="og:image" content="https://img.alicdn.com/imgextra/i1/2406102577/TB2bAhwdVXXXXaSXpXXXXXXXXXX_!!2406102577.png">
+<meta property="og:image" content="https://img.alicdn.com/imgextra/i4/2406102577/TB2f9NBdVXXXXXvXpXXXXXXXXXX_!!2406102577.png">
+<meta property="og:image" content="https://img.alicdn.com/imgextra/i3/2406102577/TB29LRydVXXXXaxXpXXXXXXXXXX_!!2406102577.png">
+<meta property="og:image" content="https://img.alicdn.com/imgextra/i2/2406102577/TB2EERIdVXXXXbZXXXXXXXXXXXX_!!2406102577.png">
+<meta property="og:image" content="https://img.alicdn.com/imgextra/i2/2406102577/TB2MexQdVXXXXavXXXXXXXXXXXX_!!2406102577.png">
+<meta property="og:image" content="https://img.alicdn.com/imgextra/i2/2406102577/TB24.lydVXXXXarXpXXXXXXXXXX_!!2406102577.png">
+<meta property="og:image" content="https://img.alicdn.com/imgextra/i2/2406102577/TB240lrdVXXXXbLXpXXXXXXXXXX_!!2406102577.png">
+<meta property="og:image" content="https://img.alicdn.com/imgextra/i2/2406102577/TB2gmNrdVXXXXb7XpXXXXXXXXXX_!!2406102577.png">
+<meta property="og:image" content="https://img.alicdn.com/imgextra/i4/2406102577/TB2aFlVdVXXXXXpXXXXXXXXXXXX_!!2406102577.png">
+<meta property="og:image" content="https://img.alicdn.com/imgextra/i1/2406102577/TB2pSpHdVXXXXcuXXXXXXXXXXXX_!!2406102577.png">
+<meta property="og:image" content="https://img.alicdn.com/imgextra/i2/2406102577/TB2QQtzdVXXXXapXpXXXXXXXXXX_!!2406102577.png">
+<meta property="og:image" content="https://img.alicdn.com/imgextra/i1/2406102577/TB2xKFMdVXXXXbxXXXXXXXXXXXX_!!2406102577.png">
+<meta property="og:image" content="https://img.alicdn.com/imgextra/i4/2406102577/TB2NslNdVXXXXaPXXXXXXXXXXXX_!!2406102577.png">
+<meta property="og:image" content="https://img.alicdn.com/imgextra/i1/2406102577/TB2XdVFdVXXXXc8XXXXXXXXXXXX_!!2406102577.png">
+<meta property="og:image" content="https://img.alicdn.com/imgextra/i4/2406102577/TB2JyXtdVXXXXbKXpXXXXXXXXXX_!!2406102577.png">
+<meta property="og:image" content="https://img.alicdn.com/imgextra/i1/2406102577/TB2JBXqdVXXXXcfXpXXXXXXXXXX_!!2406102577.png">
+<meta property="og:image" content="https://img.alicdn.com/imgextra/i2/2406102577/TB2QQtzdVXXXXapXpXXXXXXXXXX_!!2406102577.png">
+<meta property="og:image" content="https://img.alicdn.com/imgextra/i1/2406102577/TB2xKFMdVXXXXbxXXXXXXXXXXXX_!!2406102577.png">
+<meta property="og:image" content="https://img.alicdn.com/imgextra/i1/2406102577/TB2v38ydVXXXXaIXpXXXXXXXXXX_!!2406102577.png">
+<meta property="og:image" content="https://img.alicdn.com/imgextra/i3/2406102577/TB2TUpzdVXXXXaGXpXXXXXXXXXX_!!2406102577.png">
+<meta property="og:image" content="https://img.alicdn.com/imgextra/i4/2406102577/TB2zQlxdVXXXXa9XpXXXXXXXXXX_!!2406102577.png">
+<meta property="og:image" content="https://img.alicdn.com/imgextra/i4/2406102577/TB2mXhMdVXXXXbPXXXXXXXXXXXX_!!2406102577.png">
+<meta property="og:image" content="https://img.alicdn.com/imgextra/i1/2406102577/TB2UydLdVXXXXb4XXXXXXXXXXXX_!!2406102577.png">
+<meta property="og:image" content="https://img.alicdn.com/imgextra/i3/2406102577/TB2bwXwdVXXXXbYXpXXXXXXXXXX_!!2406102577.png">
+<meta property="og:image" content="https://img.alicdn.com/imgextra/i2/2406102577/TB2ojXYdVXXXXXkXXXXXXXXXXXX_!!2406102577.png">
+<meta property="og:image" content="https://img.alicdn.com/imgextra/i1/2406102577/TB233hYdVXXXXXmXXXXXXXXXXXX_!!2406102577.png">
+<meta property="og:image" content="https://img.alicdn.com/imgextra/i3/2406102577/TB2NG8FdVXXXXXHXpXXXXXXXXXX_!!2406102577.png">
+<meta property="og:image" content="https://img.alicdn.com/imgextra/i2/2406102577/TB2mqlPdVXXXXboXXXXXXXXXXXX_!!2406102577.png">
+<meta property="og:image" content="https://img.alicdn.com/imgextra/i2/2406102577/TB2ESNWdVXXXXXvXXXXXXXXXXXX_!!2406102577.png">
+<meta property="og:image" content="https://img.alicdn.com/imgextra/i4/2406102577/TB2K9BDdVXXXXXSXpXXXXXXXXXX_!!2406102577.png">
+<meta property="og:image" content="https://img.alicdn.com/imgextra/i4/2406102577/TB2lr8AdVXXXXaFXpXXXXXXXXXX_!!2406102577.png">
+<meta property="og:image" content="https://img.alicdn.com/imgextra/i1/2406102577/TB2ThJxdVXXXXbxXpXXXXXXXXXX_!!2406102577.png">
+<meta property="og:image" content="https://img.alicdn.com/imgextra/i1/2406102577/TB2gbpCdVXXXXafXpXXXXXXXXXX_!!2406102577.png">
+<meta property="og:image" content="https://img.alicdn.com/imgextra/i4/2406102577/TB2pa0SdVXXXXaMXXXXXXXXXXXX_!!2406102577.png">
+<meta property="og:image" content="https://img.alicdn.com/imgextra/i1/2406102577/TB2pyRwdVXXXXbcXpXXXXXXXXXX_!!2406102577.png">
+<meta property="og:image" content="https://img.alicdn.com/imgextra/i2/2406102577/TB27tdBdVXXXXa2XpXXXXXXXXXX_!!2406102577.png">
+<meta property="og:image" content="https://img.alicdn.com/imgextra/i1/2406102577/TB2XPhWdVXXXXXsXXXXXXXXXXXX_!!2406102577.png">
+<meta property="og:image" content="https://img.alicdn.com/imgextra/i1/2406102577/TB2lmp0dVXXXXXyXXXXXXXXXXXX_!!2406102577.png">
+<meta property="og:image" content="https://img.alicdn.com/imgextra/i3/2406102577/TB22BJRdVXXXXbuXXXXXXXXXXXX_!!2406102577.png">
+<meta property="og:image" content="https://img.alicdn.com/imgextra/i2/2406102577/TB2CeFxdVXXXXb.XpXXXXXXXXXX_!!2406102577.png">
+<meta property="og:image" content="https://img.alicdn.com/imgextra/i2/2406102577/TB2rRVQdVXXXXb4XXXXXXXXXXXX_!!2406102577.png">
+<meta property="og:image" content="https://img.alicdn.com/imgextra/i1/2406102577/TB2mG0ydVXXXXbyXpXXXXXXXXXX_!!2406102577.png">
+<meta property="og:image" content="https://img.alicdn.com/imgextra/i1/2406102577/TB2utlTdVXXXXbbXXXXXXXXXXXX_!!2406102577.png">
+<meta property="og:updated_time" content="2016-12-12T03:21:14.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CSS3 伸缩布局盒模型">
+<meta name="twitter:description" content="原文地址                                    　　CSS3引入的布局模式Flexbox布局，主要思想是让容器有能力让其子项目能够改变其宽度，高度，以最佳方式填充可用空间。Flex容器使用Flex项目可以自动放大与收缩，用来填补可用的空闲空间。　　更重要的是，Flexbox布局方向不可预知，不像常规的布局(块级从上到下">
+<meta name="twitter:image" content="https://img.alicdn.com/imgextra/i2/2406102577/TB2qVpodVXXXXXLXpXXXXXXXXXX_!!2406102577.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"right","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '6342373090747483000',
+      author: 'Author'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/12/12/CSS3-伸缩布局盒模型/"/>
+
+
+  <title> CSS3 伸缩布局盒模型 | 行止由心 </title>
+</head>
+
+<body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">行止由心</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">知识管理，自我管理</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                CSS3 伸缩布局盒模型
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-12-12T11:19:46+08:00" content="2016-12-12">
+              2016-12-12
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/转载/" itemprop="url" rel="index">
+                    <span itemprop="name">转载</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/12/12/CSS3-伸缩布局盒模型/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/12/CSS3-伸缩布局盒模型/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/12/12/CSS3-伸缩布局盒模型/" class="leancloud_visitors" data-flag-title="CSS3 伸缩布局盒模型">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><div id="topics"><br>    <div class="post"><br>        <h1 class="postTitle"><br>            <a id="cb_post_title_url" class="postTitle2" href="http://www.cnblogs.com/fxycm/p/4649648.html" target="_blank" rel="external">原文地址</a><br>        </h1><br>        <div class="clear"></div><br>        <div class="postBody"><br>            <div id="cnblogs_post_body" class="cnblogs-markdown"><p>　　CSS3引入的布局模式Flexbox布局，主要思想是让容器有能力让其子项目能够改变其宽度，高度，以最佳方式填充可用空间。Flex容器使用Flex项目可以自动放大与收缩，用来填补可用的空闲空间。<br><br>　　更重要的是，Flexbox布局方向不可预知，不像常规的布局(块级从上到下，内联从左到右)，而那些常规的适合页面布局，但对于支持大型或者复杂的应用程序就缺乏灵活性。<br><br>　　如果常规布局是基于块和内联文本流方向，那么Flex布局就是基于“Flex-flow”方向。先来了解一下伸缩盒模型的一些专用术语。</p></div></div></div></div></p>
+<p><img src="https://img.alicdn.com/imgextra/i2/2406102577/TB2qVpodVXXXXXLXpXXXXXXXXXX_!!2406102577.png"></p><br><p>　　<strong>主轴</strong>：Flex容器的主轴主要用来配置Flex项目。他不一定是水平的，这主要取决于fle-direction属性。<br><br>　　<strong>主轴起点，主轴终点</strong>：Flex项目的配置从容器的主轴起点边开始，往主轴终点边结束。<br><br>　　<strong>主轴长度</strong>：Flex项目在主轴方向的宽度或高度就是项目的主轴长度，Flex项目的主轴长度属性是width或height属性，由哪一个对着主轴方向决定。<br><br>　　<strong>侧轴</strong>：与主轴垂直的轴称作侧轴，是侧轴方向的延伸。<br><br>　　<strong>侧轴起点，侧轴终点</strong>：伸缩行的配置从容器的侧轴起点边开始，往侧轴终点边结束。<br><br>　　<strong>侧轴长度</strong>：Flex项目在侧轴方向的宽度或高度就是项目的侧轴长度，Flex项目的侧轴长度属性是widht或height属性，由哪一个对着主轴方向决定。</p><br><p>　　Flex布局的语法规范经过几年发生了很大的变化，也给Flexbox的使用带来一定的局限性，因为语法规范版本众多，浏览器支持不一致，致使Flexbox布局使用不多。Flexbox布局语法规范主要分成三种。</p><br><p>　　旧版本，2009年版本，是最早的伸缩布局，各大主流浏览器对其支持性略有不同，可惜的是，对Flexbox布局的各属性支持也不完全，在使用时还需添加各浏览器的前缀。<br><br>　　混合版本，2011年版本，只有IE10支持。<br><br>　　最新版本,2012年版本,除了Safari浏览器不支持外，其他最新浏览器都支持这个版本。</p><br><h2 id="flex容器属性">Flex容器属性</h2><br><h3 id="display">display</h3><br><p>　　要改变元素的模式为伸缩容器，需要使用display属性。</p><br><pre><code>display:flex | inline-flex  </code></pre><br><p>　　flex:设置为块级伸缩容器。<br><br>　　inline-flex:设置为内联级伸缩容器。</p><br><p><img src="https://img.alicdn.com/imgextra/i2/2406102577/TB2sCdFdVXXXXa_XXXXXXXXXXXX_!!2406102577.png"></p><br><pre><code>&lt;!DOCTYPE html&gt;<br>&lt;html lang=&quot;en&quot; xmlns=&quot;<a href="http://www.w3.org/1999/xhtml&quot;&amp;gt" target="_blank" rel="external">http://www.w3.org/1999/xhtml&quot;&amp;gt</a>;<br>&lt;head&gt;<br>&lt;meta charset=&quot;utf-8&quot; /&gt;<br>&lt;title&gt;&lt;/title&gt;<br>&lt;style&gt;<br>    <em>{<br>        margin:0;<br>        padding:0;<br>    }<br>    div&gt;div{<br>        width:100px;<br>        height:100px;<br>        line-height:100px;<br>        border:1px solid;<br>        text-align:center;<br>        margin:10px;<br>    }<br>    #box{<br>        display:-moz-box;<br>        display:-webkit-box;<br>        display:-ms-flexbox;<br>        display:-webkit-flex;<br>        display:flex;<br>        border:1px solid;<br>        margin:20px;<br>    }<br>    #inline{<br>        display:-moz-inline-box;<br>        display:-webkit-inline-box;<br>        display:-ms-inline-flexbox;<br>        display:-webkit-inline-flexbox;<br>        display:inline-flex;<br>        border:1px solid;<br>        margin:20px;<br>    }<br>&lt;/style&gt;<br>&lt;/head&gt;<br>&lt;body&gt;<br>&lt;div id=&quot;box&quot;&gt;<br>    &lt;div&gt;A&lt;/div&gt;<br>    &lt;div&gt;B&lt;/div&gt;<br>    &lt;div&gt;C&lt;/div&gt;<br>    &lt;div&gt;D&lt;/div&gt;<br>&lt;/div&gt;<br>&lt;div id=&quot;inline&quot;&gt;<br>    &lt;div&gt;A&lt;/div&gt;<br>    &lt;div&gt;B&lt;/div&gt;<br>    &lt;div&gt;C&lt;/div&gt;<br>    &lt;div&gt;D&lt;/div&gt;<br>&lt;/div&gt;<br>&lt;/body&gt;<br>&lt;/html&gt; </em></code></pre><br><p><img src="https://img.alicdn.com/imgextra/i1/2406102577/TB2G9JIdVXXXXafXXXXXXXXXXXX_!!2406102577.png"></p><br><p>　　块级伸缩容器与内联级伸缩容器类似，默认都是从左往右排列，唯一不同的是块级伸缩容器独占一行，而内联级伸缩容器随着内容改变。<br><br>　　Flex容器不是块容器，因此有些设计用来控制块布局的属性在伸缩布局中不适用。浮动无法影响伸缩容器，而且伸缩容器的margin与其内容的margin不会重叠。如果内联伸缩容器设置了浮动，元素将会以块级伸缩容器显示。</p><br><h3 id="flex-direction">flex-direction</h3><br><p>　　定义Flex项目在Flex容器中放置的方向。</p><br><pre><code>flex-direction:row | row-reverse | column | column-reverse</code></pre><br><p>　　row:默认值，如果书写方式是ltr，那么Flex项目从左向右排列；如果书写方式是rtl，那么Flex项目从右向左排列。<br><br>　　row-reverse:如果书写方式是ltr，那么Flex项目从右向左排列；如果书写方式是rtl，那么Flex项目从左向右排列。<br><br>　　column:和row类似，方向从上到下排列。<br><br>　　column-reverse:和row-reverse类似，方向从下到上排列。</p><br><p><img src="https://img.alicdn.com/imgextra/i3/2406102577/TB2SBRxdVXXXXcRXXXXXXXXXXXX_!!2406102577.png"></p><br><pre><code>&lt;!DOCTYPE html&gt;<br>&lt;html lang=&quot;en&quot; xmlns=&quot;<a href="http://www.w3.org/1999/xhtml&quot;&amp;gt" target="_blank" rel="external">http://www.w3.org/1999/xhtml&quot;&amp;gt</a>;<br>&lt;head&gt;<br>&lt;meta charset=&quot;utf-8&quot; /&gt;<br>&lt;title&gt;&lt;/title&gt;<br>&lt;style&gt;
+    {<br>        margin:0;<br>        padding:0;<br>    }<br>    div&gt;div{<br>        width:100px;<br>        height:100px;<br>        line-height:100px;<br>        border:1px solid;<br>        text-align:center;<br>        margin:10px;<br>    }<br>    .box{<br>        display:-moz-box;<br>        display:-webkit-box;<br>        display:-ms-flexbox;<br>        display:-webkit-flexbox;<br>        display:flex;<br>        border:1px solid;<br>        margin:20px;<br>    }<br>    .box1{<br>        /<em>定义Flex项目在Flex容器中放置的方向,从左往右。</em>/<br>        -moz-box-orient:block-axis;<br>        -moz-box-direction:normal;<br>        -webkit-box-orient:block-axis;<br>        -webkit-box-direction:normal;<br>        flex-direction:row;<br>    }<br>    .box2{<br>        /<em>定义Flex项目在Flex容器中放置的方向，从右往左。</em>/<br>        -moz-box-orient:block-axis;<br>        -moz-box-direction:reverse;<br>        -webkit-box-orient:block-axis;<br>        -webkit-box-direction:reverse;<br>        flex-direction:row-reverse;<br>    }<br>    .box3{<br>       /<em>定义Flex项目在Flex容器中放置的方向，从上往下。</em>/<br>        -moz-box-orient:inline-axis;<br>        -moz-box-direction:normal;<br>        -webkit-box-orient:inline-axis;<br>        -webkit-box-direction:normal;<br>        flex-direction:column;<br>    }<br>    .box4{<br>        /<em>定义Flex项目在Flex容器中放置的方向，从下往上。</em>/<br>        -moz-box-orient:inline-axis;<br>        -moz-box-direction:reverse;<br>        -webkit-box-orient:inline-axis;<br>        -webkit-box-direction:reverse;<br>        flex-direction:column-reverse;<br>    }<br>&lt;/style&gt;<br>&lt;/head&gt;<br>&lt;body&gt;<br>&lt;div class=&quot;box box1&quot;&gt;<br>    &lt;div&gt;A&lt;/div&gt;<br>    &lt;div&gt;B&lt;/div&gt;<br>    &lt;div&gt;C&lt;/div&gt;<br>    &lt;div&gt;D&lt;/div&gt;<br>&lt;/div&gt;<br>&lt;div class=&quot;box box2&quot;&gt;<br>    &lt;div&gt;A&lt;/div&gt;<br>    &lt;div&gt;B&lt;/div&gt;<br>    &lt;div&gt;C&lt;/div&gt;<br>    &lt;div&gt;D&lt;/div&gt;<br>&lt;/div&gt;<br>&lt;div class=&quot;box box3&quot;&gt;<br>    &lt;div&gt;A&lt;/div&gt;<br>    &lt;div&gt;B&lt;/div&gt;<br>    &lt;div&gt;C&lt;/div&gt;<br>    &lt;div&gt;D&lt;/div&gt;<br>&lt;/div&gt;<br>&lt;div class=&quot;box box4&quot;&gt;<br>    &lt;div&gt;A&lt;/div&gt;<br>    &lt;div&gt;B&lt;/div&gt;<br>    &lt;div&gt;C&lt;/div&gt;<br>    &lt;div&gt;D&lt;/div&gt;<br>&lt;/div&gt;<br>&lt;/body&gt;<br>&lt;/html&gt; </code></pre><br><p><img src="https://img.alicdn.com/imgextra/i3/2406102577/TB2wYtudVXXXXacXpXXXXXXXXXX_!!2406102577.png"></p><br><p>　　默认值flex-direction等于row时，Flex项目从左往右排列。</p><br><p><img src="https://img.alicdn.com/imgextra/i4/2406102577/TB22r0zdVXXXXc5XXXXXXXXXXXX_!!2406102577.png"></p><br><p>　　flex-direction等于row-reverse时，Flex项目从右往左排列。</p><br><p><img src="https://img.alicdn.com/imgextra/i3/2406102577/TB2CLlOdVXXXXXiXXXXXXXXXXXX_!!2406102577.png"></p><br><p>　　flex-direction等于column时，Flex项目从上往下排列。</p><br><p><img src="https://img.alicdn.com/imgextra/i3/2406102577/TB2JxJMdVXXXXXSXXXXXXXXXXXX_!!2406102577.png"></p><br><p>　　flex-direction等于column-reverse时，Flex项目从下往上排列。</p><br><h3 id="flex-wrap">flex-wrap</h3><br><p>　　默认情况下，Flex项目都尽可能在一行显示，你可以根据flex-wrap的属性值来改变，让Flex项目多行显示。</p><br><pre><code>flex-wrap:nowrap | wrap | wrap-reverse</code></pre><br><p>　<br><br>　　nowrap:默认值，单行显示，如果书写方式是ltr，Flex项目从左往右排列；如果书写方式是trl，Flex项目从右往左排列。<br><br>　　wrap:多行显示，如果书写方式是ltr，Flex项目从左往右排列；如果书写方式是trl，Flex项目从右往左排列。<br><br>　　wrap-reverse:多行显示，如果书写方式是ltr，Flex项目从右往左排列；如果书写方式是trl，Flex项目从左往右排列。</p><br><p><img src="https://img.alicdn.com/imgextra/i1/2406102577/TB2__0jdVXXXXb5XpXXXXXXXXXX_!!2406102577.png"></p><br><pre><code>&lt;!DOCTYPE html&gt;<br>&lt;html lang=&quot;en&quot; xmlns=&quot;<a href="http://www.w3.org/1999/xhtml&quot;&amp;gt" target="_blank" rel="external">http://www.w3.org/1999/xhtml&quot;&amp;gt</a>;<br>&lt;head&gt;<br>&lt;meta charset=&quot;utf-8&quot; /&gt;<br>&lt;title&gt;&lt;/title&gt;<br>&lt;style&gt;<br>    <em>{<br>        margin:0;<br>        padding:0;<br>    }<br>    .box{<br>        display:-moz-box;<br>        display:-webkit-box;<br>        display:-ms-flexbox;<br>        display:-webkit-flexbox;<br>        display:flex;<br>        border:1px solid;<br>        margin:20px;<br>        -moz-box-lines:multiple;<br>        /</em>定义伸缩换行属性为nowrap(默认值)<em>/<br>        flex-wrap:nowrap;<br>    }<br>    .box div{<br>        width:100px;<br>        height:100px;<br>        line-height:100px;<br>        border:1px solid;<br>        text-align:center;<br>        margin:10px;<br>    }<br><br>&lt;/style&gt;<br>&lt;/head&gt;<br>&lt;body&gt;<br>&lt;div class=&quot;box&quot;&gt;<br>    &lt;div&gt;A&lt;/div&gt;<br>    &lt;div&gt;B&lt;/div&gt;<br>    &lt;div&gt;C&lt;/div&gt;<br>    &lt;div&gt;D&lt;/div&gt;<br>    &lt;div&gt;E&lt;/div&gt;<br>    &lt;div&gt;F&lt;/div&gt;<br>    &lt;div&gt;G&lt;/div&gt;<br>    &lt;div&gt;H&lt;/div&gt;<br>    &lt;div&gt;I&lt;/div&gt;<br>    &lt;div&gt;J&lt;/div&gt;<br>    &lt;div&gt;K&lt;/div&gt;<br>    &lt;div&gt;L&lt;/div&gt;<br>&lt;/div&gt;<br>&lt;/body&gt;<br>&lt;/html&gt; </em></code></pre><br><p><img src="https://img.alicdn.com/imgextra/i1/2406102577/TB2ra0HdVXXXXa6XXXXXXXXXXXX_!!2406102577.png"><br><br><img src="https://img.alicdn.com/imgextra/i4/2406102577/TB2ub0AdVXXXXcOXXXXXXXXXXXX_!!2406102577.png"></p><br><p>　　因为默认值nowrap不准换行，伸缩容器容纳不下伸缩项目时，各伸缩项目会根据默认的收缩比例进行缩小以适应伸缩容器的宽度。</p><br><pre><code>.box{<br>   …<br>   flex-wrap:wrap;<br>}</code></pre><br><p><img src="https://img.alicdn.com/imgextra/i1/2406102577/TB2qWhBdVXXXXcGXXXXXXXXXXXX_!!2406102577.png"></p><br><p>　　flex-wrap等于wrap时，伸缩容器容不下伸缩项目时自动换行了。</p><br><pre><code>.box{<br>   …<br>   flex-wrap:wrap-reverse;<br>}</code></pre><br><p><img src="https://img.alicdn.com/imgextra/i3/2406102577/TB2QOXrdVXXXXaOXpXXXXXXXXXX_!!2406102577.png"></p><br><p>　　flex-wrap等于wrap-reverse时，伸缩容器容不下伸缩项目时换行了。不同的是换行的方向相反。</p><br><h3 id="flex-flow">flex-flow</h3><br><p>　　这是flex-direction和flex-wrap两个属性的缩写,默认值是row nowrap。</p><br><pre><code>flex-flow:flex-direction || flex-wrap</code></pre><br><h3 id="justify-content">justify-content</h3><br><p>　　用来设置伸缩项目在主轴上的对齐方式。指定如何在伸缩项目之间分布伸缩容器额外空间。当一行上的所有伸缩项目不能伸缩或可伸缩但是已达到最大长度时，这一属性才会对伸缩容器额外空间进行分配。当伸缩项目溢出某一行时，这一属性也会在项目的对齐上施加一些控制。</p><br><pre><code>justify-content:flex-start | flex-end | center | space-between | space-around</code></pre><br><p>　　flex-start:默认值，伸缩项目向一行的起始位置靠齐。伸缩容器沿着布局轴方向的所有额外空间都被置于布局轴的末尾。<br><br>　　flex-end:和flex-start相反，伸缩项目向一行的结束位置靠齐。伸缩容器沿着布局轴方向的所有额外空间都被置于布局轴的开始。<br><br>　　center:伸缩项目向一行的中间位置靠齐。伸缩容器的所有额外空间平均分布在第一伸缩项目前面和最后一个伸缩项目的后面。<br><br>　　space-between:伸缩项目会平均分布在行里。伸缩容器的所有额外空间平均分布在所有伸缩项目之间，但是在第一个伸缩项目之前和最后一个伸缩项目之后不分配空间，也就是说，第一个伸缩项目靠齐开始位置，最后一个伸缩项目靠齐结束位置。<br><br>　　space-around:伸缩项目会品均分布在行里。伸缩容器的所有额外空间品均分布在所有伸缩项目之间，但是第一个伸缩项目之前与最后一个伸缩项目之后只分配其他位置得到额外空间的一半。</p><br><p><img src="https://img.alicdn.com/imgextra/i4/2406102577/TB2TlhudVXXXXacXpXXXXXXXXXX_!!2406102577.png"></p><br><p><img src="https://img.alicdn.com/imgextra/i2/2406102577/TB2hIRodVXXXXbFXpXXXXXXXXXX_!!2406102577.png"></p><br><pre><code>&lt;!DOCTYPE html&gt;<br>&lt;html lang=&quot;en&quot; xmlns=&quot;<a href="http://www.w3.org/1999/xhtml&quot;&amp;gt" target="_blank" rel="external">http://www.w3.org/1999/xhtml&quot;&amp;gt</a>;<br>&lt;head&gt;<br>&lt;meta charset=&quot;utf-8&quot; /&gt;<br>&lt;title&gt;&lt;/title&gt;<br>&lt;style&gt;
+    {<br>        margin:0;<br>        padding:0;<br>    }<br>    .box{<br>    width:500px;<br>    height:500px;<br>        border:1px solid;<br>        margin:20px;<br>        display:flex;<br>        justify-content:flex-start;<br>    }<br>    body&gt;div:first-child{<br>        flex-flow:row nowrap;<br>    }<br>    body&gt;div:last-child{<br>        flex-flow:column nowrap;<br>    }<br>    .box div{<br>        width:100px;<br>        height:100px;<br>        line-height:100px;<br>        border:1px solid;<br>        text-align:center;<br>        margin:10px;<br>    }<br><br>&lt;/style&gt;<br>&lt;/head&gt;<br>&lt;body&gt;<br>&lt;div class=&quot;box&quot;&gt;<br>    &lt;div&gt;A&lt;/div&gt;<br>    &lt;div&gt;B&lt;/div&gt;<br>    &lt;div&gt;C&lt;/div&gt;<br>&lt;/div&gt;<br>&lt;div class=&quot;box&quot;&gt;<br>    &lt;div&gt;A&lt;/div&gt;<br>    &lt;div&gt;B&lt;/div&gt;<br>    &lt;div&gt;C&lt;/div&gt;<br>&lt;/div&gt;<br>&lt;/body&gt;<br>&lt;/html&gt; </code></pre><br><p><img src="https://img.alicdn.com/imgextra/i2/2406102577/TB2R_lIdVXXXXbEXXXXXXXXXXXX_!!2406102577.png"></p><br><p><img src="https://img.alicdn.com/imgextra/i1/2406102577/TB27DVKdVXXXXbaXXXXXXXXXXXX_!!2406102577.png"></p><br><p>　　justify-content等于默认值flex-start时，伸缩项目在主轴起点处对齐，所有额外空间在最后一个伸缩项目的后面。</p><br><pre><code>.box{<br>   …<br>   justify-content:flex-end;<br>}</code></pre><br><p><img src="https://img.alicdn.com/imgextra/i1/2406102577/TB2bAhwdVXXXXaSXpXXXXXXXXXX_!!2406102577.png"></p><br><p><img src="https://img.alicdn.com/imgextra/i4/2406102577/TB2f9NBdVXXXXXvXpXXXXXXXXXX_!!2406102577.png"></p><br><p>　　justify-content等于flex-end时，伸缩项目在主轴结束处对齐，所有额外空间在第一个伸缩项目前面。</p><br><pre><code>.box{<br>   …<br>   justify-content:center;<br>}</code></pre><br><p><img src="https://img.alicdn.com/imgextra/i3/2406102577/TB29LRydVXXXXaxXpXXXXXXXXXX_!!2406102577.png"></p><br><p><img src="https://img.alicdn.com/imgextra/i2/2406102577/TB2EERIdVXXXXbZXXXXXXXXXXXX_!!2406102577.png"></p><br><p>　　justify-content等于center时，所有项目在容器主轴中间处对齐，额外空间在第一个前面和最后一个后面。</p><br><pre><code>.box{<br>   …<br>   justify-content:space-between;<br>}</code></pre><br><p><img src="https://img.alicdn.com/imgextra/i2/2406102577/TB2MexQdVXXXXavXXXXXXXXXXXX_!!2406102577.png"></p><br><p><img src="https://img.alicdn.com/imgextra/i2/2406102577/TB24.lydVXXXXarXpXXXXXXXXXX_!!2406102577.png"></p><br><p>　　justity-content等于space-between时，第一个项目在主轴开始处，最后一个项目在主轴结束处，所有额外空间被其他项目平分。</p><br><pre><code>.box{<br>   …<br>   justify-content:space-around;<br>}</code></pre><br><p><img src="https://img.alicdn.com/imgextra/i2/2406102577/TB240lrdVXXXXbLXpXXXXXXXXXX_!!2406102577.png"></p><br><p><img src="https://img.alicdn.com/imgextra/i2/2406102577/TB2gmNrdVXXXXb7XpXXXXXXXXXX_!!2406102577.png"></p><br><p>　　justify-content等于space-around时，类似于space-between，但是第一个项目前面与最后一个项目后面分配了其他项目拥有额外空间一半的空间。</p><br><h3 id="align-items">align-items</h3><br><p>　　align-items属性和justify-content同样是用来管理伸缩容器额外空间，不同的是，justify-content是用来管理伸缩容器主轴方向的额外空间，而align-items是用来管理伸缩容器侧轴方向的额外空间。</p><br><pre><code>align-items:flex-start | flex-end | center | baseline | stretch</code></pre><br><p>　　flex-start:伸缩项目在侧轴起点边的外边距紧靠住该行在侧轴起始的边。<br><br>　　flex-end:伸缩项目在侧轴终点边的外边距靠住该行在侧轴终点的边。<br><br>　　center:伸缩项目的外边距盒在该行的侧轴上居中放置。<br><br>　　baseline:如果伸缩项目的行内轴与侧轴为同一条，则该值和flex-start等效。其它情况下，该值将参与基线对齐。所有参与该对齐方式的伸缩项目将按下列方式排列：首先将这些伸缩项目的基线进行对齐，随后其中基线至侧轴起点边的外边距距离最长的那个项目将紧靠住该行在侧轴起点的边。<br><br>　　stretch:如果侧轴长度属性的值为auto，则此值会使项目的外边距盒的尺寸在遵照min/max-width/height属性的限制下尽可能接近所在行的尺寸。</p><br><p><img src="https://img.alicdn.com/imgextra/i4/2406102577/TB2aFlVdVXXXXXpXXXXXXXXXXXX_!!2406102577.png"></p><br><p><img src="https://img.alicdn.com/imgextra/i1/2406102577/TB2pSpHdVXXXXcuXXXXXXXXXXXX_!!2406102577.png"></p><br><pre><code>.box{<br>   …<br>   align-items:flex-start;<br>}</code></pre><br><p><img src="https://img.alicdn.com/imgextra/i2/2406102577/TB2QQtzdVXXXXapXpXXXXXXXXXX_!!2406102577.png"></p><br><p><img src="https://img.alicdn.com/imgextra/i1/2406102577/TB2xKFMdVXXXXbxXXXXXXXXXXXX_!!2406102577.png"></p><br><p>　　align-items等于flex-start时，伸缩项目在侧轴起点处对齐，额外空间在侧轴终点处。</p><br><pre><code>.box{<br>   …<br>   align-items:flex-end;<br>}</code></pre><br><p><img src="https://img.alicdn.com/imgextra/i4/2406102577/TB2NslNdVXXXXaPXXXXXXXXXXXX_!!2406102577.png"></p><br><p><img src="https://img.alicdn.com/imgextra/i1/2406102577/TB2XdVFdVXXXXc8XXXXXXXXXXXX_!!2406102577.png"></p><br><p>　　align-items等于flex-end时，伸缩项目在侧轴结束处对齐，额外空间在侧轴起点处。</p><br><pre><code>.box{<br>   …<br>   align-items:center;<br>}</code></pre><br><p><img src="https://img.alicdn.com/imgextra/i4/2406102577/TB2JyXtdVXXXXbKXpXXXXXXXXXX_!!2406102577.png"></p><br><p><img src="https://img.alicdn.com/imgextra/i1/2406102577/TB2JBXqdVXXXXcfXpXXXXXXXXXX_!!2406102577.png"></p><br><p>　　align-items等于center时，伸缩项目在侧轴中间处对齐，额外空间在侧轴两端。</p><br><pre><code>.box{<br>   …<br>   align-items:baseline;<br>}</code></pre><br><p><img src="https://img.alicdn.com/imgextra/i2/2406102577/TB2QQtzdVXXXXapXpXXXXXXXXXX_!!2406102577.png"></p><br><p><img src="https://img.alicdn.com/imgextra/i1/2406102577/TB2xKFMdVXXXXbxXXXXXXXXXXXX_!!2406102577.png"></p><br><p>　　align-items等于baseline时，如果伸缩项目的行内轴与侧轴为同一条，则该值和flex-start等效，那么额外空间在侧轴结束处。</p><br><pre><code>.box{<br>   …<br>   align-items:stretch;<br>}</code></pre><br><p><img src="https://img.alicdn.com/imgextra/i1/2406102577/TB2v38ydVXXXXaIXpXXXXXXXXXX_!!2406102577.png"></p><br><p><img src="https://img.alicdn.com/imgextra/i3/2406102577/TB2TUpzdVXXXXaGXpXXXXXXXXXX_!!2406102577.png"></p><br><p>　　align-items等于stretch时，伸缩项目往侧轴方向拉伸以占用额外空间。</p><br><h3 id="align-content">align-content</h3><br><p>　　是伸缩项目占多行时在侧轴方向的对齐属性，这个属性将对每一行起作用而不是每个伸缩项目。</p><br><pre><code>align-content:flex-start | flex-end | center | space-between | space-around | stretch</code></pre><br><p>　　flex-start:各行向伸缩容器的起点位置堆叠。<br><br>　　flex-end:各行向伸缩容器的结束位置堆叠。<br><br>　　center:各行向伸缩容器的中间位置堆叠。<br><br>　　space-between:各行在伸缩容器中平均分布。<br><br>　　space-around:各行在伸缩容器中品均分布，在两边各有一半空间。<br><br>　　stretch:默认值，各行将会伸展以占用额外空间。</p><br><p><img src="https://img.alicdn.com/imgextra/i4/2406102577/TB2zQlxdVXXXXa9XpXXXXXXXXXX_!!2406102577.png"></p><br><p><img src="https://img.alicdn.com/imgextra/i4/2406102577/TB2mXhMdVXXXXbPXXXXXXXXXXXX_!!2406102577.png"></p><br><pre><code>&lt;!DOCTYPE html&gt;<br>&lt;html lang=&quot;en&quot; xmlns=&quot;<a href="http://www.w3.org/1999/xhtml&quot;&amp;gt" target="_blank" rel="external">http://www.w3.org/1999/xhtml&quot;&amp;gt</a>;<br>&lt;head&gt;<br>&lt;meta charset=&quot;utf-8&quot; /&gt;<br>&lt;title&gt;&lt;/title&gt;<br>&lt;style&gt;<br>    <em>{<br>        margin:0;<br>        padding:0;<br>    }<br>    .box{<br>        border:1px solid;<br>        margin:20px;<br>        display:flex;<br>        align-content:flex-start;<br>        height:500px;<br>        width:500px;<br>    }<br>    body&gt;div:first-child{<br>        flex-flow:row wrap;<br>    }<br>    body&gt;div:last-child{<br>        flex-flow:column wrap;<br>    }<br>    .box div{<br>        min-width:100px;<br>        line-height:100px;<br>        border:1px solid;<br>        text-align:center;<br>        margin:10px;<br>    }<br><br>&lt;/style&gt;<br>&lt;/head&gt;<br>&lt;body&gt;<br>&lt;div class=&quot;box&quot;&gt;<br>    &lt;div&gt;A&lt;/div&gt;<br>    &lt;div&gt;B&lt;/div&gt;<br>    &lt;div&gt;C&lt;/div&gt;<br>    &lt;div&gt;A&lt;/div&gt;<br>    &lt;div&gt;B&lt;/div&gt;<br>    &lt;div&gt;C&lt;/div&gt;<br>    &lt;div&gt;A&lt;/div&gt;<br>    &lt;div&gt;B&lt;/div&gt;<br>    &lt;div&gt;C&lt;/div&gt;<br>    &lt;div&gt;A&lt;/div&gt;<br>    &lt;div&gt;B&lt;/div&gt;<br>&lt;/div&gt;<br>&lt;div class=&quot;box&quot;&gt;<br>    &lt;div&gt;A&lt;/div&gt;<br>    &lt;div&gt;B&lt;/div&gt;<br>    &lt;div&gt;C&lt;/div&gt;<br>    &lt;div&gt;A&lt;/div&gt;<br>    &lt;div&gt;B&lt;/div&gt;<br>    &lt;div&gt;C&lt;/div&gt;<br>    &lt;div&gt;A&lt;/div&gt;<br>    &lt;div&gt;B&lt;/div&gt;<br>    &lt;div&gt;C&lt;/div&gt;<br>    &lt;div&gt;A&lt;/div&gt;<br>    &lt;div&gt;B&lt;/div&gt;<br>&lt;/div&gt;<br>&lt;/body&gt;<br>&lt;/html&gt; </em></code></pre><br><p><img src="https://img.alicdn.com/imgextra/i1/2406102577/TB2UydLdVXXXXb4XXXXXXXXXXXX_!!2406102577.png"></p><br><p><img src="https://img.alicdn.com/imgextra/i3/2406102577/TB2bwXwdVXXXXbYXpXXXXXXXXXX_!!2406102577.png"></p><br><p>　　align-content等于flex-start时，各行向侧轴起点处对齐，额外空间在侧轴终点处。</p><br><pre><code>.box{<br>   …<br>   align-content:flex-end;<br>}</code></pre><br><p><img src="https://img.alicdn.com/imgextra/i2/2406102577/TB2ojXYdVXXXXXkXXXXXXXXXXXX_!!2406102577.png"></p><br><p><img src="https://img.alicdn.com/imgextra/i1/2406102577/TB233hYdVXXXXXmXXXXXXXXXXXX_!!2406102577.png"></p><br><p>　　align-content等于flex-end时，各行向侧轴终点处对齐，额外空间在侧轴开始处。</p><br><pre><code>.box{<br>   …<br>   align-content:center;<br>}</code></pre><br><p><img src="https://img.alicdn.com/imgextra/i3/2406102577/TB2NG8FdVXXXXXHXpXXXXXXXXXX_!!2406102577.png"></p><br><p><img src="https://img.alicdn.com/imgextra/i2/2406102577/TB2mqlPdVXXXXboXXXXXXXXXXXX_!!2406102577.png"></p><br><p>　　align-content等于center时，各行向侧轴中间处对齐，额外空间在侧轴两端。</p><br><pre><code>.box{<br>   …<br>   align-content:space-between;<br>}</code></pre><br><p><img src="https://img.alicdn.com/imgextra/i2/2406102577/TB2ESNWdVXXXXXvXXXXXXXXXXXX_!!2406102577.png"></p><br><p><img src="https://img.alicdn.com/imgextra/i4/2406102577/TB2K9BDdVXXXXXSXpXXXXXXXXXX_!!2406102577.png"></p><br><p>　　align-content等于space-between时，第一行向侧轴起点处对齐，最后一行向侧轴终点处对齐，额外空间被除了第一行与最后一行处平分。</p><br><pre><code>.box{<br>   …<br>   align-content:space-around;<br>}</code></pre><br><p><img src="https://img.alicdn.com/imgextra/i4/2406102577/TB2lr8AdVXXXXaFXpXXXXXXXXXX_!!2406102577.png"></p><br><p><img src="https://img.alicdn.com/imgextra/i1/2406102577/TB2ThJxdVXXXXbxXpXXXXXXXXXX_!!2406102577.png"></p><br><p>　　align-content等于space-around时，第一行向侧轴起点处对齐，最后一行向侧轴终点处对齐，第一行与最后一行的额外空间是其他处额外空间的一半。</p><br><pre><code>.box{<br>   …<br>   align-content:stretch;<br>}</code></pre><br><p><img src="https://img.alicdn.com/imgextra/i1/2406102577/TB2gbpCdVXXXXafXpXXXXXXXXXX_!!2406102577.png"></p><br><p><img src="https://img.alicdn.com/imgextra/i4/2406102577/TB2pa0SdVXXXXaMXXXXXXXXXXXX_!!2406102577.png"></p><br><p>　　align-content等于默认值stretch时，各行将沿着侧轴方向伸展以占用额外空间。</p><br><h2 id="flex项目属性">Flex项目属性</h2><br><h3 id="order">order</h3><br><p>　　默认情况下，Flex项目是按照文档流的结构顺序排列，在Flexbox模型中，可以通过order属性来改变伸缩项目出现在文档中的顺序。</p><br><pre><code>order:&lt;number&gt;;</code></pre><br><p>　　number可以是负值，Flexbox容器将根据各项目中order值的大小进行排列。</p><br><p><img src="https://img.alicdn.com/imgextra/i1/2406102577/TB2pyRwdVXXXXbcXpXXXXXXXXXX_!!2406102577.png"></p><br><pre><code>&lt;!DOCTYPE html&gt;<br>&lt;html lang=&quot;en&quot; xmlns=&quot;<a href="http://www.w3.org/1999/xhtml&quot;&amp;gt" target="_blank" rel="external">http://www.w3.org/1999/xhtml&quot;&amp;gt</a>;<br>&lt;head&gt;<br>&lt;meta charset=&quot;utf-8&quot; /&gt;<br>&lt;title&gt;&lt;/title&gt;<br>&lt;style&gt;
+    {<br>        margin:0;<br>        padding:0;<br>    }<br>    .box{<br>        border:1px solid;<br>        margin:20px;<br>        display:inline-flex;<br>        flex-flow:row wrap;<br>        align-items:flex-start;<br>    }<br>    .box div{<br>        min-width:100px;<br>        line-height:100px;<br>        border:1px solid;<br>        text-align:center;<br>        margin:10px;<br>    }<br>    .box div:nth-child(1){<br>        order:2;<br>    }<br>    .box div:nth-child(2){<br>        order:1;<br>    }<br>    .box div:nth-child(3){<br>        order:3;<br>    }<br>&lt;/style&gt;<br>&lt;/head&gt;<br>&lt;body&gt;<br>&lt;div class=&quot;box&quot;&gt;<br>    &lt;div&gt;A&lt;/div&gt;<br>    &lt;div&gt;B&lt;/div&gt;<br>    &lt;div&gt;C&lt;/div&gt;<br>&lt;/div&gt;<br>&lt;/body&gt;<br>&lt;/html&gt; </code></pre><br><p><img src="https://img.alicdn.com/imgextra/i2/2406102577/TB27tdBdVXXXXa2XpXXXXXXXXXX_!!2406102577.png"></p><br><h3 id="flex-grow">flex-grow</h3><br><p>　　定义一个Flex项目的扩大比例。</p><br><pre><code>flex-grow:&lt;number&gt;</code></pre><br><p>　　默认值为0，不能取负值，没有单位。</p><br><pre><code>&lt;!DOCTYPE html&gt;<br>&lt;html lang=&quot;en&quot; xmlns=&quot;<a href="http://www.w3.org/1999/xhtml&quot;&amp;gt" target="_blank" rel="external">http://www.w3.org/1999/xhtml&quot;&amp;gt</a>;<br>&lt;head&gt;<br>&lt;meta charset=&quot;utf-8&quot; /&gt;<br>&lt;title&gt;&lt;/title&gt;<br>&lt;style&gt;<br>    <em>{<br>        margin:0;<br>        padding:0;<br>    }<br>    .box{<br>        border:1px solid;<br>        margin:20px;<br>        display:flex;<br>        flex-flow:row wrap;<br>        align-items:flex-start;<br>    }<br>    .box div{<br>        min-width:100px;<br>        line-height:100px;<br>        border:1px solid;<br>        text-align:center;<br>        margin:10px;<br>    }<br>    .box div:nth-child(1){<br>        flex-grow:1;<br>    }<br>    .box div:nth-child(2){<br>        flex-grow:2;<br>    }<br>    .box div:nth-child(3){<br>        flex-grow:1;<br>    }<br>&lt;/style&gt;<br>&lt;/head&gt;<br>&lt;body&gt;<br>&lt;div class=&quot;box&quot;&gt;<br>    &lt;div&gt;A&lt;/div&gt;<br>    &lt;div&gt;B&lt;/div&gt;<br>    &lt;div&gt;C&lt;/div&gt;<br>&lt;/div&gt;<br><br>&lt;/body&gt;<br>&lt;/html&gt;</em></code></pre><br><p><img src="https://img.alicdn.com/imgextra/i1/2406102577/TB2XPhWdVXXXXXsXXXXXXXXXXXX_!!2406102577.png"></p><br><p>　　如果伸缩项目的flex-grow设置为1，每个伸缩项目将设置一个大小相等的额外空间。如果给其中一个伸缩项目设置flex-grow设置为2，这个伸缩项目所占的额外空间是其他伸缩项目所占额外空间的2倍。<br><br>　　也可以这样理解，把上例各项目的flex-grow值加起来等于4，就是把额外空间分成4份，比例为1的占1份，比例为2的占2份。</p><br><h3 id="flex-shrink">flex-shrink</h3><br><p>　　 定义一个Flex项目的缩小比例。</p><br><pre><code>flex-shrink:&lt;number&gt;</code></pre><br><p>　　默认值为1。</p><br><pre><code>&lt;!DOCTYPE html&gt;<br>&lt;html lang=&quot;en&quot; xmlns=&quot;<a href="http://www.w3.org/1999/xhtml&quot;&amp;gt" target="_blank" rel="external">http://www.w3.org/1999/xhtml&quot;&amp;gt</a>;<br>&lt;head&gt;<br>&lt;meta charset=&quot;utf-8&quot; /&gt;<br>&lt;title&gt;&lt;/title&gt;<br>&lt;style&gt;
+    {<br>        margin:0;<br>        padding:0;<br>    }<br>    .box{<br>        width:200px;<br>        border:1px solid;<br>        margin:20px;<br>        display:flex;<br>        flex-flow:row nowrap;<br>    }<br>    .box div{<br>        width:100px;<br>        line-height:100px;<br>        border:1px solid;<br>        text-align:center;<br>        margin:10px;<br>    }<br>    .box div:nth-child(1){<br>        flex-shrink:1;<br>    }<br>    .box div:nth-child(2){<br>        flex-shrink:2;<br>    }<br>    .box div:nth-child(3){<br>        flex-shrink:1;<br>    }<br>&lt;/style&gt;<br>&lt;/head&gt;<br>&lt;body&gt;<br>&lt;div class=&quot;box&quot;&gt;<br>    &lt;div&gt;A&lt;/div&gt;<br>    &lt;div&gt;B&lt;/div&gt;<br>    &lt;div&gt;C&lt;/div&gt;<br>&lt;/div&gt;<br>&lt;/body&gt;<br>&lt;/html&gt; </code></pre><br><p><img src="https://img.alicdn.com/imgextra/i1/2406102577/TB2lmp0dVXXXXXyXXXXXXXXXXXX_!!2406102577.png"></p><br><p>　　与flex-grow类似，也是处理伸缩容器额外空间的属性，不同的是，flex-grow处理的是伸缩容器内部剩下的额外空间，而flex-shrink处理的是伸缩容器外部溢出的额外空间。上例中将溢出的额外空间分成4份，收缩比例为1的占1份，收缩比例为2的占2份，如果不设置收缩比例，默认的比例为1。</p><br><h3 id="flex-basis">flex-basis</h3><br><p>　　定义了Flex项目在分配Flex容器剩余空间之前的一个默认尺寸。</p><br><pre><code>flex-basis:&lt;length&gt; | auto<br><br>&lt;!DOCTYPE html&gt;<br>&lt;html lang=&quot;en&quot; xmlns=&quot;<a href="http://www.w3.org/1999/xhtml&quot;&amp;gt" target="_blank" rel="external">http://www.w3.org/1999/xhtml&quot;&amp;gt</a>;<br>&lt;head&gt;<br>&lt;meta charset=&quot;utf-8&quot; /&gt;<br>&lt;title&gt;&lt;/title&gt;<br>&lt;style&gt;<br>    <em>{<br>        margin:0;<br>        padding:0;<br>    }<br>    .box{<br>        width:500px;<br>        border:1px solid;<br>        margin:20px;<br>        display:flex;<br>        flex-flow:row nowrap;<br>    }<br>    .box div{<br>        width:100px;<br>        line-height:100px;<br>        border:1px solid;<br>        text-align:center;<br>        margin:10px;<br>    }<br>    .box div:nth-child(1){<br>        flex-basis:150px;<br>    }<br>    .box div:nth-child(2){<br>        flex-basis:200px;<br>    }<br>    .box div:nth-child(3){<br>        flex-basis:50px;<br>    }<br>&lt;/style&gt;<br>&lt;/head&gt;<br>&lt;body&gt;<br>&lt;div class=&quot;box&quot;&gt;<br>    &lt;div&gt;A&lt;/div&gt;<br>    &lt;div&gt;B&lt;/div&gt;<br>    &lt;div&gt;C&lt;/div&gt;<br>&lt;/div&gt;<br>&lt;/body&gt;<br>&lt;/html&gt; </em></code></pre><br><p><img src="https://img.alicdn.com/imgextra/i3/2406102577/TB22BJRdVXXXXbuXXXXXXXXXXXX_!!2406102577.png"></p><br><p>　　flex-basis类似于width，用来设置flex-basis长度并指定伸缩基准值，也就是根据可伸缩比例计算出额外空间的分布之前，伸缩项目主轴长度的起始数值。<br><br>　　如果设置为0，内容不在考虑周围额外空间。如果设置为auto，额外空间会基于flex-grow值做分布。如下所示：</p><br><p><img src="https://img.alicdn.com/imgextra/i2/2406102577/TB2CeFxdVXXXXb.XpXXXXXXXXXX_!!2406102577.png"></p><br><h3 id="flex">flex</h3><br><p>　　flex是flex-grow，flex-shrink，flex-basis三个属性的缩写。第二个和第三个参数是可选值。默认值是0 1 auto。</p><br><pre><code>flex: none | [&lt;flex-grow&gt; &lt;flex-shrink&gt;? || &lt;flex-basis&gt;]</code></pre><br><p>　　建议使用缩写属性。如果flex取值为none，等于0 0 auto。</p><br><p><img src="https://img.alicdn.com/imgextra/i2/2406102577/TB2rRVQdVXXXXb4XXXXXXXXXXXX_!!2406102577.png"></p><br><h3 id="align-self">align-self</h3><br><p>　　用来在单独的伸缩项目上覆写默认的对齐方式。</p><br><pre><code>align-self:auto | flex-start | flex-end | center | baseline | stretch</code></pre><br><p>　　align-self的值与align-items一样。<br><br>　<br><br><img src="https://img.alicdn.com/imgextra/i1/2406102577/TB2mG0ydVXXXXbyXpXXXXXXXXXX_!!2406102577.png"></p><br><pre><code>&lt;!DOCTYPE html&gt;<br>&lt;html lang=&quot;en&quot; xmlns=&quot;<a href="http://www.w3.org/1999/xhtml&quot;&amp;gt" target="_blank" rel="external">http://www.w3.org/1999/xhtml&quot;&amp;gt</a>;<br>&lt;head&gt;<br>&lt;meta charset=&quot;utf-8&quot; /&gt;<br>&lt;title&gt;&lt;/title&gt;<br>&lt;style&gt;
+    {<br>        margin:0;<br>        padding:0;<br>    }<br>    .box{<br>        width:400px;<br>        border:1px solid;<br>        margin:20px;<br>        display:flex;<br>        flex-flow:column wrap;<br>    }<br>    .box div{<br>        width:100px;<br>        line-height:100px;<br>        border:1px solid;<br>        text-align:center;<br>        margin:10px;<br>    }<br>    .box div:nth-child(1){<br>        align-self:flex-start;<br>    }<br>    .box div:nth-child(2){<br>        align-self:center;<br>    }<br>    .box div:nth-child(3){<br>        align-self:flex-end;<br>    }<br>&lt;/style&gt;<br>&lt;/head&gt;<br>&lt;body&gt;<br>&lt;div class=&quot;box&quot;&gt;<br>    &lt;div&gt;A&lt;/div&gt;<br>    &lt;div&gt;B&lt;/div&gt;<br>    &lt;div&gt;C&lt;/div&gt;<br>&lt;/div&gt;<br>&lt;/body&gt;<br>&lt;/html&gt;</code></pre><br><p><img src="https://img.alicdn.com/imgextra/i1/2406102577/TB2utlTdVXXXXbbXXXXXXXXXXXX_!!2406102577.png"></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>请我喝杯豆浆！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="http://storage1.imgchr.com/images/FullSizeRendereb28d.jpg" alt="winterrain5 WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="http://storage1.imgchr.com/images/FullSizeRender2fa7e1.jpg" alt="winterrain5 Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/伸缩布局/" rel="tag">#伸缩布局</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/12/11/Swift闭包的循环引用/" rel="next" title="Swift闭包的循环引用">
+                <i class="fa fa-chevron-left"></i> Swift闭包的循环引用
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2116/10/16/Hexo/手把手教你在Mac上搭建Hexo博客/" rel="prev" title="手把手教你在Mac上搭建Hexo博客">
+                手把手教你在Mac上搭建Hexo博客 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/12/12/CSS3-伸缩布局盒模型/"
+           data-title="CSS3 伸缩布局盒模型" data-url="http://yoursite.com/2016/12/12/CSS3-伸缩布局盒模型/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://ww4.sinaimg.cn/mw690/9dac93ccjw9eymcefq449j202s042aa2.jpg"
+               alt="winterrain5" />
+          <p class="site-author-name" itemprop="name">winterrain5</p>
+          <p class="site-description motion-element" itemprop="description">要做一个Nice的人</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">32</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">27</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/winterrain5" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/rain-winter-74" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/u/2645332940/home?topnav=1" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  微博
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">            原文地址        </span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#flex容器属性"><span class="nav-number">1.1.</span> <span class="nav-text">Flex容器属性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#display"><span class="nav-number">1.1.1.</span> <span class="nav-text">display</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#flex-direction"><span class="nav-number">1.1.2.</span> <span class="nav-text">flex-direction</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#flex-wrap"><span class="nav-number">1.1.3.</span> <span class="nav-text">flex-wrap</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#flex-flow"><span class="nav-number">1.1.4.</span> <span class="nav-text">flex-flow</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#justify-content"><span class="nav-number">1.1.5.</span> <span class="nav-text">justify-content</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#align-items"><span class="nav-number">1.1.6.</span> <span class="nav-text">align-items</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#align-content"><span class="nav-number">1.1.7.</span> <span class="nav-text">align-content</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#flex项目属性"><span class="nav-number">1.2.</span> <span class="nav-text">Flex项目属性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#order"><span class="nav-number">1.2.1.</span> <span class="nav-text">order</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#flex-grow"><span class="nav-number">1.2.2.</span> <span class="nav-text">flex-grow</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#flex-shrink"><span class="nav-number">1.2.3.</span> <span class="nav-text">flex-shrink</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#flex-basis"><span class="nav-number">1.2.4.</span> <span class="nav-text">flex-basis</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#flex"><span class="nav-number">1.2.5.</span> <span class="nav-text">flex</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#align-self"><span class="nav-number">1.2.6.</span> <span class="nav-text">align-self</span></a></li></ol></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">winterrain5</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"winterrain5"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("029tUpff0Ph7OrHFjawhv700-gzGzoHsz", "TyyMeX7RfM4IsJWWe33K8yCW");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+</body>
+</html>
