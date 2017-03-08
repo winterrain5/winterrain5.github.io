@@ -84,16 +84,19 @@
 
 
 
-<meta name="description" content="UICollectionViewFlowLayout has cached frame mismatchThis is likely occurring because the flow layout subclass MyLineLayout is modifying attributes returned by UICollectionViewFlowLayout without copyin">
+<meta name="description" content="UICollectionViewFlowLayout has cached frame mismatch
+This is likely occurring because the flow layout subclass MyLineLayout is modifying attributes returned by UICollectionViewFlowLayout without copyi">
 <meta property="og:type" content="article">
 <meta property="og:title" content="UICollectionViewFlowLayout has cached frame mismatch">
 <meta property="og:url" content="http://yoursite.com/2017/02/24/OC/UICollectionViewFlowLayout-has-cached-frame-mismatch/index.html">
 <meta property="og:site_name" content="行止由心">
-<meta property="og:description" content="UICollectionViewFlowLayout has cached frame mismatchThis is likely occurring because the flow layout subclass MyLineLayout is modifying attributes returned by UICollectionViewFlowLayout without copyin">
-<meta property="og:updated_time" content="2017-02-24T06:34:04.000Z">
+<meta property="og:description" content="UICollectionViewFlowLayout has cached frame mismatch
+This is likely occurring because the flow layout subclass MyLineLayout is modifying attributes returned by UICollectionViewFlowLayout without copyi">
+<meta property="og:updated_time" content="2017-02-24T06:36:00.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="UICollectionViewFlowLayout has cached frame mismatch">
-<meta name="twitter:description" content="UICollectionViewFlowLayout has cached frame mismatchThis is likely occurring because the flow layout subclass MyLineLayout is modifying attributes returned by UICollectionViewFlowLayout without copyin">
+<meta name="twitter:description" content="UICollectionViewFlowLayout has cached frame mismatch
+This is likely occurring because the flow layout subclass MyLineLayout is modifying attributes returned by UICollectionViewFlowLayout without copyi">
 
 
 
@@ -313,7 +316,11 @@
       
 
       
-        <figure class="highlight objc"><table><tr><td class="code"><pre><div class="line"><span class="built_in">UICollectionViewFlowLayout</span> has cached frame mismatch</div><div class="line"></div><div class="line">This is likely occurring because the flow layout subclass MyLineLayout is modifying attributes returned by <span class="built_in">UICollectionViewFlowLayout</span> without copying them</div><div class="line"></div><div class="line">- (<span class="built_in">NSArray</span> *)layoutAttributesForElementsInRect:(<span class="built_in">CGRect</span>)rect</div><div class="line"></div><div class="line"><span class="built_in">NSArray</span> *original = [<span class="keyword">super</span> layoutAttributesForElementsInRect:rect];</div><div class="line"></div><div class="line"><span class="built_in">NSArray</span> *array = [[<span class="built_in">NSArray</span> alloc] initWithArray:original copyItems:<span class="literal">YES</span>];</div><div class="line"></div><div class="line">对array进行修改就可以了，不要对original修改</div><div class="line"></div><div class="line">这样就不会报这个警告了</div></pre></td></tr></table></figure>
+        <p>UICollectionViewFlowLayout has cached frame mismatch</p>
+<p>This is likely occurring because the flow layout subclass MyLineLayout is modifying attributes returned by UICollectionViewFlowLayout without copying them<br><figure class="highlight objc"><table><tr><td class="code"><pre><div class="line">- (<span class="built_in">NSArray</span> *)layoutAttributesForElementsInRect:(<span class="built_in">CGRect</span>)rect &#123;</div><div class="line">	<span class="built_in">NSArray</span> *original = [<span class="keyword">super</span> layoutAttributesForElementsInRect:rect];</div><div class="line">	<span class="built_in">NSArray</span> *array = [[<span class="built_in">NSArray</span> alloc] initWithArray:original copyItems:<span class="literal">YES</span>];</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>对array进行修改就可以了，不要对original修改</p>
+<p>这样就不会报这个警告了</p>
+
       
     </div>
 
@@ -372,6 +379,10 @@
           </div>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/03/07/OC/iOS组件化-路由学习/" rel="prev" title="iOS组件化-路由学习">
+                iOS组件化-路由学习 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -443,7 +454,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">42</span>
+              <span class="site-state-item-count">44</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -460,7 +471,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">37</span>
+                <span class="site-state-item-count">39</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
