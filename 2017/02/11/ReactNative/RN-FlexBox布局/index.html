@@ -84,16 +84,19 @@
 
 
 
-<meta name="description" content="要做一个Nice的人">
+<meta name="description" content="react-native 采用了一种全新的布局方式：FlexBox（弹性布局）。可以很方便的实现各种复杂的布局，是全新的针对web和移动开发布局的一种实现方式。
+FlexBox全称：the flexible box module，旨在通过弹性的方式来对齐和分布容器中的组件。FlexBox的主要思想是：让容器有能力让其子项目能够改变其宽度|高度|顺序，以最佳方式填充可用空间。在布局中，首先得确定主轴">
 <meta property="og:type" content="article">
 <meta property="og:title" content="RN(View组件FlexBox布局)">
 <meta property="og:url" content="http://yoursite.com/2017/02/11/ReactNative/RN-FlexBox布局/index.html">
 <meta property="og:site_name" content="行止由心">
-<meta property="og:description" content="要做一个Nice的人">
-<meta property="og:updated_time" content="2017-02-11T08:56:52.000Z">
+<meta property="og:description" content="react-native 采用了一种全新的布局方式：FlexBox（弹性布局）。可以很方便的实现各种复杂的布局，是全新的针对web和移动开发布局的一种实现方式。
+FlexBox全称：the flexible box module，旨在通过弹性的方式来对齐和分布容器中的组件。FlexBox的主要思想是：让容器有能力让其子项目能够改变其宽度|高度|顺序，以最佳方式填充可用空间。在布局中，首先得确定主轴">
+<meta property="og:updated_time" content="2017-03-17T03:46:10.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="RN(View组件FlexBox布局)">
-<meta name="twitter:description" content="要做一个Nice的人">
+<meta name="twitter:description" content="react-native 采用了一种全新的布局方式：FlexBox（弹性布局）。可以很方便的实现各种复杂的布局，是全新的针对web和移动开发布局的一种实现方式。
+FlexBox全称：the flexible box module，旨在通过弹性的方式来对齐和分布容器中的组件。FlexBox的主要思想是：让容器有能力让其子项目能够改变其宽度|高度|顺序，以最佳方式填充可用空间。在布局中，首先得确定主轴">
 
 
 
@@ -313,7 +316,58 @@
       
 
       
-        
+        <p><code>react-native</code> 采用了一种全新的布局方式：<code>FlexBox</code>（弹性布局）。可以很方便的实现各种复杂的布局，是全新的针对web和移动开发布局的一种实现方式。</p>
+<h3 id="FlexBox"><a href="#FlexBox" class="headerlink" title="FlexBox"></a>FlexBox</h3><p>全称：<code>the flexible box module</code>，旨在通过弹性的方式来对齐和分布容器中的组件。FlexBox的主要思想是：让容器有能力让其子项目能够改变其宽度|高度|顺序，以最佳方式填充可用空间。在布局中，首先得确定主轴方向（<code>flexDirection</code>），主轴组件的对齐方式（<code>justifyContent</code>），侧轴的对齐方式（<code>alignItems</code>），通过以上四点可以基本确定布局。</p>
+<h3 id="FlexBox属性"><a href="#FlexBox属性" class="headerlink" title="FlexBox属性"></a>FlexBox属性</h3><p><code>flexDirection</code>:该属性确定了主轴方向</p>
+<ul>
+<li><p>row（默认）：主轴方向为水平，起点在左端</p>
+</li>
+<li><p>row-reverse: 主轴方向水平，起点在右端</p>
+</li>
+<li><p>column： 主轴方向为垂直，起点在上端</p>
+</li>
+<li><p>column-reverse: 主轴方向为垂直，起点在下端</p>
+</li>
+</ul>
+<p><code>justifyContent</code>: 该属性确定了组件在主轴方向上的对齐方式</p>
+<ul>
+<li><p>flex-Start(默认): 组件沿着主轴方向上的起始位置靠齐。如：假如主轴方向是row就是左对齐，是row-reverse就是右对齐。</p>
+</li>
+<li><p>flex-end: 组件沿着主轴方向的结束位置靠齐，和flex-start相反。</p>
+</li>
+<li><p>space-between: 组件在主轴方向上两端对齐，中间间隔相等</p>
+</li>
+<li><p>space-around: 组件会平均分配在主轴方向上，两端保留一定的位置空间</p>
+</li>
+</ul>
+<p><code>alignItems</code>:组件在侧轴方向上的对齐方式</p>
+<ul>
+<li><p>flex-start: 组件沿着侧轴上的起点对齐</p>
+</li>
+<li><p>flex-end: 组件沿着侧轴上的终点对齐</p>
+</li>
+<li><p>center: 组件在侧轴方向上居中对齐</p>
+</li>
+<li><p>stretch(默认): 组件在侧轴方向上占满</p>
+</li>
+</ul>
+<p><code>flexWrap</code>: 是否换行</p>
+<p>默认情况下，组件都排列在一条线上，放不下的部分则不放置，flexWrap就是定义是否换行的。</p>
+<ul>
+<li><p>nowrap(默认): 不换行</p>
+</li>
+<li><p>wrap: 换行，第一行在上方</p>
+</li>
+<li><p>wrap-reveser: 换行，第一行在下方</p>
+</li>
+</ul>
+<p><code>flex</code>: 有三个参数，默认是 0 1 auto。依次为 <em>flex-grow</em>、<em>flex-shrink</em> 、<em>flex-basis</em>.</p>
+<p><code>alignSelf</code>: 定义单个组件自己的对齐方式，默认为auto，枚举值：<em>auto</em> | <em>flex-start</em> | <em>flex-end </em> | <em>center</em> | <em>baseline</em> | <em>stretch</em></p>
+<p><code>position</code>: 定位方式，<em>absolute</em> 绝对定位， <em>relative</em> 相对定位</p>
+<p><code>margin</code>: 内边距</p>
+<p><code>padding</code>: 外边距</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">import</span> React, &#123; Component &#125; <span class="keyword">from</span> <span class="string">'react'</span>;</div><div class="line"><span class="keyword">import</span> &#123;</div><div class="line">  AppRegistry,</div><div class="line">  StyleSheet,</div><div class="line">  Text,</div><div class="line">  View</div><div class="line">&#125; <span class="keyword">from</span> <span class="string">'react-native'</span></div><div class="line"><span class="comment">/**-----------------------------------第一个示例程序----------------------------------------------------- **/</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Project</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</div><div class="line">  render() &#123; <span class="comment">//初始化</span></div><div class="line">    <span class="keyword">return</span> (</div><div class="line">      &lt;View style=&#123;styles.container&#125;&gt;</div><div class="line">        &lt;Text style=&#123;&#123;backgroundColor:'red',height:50&#125;&#125;&gt;第一个&lt;/Text&gt;</div><div class="line">        &lt;Text style=&#123;&#123;backgroundColor:'blue',height:100&#125;&#125;&gt;第二个&lt;/Text&gt;</div><div class="line">        &lt;Text style=&#123;&#123;backgroundColor:'green',height:160&#125;&#125;&gt;第三个&lt;/Text&gt;</div><div class="line">        &lt;Text style=&#123;&#123;backgroundColor:'yellow',height:200&#125;&#125;&gt;第四个&lt;/Text&gt;</div><div class="line">      &lt;/View&gt;</div><div class="line">    );</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"><span class="comment">//样式</span></div><div class="line"><span class="keyword">const</span> styles = StyleSheet.create(&#123;</div><div class="line">  <span class="attr">container</span>: &#123;</div><div class="line"><span class="comment">//     flex:1,  //充满全屏,否则内容多少,只显示多少区域.   是'flex-grow''flex-shrink''flex-basis'三个属性的缩写,其中第二个和第三个参数都是可选,默认值是"0 1 auto" 宽度 = 弹性宽度 * (flexGrow/sum(flexGrow))</span></div><div class="line"><span class="comment">//     width:200,</span></div><div class="line">    height:<span class="number">200</span>,</div><div class="line">    <span class="attr">marginTop</span>:<span class="number">20</span>,<span class="comment">//上边距</span></div><div class="line">    backgroundColor:<span class="string">'black'</span>,<span class="comment">//背景色</span></div><div class="line">    flexDirection:<span class="string">'row'</span>, <span class="comment">//React Native 布局采用FlexBox(弹性布局),该属性是设置布局的主轴方向为row:横向(默认方向是竖向:column)</span></div><div class="line">    justifyContent:<span class="string">'space-between'</span>, <span class="comment">//定义了伸缩项目在主轴线的对齐方式 flex-start | flex-end | center | space-between | space-around</span></div><div class="line">    alignItems:<span class="string">'flex-start'</span>    <span class="comment">//定义了伸缩项目在侧轴(交叉轴)的对齐方式 flex-start | flex-end | center | baseline | stretch(默认)</span></div><div class="line">  &#125;</div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="comment">/**-----------------------------------第二个示例程序----------------------------------------------------- **/</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Project1</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</div><div class="line">  render() &#123; <span class="comment">//初始化</span></div><div class="line">    <span class="keyword">return</span> (</div><div class="line">      &lt;View style=&#123;styles1.container&#125;&gt;</div><div class="line">        &lt;Text style=&#123;&#123;backgroundColor:'red',width:200&#125;&#125;&gt;第一个&lt;/Text&gt;</div><div class="line">        &lt;Text style=&#123;&#123;backgroundColor:'blue',width:300&#125;&#125;&gt;第二个&lt;/Text&gt;</div><div class="line">        &lt;Text style=&#123;&#123;backgroundColor:'green',width:200&#125;&#125;&gt;第三个&lt;/Text&gt;</div><div class="line">        &lt;Text style=&#123;&#123;backgroundColor:'yellow',width:200&#125;&#125;&gt;第四个&lt;/Text&gt;</div><div class="line">      &lt;/View&gt;</div><div class="line">    );</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">const</span> styles1 = StyleSheet.create(&#123;</div><div class="line">   <span class="attr">container</span>:&#123;</div><div class="line">      <span class="attr">backgroundColor</span>:<span class="string">'black'</span>,</div><div class="line">      <span class="attr">marginTop</span>:<span class="number">20</span>,</div><div class="line">      <span class="attr">flexDirection</span>:<span class="string">'row'</span>,</div><div class="line">      <span class="attr">justifyContent</span>:<span class="string">'flex-start'</span>,</div><div class="line">      <span class="attr">flexWrap</span>:<span class="string">'wrap'</span> <span class="comment">//定义显示不下的显示模式,默认情况下,控件都是在一条线上   wrap换行 nowarp(默认值)不换行 warp-reverse:换行,效果和wrap相反</span></div><div class="line">   &#125;</div><div class="line">&#125;);</div><div class="line"><span class="comment">/**-----------------------------------第三个示例程序----------------------------------------------------- **/</span></div><div class="line"> <span class="comment">//alignSelf允许单个项目可以有自己单独的对齐方式</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Project2</span> <span class="keyword">extends</span> <span class="title">Component</span></span>&#123;</div><div class="line">  render()&#123;</div><div class="line">    <span class="keyword">return</span>(</div><div class="line">      &lt;View style=&#123;styles2.container&#125;&gt;</div><div class="line">        &lt;Text style=&#123;&#123;backgroundColor:'red',flex:1,height:50,alignSelf:'center'&#125;&#125;&gt;第一个&lt;/Text&gt;</div><div class="line">        &lt;Text style=&#123;&#123;backgroundColor:'blue',flex:2,height:30,alignSelf:'flex-start'&#125;&#125;&gt;第二个&lt;/Text&gt;</div><div class="line">        &lt;Text style=&#123;&#123;backgroundColor:'green',flex:2,height:70,alignSelf:'flex-end'&#125;&#125;&gt;第三个&lt;/Text&gt;</div><div class="line">        &lt;Text style=&#123;&#123;backgroundColor:'yellow',flex:1,height:80,alignSelf:'stretch'&#125;&#125;&gt;第四个&lt;/Text&gt;</div><div class="line">      &lt;/View&gt;</div><div class="line">    );</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">const</span> styles2 = StyleSheet.create(&#123;</div><div class="line">   <span class="attr">container</span>:&#123;</div><div class="line">     <span class="attr">backgroundColor</span>:<span class="string">'black'</span>,</div><div class="line">     <span class="attr">marginTop</span>:<span class="number">20</span>,</div><div class="line">     <span class="attr">flexDirection</span>:<span class="string">'row'</span></div><div class="line">   &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+
       
     </div>
 
@@ -522,7 +576,7 @@
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#FlexBox"><span class="nav-number">1.</span> <span class="nav-text">FlexBox</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#FlexBox属性"><span class="nav-number">2.</span> <span class="nav-text">FlexBox属性</span></a></li></ol></div>
             
           </div>
         </section>
