@@ -90,15 +90,15 @@
 <meta property="og:url" content="http://yoursite.com/2016/10/31/git/Git源代码管理规范/index.html">
 <meta property="og:site_name" content="行止由心">
 <meta property="og:description" content="Git是目前世界上最先进的分布式版本控制系统">
-<meta property="og:image" content="http://7xosrq.com1.z0.glb.clouddn.com/图片%203.png?e=1477882832&token=BsduBndXasPKM3kxbowJ9Y6Gq-NTYlMJsNrrgMEy:7qTFqGy0tl3ywtTLCTqZBcTxTnQ">
-<meta property="og:image" content="http://7xosrq.com1.z0.glb.clouddn.com/图片%201.png?e=1477882374&token=BsduBndXasPKM3kxbowJ9Y6Gq-NTYlMJsNrrgMEy:V2LjbkUZgt4nBZGXMDtymf4IKiU">
-<meta property="og:image" content="http://7xosrq.com1.z0.glb.clouddn.com/图片%202.png?e=1477882374&token=BsduBndXasPKM3kxbowJ9Y6Gq-NTYlMJsNrrgMEy:nWqxuRNW5e5Qc3F1EdHzNecg95M">
-<meta property="og:image" content="http://7xosrq.com1.z0.glb.clouddn.com/QQ20161031-0.png?e=1477883008&token=BsduBndXasPKM3kxbowJ9Y6Gq-NTYlMJsNrrgMEy:Q7mAWyutNDOVZjMDXbz4Wgu_wyw">
-<meta property="og:updated_time" content="2017-03-17T03:52:26.000Z">
+<meta property="og:image" content="https://ww1.sinaimg.cn/large/006tNc79gy1fdppdduuokj30gz0mngms.jpg">
+<meta property="og:image" content="https://ww3.sinaimg.cn/large/006tNc79gy1fdppfnv6ftj30et06xweo.jpg">
+<meta property="og:image" content="https://ww3.sinaimg.cn/large/006tNc79gy1fdpphe64nzj30cc0b5aaa.jpg">
+<meta property="og:image" content="https://ww4.sinaimg.cn/large/006tNc79gy1fdppim88rmj30du02wglf.jpg">
+<meta property="og:updated_time" content="2017-03-17T04:07:04.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Git源代码管理规范">
 <meta name="twitter:description" content="Git是目前世界上最先进的分布式版本控制系统">
-<meta name="twitter:image" content="http://7xosrq.com1.z0.glb.clouddn.com/图片%203.png?e=1477882832&token=BsduBndXasPKM3kxbowJ9Y6Gq-NTYlMJsNrrgMEy:7qTFqGy0tl3ywtTLCTqZBcTxTnQ">
+<meta name="twitter:image" content="https://ww1.sinaimg.cn/large/006tNc79gy1fdppdduuokj30gz0mngms.jpg">
 
 
 
@@ -340,22 +340,21 @@
         <p>Git是目前世界上最先进的分布式版本控制系统<br><a id="more"></a></p>
 <h2 id="分支管理"><a href="#分支管理" class="headerlink" title="分支管理"></a>分支管理</h2><p>使用git进行源代码管理，一般将某个项目的所有分支氛围以下几条主线：</p>
 <h3 id="Master"><a href="#Master" class="headerlink" title="Master"></a>Master</h3><p>顾名思义，既然名字叫Master，那么该分支就是主分支的意思。master分支永远是production-ready的状态，即稳定可产品化发布的状态。</p>
-<h3 id="Develop"><a href="#Develop" class="headerlink" title="Develop"></a>Develop</h3><p>这个分支就是我们平常开发的一个主要分支了，不管是要做新的feature还是需要做bug fix，都是从这个分支分出来做。在这个分支下主要负责记录开发状态下相对稳定的版本，即完成了某个feature或者修复了某</p>
-<p>个bug后的开发稳定版本。</p>
+<h3 id="Develop"><a href="#Develop" class="headerlink" title="Develop"></a>Develop</h3><p>这个分支就是我们平常开发的一个主要分支了，不管是要做新的feature还是需要做bug fix，都是从这个分支分出来做。在这个分支下主要负责记录开发状态下相对稳定的版本，即完成了某个feature或者修复了某个bug后的开发稳定版本。</p>
 <h3 id="Feature-branches"><a href="#Feature-branches" class="headerlink" title="Feature branches"></a>Feature branches</h3><p>这是由许多分别负责不同feature开发的分支组成的一个分支系列。new feature主要就在这个分支系列下进行开发。当功能点开发测试完毕之后，就会合并到develop分支去。</p>
 <h3 id="release-branches"><a href="#release-branches" class="headerlink" title="release branches"></a>release branches</h3><p>这个分支系列从develop分支出来，也就是预发分支。在预发状态下，我们往往会进行预发环境下的测试，如果出现缺陷，那么就在该release分支下进行修复，修复完毕测试通过后，即分别并入master分支和develop分支，随后master分支做正常发布。</p>
 <h3 id="Hotfix-branches"><a href="#Hotfix-branches" class="headerlink" title="Hotfix branches"></a>Hotfix branches</h3><p>这个分支系列也就是我们常说的紧急线上修复，当线上出现bug且特别紧急的时候，就可以从master拉出分支到这里进行修复，修复完成后分别并入master和develop分支。</p>
 <p>下面这张图将完整展示这一个流程：</p>
-<p><img src="http://7xosrq.com1.z0.glb.clouddn.com/图片%203.png?e=1477882832&amp;token=BsduBndXasPKM3kxbowJ9Y6Gq-NTYlMJsNrrgMEy:7qTFqGy0tl3ywtTLCTqZBcTxTnQ" alt=""></p>
+<p><img src="https://ww1.sinaimg.cn/large/006tNc79gy1fdppdduuokj30gz0mngms.jpg" alt=""></p>
 <h2 id="工作原理"><a href="#工作原理" class="headerlink" title="工作原理"></a>工作原理</h2><p>git的工作方式：</p>
-<p><img src="http://7xosrq.com1.z0.glb.clouddn.com/图片%201.png?e=1477882374&amp;token=BsduBndXasPKM3kxbowJ9Y6Gq-NTYlMJsNrrgMEy:V2LjbkUZgt4nBZGXMDtymf4IKiU" alt=""></p>
+<p><img src="https://ww3.sinaimg.cn/large/006tNc79gy1fdppfnv6ftj30et06xweo.jpg" alt=""></p>
 <p>也就是说，每次提交版本变动的时候，git会保存一个快照(snapshot)。如果文件没有被更改，git也不会再次保存，而是提供一个到原来文件的链接。这样一来，git更像是一个小型的文件系统。此外，git的所有操作都可以是本地的，仅仅在将新版本的内容上传到服务器上时才需要连接网络。</p>
-<p><img src="http://7xosrq.com1.z0.glb.clouddn.com/图片%202.png?e=1477882374&amp;token=BsduBndXasPKM3kxbowJ9Y6Gq-NTYlMJsNrrgMEy:nWqxuRNW5e5Qc3F1EdHzNecg95M" alt=""></p>
+<p><img src="https://ww3.sinaimg.cn/large/006tNc79gy1fdpphe64nzj30cc0b5aaa.jpg" alt=""></p>
 <p><strong><em>Git目录</em></strong>（repository）是Git保存元数据和对象数据库的地方。这也是Git最重要的部分。</p>
 <p><strong><em>工作目录</em></strong>（working directory）是项目某个版本的内容。</p>
 <p><strong><em>暂存区</em></strong>（staging area）是一个简单的文件，通常包含在Git目录中。其中存储了将要进入下一次提交的信息。</p>
 <p>Git的基本工作流程如下：</p>
-<p><img src="http://7xosrq.com1.z0.glb.clouddn.com/QQ20161031-0.png?e=1477883008&amp;token=BsduBndXasPKM3kxbowJ9Y6Gq-NTYlMJsNrrgMEy:Q7mAWyutNDOVZjMDXbz4Wgu_wyw" alt=""></p>
+<p><img src="https://ww4.sinaimg.cn/large/006tNc79gy1fdppim88rmj30du02wglf.jpg" alt=""></p>
 <ul>
 <li>在工作目录中修改文件。</li>
 </ul>
