@@ -1,0 +1,813 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="框架 AOP," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2" />
+
+
+
+
+
+
+<meta name="description" content="AOPAOP: Aspect Oriented Programming ， 面向切片编程
+利用AOP可以针对业务处理过程中的切面进行提取，从而使得业务逻辑各个部分之间的耦合降低，提高程序的可重用性，也提高了开发效率。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS-AOP（面向切片编程）">
+<meta property="og:url" content="http://yoursite.com/2017/03/08/框架/iOS-AOP（面向切片编程）/index.html">
+<meta property="og:site_name" content="行止由心">
+<meta property="og:description" content="AOPAOP: Aspect Oriented Programming ， 面向切片编程
+利用AOP可以针对业务处理过程中的切面进行提取，从而使得业务逻辑各个部分之间的耦合降低，提高程序的可重用性，也提高了开发效率。">
+<meta property="og:updated_time" content="2017-03-23T02:29:15.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="iOS-AOP（面向切片编程）">
+<meta name="twitter:description" content="AOPAOP: Aspect Oriented Programming ， 面向切片编程
+利用AOP可以针对业务处理过程中的切面进行提取，从而使得业务逻辑各个部分之间的耦合降低，提高程序的可重用性，也提高了开发效率。">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"right","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '6342373090747483000',
+      author: 'Author'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/03/08/框架/iOS-AOP（面向切片编程）/"/>
+
+
+  <title> iOS-AOP（面向切片编程） | 行止由心 </title>
+</head>
+
+<body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">行止由心</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">知识管理，自我管理</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                iOS-AOP（面向切片编程）
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-03-08T10:27:52+08:00" content="2017-03-08">
+              2017-03-08
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/03/08/框架/iOS-AOP（面向切片编程）/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/08/框架/iOS-AOP（面向切片编程）/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2017/03/08/框架/iOS-AOP（面向切片编程）/" class="leancloud_visitors" data-flag-title="iOS-AOP（面向切片编程）">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="AOP"><a href="#AOP" class="headerlink" title="AOP"></a>AOP</h3><p>AOP: <code>Aspect Oriented Programming</code> ， 面向切片编程</p>
+<p>利用AOP可以针对业务处理过程中的切面进行提取，从而使得业务逻辑各个部分之间的耦合降低，提高程序的可重用性，也提高了开发效率。</p>
+<a id="more"></a>
+<p>AOP的目的是将日志记录、性能统计、安全控制、事务处理、异常处理等代码从业务逻辑代码中划分出来，通过对这些行为的分离，我们希望可以将它们独立到非指导业务逻辑的方法中，进而改变这些行为的时候不影响业务逻辑的代码。</p>
+<h3 id="Runtime"><a href="#Runtime" class="headerlink" title="Runtime"></a>Runtime</h3><p>利用OC的Runtime特性，使用<code>Method Swizzling</code>我们可以给语言做扩展，从而实现AOP。</p>
+<p>开发中经常使用<code>if</code>对字典或者数组做安全处理，在代码中大量使用这个操作写多了就会繁琐。</p>
+<figure class="highlight objc"><table><tr><td class="code"><pre><div class="line"><span class="built_in">NSMutableDictionary</span> *dic = [[<span class="built_in">NSMutableDictionary</span> alloc] init];</div><div class="line">    <span class="keyword">if</span> (obj) &#123;</div><div class="line">        [dic setObject:obj forKey:<span class="string">@"key"</span>];</div><div class="line">    &#125;</div><div class="line"></div><div class="line"> <span class="built_in">NSMutableArray</span> *array = [[<span class="built_in">NSMutableArray</span> alloc] init];</div><div class="line">    <span class="keyword">if</span> (index &lt; array.count) &#123;</div><div class="line">        <span class="built_in">NSLog</span>(<span class="string">@"%@"</span>,[array objectAtIndex:index]);</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<p>以<code>NSMutableArray</code>为例，为其追加一个新的方法</p>
+<figure class="highlight objc"><table><tr><td class="code"><pre><div class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">NSMutableArray</span> (<span class="title">safe</span>)</span></div><div class="line"></div><div class="line">+ (<span class="keyword">void</span>)load</div><div class="line">&#123;</div><div class="line">    <span class="keyword">static</span> <span class="built_in">dispatch_once_t</span> onceToken;</div><div class="line">    <span class="built_in">dispatch_once</span>(&amp;onceToken, ^&#123;</div><div class="line">        <span class="keyword">id</span> obj = [[<span class="keyword">self</span> alloc] init];</div><div class="line">        [obj swizzleMethod:<span class="keyword">@selector</span>(addObject:) withMethod:<span class="keyword">@selector</span>(safeAddObject:)];</div><div class="line">        [obj swizzleMethod:<span class="keyword">@selector</span>(objectAtIndex:) withMethod:<span class="keyword">@selector</span>(safeObjectAtIndex:)];</div><div class="line">        [obj swizzleMethod:<span class="keyword">@selector</span>(insertObject:atIndex:) withMethod:<span class="keyword">@selector</span>(safeInsertObject:atIndex:)];</div><div class="line">        [obj swizzleMethod:<span class="keyword">@selector</span>(removeObjectAtIndex:) withMethod:<span class="keyword">@selector</span>(safeRemoveObjectAtIndex:)];</div><div class="line">        [obj swizzleMethod:<span class="keyword">@selector</span>(replaceObjectAtIndex:withObject:) withMethod:<span class="keyword">@selector</span>(safeReplaceObjectAtIndex:withObject:)];</div><div class="line">    &#125;);</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (<span class="keyword">void</span>)safeAddObject:(<span class="keyword">id</span>)anObject</div><div class="line">&#123;</div><div class="line">    <span class="keyword">if</span> (anObject) &#123;</div><div class="line">        [<span class="keyword">self</span> safeAddObject:anObject];</div><div class="line">    &#125;<span class="keyword">else</span>&#123;</div><div class="line">        <span class="built_in">NSLog</span>(<span class="string">@"obj is nil"</span>);</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (<span class="keyword">id</span>)safeObjectAtIndex:(<span class="built_in">NSInteger</span>)index</div><div class="line">&#123;</div><div class="line">    <span class="keyword">if</span>(index&lt;[<span class="keyword">self</span> count])&#123;</div><div class="line">        <span class="keyword">return</span> [<span class="keyword">self</span> safeObjectAtIndex:index];</div><div class="line">    &#125;<span class="keyword">else</span>&#123;</div><div class="line">        <span class="built_in">NSLog</span>(<span class="string">@"index is beyond bounds "</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="literal">nil</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>方法实现<br><figure class="highlight objc"><table><tr><td class="code"><pre><div class="line">- (<span class="keyword">void</span>)swizzleMethod:(SEL)origSelector withMethod:(SEL)newSelector</div><div class="line">&#123;</div><div class="line">    Class <span class="keyword">class</span> = [<span class="keyword">self</span> <span class="keyword">class</span>];</div><div class="line"></div><div class="line">    Method originalMethod = class_getInstanceMethod(<span class="keyword">class</span>, origSelector);</div><div class="line">    Method swizzledMethod = class_getInstanceMethod(<span class="keyword">class</span>, newSelector);</div><div class="line"></div><div class="line">    <span class="built_in">BOOL</span> didAddMethod = class_addMethod(<span class="keyword">class</span>,</div><div class="line">                                        origSelector,</div><div class="line">                                        method_getImplementation(swizzledMethod),</div><div class="line">                                        method_getTypeEncoding(swizzledMethod));</div><div class="line">    <span class="keyword">if</span> (didAddMethod) &#123;</div><div class="line">        class_replaceMethod(<span class="keyword">class</span>,</div><div class="line">                            newSelector,</div><div class="line">                            method_getImplementation(originalMethod),</div><div class="line">                            method_getTypeEncoding(originalMethod));</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        method_exchangeImplementations(originalMethod, swizzledMethod);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><code>class_addMethod</code> ，先尝试添加originalSelector是为了做一层保护，因为如果这个类没有实现originalSelector，但是其父类实现了，那么<code>class_getInstanceMethod</code>会返回父类的方法。这样<code>method_exchangeImplementations</code>替换的是父类的那个方法，所以先尝试添加originalSelector，如果已经存在，再用<code>method_exchangeImplementations</code>把原方法的实现和新方法的实现给交换一下</p>
+<h3 id="Aspects-一个基于OC的AOP框架"><a href="#Aspects-一个基于OC的AOP框架" class="headerlink" title="Aspects 一个基于OC的AOP框架"></a><a href="https://github.com/steipete/Aspects" target="_blank" rel="external">Aspects</a> 一个基于OC的AOP框架</h3><p>它是一个使iOS面向切面编程的库，可以在不改变类或者对象行为的情况下给类或者对象添加代码。你可以在方法执行前/后或者替代原方法执行一段你想执行的代码。可以认为Aspects是一种Method Swizzling，但是它更易用。</p>
+<p>它提供了两个简单的API</p>
+<figure class="highlight objc"><table><tr><td class="code"><pre><div class="line"><span class="comment">/// 为一个指定的类的某个方法执行前/替换/后,添加一段代码块.对这个类的所有对象都会起作用.</span></div><div class="line"><span class="comment">///</span></div><div class="line"><span class="comment">/// @param block  方法被添加钩子时,Aspectes会拷贝方法的签名信息.</span></div><div class="line"><span class="comment">/// 第一个参数将会是 `id&lt;AspectInfo&gt;`,余下的参数是此被调用的方法的参数.</span></div><div class="line"><span class="comment">/// 这些参数是可选的,并将被用于传递给block代码块对应位置的参数.</span></div><div class="line"><span class="comment">/// 你甚至使用一个没有任何参数或只有一个`id&lt;AspectInfo&gt;`参数的block代码块.</span></div><div class="line"><span class="comment">///</span></div><div class="line"><span class="comment">/// @注意 不支持给静态方法添加钩子.</span></div><div class="line"><span class="comment">/// @return 返回一个唯一值,用于取消此钩子.</span></div><div class="line">+ (<span class="keyword">id</span>&lt;AspectToken&gt;)aspect_hookSelector:(SEL)selector</div><div class="line">                      withOptions:(AspectOptions)options</div><div class="line">                       usingBlock:(<span class="keyword">id</span>)block</div><div class="line">                            error:(<span class="built_in">NSError</span> **)error;</div><div class="line"></div><div class="line"><span class="comment">/// 为一个指定的对象的某个方法执行前/替换/后,添加一段代码块.只作用于当前对象.</span></div><div class="line">- (<span class="keyword">id</span>&lt;AspectToken&gt;)aspect_hookSelector:(SEL)selector</div><div class="line">                          withOptions:(AspectOptions)options</div><div class="line">                           usingBlock:(<span class="keyword">id</span>)block</div><div class="line">                                error:(<span class="built_in">NSError</span> **)error;</div><div class="line"><span class="comment">/// 撤销一个Aspect 钩子.</span></div><div class="line"><span class="comment">/// @return YES 撤销成功, 否则返回 NO.</span></div><div class="line"><span class="keyword">id</span>&lt;AspectToken&gt; aspect = ...;</div><div class="line">[aspect remove];</div></pre></td></tr></table></figure>
+<p>可以在调试应用的时候，使用Aspects动态添加日志记录功能<br><figure class="highlight objc"><table><tr><td class="code"><pre><div class="line">[<span class="built_in">UIViewController</span> aspect_hookSelector:<span class="keyword">@selector</span>(viewWillAppear:) withOptions:AspectPositionAfter usingBlock:^(<span class="keyword">id</span>&lt;AspectInfo&gt; aspectInfo, <span class="built_in">BOOL</span> animated) &#123;</div><div class="line">    <span class="built_in">NSLog</span>(<span class="string">@"控制器 %@ 将要显示: %tu"</span>, aspectInfo.instance, animated);</div><div class="line">&#125; error:<span class="literal">NULL</span>];</div></pre></td></tr></table></figure></p>
+<p>监测一个模态显示的控制器合适消失的示例，通常你也可以写一个子类来实现相似的效果，但使用Aspects可以有效减小代码量。</p>
+<figure class="highlight objc"><table><tr><td class="code"><pre><div class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">UIViewController</span> (<span class="title">DismissActionHook</span>)</span></div><div class="line"></div><div class="line"><span class="comment">// Will add a dismiss action once the controller gets dismissed.</span></div><div class="line">- (<span class="keyword">void</span>)pspdf_addWillDismissAction:(<span class="keyword">void</span> (^)(<span class="keyword">void</span>))action &#123;</div><div class="line">    PSPDFAssert(action != <span class="literal">NULL</span>);</div><div class="line"></div><div class="line">    [<span class="keyword">self</span> aspect_hookSelector:<span class="keyword">@selector</span>(viewWillDisappear:) withOptions:AspectPositionAfter usingBlock:^(<span class="keyword">id</span>&lt;AspectInfo&gt; aspectInfo) &#123;</div><div class="line">        <span class="keyword">if</span> ([aspectInfo.instance isBeingDismissed]) &#123;</div><div class="line">            action();</div><div class="line">        &#125;</div><div class="line">    &#125; error:<span class="literal">NULL</span>];</div><div class="line">&#125;</div><div class="line"><span class="keyword">@end</span></div></pre></td></tr></table></figure>
+<p>页面的PV统计，事件点击统计，可以先写在配置文件中<br><figure class="highlight objc"><table><tr><td class="code"><pre><div class="line">&#123;        <span class="string">@"MainViewController"</span>: @&#123;</div><div class="line">           GLLoggingPageImpression: <span class="string">@"page imp - main page"</span>,</div><div class="line">           GLLoggingTrackedEvents: @[</div><div class="line">               @&#123;</div><div class="line">                   GLLoggingEventName: <span class="string">@"button one clicked"</span>,</div><div class="line">                   GLLoggingEventSelectorName: <span class="string">@"buttonOneClicked:"</span>,</div><div class="line">                   GLLoggingEventHandlerBlock: ^(<span class="keyword">id</span>&lt;aspectinfo&gt; aspectInfo) &#123;</div><div class="line">                       [Logging logWithEventName:<span class="string">@"button one clicked"</span>];</div><div class="line">                   &#125;,</div><div class="line">               &#125;,</div><div class="line">               @&#123;</div><div class="line">                   GLLoggingEventName: <span class="string">@"button two clicked"</span>,</div><div class="line">                   GLLoggingEventSelectorName: <span class="string">@"buttonTwoClicked:"</span>,</div><div class="line">                   GLLoggingEventHandlerBlock: ^(<span class="keyword">id</span>&lt;aspectinfo&gt; aspectInfo) &#123;</div><div class="line">                       [Logging logWithEventName:<span class="string">@"button two clicked"</span>];</div><div class="line">                   &#125;,</div><div class="line">               &#125;,</div><div class="line">          ],</div><div class="line">       &#125;,        <span class="string">@"DetailViewController"</span>: @&#123;</div><div class="line">           GLLoggingPageImpression: <span class="string">@"page imp - detail page"</span>,</div><div class="line">       &#125;</div><div class="line">  &#125;</div></pre></td></tr></table></figure></p>
+<figure class="highlight objc"><table><tr><td class="code"><pre><div class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">AppDelegate</span> (<span class="title">Logging</span>)</span></div><div class="line">+ (<span class="keyword">void</span>)setupLogging&#123;</div><div class="line">     [AppDelegate setupWithConfiguration:config];</div><div class="line">&#125;</div><div class="line"></div><div class="line">+ (<span class="keyword">void</span>)setupWithConfiguration:(<span class="built_in">NSDictionary</span> *)configs</div><div class="line">&#123;    <span class="comment">// Hook Page Impression</span></div><div class="line">   [<span class="built_in">UIViewController</span> aspect_hookSelector:<span class="keyword">@selector</span>(viewDidAppear:)</div><div class="line">                             withOptions:AspectPositionAfter</div><div class="line">                              usingBlock:^(<span class="keyword">id</span>&lt;aspectinfo&gt; aspectInfo) &#123;                                       <span class="built_in">NSString</span> *className = <span class="built_in">NSStringFromClass</span>([[aspectInfo instance] <span class="keyword">class</span>]);</div><div class="line">                                   [Logging logWithEventName:className];</div><div class="line">                              &#125; error:<span class="literal">NULL</span>];    <span class="comment">// Hook Events</span></div><div class="line">   <span class="keyword">for</span> (<span class="built_in">NSString</span> *className <span class="keyword">in</span> configs) &#123;</div><div class="line">       Class clazz = <span class="built_in">NSClassFromString</span>(className);        <span class="built_in">NSDictionary</span> *config = configs[className];        <span class="keyword">if</span> (config[GLLoggingTrackedEvents]) &#123;            <span class="keyword">for</span> (<span class="built_in">NSDictionary</span> *event <span class="keyword">in</span> config[GLLoggingTrackedEvents]) &#123;</div><div class="line">               SEL selekor = <span class="built_in">NSSelectorFromString</span>(event[GLLoggingEventSelectorName]);</div><div class="line">               AspectHandlerBlock block = event[GLLoggingEventHandlerBlock];</div><div class="line">               [clazz aspect_hookSelector:selekor</div><div class="line">                              withOptions:AspectPositionAfter</div><div class="line">                               usingBlock:^(<span class="keyword">id</span>&lt;aspectinfo&gt; aspectInfo) &#123;</div><div class="line">                                   block(aspectInfo);</div><div class="line">                               &#125; error:<span class="literal">NULL</span>];</div><div class="line">           &#125;</div><div class="line">       &#125;</div><div class="line">   &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (<span class="built_in">BOOL</span>)application:(<span class="built_in">UIApplication</span> *)application didFinishLaunchingWithOptions:(<span class="built_in">NSDictionary</span> *)launchOptions &#123;    <span class="comment">// Override point for customization after application launch.</span></div><div class="line">   [<span class="keyword">self</span> setupLogging];    <span class="keyword">return</span> <span class="literal">YES</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>请我喝杯豆浆！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="http://storage1.imgchr.com/images/FullSizeRendereb28d.jpg" alt="winterrain5 WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="http://storage1.imgchr.com/images/FullSizeRender2fa7e1.jpg" alt="winterrain5 Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/框架-AOP/" rel="tag">#框架 AOP</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/03/07/框架/iOS组件化-路由学习/" rel="next" title="iOS组件化-路由学习">
+                <i class="fa fa-chevron-left"></i> iOS组件化-路由学习
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/03/17/前端/JSPM：面向未来的前端模块化开发与包管理/" rel="prev" title="JSPM：面向未来的前端模块化开发与包管理">
+                JSPM：面向未来的前端模块化开发与包管理 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/03/08/框架/iOS-AOP（面向切片编程）/"
+           data-title="iOS-AOP（面向切片编程）" data-url="http://yoursite.com/2017/03/08/框架/iOS-AOP（面向切片编程）/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://ww4.sinaimg.cn/mw690/9dac93ccjw9eymcefq449j202s042aa2.jpg"
+               alt="winterrain5" />
+          <p class="site-author-name" itemprop="name">winterrain5</p>
+          <p class="site-description motion-element" itemprop="description">要做一个Nice的人</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">41</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">36</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/winterrain5" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/rain-winter-74" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/u/2645332940/home?topnav=1" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  微博
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#AOP"><span class="nav-number">1.</span> <span class="nav-text">AOP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Runtime"><span class="nav-number">2.</span> <span class="nav-text">Runtime</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Aspects-一个基于OC的AOP框架"><span class="nav-number">3.</span> <span class="nav-text">Aspects 一个基于OC的AOP框架</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">winterrain5</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"winterrain5"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("029tUpff0Ph7OrHFjawhv700-gzGzoHsz", "TyyMeX7RfM4IsJWWe33K8yCW");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+</body>
+</html>

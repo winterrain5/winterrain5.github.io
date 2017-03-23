@@ -1,0 +1,1103 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="框架 RxSwift," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2" />
+
+
+
+
+
+
+<meta name="description" content="创建和订阅 Observable
+创建 Observable 之后，如果没有订阅者订阅该 Observable ,那么什么事情也不会发生。
+
+
+empty
+
+empty 创建一个空的序列。它进发送 .Completed
+example(&quot;empty&quot;) &amp;#123;    let emptySequence = Observable&amp;lt;Int&amp;gt;.empty()    let subscr">
+<meta property="og:type" content="article">
+<meta property="og:title" content="RxSwift学习小结">
+<meta property="og:url" content="http://yoursite.com/2017/03/20/框架/RxSwift学习小结/index.html">
+<meta property="og:site_name" content="行止由心">
+<meta property="og:description" content="创建和订阅 Observable
+创建 Observable 之后，如果没有订阅者订阅该 Observable ,那么什么事情也不会发生。
+
+
+empty
+
+empty 创建一个空的序列。它进发送 .Completed
+example(&quot;empty&quot;) &amp;#123;    let emptySequence = Observable&amp;lt;Int&amp;gt;.empty()    let subscr">
+<meta property="og:image" content="https://ww1.sinaimg.cn/large/006tNc79gy1fdu8ji9phtj30ge06kmx4.jpg">
+<meta property="og:image" content="https://ww2.sinaimg.cn/large/006tNc79gy1fdu8u48fezj30hb086jrh.jpg">
+<meta property="og:image" content="https://ww1.sinaimg.cn/large/006tNc79gy1fdu98hk0w7j30go06xaa3.jpg">
+<meta property="og:image" content="https://ww1.sinaimg.cn/large/006tNc79gy1fdu9gl3xpaj30gs06tmx9.jpg">
+<meta property="og:image" content="https://ww4.sinaimg.cn/large/006tNc79gy1fdu9pvvz3xj30gm06yq30.jpg">
+<meta property="og:image" content="https://ww2.sinaimg.cn/large/006tNc79gy1fdu9yjefdij30gk06m3yf.jpg">
+<meta property="og:image" content="https://ww4.sinaimg.cn/large/006tNc79gy1fduaacu9ypj30ga06pmx3.jpg">
+<meta property="og:image" content="https://ww3.sinaimg.cn/large/006tNc79gy1fduaqourpnj30g709z74i.jpg">
+<meta property="og:image" content="https://ww1.sinaimg.cn/large/006tNc79gy1fdwjuf8n1hj30gr08o3yl.jpg">
+<meta property="og:image" content="https://ww3.sinaimg.cn/large/006tNc79gy1fdwk7fgpkgj30gp092aa8.jpg">
+<meta property="og:image" content="https://ww4.sinaimg.cn/large/006tNc79gy1fdwkgzfly8j30h009it8t.jpg">
+<meta property="og:image" content="https://ww4.sinaimg.cn/large/006tNc79gy1fdwky9cj9nj30gb07pglp.jpg">
+<meta property="og:image" content="https://ww4.sinaimg.cn/large/006tNc79gy1fdwl2dloidj30fz09ddfx.jpg">
+<meta property="og:updated_time" content="2017-03-23T02:59:19.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="RxSwift学习小结">
+<meta name="twitter:description" content="创建和订阅 Observable
+创建 Observable 之后，如果没有订阅者订阅该 Observable ,那么什么事情也不会发生。
+
+
+empty
+
+empty 创建一个空的序列。它进发送 .Completed
+example(&quot;empty&quot;) &amp;#123;    let emptySequence = Observable&amp;lt;Int&amp;gt;.empty()    let subscr">
+<meta name="twitter:image" content="https://ww1.sinaimg.cn/large/006tNc79gy1fdu8ji9phtj30ge06kmx4.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"right","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '6342373090747483000',
+      author: 'Author'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/03/20/框架/RxSwift学习小结/"/>
+
+
+  <title> RxSwift学习小结 | 行止由心 </title>
+</head>
+
+<body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">行止由心</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">知识管理，自我管理</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                RxSwift学习小结
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-03-20T17:33:01+08:00" content="2017-03-20">
+              2017-03-20
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/03/20/框架/RxSwift学习小结/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/20/框架/RxSwift学习小结/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2017/03/20/框架/RxSwift学习小结/" class="leancloud_visitors" data-flag-title="RxSwift学习小结">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="创建和订阅-Observable"><a href="#创建和订阅-Observable" class="headerlink" title="创建和订阅 Observable"></a>创建和订阅 <em>Observable</em></h3><blockquote>
+<p>创建 <em>Observable</em> 之后，如果没有订阅者订阅该 <em>Observable</em> ,那么什么事情也不会发生。</p>
+</blockquote>
+<ul>
+<li><strong>empty</strong></li>
+</ul>
+<p><em>empty</em> 创建一个空的序列。它进发送 <em>.Completed</em></p>
+<figure class="highlight swift"><table><tr><td class="code"><pre><div class="line">example(<span class="string">"empty"</span>) &#123;</div><div class="line">    <span class="keyword">let</span> emptySequence = <span class="type">Observable</span>&lt;<span class="type">Int</span>&gt;.empty()</div><div class="line"></div><div class="line">    <span class="keyword">let</span> subscription = emptySequence</div><div class="line">        .subscribe &#123; event <span class="keyword">in</span></div><div class="line">            <span class="built_in">print</span>(event)</div><div class="line">        &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<pre><code>--- empty example ---
+Completed
+</code></pre><ul>
+<li><strong>never</strong></li>
+</ul>
+<p><em>never</em> 创建一个序列，该序列永远不会发送消息， <em>.Completed</em> 消息也不会发送</p>
+<figure class="highlight swift"><table><tr><td class="code"><pre><div class="line">example(<span class="string">"never"</span>) &#123;</div><div class="line">    <span class="keyword">let</span> neverSequence = <span class="type">Observable</span>&lt;<span class="type">Int</span>&gt;.never()</div><div class="line"></div><div class="line">    <span class="keyword">let</span> subscription = neverSequence</div><div class="line">        .subscribe &#123; <span class="number">_</span> <span class="keyword">in</span></div><div class="line">            <span class="built_in">print</span>(<span class="string">"This block is never called."</span>)</div><div class="line">        &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li><strong>just</strong></li>
+</ul>
+<p><em>just</em> 代表只包含一个元素的序列。它将向订阅者发送两个消息，第一个消息是其中元素的值，另一个是 <em>.Completed</em></p>
+<figure class="highlight swift"><table><tr><td class="code"><pre><div class="line">example(<span class="string">"just"</span>) &#123;</div><div class="line">    <span class="keyword">let</span> singleElementSequence = <span class="type">Observable</span>.just(<span class="number">32</span>)</div><div class="line"></div><div class="line">    <span class="keyword">let</span> subscription = singleElementSequence</div><div class="line">        .subscribe &#123; event <span class="keyword">in</span></div><div class="line">            <span class="built_in">print</span>(event)</div><div class="line">        &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<pre><code>--- just example ---
+Next(32)
+Completed
+</code></pre><ul>
+<li><strong>of</strong></li>
+</ul>
+<p><em>of</em> 通过固定数目的元素创建一个序列</p>
+<figure class="highlight swift"><table><tr><td class="code"><pre><div class="line">example(<span class="string">"sequenceOf"</span>) &#123;</div><div class="line">    <span class="keyword">let</span> sequenceOfElements<span class="comment">/* : Observable&lt;Int&gt; */</span> = <span class="type">Observable</span>.of(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>,<span class="number">5</span>)</div><div class="line"></div><div class="line">    <span class="keyword">let</span> subscription = sequenceOfElements</div><div class="line">        .subscribe &#123; event <span class="keyword">in</span></div><div class="line">            <span class="built_in">print</span>(event)</div><div class="line">        &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<pre><code>--- sequenceOf example ---
+Next(1)
+Next(2)
+Next(3)
+Next(4)
+Next(5)
+Completed
+</code></pre><ul>
+<li><strong>toObservable</strong></li>
+</ul>
+<p><em>toObservable</em> 在一个数组的基础上创建一个序列</p>
+<figure class="highlight swift"><table><tr><td class="code"><pre><div class="line">example(<span class="string">"toObservable"</span>) &#123;</div><div class="line">    <span class="keyword">let</span> sequenceFromArray = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>].toObservable()</div><div class="line"></div><div class="line">    <span class="keyword">let</span> subscription = sequenceFromArray</div><div class="line">        .subscribe &#123; event <span class="keyword">in</span></div><div class="line">            <span class="built_in">print</span>(event)</div><div class="line">        &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>运行结果同上</p>
+<ul>
+<li><strong>creat</strong></li>
+</ul>
+<p><em>creat</em> 使用swift闭包来创建一个序列，该例子中，创建了just操作符的自定义版本</p>
+<figure class="highlight swift"><table><tr><td class="code"><pre><div class="line">example(<span class="string">"create"</span>) &#123;</div><div class="line">    <span class="keyword">let</span> myJust = &#123; (singleElement: <span class="type">Int</span>) -&gt; <span class="type">Observable</span>&lt;<span class="type">Int</span>&gt; <span class="keyword">in</span></div><div class="line">        <span class="keyword">return</span> <span class="type">Observable</span>.create &#123; observer <span class="keyword">in</span></div><div class="line">            observer.on(.<span class="type">Next</span>(singleElement))</div><div class="line">            observer.on(.<span class="type">Completed</span>)</div><div class="line"></div><div class="line">            <span class="keyword">return</span> <span class="type">NopDisposable</span>.instance</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">let</span> subscription = myJust(<span class="number">5</span>)</div><div class="line">        .subscribe &#123; event <span class="keyword">in</span></div><div class="line">            <span class="built_in">print</span>(event)</div><div class="line">        &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<pre><code>--- create example ---
+Next(5)
+Completed
+</code></pre><ul>
+<li><strong>generate</strong></li>
+</ul>
+<p><em>generate</em> 创建的序列可以自己生成他的值，并且在之前值的基础上来判断什么时候结束。</p>
+<figure class="highlight swift"><table><tr><td class="code"><pre><div class="line">example(<span class="string">"generate"</span>) &#123;</div><div class="line">    <span class="keyword">let</span> generated = <span class="type">Observable</span>.generate(</div><div class="line">        initialState: <span class="number">0</span>,</div><div class="line">        condition: &#123; $<span class="number">0</span> &lt; <span class="number">3</span> &#125;,</div><div class="line">        iterate: &#123; $<span class="number">0</span> + <span class="number">1</span> &#125;</div><div class="line">    )</div><div class="line"></div><div class="line">    <span class="keyword">let</span> subscription = generated</div><div class="line">        .subscribe &#123; event <span class="keyword">in</span></div><div class="line">            <span class="built_in">print</span>(event)</div><div class="line">        &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<pre><code>--- generate example ---
+Next(0)
+Next(1)
+Next(2)
+Completed
+</code></pre><ul>
+<li><strong>error</strong></li>
+</ul>
+<p>创建一个不发送任何消息的 <em>Observable</em> ，以error终止</p>
+<figure class="highlight swift"><table><tr><td class="code"><pre><div class="line">example(<span class="string">"error"</span>) &#123;</div><div class="line">    <span class="keyword">let</span> error = <span class="type">NSError</span>(domain: <span class="string">"Test"</span>, code: -<span class="number">1</span>, userInfo: <span class="literal">nil</span>)</div><div class="line"></div><div class="line">    <span class="keyword">let</span> erroredSequence = <span class="type">Observable</span>&lt;<span class="type">Int</span>&gt;.error(error)</div><div class="line"></div><div class="line">    <span class="keyword">let</span> subscription = erroredSequence</div><div class="line">        .subscribe &#123; event <span class="keyword">in</span></div><div class="line">            <span class="built_in">print</span>(event)</div><div class="line">        &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<pre><code>--- error example ---
+Error(Error Domain=Test Code=-1 &quot;(null)&quot;)
+</code></pre><ul>
+<li><strong>deferred</strong></li>
+</ul>
+<p>直到 <em>observer</em> 订阅之后才创建 <em>Observable</em>，并且为每一个 <em>observer</em> 创建一个全新的</p>
+<figure class="highlight swift"><table><tr><td class="code"><pre><div class="line">example(<span class="string">"deferred"</span>) &#123;</div><div class="line">    <span class="keyword">let</span> deferredSequence: <span class="type">Observable</span>&lt;<span class="type">Int</span>&gt; = <span class="type">Observable</span>.deferred &#123;</div><div class="line">        <span class="built_in">print</span>(<span class="string">"creating"</span>)</div><div class="line">        <span class="keyword">return</span> <span class="type">Observable</span>.create &#123; observer <span class="keyword">in</span></div><div class="line">            <span class="built_in">print</span>(<span class="string">"emmiting"</span>)</div><div class="line">            observer.on(.<span class="type">Next</span>(<span class="number">0</span>))</div><div class="line">            observer.on(.<span class="type">Next</span>(<span class="number">1</span>))</div><div class="line">            observer.on(.<span class="type">Next</span>(<span class="number">2</span>))</div><div class="line"></div><div class="line">            <span class="keyword">return</span> <span class="type">NopDisposable</span>.instance</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="number">_</span> = deferredSequence</div><div class="line">        .subscribe &#123; event <span class="keyword">in</span></div><div class="line">            <span class="built_in">print</span>(event)</div><div class="line">         &#125;</div><div class="line"></div><div class="line">    <span class="number">_</span> = deferredSequence</div><div class="line">        .subscribe &#123; event <span class="keyword">in</span></div><div class="line">            <span class="built_in">print</span>(event)</div><div class="line">         &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<pre><code>--- deferred example ---
+creating
+emmiting
+Next(0)
+Next(1)
+Next(2)
+creating
+emmiting
+Next(0)
+Next(1)
+Next(2)
+</code></pre><h3 id="变换操作"><a href="#变换操作" class="headerlink" title="变换操作"></a>变换操作</h3><ul>
+<li><strong>map/select</strong></li>
+</ul>
+<p>对序列的每一项都应用一个函数来变换 <em>Observable</em> 发射的数据序列</p>
+<p><img src="https://ww1.sinaimg.cn/large/006tNc79gy1fdu8ji9phtj30ge06kmx4.jpg" alt=""></p>
+<figure class="highlight swift"><table><tr><td class="code"><pre><div class="line">example(<span class="string">"map"</span>) &#123;</div><div class="line">    <span class="keyword">let</span> originalSequence = <span class="type">Observable</span>.of(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>)</div><div class="line"></div><div class="line">    <span class="number">_</span> = originalSequence</div><div class="line">        .<span class="built_in">map</span> &#123; number <span class="keyword">in</span></div><div class="line">            number * <span class="number">2</span></div><div class="line">        &#125;</div><div class="line">        .subscribe &#123; <span class="built_in">print</span>($<span class="number">0</span>) &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<pre><code>next(2)
+next(4)
+next(6)
+completed
+</code></pre><ul>
+<li><strong>flatMap</strong></li>
+</ul>
+<p>将每个 <em>observer</em> 发射的数据变换为 <em>Observable</em> 的集合，然后将其“拍扁”（降维 flatten） 成一个 <em>Observable</em></p>
+<p><img src="https://ww2.sinaimg.cn/large/006tNc79gy1fdu8u48fezj30hb086jrh.jpg" alt=""></p>
+<figure class="highlight swift"><table><tr><td class="code"><pre><div class="line">example(<span class="string">"flatMap"</span>) &#123;</div><div class="line">  <span class="keyword">let</span> seqInt = <span class="type">Observable</span>.of(<span class="number">1</span>,<span class="number">2</span>)</div><div class="line">      <span class="keyword">let</span> seqString = <span class="type">Observable</span>.of(<span class="string">"A"</span>,<span class="string">"B"</span>,<span class="string">"C"</span>)</div><div class="line"></div><div class="line">      <span class="number">_</span> = seqInt.flatMap(&#123; (x: <span class="type">Int</span>) -&gt; <span class="type">Observable</span>&lt;<span class="type">String</span>&gt; <span class="keyword">in</span></div><div class="line">          <span class="built_in">print</span>(<span class="string">"from seqInt \(x)"</span>)</div><div class="line">          <span class="keyword">return</span> seqString</div><div class="line">      &#125;).subscribe&#123;<span class="built_in">print</span>($<span class="number">0</span>)&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<pre><code>from seqInt 1
+next(A)
+from seqInt 2
+next(B)
+next(A)
+next(C)
+next(B)
+next(C)
+completed
+</code></pre><ul>
+<li><strong>scan</strong></li>
+</ul>
+<p>对 <em>Observable</em> 发射的每一项数据应用一个函数，然后按殊勋一次发射每一个值</p>
+<p><img src="https://ww1.sinaimg.cn/large/006tNc79gy1fdu98hk0w7j30go06xaa3.jpg" alt=""></p>
+<figure class="highlight swift"><table><tr><td class="code"><pre><div class="line"><span class="keyword">let</span> seqToSum = <span class="type">Observable</span>.of(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>)</div><div class="line"></div><div class="line">      <span class="number">_</span> = seqToSum.scan(<span class="number">0</span>) &#123;acum, elem <span class="keyword">in</span></div><div class="line">          acum + elem</div><div class="line">      &#125;</div><div class="line">          .subscribe&#123;</div><div class="line">              <span class="built_in">print</span>($<span class="number">0</span>)</div><div class="line">      &#125;</div></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<pre><code>next(1)
+next(3)
+next(6)
+next(10)
+next(15)
+completed
+</code></pre><h3 id="过滤操作"><a href="#过滤操作" class="headerlink" title="过滤操作"></a>过滤操作</h3><blockquote>
+<p>从源 <em>Observable</em> 中选择特定的数据发送</p>
+</blockquote>
+<p><em>filter</em></p>
+<p>只发送 <em>Observable</em> 中通过特定测试的数据</p>
+<p><img src="https://ww1.sinaimg.cn/large/006tNc79gy1fdu9gl3xpaj30gs06tmx9.jpg" alt=""></p>
+<figure class="highlight swift"><table><tr><td class="code"><pre><div class="line"><span class="number">_</span> = <span class="type">Observable</span>.of(<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>)</div><div class="line">        .<span class="built_in">filter</span> &#123;</div><div class="line">            $<span class="number">0</span> % <span class="number">2</span> == <span class="number">0</span></div><div class="line">        &#125;</div><div class="line">        .subscribe &#123;</div><div class="line">            <span class="built_in">print</span>($<span class="number">0</span>)</div><div class="line">        &#125;</div></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<pre><code>next(0)
+next(2)
+next(4)
+next(6)
+next(8)
+completed
+</code></pre><ul>
+<li><strong>distinctUntilChanged</strong></li>
+</ul>
+<p>过滤掉连续重复的数据</p>
+<p><img src="https://ww4.sinaimg.cn/large/006tNc79gy1fdu9pvvz3xj30gm06yq30.jpg" alt=""></p>
+<figure class="highlight swift"><table><tr><td class="code"><pre><div class="line"><span class="keyword">let</span> subscription = <span class="type">Observable</span>.of(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">4</span>)</div><div class="line">       .distinctUntilChanged()</div><div class="line">       .subscribe &#123;</div><div class="line">           <span class="built_in">print</span>($<span class="number">0</span>)</div><div class="line">       &#125;</div></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<pre><code>next(1)
+next(2)
+next(3)
+next(1)
+next(4)
+completed
+</code></pre><ul>
+<li><strong>take</strong></li>
+</ul>
+<p>仅发送 <em>Observable</em> 的前n个数据</p>
+<p><img src="https://ww2.sinaimg.cn/large/006tNc79gy1fdu9yjefdij30gk06m3yf.jpg" alt=""></p>
+<figure class="highlight swift"><table><tr><td class="code"><pre><div class="line"><span class="keyword">let</span> subscription = <span class="type">Observable</span>.of(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>)</div><div class="line">        .take(<span class="number">3</span>)</div><div class="line">        .subscribe &#123;</div><div class="line">            <span class="built_in">print</span>($<span class="number">0</span>)</div><div class="line">        &#125;</div></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<pre><code>Next(1)
+Next(2)
+Next(3)
+Completed
+</code></pre><h3 id="结合操作"><a href="#结合操作" class="headerlink" title="结合操作"></a>结合操作</h3><blockquote>
+<p>将多个 <em>Observable</em> 结合成一个 <em>Observable</em></p>
+</blockquote>
+<ul>
+<li><p><strong>startWith</strong></p>
+<p>在数据序列的开头增加一些数据</p>
+<p><img src="https://ww4.sinaimg.cn/large/006tNc79gy1fduaacu9ypj30ga06pmx3.jpg" alt=""></p>
+</li>
+</ul>
+<figure class="highlight swift"><table><tr><td class="code"><pre><div class="line"><span class="number">_</span>  = <span class="type">Observable</span>.of(<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>)</div><div class="line">            .startWith(<span class="number">3</span>)</div><div class="line">            .subscribe &#123;</div><div class="line">                <span class="built_in">print</span>($<span class="number">0</span>)</div><div class="line">        &#125;</div></pre></td></tr></table></figure>
+<p> 运行结果：</p>
+<pre><code>next(3)
+next(4)
+next(5)
+next(6)
+next(7)
+next(8)
+next(9)
+completed
+</code></pre><ul>
+<li><strong>combineLatest</strong></li>
+</ul>
+<p>当两个 Observables 中的任何一个发射了一个数据时，通过一个指定的函数组合每个Observable发射的最新数据（一共两个数据），然后发射这个函数的结果</p>
+<p><img src="https://ww3.sinaimg.cn/large/006tNc79gy1fduaqourpnj30g709z74i.jpg" alt=""></p>
+<p>为了能够产生结果，两个序列中必须保证至少有一个元素</p>
+<figure class="highlight swift"><table><tr><td class="code"><pre><div class="line"><span class="keyword">let</span> intOb1 = <span class="type">Observable</span>.just(<span class="number">2</span>)</div><div class="line"><span class="keyword">let</span> intOb2 = <span class="type">Observable</span>.of(<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>)</div><div class="line"></div><div class="line"> <span class="number">_</span> = <span class="type">Observable</span>.combineLatest(intOb1, intOb2) &#123;</div><div class="line">         $<span class="number">0</span> * $<span class="number">1</span></div><div class="line">     &#125;</div><div class="line">     .subscribe &#123;</div><div class="line">         <span class="built_in">print</span>($<span class="number">0</span>)</div><div class="line">     &#125;</div></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<pre><code>next(0)
+next(2)
+next(4)
+next(6)
+next(8)
+completed
+</code></pre><p><em>combineLatest</em> 有超过两个参数的版本</p>
+<figure class="highlight swift"><table><tr><td class="code"><pre><div class="line"><span class="keyword">let</span> intOb1 = <span class="type">Observable</span>.just(<span class="number">2</span>)</div><div class="line"><span class="keyword">let</span> intOb2 = <span class="type">Observable</span>.of(<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>)</div><div class="line"><span class="keyword">let</span> intOb3 = <span class="type">Observable</span>.of(<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>);</div><div class="line"><span class="number">_</span> = <span class="type">Observable</span>.combineLatest(intOb1,intOb2,intOb3) &#123;</div><div class="line">    ($<span class="number">0</span> + $<span class="number">1</span>) * $<span class="number">2</span></div><div class="line">&#125;</div><div class="line">    .subscribe&#123;</div><div class="line">        <span class="built_in">print</span>($<span class="number">0</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<pre><code>next(0)
+next(0)
+next(3)
+next(4)
+next(8)
+next(10)
+next(15)
+next(20)
+completed
+</code></pre><p><em>combineLatest</em> 可以作用于不同数据类型的序列</p>
+<figure class="highlight swift"><table><tr><td class="code"><pre><div class="line"><span class="keyword">let</span> intOb = <span class="type">Observable</span>.just(<span class="number">2</span>)</div><div class="line"><span class="keyword">let</span> stringOb = <span class="type">Observable</span>.just(<span class="string">"a"</span>)</div><div class="line"></div><div class="line"><span class="number">_</span> = <span class="type">Observable</span>.combineLatest(intOb, stringOb) &#123;</div><div class="line">        <span class="string">"\($0) "</span> + $<span class="number">1</span></div><div class="line">    &#125;</div><div class="line">    .subscribe &#123;</div><div class="line">        <span class="built_in">print</span>($<span class="number">0</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><em>combineLatest</em> 方法可以在Array上使用，数组元素类型必须遵循 <em>ObservableType</em> 协议，数组中的类型必须为 <em>Observables</em></p>
+<figure class="highlight swift"><table><tr><td class="code"><pre><div class="line"><span class="keyword">let</span> intOb1 = <span class="type">Observable</span>.just(<span class="number">2</span>)</div><div class="line"><span class="keyword">let</span> intOb2 = <span class="type">Observable</span>.of(<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>)</div><div class="line"><span class="keyword">let</span> intOb3 = <span class="type">Observable</span>.of(<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>)</div><div class="line"></div><div class="line"><span class="number">_</span> = [intOb1, intOb2, intOb3].combineLatest &#123; intArray -&gt; <span class="type">Int</span> <span class="keyword">in</span></div><div class="line">        <span class="type">Int</span>((intArray[<span class="number">0</span>] + intArray[<span class="number">1</span>]) * intArray[<span class="number">2</span>])</div><div class="line">    &#125;</div><div class="line">    .subscribe &#123; (event: <span class="type">Event</span>&lt;<span class="type">Int</span>&gt;) -&gt; <span class="type">Void</span> <span class="keyword">in</span></div><div class="line">        <span class="built_in">print</span>(event)</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<ul>
+<li><strong>zip</strong></li>
+</ul>
+<p>使用一个行数组合多个 <em>Observable</em> 发射的数据集合，然后再发射这个结果（从序列中一次取数据）</p>
+<p><img src="https://ww1.sinaimg.cn/large/006tNc79gy1fdwjuf8n1hj30gr08o3yl.jpg" alt=""></p>
+<figure class="highlight swift"><table><tr><td class="code"><pre><div class="line"><span class="keyword">let</span> intOb1 = <span class="type">PublishSubject</span>&lt;<span class="type">String</span>&gt;()</div><div class="line"><span class="keyword">let</span> intOb2 = <span class="type">PublishSubject</span>&lt;<span class="type">Int</span>&gt;()</div><div class="line"><span class="number">_</span> = <span class="type">Observable</span>.<span class="built_in">zip</span>(intOb1, intOb2) &#123;</div><div class="line">    <span class="string">"\($0) \($1)"</span></div><div class="line">    &#125;</div><div class="line">    .subscribe &#123;</div><div class="line">        <span class="built_in">print</span>($<span class="number">0</span>)</div><div class="line">    &#125;</div><div class="line">intOb1.on(.next(<span class="string">"A"</span>))</div><div class="line">intOb2.on(.next(<span class="number">1</span>))</div><div class="line">intOb1.on(.next(<span class="string">"B"</span>))</div><div class="line">intOb1.on(.next(<span class="string">"C"</span>))</div><div class="line">intOb2.on(.next(<span class="number">2</span>))</div></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<pre><code>Next(A 1)
+Next(B 2)
+</code></pre><ul>
+<li><strong>merge</strong></li>
+</ul>
+<p>合并 <em>Observables</em>  组合成一个</p>
+<p><img src="https://ww3.sinaimg.cn/large/006tNc79gy1fdwk7fgpkgj30gp092aa8.jpg" alt=""></p>
+<figure class="highlight swift"><table><tr><td class="code"><pre><div class="line"><span class="keyword">let</span> subject1 = <span class="type">PublishSubject</span>&lt;<span class="type">Int</span>&gt;()</div><div class="line"><span class="keyword">let</span> subject2 = <span class="type">PublishSubject</span>&lt;<span class="type">Int</span>&gt;()</div><div class="line"></div><div class="line"><span class="number">_</span> = <span class="type">Observable</span>.of(subject1, subject2)</div><div class="line">    .merge()</div><div class="line">    .subscribe&#123; int <span class="keyword">in</span></div><div class="line">        <span class="built_in">print</span>(int)</div><div class="line">&#125;</div><div class="line"></div><div class="line">subject1.on(.next(<span class="number">20</span>))</div><div class="line">subject1.on(.next(<span class="number">40</span>))</div><div class="line">subject1.on(.next(<span class="number">60</span>))</div><div class="line">subject2.on(.next(<span class="number">1</span>))</div><div class="line">subject1.on(.next(<span class="number">80</span>))</div><div class="line">subject1.on(.next(<span class="number">100</span>))</div><div class="line">subject2.on(.next(<span class="number">1</span>))</div></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<pre><code>next(20)
+next(40)
+next(60)
+next(1)
+next(80)
+next(100)
+next(1)
+</code></pre><ul>
+<li><strong>switchLatest</strong></li>
+</ul>
+<p>将一个发射多个 Observables 的 Observable 转换成另一个单独的 Observable，后者发射那些 Observables 最近发射的数据项</p>
+<p>Switch 订阅一个发射多个 Observables 的 Observable。它每次观察那些 Observables 中的一个，Switch 返回的这个Observable取消订阅前一个发射数据的 Observable，开始发射最近的Observable 发射的数据。注意：当原始 Observable 发射了一个新的 Observable 时（不是这个新的 Observable 发射了一条数据时），它将取消订阅之前的那个 Observable。这意味着，在后来那个 Observable 产生之后到它开始发射数据之前的这段时间里，前一个 Observable 发射的数据将被丢弃</p>
+<p><img src="https://ww4.sinaimg.cn/large/006tNc79gy1fdwkgzfly8j30h009it8t.jpg" alt=""></p>
+<figure class="highlight swift"><table><tr><td class="code"><pre><div class="line"><span class="keyword">let</span> var1 = <span class="type">Variable</span>(<span class="number">0</span>)</div><div class="line"></div><div class="line"><span class="keyword">let</span> var2 = <span class="type">Variable</span>(<span class="number">200</span>)</div><div class="line"></div><div class="line"><span class="comment">// var3 is like an Observable&lt;Observable&lt;Int&gt;&gt;</span></div><div class="line"><span class="keyword">let</span> var3 = <span class="type">Variable</span>(var1.asObservable())</div><div class="line"></div><div class="line"><span class="keyword">let</span> d = var3</div><div class="line">    .asObservable()</div><div class="line">    .switchLatest()</div><div class="line">    .subscribe &#123;</div><div class="line">        <span class="built_in">print</span>($<span class="number">0</span>)</div><div class="line">    &#125;</div><div class="line"></div><div class="line">var1.value = <span class="number">1</span></div><div class="line">var1.value = <span class="number">2</span></div><div class="line">var1.value = <span class="number">3</span></div><div class="line">var1.value = <span class="number">4</span></div><div class="line"></div><div class="line">var3.value = var2.asObservable()</div><div class="line"></div><div class="line">var2.value = <span class="number">201</span></div><div class="line"></div><div class="line">var1.value = <span class="number">5</span></div><div class="line">var1.value = <span class="number">6</span></div><div class="line">var1.value = <span class="number">7</span></div></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<pre><code>next(0)
+next(1)
+next(2)
+next(3)
+next(4)
+next(200)
+next(201)
+completed
+</code></pre><h3 id="错误处理"><a href="#错误处理" class="headerlink" title="错误处理"></a>错误处理</h3><p>下面的操作符帮助我们从 <em>Observable</em> 发射的 <em>error</em> 通知响应或者错误中恢复</p>
+<ul>
+<li><strong>catchError</strong></li>
+</ul>
+<p>收到 <em>error</em> 通知之后，转而发送一个没有错误的序列</p>
+<p><img src="https://ww4.sinaimg.cn/large/006tNc79gy1fdwky9cj9nj30gb07pglp.jpg" alt=""></p>
+<figure class="highlight swift"><table><tr><td class="code"><pre><div class="line"><span class="keyword">let</span> sequenceThatFails = <span class="type">PublishSubject</span>&lt;<span class="type">Int</span>&gt;()</div><div class="line"><span class="keyword">let</span> recoverySequence = <span class="type">Observable</span>.of(<span class="number">100</span>, <span class="number">200</span>, <span class="number">300</span>, <span class="number">400</span>)</div><div class="line"></div><div class="line"><span class="number">_</span> = sequenceThatFails</div><div class="line">    .catchError &#123; error <span class="keyword">in</span></div><div class="line">        <span class="keyword">return</span> recoverySequence</div><div class="line">    &#125;</div><div class="line">    .subscribe &#123;</div><div class="line">        <span class="built_in">print</span>($<span class="number">0</span>)</div><div class="line">&#125;</div><div class="line"></div><div class="line">sequenceThatFails.on(.next(<span class="number">1</span>))</div><div class="line">sequenceThatFails.on(.next(<span class="number">2</span>))</div><div class="line">sequenceThatFails.on(.next(<span class="number">3</span>))</div><div class="line">sequenceThatFails.on(.next(<span class="number">4</span>))</div><div class="line">sequenceThatFails.on(.error(<span class="type">NSError</span>(domain: <span class="string">"Test"</span>, code: <span class="number">0</span>, userInfo: <span class="literal">nil</span>)))</div></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<pre><code>next(1)
+next(2)
+next(3)
+next(4)
+next(100)
+next(200)
+next(300)
+next(400)
+completed
+</code></pre><ul>
+<li><em>retry</em></li>
+</ul>
+<p>如果原始 <em>Observable</em> 遇到错误， 重新订阅</p>
+<p><img src="https://ww4.sinaimg.cn/large/006tNc79gy1fdwl2dloidj30fz09ddfx.jpg" alt=""></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>请我喝杯豆浆！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="http://storage1.imgchr.com/images/FullSizeRendereb28d.jpg" alt="winterrain5 WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="http://storage1.imgchr.com/images/FullSizeRender2fa7e1.jpg" alt="winterrain5 Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/框架-RxSwift/" rel="tag">#框架 RxSwift</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/03/20/框架/SDWebImage原理及使用/" rel="next" title="SDWebImage原理及使用">
+                <i class="fa fa-chevron-left"></i> SDWebImage原理及使用
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/03/23/框架/Realm数据库"入坑"/" rel="prev" title="Realm数据库"入坑"">
+                Realm数据库"入坑" <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/03/20/框架/RxSwift学习小结/"
+           data-title="RxSwift学习小结" data-url="http://yoursite.com/2017/03/20/框架/RxSwift学习小结/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://ww4.sinaimg.cn/mw690/9dac93ccjw9eymcefq449j202s042aa2.jpg"
+               alt="winterrain5" />
+          <p class="site-author-name" itemprop="name">winterrain5</p>
+          <p class="site-description motion-element" itemprop="description">要做一个Nice的人</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">41</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">36</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/winterrain5" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/rain-winter-74" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/u/2645332940/home?topnav=1" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  微博
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建和订阅-Observable"><span class="nav-number">1.</span> <span class="nav-text">创建和订阅 Observable</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#变换操作"><span class="nav-number">2.</span> <span class="nav-text">变换操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#过滤操作"><span class="nav-number">3.</span> <span class="nav-text">过滤操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#结合操作"><span class="nav-number">4.</span> <span class="nav-text">结合操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#错误处理"><span class="nav-number">5.</span> <span class="nav-text">错误处理</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">winterrain5</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"winterrain5"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("029tUpff0Ph7OrHFjawhv700-gzGzoHsz", "TyyMeX7RfM4IsJWWe33K8yCW");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+</body>
+</html>

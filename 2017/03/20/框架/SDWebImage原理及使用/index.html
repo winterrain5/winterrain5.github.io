@@ -96,7 +96,7 @@
 入口setImageWithURL:placeholderImage:options: 会先把placeholderImage显示，然后 SDWebImageManager 根据URL开始处理图片；
 
 进入SDWebImageManager-downloadWithURL:delegate:options:userInfo:，交给SDImageCache从缓存中查找图片是否已经下载que">
-<meta property="og:updated_time" content="2017-03-20T03:43:22.000Z">
+<meta property="og:updated_time" content="2017-03-21T03:15:34.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SDWebImage原理及使用">
 <meta name="twitter:description" content="加载流程
@@ -386,7 +386,7 @@
 <ul>
 <li>使用SDWebImageManager,SDWebImageManager为UIImageView+WebCache category的实现提供接口。</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">SDWebImageManager manager = [SDWebImageManager sharedManager] ;[manager downloadImageWithURL:imageURL options:0 progress:^(NSInteger   receivedSize, NSInteger expectedSize) &#123; // progression tracking code &#125;   completed:^(UIImage image, NSError error, SDImageCacheType cacheType,   BOOL finished, NSURL imageURL) &#123; if (image) &#123; // do something with image &#125; &#125;];</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">SDWebImageManager manager = [SDWebImageManager sharedManager] ;</div><div class="line">[manager downloadImageWithURL:imageURL options:0 progress:^(NSInteger   receivedSize, NSInteger expectedSize) &#123; // progression tracking code &#125;   completed:^(UIImage image, NSError error, SDImageCacheType cacheType,   BOOL finished, NSURL imageURL) &#123; if (image) &#123; // do something with image &#125; &#125;];</div></pre></td></tr></table></figure>
 <ul>
 <li>获取缓存大小</li>
 </ul>
@@ -459,6 +459,10 @@
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2017/03/20/框架/RxSwift学习小结/" rel="prev" title="RxSwift学习小结">
+                RxSwift学习小结 <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -529,7 +533,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">39</span>
+              <span class="site-state-item-count">41</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -546,7 +550,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">34</span>
+                <span class="site-state-item-count">36</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

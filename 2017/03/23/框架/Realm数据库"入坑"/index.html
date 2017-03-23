@@ -1,0 +1,852 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Realm," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2" />
+
+
+
+
+
+
+<meta name="description" content="Realm 优点
+跨平台：支持的平台包括Java，Objective-C，Swift，React Native，Xamarin
+
+简单易用：相比CoreData 和 SQLite学习成本更低
+
+可视化：Realm Browser工具">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Realm数据库"入坑"">
+<meta property="og:url" content="http://yoursite.com/2017/03/23/框架/Realm数据库"入坑"/index.html">
+<meta property="og:site_name" content="行止由心">
+<meta property="og:description" content="Realm 优点
+跨平台：支持的平台包括Java，Objective-C，Swift，React Native，Xamarin
+
+简单易用：相比CoreData 和 SQLite学习成本更低
+
+可视化：Realm Browser工具">
+<meta property="og:updated_time" content="2017-03-23T09:02:51.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Realm数据库"入坑"">
+<meta name="twitter:description" content="Realm 优点
+跨平台：支持的平台包括Java，Objective-C，Swift，React Native，Xamarin
+
+简单易用：相比CoreData 和 SQLite学习成本更低
+
+可视化：Realm Browser工具">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"right","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '6342373090747483000',
+      author: 'Author'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/03/23/框架/Realm数据库"入坑"/"/>
+
+
+  <title> Realm数据库"入坑" | 行止由心 </title>
+</head>
+
+<body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">行止由心</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">知识管理，自我管理</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Realm数据库"入坑"
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-03-23T15:52:30+08:00" content="2017-03-23">
+              2017-03-23
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/03/23/框架/Realm数据库"入坑"/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/23/框架/Realm数据库"入坑"/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2017/03/23/框架/Realm数据库"入坑"/" class="leancloud_visitors" data-flag-title="Realm数据库"入坑"">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="Realm-优点"><a href="#Realm-优点" class="headerlink" title="Realm 优点"></a>Realm 优点</h3><ul>
+<li><p>跨平台：支持的平台包括Java，Objective-C，Swift，React Native，Xamarin</p>
+</li>
+<li><p>简单易用：相比CoreData 和 SQLite学习成本更低</p>
+</li>
+<li><p>可视化：Realm Browser工具</p>
+</li>
+</ul>
+<a id="more"></a>
+<h3 id="相关概念"><a href="#相关概念" class="headerlink" title="相关概念"></a>相关概念</h3><ul>
+<li><strong>RLMRealm</strong>: 框架核心所在，构建数据库的访问点</li>
+<li><strong>RLMObject</strong>: 构建Realm数据模型，继承自RLMObject</li>
+<li><strong>Relationships</strong>：通过简单的在数据模型中声明一个<em>RLMObject</em>类型的属性，就可以创建“一对多”的对象关系，同样的，还可以创建“多对一”和“多对多的关系”</li>
+<li><strong>Write Transactions</strong>: 数据库中的所有操作，比如创建、编辑、或者删除对象，都必须在事务中完成，“事务”是指位于<em>write</em>闭包内的代码段</li>
+<li><strong>Queries</strong>：要在数据库中检索信息，，需要用到“检索”操作。检索最简单的形式是对数据库发出查询消息。如果需要检索更复杂的数据，还可以使用谓词、复合查询以及结果排序等操作</li>
+<li><strong>RLMResults</strong>：执行任何查询请求后所返回的类，其中包含了一系列的<em>RLMObject</em>对象。和<em>NSArray</em>类似，可以用下标语法来对其进行访问，并且还可以决定它们之间的关系。</li>
+</ul>
+<h3 id="如何使用"><a href="#如何使用" class="headerlink" title="如何使用"></a>如何使用</h3><h4 id="创建数据库"><a href="#创建数据库" class="headerlink" title="创建数据库"></a>创建数据库</h4><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">- (void)creatDataBaseWithName:(NSString *)databaseName</div><div class="line">&#123;   </div><div class="line">  //创建数据库主要设置`RLMRealmConfiguration`,设置数据库名字和存储地方。</div><div class="line">   NSArray *docPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);    </div><div class="line">   NSString *path = [docPath objectAtIndex:0];   </div><div class="line">   NSString *filePath = [path stringByAppendingPathComponent:databaseName];    </div><div class="line">   NSLog(@&quot;数据库目录 = %@&quot;,filePath);</div><div class="line"></div><div class="line">    RLMRealmConfiguration *config = [RLMRealmConfiguration defaultConfiguration];</div><div class="line">    // 配置路径</div><div class="line">    config.fileURL = [NSURL URLWithString:filePath];</div><div class="line">    objectClasses这个属性是用来控制对哪个类能够存储在指定 Realm 数据库中做出限制</div><div class="line">    config.objectClasses = @[MyClass.class, MyOtherClass.class];</div><div class="line">    config.readOnly = NO;    </div><div class="line">    int currentVersion = 1.0;</div><div class="line">    config.schemaVersion = currentVersion;</div><div class="line"></div><div class="line">    config.migrationBlock = ^(RLMMigration *migration , uint64_t oldSchemaVersion) &#123;       // 这里是设置数据迁移的block</div><div class="line">        if (oldSchemaVersion &lt; currentVersion) &#123;</div><div class="line">        &#125;</div><div class="line">    &#125;;</div><div class="line"></div><div class="line">    [RLMRealmConfiguration setDefaultConfiguration:config];</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>通常情况下，Realm数据库是存储在硬盘中，但是可以通过设置<code>inMemoryIdentifier</code> 而不是设置<code>RLMRealmConfiguration</code>中的<em>fileURL</em>属性中，以创建一个完全在内存中的数据库</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">RLMRealmConfiguration *config = [RLMRealmConfiguration defaultConfiguration];</div><div class="line">config.inMemoryIdentifier = @&quot;MyInMemoryRealm&quot;;</div><div class="line">RLMRealm *realm = [RLMRealm realmWithConfiguration:config error:nil];</div></pre></td></tr></table></figure>
+<blockquote>
+<p>内存数据库在每次程序运行期间都不会保存数据<br>使用内存数据库需要注意：</p>
+<ul>
+<li>内存数据库会在临时文件夹中创建多个文件，用来协调处理诸如跨进程通知之类的事务。 实际上没有任何的数据会被写入到这些文件当中，除非操作系统由于内存过满，才会去把内存里面的数据存入到文件中。</li>
+<li>如果某个内存 Realm 数据库实例没有被引用，那么所有的数据就会被释放。所以必须要在应用的生命周期内保持对Realm内存数据库的强引用，以避免数据丢失。</li>
+</ul>
+</blockquote>
+<h4 id="建表"><a href="#建表" class="headerlink" title="建表"></a>建表</h4><p>只需要继承<code>RLMObject</code> 或者一个已经存在的模型类，就可以创建一个新的Realm数据模型对象。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">#import @interface RLMUser : RLMObject</div><div class="line">@property NSString *accid;//用户注册id</div><div class="line">@property NSInteger custId;</div><div class="line">//姓名</div><div class="line">@property NSString *custName;</div><div class="line">//头像大图url</div><div class="line">@property NSString *avatarBig;</div><div class="line">@property RLMArray *cars;</div><div class="line">@end</div><div class="line">RLM_ARRAY_TYPE(RLMUser) // 定义RLMArray</div><div class="line"></div><div class="line">@interface Car : RLMObject</div><div class="line">@property NSString *carName;</div><div class="line">@property RLMUser *owner;</div><div class="line">@end</div><div class="line">RLM_ARRAY_TYPE(Car) // 定义RLMArray@end</div></pre></td></tr></table></figure>
+<blockquote>
+<ul>
+<li>RLMObject 官方建议不要加上 Objective-C的property attributes(如nonatomic, atomic, strong, copy, weak 等等）假如设置了，这些attributes会一直生效直到RLMObject被写入realm数据库。</li>
+<li>RLM_ARRAY_TYPE宏创建了一个协议，从而允许 RLMArray语法的使用</li>
+</ul>
+</blockquote>
+<h4 id="关于RLMObject的关系"><a href="#关于RLMObject的关系" class="headerlink" title="关于RLMObject的关系"></a>关于<em>RLMObject</em>的关系</h4><ul>
+<li>对一（To-One）关系</li>
+</ul>
+<p>对于多对一（many-to-one）或者一对一（one-to-one）关系来说，只需要声明一个RLMObject子类类型的属性即可，如上面代码中<code>@property RLMUser *owner</code></p>
+<ul>
+<li>对多（To-Many）关系</li>
+</ul>
+<p>通过RLMArray类型的属性您可以定义个对多的关系。如上面代码例子，<code>@property RLMArray*cars</code></p>
+<ul>
+<li>反向（Inverse Relationship）</li>
+</ul>
+<p>链接是单向性的。因此，如果对多关系属性 RLMUser.cars链接了一个 Car实例，而这个实例的对一关系属性 Car.owner又链接到了对应的这个 RLMUser实例，那么实际上这些链接仍然是互相独立的。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">@interface Car : RLMObject@property</div><div class="line">NSString *carName;</div><div class="line">@property (readonly) RLMLinkingObjects *owners;</div><div class="line">@end</div><div class="line">@implementation Car</div><div class="line">+ (NSDictionary *)linkingObjectsProperties &#123;    </div><div class="line">  return @&#123; @&quot;owners&quot;: [RLMPropertyDescriptor descriptorWithClass:RLMUser.class propertyName:@&quot;cars&quot;]&#125;;</div><div class="line">&#125;</div><div class="line">@end</div></pre></td></tr></table></figure>
+<h4 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h4><p>还可以给RLMObject设置主键<code>primaryKey</code>，默认值<code>defaultPropertyValues</code>，忽略的属性<code>ignoredProperties</code>，必要属性<code>requiredProperties</code>，索引<code>indexedProperties</code>。比较有用的是主键和索引。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">@implementation Book//</div><div class="line">//主键</div><div class="line">+ (NSString *)primaryKey &#123;    </div><div class="line">  return @&quot;ID&quot;;</div><div class="line">&#125;</div><div class="line">//设置属性默认值</div><div class="line">+ (NSDictionary *)defaultPropertyValues&#123;    </div><div class="line">  return @&#123;@&quot;carName&quot;:@&quot;测试&quot; &#125;;</div><div class="line">&#125;</div><div class="line">//设置忽略属性,即不存到realm数据库中</div><div class="line">+ (NSArray *)ignoredProperties &#123;    </div><div class="line">  return @[@&quot;ID&quot;];</div><div class="line">&#125;</div><div class="line">//一般来说,属性为nil的话realm会抛出异常,但是如果实现了这个方法的话,就只有name为nil会抛出异常,也就是说现在cover属性可以为空了</div><div class="line">+ (NSArray *)requiredProperties &#123;    </div><div class="line">  return @[@&quot;name&quot;];</div><div class="line">&#125;</div><div class="line">//设置索引,可以加快检索的速度+</div><div class="line"> (NSArray *)indexedProperties &#123;    </div><div class="line">   return @[@&quot;ID&quot;];</div><div class="line">&#125;</div><div class="line">@end</div></pre></td></tr></table></figure>
+<h4 id="存储数据"><a href="#存储数据" class="headerlink" title="存储数据"></a>存储数据</h4>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>请我喝杯豆浆！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="http://storage1.imgchr.com/images/FullSizeRendereb28d.jpg" alt="winterrain5 WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="http://storage1.imgchr.com/images/FullSizeRender2fa7e1.jpg" alt="winterrain5 Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Realm/" rel="tag">#Realm</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/03/20/框架/RxSwift学习小结/" rel="next" title="RxSwift学习小结">
+                <i class="fa fa-chevron-left"></i> RxSwift学习小结
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/03/23/框架/Realm数据库"入坑"/"
+           data-title="Realm数据库"入坑"" data-url="http://yoursite.com/2017/03/23/框架/Realm数据库"入坑"/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://ww4.sinaimg.cn/mw690/9dac93ccjw9eymcefq449j202s042aa2.jpg"
+               alt="winterrain5" />
+          <p class="site-author-name" itemprop="name">winterrain5</p>
+          <p class="site-description motion-element" itemprop="description">要做一个Nice的人</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">41</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">36</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/winterrain5" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/rain-winter-74" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/u/2645332940/home?topnav=1" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  微博
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Realm-优点"><span class="nav-number">1.</span> <span class="nav-text">Realm 优点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#相关概念"><span class="nav-number">2.</span> <span class="nav-text">相关概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如何使用"><span class="nav-number">3.</span> <span class="nav-text">如何使用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#创建数据库"><span class="nav-number">3.1.</span> <span class="nav-text">创建数据库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#建表"><span class="nav-number">3.2.</span> <span class="nav-text">建表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#关于RLMObject的关系"><span class="nav-number">3.3.</span> <span class="nav-text">关于RLMObject的关系</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#属性"><span class="nav-number">3.4.</span> <span class="nav-text">属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#存储数据"><span class="nav-number">3.5.</span> <span class="nav-text">存储数据</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">winterrain5</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"winterrain5"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("029tUpff0Ph7OrHFjawhv700-gzGzoHsz", "TyyMeX7RfM4IsJWWe33K8yCW");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+</body>
+</html>
