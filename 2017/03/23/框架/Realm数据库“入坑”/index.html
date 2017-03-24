@@ -1,0 +1,924 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Realm," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2" />
+
+
+
+
+
+
+<meta name="description" content="Realm 优点
+跨平台：支持的平台包括Java，Objective-C，Swift，React Native，Xamarin
+
+简单易用：相比CoreData 和 SQLite学习成本更低
+
+可视化：Realm Browser工具">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Realm数据库“入坑”">
+<meta property="og:url" content="http://yoursite.com/2017/03/23/框架/Realm数据库“入坑”/index.html">
+<meta property="og:site_name" content="行止由心">
+<meta property="og:description" content="Realm 优点
+跨平台：支持的平台包括Java，Objective-C，Swift，React Native，Xamarin
+
+简单易用：相比CoreData 和 SQLite学习成本更低
+
+可视化：Realm Browser工具">
+<meta property="og:updated_time" content="2017-03-24T02:16:06.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Realm数据库“入坑”">
+<meta name="twitter:description" content="Realm 优点
+跨平台：支持的平台包括Java，Objective-C，Swift，React Native，Xamarin
+
+简单易用：相比CoreData 和 SQLite学习成本更低
+
+可视化：Realm Browser工具">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"right","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '6342373090747483000',
+      author: 'Author'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/03/23/框架/Realm数据库“入坑”/"/>
+
+
+  <title> Realm数据库“入坑” | 行止由心 </title>
+</head>
+
+<body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">行止由心</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">知识管理，自我管理</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Realm数据库“入坑”
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-03-23T17:14:09+08:00" content="2017-03-23">
+              2017-03-23
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/03/23/框架/Realm数据库“入坑”/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/23/框架/Realm数据库“入坑”/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2017/03/23/框架/Realm数据库“入坑”/" class="leancloud_visitors" data-flag-title="Realm数据库“入坑”">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="Realm-优点"><a href="#Realm-优点" class="headerlink" title="Realm 优点"></a>Realm 优点</h3><ul>
+<li><p>跨平台：支持的平台包括Java，Objective-C，Swift，React Native，Xamarin</p>
+</li>
+<li><p>简单易用：相比CoreData 和 SQLite学习成本更低</p>
+</li>
+<li><p>可视化：Realm Browser工具</p>
+</li>
+</ul>
+<a id="more"></a>
+<h3 id="相关概念"><a href="#相关概念" class="headerlink" title="相关概念"></a>相关概念</h3><ul>
+<li><strong>RLMRealm</strong>: 框架核心所在，构建数据库的访问点</li>
+<li><strong>RLMObject</strong>: 构建Realm数据模型，继承自RLMObject</li>
+<li><strong>Relationships</strong>：通过简单的在数据模型中声明一个<em>RLMObject</em>类型的属性，就可以创建“一对多”的对象关系，同样的，还可以创建“多对一”和“多对多的关系”</li>
+<li><strong>Write Transactions</strong>: 数据库中的所有操作，比如创建、编辑、或者删除对象，都必须在事务中完成，“事务”是指位于<em>write</em>闭包内的代码段</li>
+<li><strong>Queries</strong>：要在数据库中检索信息，，需要用到“检索”操作。检索最简单的形式是对数据库发出查询消息。如果需要检索更复杂的数据，还可以使用谓词、复合查询以及结果排序等操作</li>
+<li><strong>RLMResults</strong>：执行任何查询请求后所返回的类，其中包含了一系列的<em>RLMObject</em>对象。和<em>NSArray</em>类似，可以用下标语法来对其进行访问，并且还可以决定它们之间的关系。</li>
+</ul>
+<h3 id="如何使用"><a href="#如何使用" class="headerlink" title="如何使用"></a>如何使用</h3><h4 id="创建数据库"><a href="#创建数据库" class="headerlink" title="创建数据库"></a>创建数据库</h4><figure class="highlight swift"><table><tr><td class="code"><pre><div class="line">- (void)creatDataBaseWithName:(<span class="type">NSString</span> *)databaseName</div><div class="line">&#123;   </div><div class="line">  <span class="comment">//创建数据库主要设置`RLMRealmConfiguration`,设置数据库名字和存储地方。</span></div><div class="line">   <span class="type">NSArray</span> *docPath = <span class="type">NSSearchPathForDirectoriesInDomains</span>(<span class="type">NSDocumentDirectory</span>, <span class="type">NSUserDomainMask</span>, <span class="type">YES</span>);    </div><div class="line">   <span class="type">NSString</span> *path = [docPath objectAtIndex:<span class="number">0</span>];   </div><div class="line">   <span class="type">NSString</span> *filePath = [path stringByAppendingPathComponent:databaseName];    </div><div class="line">   <span class="type">NSLog</span>(@<span class="string">"数据库目录 = %@"</span>,filePath);</div><div class="line"></div><div class="line">    <span class="type">RLMRealmConfiguration</span> *config = [<span class="type">RLMRealmConfiguration</span> defaultConfiguration];</div><div class="line">    <span class="comment">// 配置路径</span></div><div class="line">    config.fileURL = [<span class="type">NSURL</span> <span class="type">URLWithString</span>:filePath];</div><div class="line">    objectClasses这个属性是用来控制对哪个类能够存储在指定 <span class="type">Realm</span> 数据库中做出限制</div><div class="line">    config.objectClasses = @[<span class="type">MyClass</span>.<span class="keyword">class</span>, <span class="type">MyOtherClass</span>.<span class="keyword">class</span>];</div><div class="line">    config.readOnly = <span class="type">NO</span>;    </div><div class="line">    int currentVersion = <span class="number">1.0</span>;</div><div class="line">    config.schemaVersion = currentVersion;</div><div class="line"></div><div class="line">    config.migrationBlock = ^(<span class="type">RLMMigration</span> *migration , uint64_t oldSchemaVersion) &#123;       <span class="comment">// 这里是设置数据迁移的block</span></div><div class="line">        <span class="keyword">if</span> (oldSchemaVersion &lt; currentVersion) &#123;</div><div class="line">        &#125;</div><div class="line">    &#125;;</div><div class="line"></div><div class="line">    [<span class="type">RLMRealmConfiguration</span> setDefaultConfiguration:config];</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>通常情况下，Realm数据库是存储在硬盘中，但是可以通过设置<code>inMemoryIdentifier</code> 而不是设置<code>RLMRealmConfiguration</code>中的<em>fileURL</em>属性中，以创建一个完全在内存中的数据库</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">RLMRealmConfiguration *config = [RLMRealmConfiguration defaultConfiguration];</div><div class="line">config.inMemoryIdentifier = @&quot;MyInMemoryRealm&quot;;</div><div class="line">RLMRealm *realm = [RLMRealm realmWithConfiguration:config error:nil];</div></pre></td></tr></table></figure>
+<blockquote>
+<p>内存数据库在每次程序运行期间都不会保存数据<br>使用内存数据库需要注意：</p>
+<ul>
+<li>内存数据库会在临时文件夹中创建多个文件，用来协调处理诸如跨进程通知之类的事务。 实际上没有任何的数据会被写入到这些文件当中，除非操作系统由于内存过满，才会去把内存里面的数据存入到文件中。</li>
+<li>如果某个内存 Realm 数据库实例没有被引用，那么所有的数据就会被释放。所以必须要在应用的生命周期内保持对Realm内存数据库的强引用，以避免数据丢失。</li>
+</ul>
+</blockquote>
+<h4 id="建表"><a href="#建表" class="headerlink" title="建表"></a>建表</h4><p>只需要继承<code>RLMObject</code> 或者一个已经存在的模型类，就可以创建一个新的Realm数据模型对象。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">#import @interface RLMUser : RLMObject</div><div class="line">@property NSString *accid;//用户注册id</div><div class="line">@property NSInteger custId;</div><div class="line">//姓名</div><div class="line">@property NSString *custName;</div><div class="line">//头像大图url</div><div class="line">@property NSString *avatarBig;</div><div class="line">@property RLMArray *cars;</div><div class="line">@end</div><div class="line">RLM_ARRAY_TYPE(RLMUser) // 定义RLMArray</div><div class="line"></div><div class="line">@interface Car : RLMObject</div><div class="line">@property NSString *carName;</div><div class="line">@property RLMUser *owner;</div><div class="line">@end</div><div class="line">RLM_ARRAY_TYPE(Car) // 定义RLMArray</div></pre></td></tr></table></figure>
+<blockquote>
+<ul>
+<li>RLMObject 官方建议不要加上 Objective-C的property attributes(如nonatomic, atomic, strong, copy, weak 等等）假如设置了，这些attributes会一直生效直到RLMObject被写入realm数据库。</li>
+<li>RLM_ARRAY_TYPE宏创建了一个协议，从而允许 RLMArray语法的使用</li>
+</ul>
+</blockquote>
+<h4 id="关于RLMObject的关系"><a href="#关于RLMObject的关系" class="headerlink" title="关于RLMObject的关系"></a>关于<em>RLMObject</em>的关系</h4><ul>
+<li>对一（To-One）关系</li>
+</ul>
+<p>对于多对一（many-to-one）或者一对一（one-to-one）关系来说，只需要声明一个RLMObject子类类型的属性即可，如上面代码中<code>@property RLMUser *owner</code></p>
+<ul>
+<li>对多（To-Many）关系</li>
+</ul>
+<p>通过RLMArray类型的属性您可以定义个对多的关系。如上面代码例子，<code>@property RLMArray*cars</code></p>
+<ul>
+<li>反向（Inverse Relationship）</li>
+</ul>
+<p>链接是单向性的。因此，如果对多关系属性 RLMUser.cars链接了一个 Car实例，而这个实例的对一关系属性 Car.owner又链接到了对应的这个 RLMUser实例，那么实际上这些链接仍然是互相独立的。</p>
+<figure class="highlight swift"><table><tr><td class="code"><pre><div class="line">@interface <span class="type">Car</span> : <span class="type">RLMObject</span>@property</div><div class="line"><span class="type">NSString</span> *carName;</div><div class="line">@property (readonly) <span class="type">RLMLinkingObjects</span> *owners;</div><div class="line">@end</div><div class="line">@implementation <span class="type">Car</span></div><div class="line">+ (<span class="type">NSDictionary</span> *)linkingObjectsProperties &#123;    </div><div class="line">  <span class="keyword">return</span> @&#123; @<span class="string">"owners"</span>: [<span class="type">RLMPropertyDescriptor</span> descriptorWithClass:<span class="type">RLMUser</span>.<span class="keyword">class</span> propertyName:@<span class="string">"cars"</span>]&#125;;</div><div class="line">&#125;</div><div class="line">@end</div></pre></td></tr></table></figure>
+<h4 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h4><p>还可以给RLMObject设置主键<code>primaryKey</code>，默认值<code>defaultPropertyValues</code>，忽略的属性<code>ignoredProperties</code>，必要属性<code>requiredProperties</code>，索引<code>indexedProperties</code>。比较有用的是主键和索引。</p>
+<figure class="highlight swift"><table><tr><td class="code"><pre><div class="line">@implementation <span class="type">Book</span></div><div class="line"><span class="comment">//主键</span></div><div class="line">+ (<span class="type">NSString</span> *)primaryKey &#123;    </div><div class="line">  <span class="keyword">return</span> @<span class="string">"ID"</span>;</div><div class="line">&#125;</div><div class="line"><span class="comment">//设置属性默认值</span></div><div class="line">+ (<span class="type">NSDictionary</span> *)defaultPropertyValues&#123;    </div><div class="line">  <span class="keyword">return</span> @&#123;@<span class="string">"carName"</span>:@<span class="string">"测试"</span> &#125;;</div><div class="line">&#125;</div><div class="line"><span class="comment">//设置忽略属性,即不存到realm数据库中</span></div><div class="line">+ (<span class="type">NSArray</span> *)ignoredProperties &#123;    </div><div class="line">  <span class="keyword">return</span> @[@<span class="string">"ID"</span>];</div><div class="line">&#125;</div><div class="line"><span class="comment">//一般来说,属性为nil的话realm会抛出异常,但是如果实现了这个方法的话,就只有name为nil会抛出异常,也就是说现在cover属性可以为空了</span></div><div class="line">+ (<span class="type">NSArray</span> *)requiredProperties &#123;    </div><div class="line">  <span class="keyword">return</span> @[@<span class="string">"name"</span>];</div><div class="line">&#125;</div><div class="line"><span class="comment">//设置索引,可以加快检索的速度+</span></div><div class="line"> (<span class="type">NSArray</span> *)indexedProperties &#123;    </div><div class="line">   <span class="keyword">return</span> @[@<span class="string">"ID"</span>];</div><div class="line">&#125;</div><div class="line">@end</div></pre></td></tr></table></figure>
+<h4 id="增"><a href="#增" class="headerlink" title="增"></a>增</h4><figure class="highlight swift"><table><tr><td class="code"><pre><div class="line"><span class="comment">// (1) 创建一个Car对象，然后设置其属性</span></div><div class="line"><span class="type">Car</span> *car = [[<span class="type">Car</span> alloc] <span class="keyword">init</span>];</div><div class="line">car.carName = @<span class="string">"Lamborghini"</span>;</div><div class="line"><span class="comment">// (2) 通过字典创建Car对象</span></div><div class="line"><span class="type">Car</span> *myOtherCar = [[<span class="type">Car</span> alloc] initWithValue:@&#123;@<span class="string">"name"</span> : @<span class="string">"Rolls-Royce"</span>&#125;];</div><div class="line"><span class="comment">// (3) 通过数组创建狗狗对象</span></div><div class="line"><span class="type">Car</span> *myThirdcar = [[<span class="type">Car</span> alloc] initWithValue:@[@<span class="string">"BMW"</span>]];</div><div class="line"></div><div class="line"><span class="type">RLMRealm</span> *realm = [<span class="type">RLMRealm</span> defaultRealm];</div><div class="line">[realm beginWriteTransaction];</div><div class="line">[realm addObject:<span class="type">Car</span>];</div><div class="line">[realm commitWriteTransaction];</div></pre></td></tr></table></figure>
+<p>请注意，如果在进程中存在多个写入操作的话，那么单个写入操作将会阻塞其余的写入操作，并且还会锁定该操作所在的当前线程。</p>
+<p>Realm这个特性与其他持久化解决方案类似，我们建议您使用该方案常规的最佳做法：将写入操作转移到一个独立的线程中执行。</p>
+<p>官方给出了一个建议：</p>
+<p>由于 Realm 采用了 MVCC 设计架构，读取操作并不会因为写入事务正在进行而受到影响。除非您需要立即使用多个线程来同时执行写入操作，不然您应当采用批量化的写入事务，而不是采用多次少量的写入事务。</p>
+<figure class="highlight swift"><table><tr><td class="code"><pre><div class="line">dispatch_async(dispatch_get_global_queue(<span class="type">DISPATCH_QUEUE_PRIORITY_DEFAULT</span>, <span class="number">0</span>), ^&#123;</div><div class="line"></div><div class="line">        <span class="type">RLMRealm</span> *realm = [<span class="type">RLMRealm</span> defaultRealm];</div><div class="line">        [realm transactionWithBlock:^&#123;</div><div class="line">            [realm addObject: <span class="type">Car</span>];</div><div class="line">        &#125;];</div><div class="line">    &#125;);</div></pre></td></tr></table></figure>
+<h4 id="删"><a href="#删" class="headerlink" title="删"></a>删</h4><figure class="highlight swift"><table><tr><td class="code"><pre><div class="line">[realm beginWriteTransaction];</div><div class="line"><span class="comment">// 删除单条记录</span></div><div class="line">[realm deleteObject:<span class="type">Car</span>];</div><div class="line"><span class="comment">// 删除多条记录</span></div><div class="line">[realm deleteObjects:<span class="type">CarResult</span>];</div><div class="line"><span class="comment">// 删除所有记录</span></div><div class="line">[realm deleteAllObjects];</div><div class="line">[realm commitWriteTransaction];</div></pre></td></tr></table></figure>
+<h4 id="改"><a href="#改" class="headerlink" title="改"></a>改</h4><p>当没有主键的情况下，需要先查询，再修改数据。<br>当有主键的情况下，可如下操作：</p>
+<figure class="highlight swift"><table><tr><td class="code"><pre><div class="line"><span class="comment">//</span></div><div class="line">[realm addOrUpdateObject:<span class="type">Car</span>];</div><div class="line"><span class="comment">//</span></div><div class="line">[<span class="type">Car</span> createOrUpdateInRealm:realm withValue:@&#123;@<span class="string">"id"</span>: @<span class="number">1</span>, @<span class="string">"price"</span>: @<span class="number">9000</span>.0f&#125;];</div></pre></td></tr></table></figure>
+<p><code>addOrUpdateObject</code>会去先查找有没有传入的Car相同的主键，如果有，就更新该条数据。这里需要注意，<code>addOrUpdateObject</code>这个方法不是增量更新，所有的值都必须有，如果有哪几个值是null，那么就会覆盖原来已经有的值，这样就会出现数据丢失的问题。</p>
+<p><code>createOrUpdateInRealm：withValue：</code>这个方法是增量更新的，后面传一个字典，使用这个方法的前提是有主键。方法会先去主键里面找有没有字典里面传入的主键的记录，如果有，就只更新字典里面的子集。如果没有，就新建一条记录。</p>
+<h4 id="查"><a href="#查" class="headerlink" title="查"></a>查</h4><p>在Realm中所有的查询（包括查询和属性访问）在 Realm 中都是延迟加载的，只有当属性被访问时，才能够读取相应的数据。</p>
+<p>查询结果并不是数据的拷贝：修改查询结果（在写入事务中）会直接修改硬盘上的数据。同样地，您可以直接通过包含在RLMResults中的RLMObject对象完成遍历关系图的操作。除非查询结果被使用，否则检索的执行将会被推迟。这意味着链接几个不同的临时 {RLMResults} 来进行排序和匹配数据，不会执行额外的工作，例如处理中间状态。<br>一旦检索执行之后，或者通知模块被添加之后， RLMResults将随时保持更新，接收 Realm 中，在后台线程上执行的检索操作中可能所做的更改。</p>
+<figure class="highlight swift"><table><tr><td class="code"><pre><div class="line"><span class="comment">//从默认数据库查询所有的车</span></div><div class="line"><span class="type">RLMResults</span> *cars = [<span class="type">Car</span> allObjects];</div><div class="line"><span class="comment">// 使用谓词字符串查询</span></div><div class="line"><span class="type">RLMResults</span> *tanDogs = [<span class="type">Dog</span> objectsWhere:@<span class="string">"color = '棕黄色' AND name BEGINSWITH '大'"</span>];</div><div class="line"><span class="comment">// 使用 NSPredicate 查询</span></div><div class="line"><span class="type">NSPredicate</span> *pred = [<span class="type">NSPredicate</span> predicateWithFormat:@<span class="string">"color = %@ AND name BEGINSWITH %@"</span>, @<span class="string">"棕黄色"</span>, @<span class="string">"大"</span>];</div><div class="line"><span class="type">RLMResults</span> *results = [<span class="type">Dog</span> objectsWithPredicate:pred];</div><div class="line"><span class="comment">// 排序名字以“大”开头的棕黄色狗狗</span></div><div class="line"><span class="type">RLMResults</span> *sortedDogs = [[<span class="type">Dog</span> objectsWhere:@<span class="string">"color = '棕黄色' AND name BEGINSWITH '大'"</span>] sortedResultsUsingProperty:@<span class="string">"name"</span> ascending:<span class="type">YES</span>];</div></pre></td></tr></table></figure>
+<p>Realm还能支持链式查询</p>
+<p>Realm 查询引擎一个特性就是它能够通过非常小的事务开销来执行链式查询(chain queries)，而不需要像传统数据库那样为每个成功的查询创建一个不同的数据库服务器访问。</p>
+<figure class="highlight swift"><table><tr><td class="code"><pre><div class="line"><span class="type">RLMResults</span> *<span class="type">Cars</span> = [<span class="type">Car</span> objectsWhere:@<span class="string">"color = blue"</span>];</div><div class="line"><span class="type">RLMResults</span> *<span class="type">CarsWithBNames</span> = [<span class="type">Cars</span> objectsWhere:@<span class="string">"name BEGINSWITH 'B'"</span>];</div></pre></td></tr></table></figure>
+<h3 id="其他相关特性"><a href="#其他相关特性" class="headerlink" title="其他相关特性"></a>其他相关特性</h3><h4 id="支持KVC和KVO"><a href="#支持KVC和KVO" class="headerlink" title="支持KVC和KVO"></a>支持KVC和KVO</h4><p><code>RLMObject</code>、<code>RLMResult</code>、<code>RLMArray</code> 都遵守KVC机制。<br>将KVC应用在集合中是大量更新对象的极佳方法，这样就可以不用经常遍历集合，为每个项目创建一个访问器了。</p>
+<figure class="highlight swift"><table><tr><td class="code"><pre><div class="line"><span class="type">RLMResults</span> *persons = [<span class="type">Person</span> allObjects];</div><div class="line">[[<span class="type">RLMRealm</span> defaultRealm] transactionWithBlock:^&#123;</div><div class="line">    [[persons firstObject] setValue:@<span class="type">YES</span> forKeyPath:@<span class="string">"isFirst"</span>]; <span class="comment">// 将每个人的 planet 属性设置为“地球”</span></div><div class="line">    [persons setValue:@<span class="string">"地球"</span> forKeyPath:@<span class="string">"planet"</span>];</div><div class="line">&#125;];</div></pre></td></tr></table></figure>
+<p>Realm 对象的大多数属性都遵从 KVO 机制。所有 RLMObject子类的持久化(persisted)存储（未被忽略）的属性都是遵循 KVO 机制的，并且 RLMObject以及 RLMArray中 无效的(invalidated)属性也同样遵循（然而 RLMLinkingObjects属性并不能使用 KVO 进行观察）。</p>
+<h4 id="支持数据库加密"><a href="#支持数据库加密" class="headerlink" title="支持数据库加密"></a>支持数据库加密</h4><figure class="highlight swift"><table><tr><td class="code"><pre><div class="line"><span class="comment">// 产生随机密钥</span></div><div class="line"><span class="type">NSMutableData</span> *key = [<span class="type">NSMutableData</span> dataWithLength:<span class="number">64</span>];</div><div class="line"><span class="type">SecRandomCopyBytes</span>(kSecRandomDefault, key.length, (uint8_t *)key.mutableBytes);</div><div class="line"><span class="comment">// 打开加密文件</span></div><div class="line"><span class="type">RLMRealmConfiguration</span> *config = [<span class="type">RLMRealmConfiguration</span> defaultConfiguration];</div><div class="line">config.encryptionKey = key;</div><div class="line"><span class="type">NSError</span> *error = <span class="literal">nil</span>;</div><div class="line"><span class="type">RLMRealm</span> *realm = [<span class="type">RLMRealm</span> realmWithConfiguration:config error:&amp;error];<span class="keyword">if</span> (!realm) &#123;    </div><div class="line">  <span class="comment">// 如果密钥错误，`error` 会提示数据库不可访问</span></div><div class="line">    <span class="type">NSLog</span>(@<span class="string">"Error opening realm: %@"</span>, error);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Realm 支持在创建 Realm 数据库时采用64位的密钥对数据库文件进行 AES-256+SHA2 加密。这样硬盘上的数据都能都采用AES-256来进行加密和解密，并用 SHA-2 HMAC 来进行验证。每次您要获取一个 Realm 实例时，您都需要提供一次相同的密钥。</p>
+<p>不过，加密过的 Realm 只会带来很少的额外资源占用（通常最多只会比平常慢10%）。</p>
+<h4 id="通知"><a href="#通知" class="headerlink" title="通知"></a>通知</h4><figure class="highlight swift"><table><tr><td class="code"><pre><div class="line"><span class="comment">// 获取 Realm 通知</span></div><div class="line">token = [realm addNotificationBlock:^(<span class="type">NSString</span> *notification, <span class="type">RLMRealm</span> * realm) &#123;</div><div class="line">     [myViewController updateUI];</div><div class="line">&#125;];</div><div class="line"></div><div class="line">[token stop];</div><div class="line"><span class="comment">// 移除通知</span></div><div class="line">[realm removeNotification:<span class="keyword">self</span>.token];</div></pre></td></tr></table></figure>
+<p>Realm 实例将会在每次写入事务提交后，给其他线程上的 Realm 实例发送通知。一般控制器如果想一直持有这个通知，就需要申请一个属性，strong持有这个通知。</p>
+<figure class="highlight swift"><table><tr><td class="code"><pre><div class="line">- (void)viewDidLoad &#123;</div><div class="line">    [<span class="keyword">super</span> viewDidLoad];    <span class="comment">// 观察 RLMResults 通知</span></div><div class="line">    __weak typeof(<span class="keyword">self</span>) weakSelf = <span class="keyword">self</span>;    </div><div class="line">    <span class="keyword">self</span>.notificationToken = [[<span class="type">Person</span> objectsWhere:@<span class="string">"age &gt; 5"</span>] addNotificationBlock:^(<span class="type">RLMResults</span> *results, <span class="type">RLMCollectionChange</span> *change, <span class="type">NSError</span> *error) &#123;        </div><div class="line">      <span class="keyword">if</span> (error) &#123;           </div><div class="line">         <span class="type">NSLog</span>(@<span class="string">"Failed to open Realm on background worker: %@"</span>, error);            </div><div class="line">         <span class="keyword">return</span>;</div><div class="line">        &#125;        </div><div class="line">        <span class="type">UITableView</span> *tableView = weakSelf.tableView;       </div><div class="line">         <span class="comment">// 对于变化信息来说，检索的初次运行将会传递 nil</span></div><div class="line">        <span class="keyword">if</span> (!changes) &#123;</div><div class="line">            [tableView reloadData];           </div><div class="line">             <span class="keyword">return</span>;</div><div class="line">        &#125;        </div><div class="line">        <span class="comment">// 检索结果被改变，因此将它们应用到 UITableView 当中</span></div><div class="line">        [tableView beginUpdates];</div><div class="line">        [tableView deleteRowsAtIndexPaths:[changes deletionsInSection:<span class="number">0</span>]</div><div class="line">                         withRowAnimation:<span class="type">UITableViewRowAnimationAutomatic</span>];</div><div class="line">        [tableView insertRowsAtIndexPaths:[changes insertionsInSection:<span class="number">0</span>]</div><div class="line">                         withRowAnimation:<span class="type">UITableViewRowAnimationAutomatic</span>];</div><div class="line">        [tableView reloadRowsAtIndexPaths:[changes modificationsInSection:<span class="number">0</span>]</div><div class="line">                         withRowAnimation:<span class="type">UITableViewRowAnimationAutomatic</span>];</div><div class="line">        [tableView endUpdates];</div><div class="line">    &#125;];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>我们还能进行更加细粒度的通知，用集合通知就可以做到</p>
+<p>集合通知是异步触发的，首先它会在初始结果出现的时候触发，随后当某个写入事务改变了集合中的所有或者某个对象的时候，通知都会再次触发。 这些变化可以通过传递到通知闭包中的<code>RLMCollectionChange</code>参数访问到。这个对象当中包含了受<code>deletions</code>、<code>insertions</code>、<code>modeifications</code>状态所影响的索引信息。</p>
+<h3 id="数据库迁移"><a href="#数据库迁移" class="headerlink" title="数据库迁移"></a>数据库迁移</h3><ul>
+<li><p>新增删除表，<em>Realm</em> 不需要做迁移</p>
+</li>
+<li><p>新增删除字段，<em>Realm</em> 不需要做迁移。<em>Realm</em> 会自行检测新增和需要移除的属性，然后自动更新硬盘上的数据库架构</p>
+</li>
+</ul>
+<p>官方给的数据迁移的例子</p>
+<figure class="highlight swift"><table><tr><td class="code"><pre><div class="line"><span class="type">RLMRealmConfiguration</span> *config = [<span class="type">RLMRealmConfiguration</span> defaultConfiguration];</div><div class="line">config.schemaVersion = <span class="number">2</span>;</div><div class="line">config.migrationBlock = ^(<span class="type">RLMMigration</span> *migration, uint64_t oldSchemaVersion)</div><div class="line">&#123;    </div><div class="line">  <span class="comment">// enumerateObjects:block: 遍历了存储在 Realm 文件中的每一个“Person”对象</span></div><div class="line">    [migration enumerateObjects:<span class="type">Person</span>.className block:^(<span class="type">RLMObject</span> *oldObject, <span class="type">RLMObject</span> *newObject) &#123;       </div><div class="line">       <span class="comment">// 只有当 Realm 数据库的架构版本为 0 的时候，才添加 “fullName” 属性</span></div><div class="line">        <span class="keyword">if</span> (oldSchemaVersion &lt; <span class="number">1</span>) &#123;</div><div class="line">          <span class="comment">// 合并字段</span></div><div class="line">            newObject[@<span class="string">"fullName"</span>] = [<span class="type">NSString</span> stringWithFormat:@<span class="string">"%@ %@"</span>, oldObject[@<span class="string">"firstName"</span>], oldObject[@<span class="string">"lastName"</span>]];</div><div class="line">        &#125;        </div><div class="line">        <span class="comment">// 只有当 Realm 数据库的架构版本为 0 或者 1 的时候，才添加“email”属性</span></div><div class="line">        <span class="keyword">if</span> (oldSchemaVersion &lt; <span class="number">2</span>) &#123;</div><div class="line">          <span class="comment">// 增加新字段</span></div><div class="line">            newObject[@<span class="string">"email"</span>] = @<span class="string">""</span>;</div><div class="line">        &#125;       </div><div class="line">        <span class="comment">// 重命名操作应该在调用 `enumerateObjects:` 之外完成</span></div><div class="line">       <span class="keyword">if</span> (oldSchemaVersion &lt; <span class="number">3</span>) &#123;</div><div class="line">         <span class="comment">// 原字段重命名</span></div><div class="line">            [migration renamePropertyForClass:<span class="type">Person</span>.className oldName:@<span class="string">"yearsSinceBirth"</span> newName:@<span class="string">"age"</span>]; &#125;</div><div class="line">    &#125;];</div><div class="line">&#125;;</div><div class="line">[<span class="type">RLMRealmConfiguration</span> setDefaultConfiguration:config];<span class="comment">// 现在我们已经成功更新了架构版本并且提供了迁移闭包，</span></div></pre></td></tr></table></figure>
+<h3 id="需要注意的问题"><a href="#需要注意的问题" class="headerlink" title="需要注意的问题"></a>需要注意的问题</h3><h4 id="跨线程访问数据库的时候，Realm-对象需要新建一个"><a href="#跨线程访问数据库的时候，Realm-对象需要新建一个" class="headerlink" title="跨线程访问数据库的时候，Realm 对象需要新建一个"></a>跨线程访问数据库的时候，<em>Realm</em> 对象需要新建一个</h4><figure class="highlight swift"><table><tr><td class="code"><pre><div class="line"><span class="type">Terminating</span> app due to uncaught exception '<span class="type">RLMException'</span>, reason: '<span class="type">Realm</span> accessed from incorrect thread.'******* <span class="type">First</span> <span class="keyword">throw</span> call stack:****(**** <span class="number">0</span>   <span class="type">CoreFoundation</span>                      </div><div class="line"><span class="number">0x000000011479f34b</span> __exceptionPreprocess + <span class="number">171</span>**** <span class="number">1</span>   libobjc.<span class="type">A</span>.dylib                     </div><div class="line"><span class="number">0x00000001164a321e</span> objc_exception_throw + <span class="number">48</span>**** <span class="number">2</span>   <span class="type">BHFangChuang</span>                        </div><div class="line"><span class="number">0x000000010dd4c2b5</span> -[<span class="type">RLMRealm</span> beginWriteTransaction] + <span class="number">77</span>**** <span class="number">3</span>   <span class="type">BHFangChuang</span>                        </div><div class="line"><span class="number">0x000000010dd4c377</span> -[<span class="type">RLMRealm</span> transactionWithBlock:error:] + <span class="number">45</span>**** <span class="number">4</span>   <span class="type">BHFangChuang</span>                        </div><div class="line"><span class="number">0x000000010dd4c348</span> -[<span class="type">RLMRealm</span> transactionWithBlock:] + <span class="number">19</span>**** <span class="number">5</span>   <span class="type">BHFangChuang</span>                        </div><div class="line"><span class="number">0x000000010d51d7ae</span> <span class="number">__71</span>-[<span class="type">RealmDataBaseHelper</span> updateUserWithLoginDate:andLogoutDate:according:]_block_invoke + <span class="number">190</span>**** <span class="number">6</span>   libdispatch.dylib                  </div><div class="line"><span class="number">0x00000001180ef980</span> _dispatch_call_block_and_release + <span class="number">12</span>**** <span class="number">7</span>   libdispatch.dylib                   </div><div class="line"><span class="number">0x00000001181190cd</span> _dispatch_client_callout + <span class="number">8</span>**** <span class="number">8</span>   libdispatch.dylib                   </div><div class="line"><span class="number">0x00000001180f8366</span> _dispatch_queue_override_invoke + <span class="number">1426</span>**** <span class="number">9</span>   libdispatch.dylib                   </div><div class="line"><span class="number">0x00000001180fa3b7</span> _dispatch_root_queue_drain + <span class="number">720</span>**** <span class="number">10</span>  libdispatch.dylib                   </div><div class="line"><span class="number">0x00000001180fa08b</span> _dispatch_worker_thread3 + <span class="number">123</span>**** <span class="number">11</span>  libsystem_pthread.dylib             </div><div class="line"><span class="number">0x00000001184c8746</span> _pthread_wqthread + <span class="number">1299</span>**** <span class="number">12</span>  libsystem_pthread.dylib             </div><div class="line"><span class="number">0x00000001184c8221</span> start_wqthread + <span class="number">13</span>****)****libc++abi.dylib: terminating with uncaught exception of type <span class="type">NSException</span></div></pre></td></tr></table></figure>
+<p>如果出现以上错误，是因为访问 <em>Realm</em> 数据库的时候，使用的 <em>Realm</em> 对象所在的线程和当前线程不一致</p>
+<p>解决办法就是在当前线程重新获取最新的 <em>Realm</em> 对象</p>
+<h4 id="全局单例对象没作用"><a href="#全局单例对象没作用" class="headerlink" title="全局单例对象没作用"></a>全局单例对象没作用</h4><p>因为同一个 <em>Realm</em> 对象是不知此跨线程操作realm数据库的</p>
+<p><em>Realm</em> 通过确保每个线程始终拥 <em>Realm</em> 的一个快照，以便让并发运行变得十分轻松。你可以同时有任意数目的线程访问同一个 <em>Realm</em> 文件，并且由于每个线程都有对应的快照，因此线程之间绝对不会产生影响。需要注意的是不能让多个线程都持有同一个 <em>Realm</em> 对象的实例。如果多个线程需要访问同一个对象，那么它们分别会获取自己所需要的实例（否则在一个线程上发生的更改就会造成其他线程得到不完整或者不一致的数据）。</p>
+<p>其实<code>RLMRealm *realm = [RLMRealm defaultRealm]</code>这句话就是获取了当前realm对象的一个实例，其实实现就是拿到单例。所以我们每次在子线程里面不要再去读取我们自己封装持有的realm实例了，直接调用系统的这个方法即可，能保证访问不出错。</p>
+<h4 id="事务之间不能嵌套"><a href="#事务之间不能嵌套" class="headerlink" title="事务之间不能嵌套"></a>事务之间不能嵌套</h4><figure class="highlight swift"><table><tr><td class="code"><pre><div class="line">[realm transactionWithBlock:^&#123;</div><div class="line">                [<span class="keyword">self</span>.realm beginWriteTransaction];</div><div class="line">                [<span class="keyword">self</span> convertToRLMUserWith:bhUser <span class="type">To</span>:[<span class="keyword">self</span> convertToRLMUserWith:bhUser <span class="type">To</span>:<span class="literal">nil</span>]];</div><div class="line">                [<span class="keyword">self</span>.realm commitWriteTransaction];</div><div class="line">&#125;];</div></pre></td></tr></table></figure>
+<p><code>transactionWithBlock</code> 已经处于一个写的事务中，是不允许在block里面再写一个<code>commitWriteTransaction</code></p>
+<p>出错信息如下</p>
+<figure class="highlight swift"><table><tr><td class="code"><pre><div class="line">*** <span class="type">Terminating</span> app due to uncaught exception '<span class="type">RLMException'</span>, reason: '<span class="type">The</span> <span class="type">Realm</span> <span class="keyword">is</span> already <span class="keyword">in</span> a write transaction'******* <span class="type">First</span> <span class="keyword">throw</span> call stack:****(**** <span class="number">0</span>   <span class="type">CoreFoundation</span>                      </div><div class="line"><span class="number">0x0000000112e2d34b</span> __exceptionPreprocess + <span class="number">171</span>**** <span class="number">1</span>   libobjc.<span class="type">A</span>.dylib                     </div><div class="line"><span class="number">0x0000000114b3121e</span> objc_exception_throw + <span class="number">48</span>**** <span class="number">2</span>   <span class="type">BHFangChuang</span>                        </div><div class="line"><span class="number">0x000000010c4702b5</span> -[<span class="type">RLMRealm</span> beginWriteTransaction] + <span class="number">77</span>**** <span class="number">3</span>   <span class="type">BHFangChuang</span>                        </div><div class="line"><span class="number">0x000000010bc4175a</span> <span class="number">__71</span>-[<span class="type">RealmDataBaseHelper</span> updateUserWithLoginDate:andLogoutDate:according:]_block_invoke_2 + <span class="number">42</span>**** <span class="number">4</span>   <span class="type">BHFangChuang</span>                        </div><div class="line"><span class="number">0x000000010c470380</span> -[<span class="type">RLMRealm</span> transactionWithBlock:error:] + <span class="number">54</span>**** <span class="number">5</span>   <span class="type">BHFangChuang</span>                        </div><div class="line"><span class="number">0x000000010c470348</span> -[<span class="type">RLMRealm</span> transactionWithBlock:] + <span class="number">19</span>**** <span class="number">6</span>   <span class="type">BHFangChuang</span>                        </div><div class="line"><span class="number">0x000000010bc416d7</span> <span class="number">__71</span>-[<span class="type">RealmDataBaseHelper</span> updateUserWithLoginDate:andLogoutDate:according:]_block_invoke + <span class="number">231</span>**** <span class="number">7</span>   libdispatch.dylib                   </div><div class="line"><span class="number">0x0000000116819980</span> _dispatch_call_block_and_release + <span class="number">12</span>**** <span class="number">8</span>   libdispatch.dylib                   </div><div class="line"><span class="number">0x00000001168430cd</span> _dispatch_client_callout + <span class="number">8</span>**** <span class="number">9</span>   libdispatch.dylib                   </div><div class="line"><span class="number">0x0000000116822366</span> _dispatch_queue_override_invoke + <span class="number">1426</span>**** <span class="number">10</span>  libdispatch.dylib                   </div><div class="line"><span class="number">0x00000001168243b7</span> _dispatch_root_queue_drain + <span class="number">720</span>**** <span class="number">11</span>  libdispatch.dylib                   </div><div class="line"><span class="number">0x000000011682408b</span> _dispatch_worker_thread3 + <span class="number">123</span>**** <span class="number">12</span>  libsystem_pthread.dylib             </div><div class="line"><span class="number">0x0000000116bed746</span> _pthread_wqthread + <span class="number">1299</span>**** <span class="number">13</span>  libsystem_pthread.dylib             </div><div class="line"><span class="number">0x0000000116bed221</span> start_wqthread + <span class="number">13</span>****)****libc++abi.dylib: terminating with uncaught exception of type <span class="type">NSException</span>**</div></pre></td></tr></table></figure>
+<h4 id="model设置主键"><a href="#model设置主键" class="headerlink" title="model设置主键"></a>model设置主键</h4><p>如果能设置主键，就尽量设置主键，因为这样方便更新数据。可以很方便的调用<code>addOrUpdateObject:</code>或者<code>createOrUpdateInRealm:withValue:</code> 方法进行更新。这样就不需要先根据主键，查询出数据，然后再去更新了。有了主键，这个两步操作可以一步完成。</p>
+<h4 id="查询也不能跨线程"><a href="#查询也不能跨线程" class="headerlink" title="查询也不能跨线程"></a>查询也不能跨线程</h4><figure class="highlight swift"><table><tr><td class="code"><pre><div class="line"><span class="type">RLMResults</span> * results = [<span class="keyword">self</span> selectUserWithAccid:bhUser.accid];    dispatch_async(dispatch_get_global_queue(<span class="type">DISPATCH_QUEUE_PRIORITY_DEFAULT</span>, <span class="number">0</span>), ^&#123;</div><div class="line"></div><div class="line">        <span class="type">RLMRealm</span> *realm = [<span class="type">RLMRealm</span> defaultRealm];</div><div class="line">        [realm transactionWithBlock:^&#123;</div><div class="line">            [realm addOrUpdateObject:results[<span class="number">0</span>]];</div><div class="line">        &#125;];</div><div class="line">    &#125;);</div></pre></td></tr></table></figure>
+<p>由于查询是在子线程外查询，所以跨线程也会出错</p>
+<figure class="highlight swift"><table><tr><td class="code"><pre><div class="line">***** <span class="type">Terminating</span> app due to uncaught exception '<span class="type">RLMException'</span>, reason: '<span class="type">Realm</span> accessed from incorrect thread'******* <span class="type">First</span> <span class="keyword">throw</span> call stack:****(**** <span class="number">0</span>   <span class="type">CoreFoundation</span>                      </div><div class="line"><span class="number">0x000000011517a34b</span> __exceptionPreprocess + <span class="number">171</span>**** <span class="number">1</span>   libobjc.<span class="type">A</span>.dylib                     </div><div class="line"><span class="number">0x0000000116e7e21e</span> objc_exception_throw + <span class="number">48</span>**** <span class="number">2</span>   <span class="type">BHFangChuang</span>                        </div><div class="line"><span class="number">0x000000010e7c34ab</span> _ZL10throwErrorP8NSString + <span class="number">129</span>**** <span class="number">3</span>   <span class="type">BHFangChuang</span>                        </div><div class="line"><span class="number">0x000000010e7c177f</span> -[<span class="type">RLMResults</span> <span class="built_in">count</span>] + <span class="number">40</span>**** <span class="number">4</span>   <span class="type">BHFangChuang</span>                        </div><div class="line"><span class="number">0x000000010df8f3bf</span> -[<span class="type">RealmDataBaseHelper</span> convertToRLMUserWith:<span class="type">LoginDate</span>:<span class="type">LogoutDate</span>:<span class="type">To</span>:] + <span class="number">159</span>**** <span class="number">5</span>   <span class="type">BHFangChuang</span>                        </div><div class="line"><span class="number">0x000000010df8efc1</span> <span class="number">__71</span>-[<span class="type">RealmDataBaseHelper</span> updateUserWithLoginDate:andLogoutDate:according:]_block_invoke_2 + <span class="number">81</span>**** <span class="number">6</span>   <span class="type">BHFangChuang</span>                        </div><div class="line"><span class="number">0x000000010e7bd320</span> -[<span class="type">RLMRealm</span> transactionWithBlock:error:] + <span class="number">54</span>**** <span class="number">7</span>   <span class="type">BHFangChuang</span>                        </div><div class="line"><span class="number">0x000000010e7bd2e8</span> -[<span class="type">RLMRealm</span> transactionWithBlock:] + <span class="number">19</span>**** <span class="number">8</span>   <span class="type">BHFangChuang</span>                        </div><div class="line"><span class="number">0x000000010df8eecf</span> <span class="number">__71</span>-[<span class="type">RealmDataBaseHelper</span> updateUserWithLoginDate:andLogoutDate:according:]_block_invoke + <span class="number">351</span>**** <span class="number">9</span>   libdispatch.dylib                   </div><div class="line"><span class="number">0x0000000118b63980</span> _dispatch_call_block_and_release + <span class="number">12</span>**** <span class="number">10</span>  libdispatch.dylib                   </div><div class="line"><span class="number">0x0000000118b8d0cd</span> _dispatch_client_callout + <span class="number">8</span>**** <span class="number">11</span>  libdispatch.dylib                   </div><div class="line"><span class="number">0x0000000118b6c366</span> _dispatch_queue_override_invoke + <span class="number">1426</span>**** <span class="number">12</span>  libdispatch.dylib                   </div><div class="line"><span class="number">0x0000000118b6e3b7</span> _dispatch_root_queue_drain + <span class="number">720</span>**** <span class="number">13</span>  libdispatch.dylib                   </div><div class="line"><span class="number">0x0000000118b6e08b</span> _dispatch_worker_thread3 + <span class="number">123</span>**** <span class="number">14</span>  libsystem_pthread.dylib             </div><div class="line"><span class="number">0x0000000118f3c746</span> _pthread_wqthread + <span class="number">1299</span>**** <span class="number">15</span>  libsystem_pthread.dylib             </div><div class="line"><span class="number">0x0000000118f3c221</span> start_wqthread + <span class="number">13</span>****)****libc++abi.dylib: terminating with uncaught exception of type **</div></pre></td></tr></table></figure>
+<h3 id="Realm-数据库当前版本的限制"><a href="#Realm-数据库当前版本的限制" class="headerlink" title="Realm 数据库当前版本的限制"></a><em>Realm</em> 数据库当前版本的限制</h3><ol>
+<li><p>类名称的长度最大只能存储 57 个 UTF8 字符。</p>
+</li>
+<li><p>属性名称的长度最大只能支持 63 个 UTF8 字符。</p>
+</li>
+<li><p>NSData以及 NSString属性不能保存超过 16 MB 大小的数据。如果要存储大量的数据，可通过将其分解为16MB 大小的块，或者直接存储在文件系统中，然后将文件路径存储在 Realm 中。如果您的应用试图存储一个大于 16MB 的单一属性，系统将在运行时抛出异常。</p>
+</li>
+<li><p>对字符串进行排序以及不区分大小写查询只支持“基础拉丁字符集”、“拉丁字符补充集”、“拉丁文扩展字符集 A” 以及”拉丁文扩展字符集 B“（UTF-8 的范围在 0~591 之间）。</p>
+</li>
+<li><p>尽管 Realm 文件可以被多个线程同时访问，但是您不能跨线程处理 Realms、Realm 对象、查询和查询结果。（这个其实也不算是个问题，我们在多线程中新建新的Realm对象就可以解决）</p>
+</li>
+<li><p>Realm对象的 Setters &amp; Getters 不能被重载<br>因为 Realm 在底层数据库中重写了 setters 和 getters 方法，所以您不可以在您的对象上再对其进行重写。一个简单的替代方法就是：创建一个新的 Realm 忽略属性，该属性的访问起可以被重写， 并且可以调用其他的 getter 和 setter 方法。</p>
+</li>
+<li><p>文件大小 &amp; 版本跟踪<br>一般来说 Realm 数据库比 SQLite 数据库在硬盘上占用的空间更少。如果您的 Realm 文件大小超出了您的想象，这可能是因为您数据库中的 RLMRealm中包含了旧版本数据。<br>为了使您的数据有相同的显示方式，Realm 只在循环迭代开始的时候才更新数据版本。这意味着，如果您从 Realm 读取了一些数据并进行了在一个锁定的线程中进行长时间的运行，然后在其他线程进行读写 Realm 数据库的话，那么版本将不会被更新，Realm 将保存中间版本的数据，但是这些数据已经没有用了，这导致了文件大小的增长。这部分空间会在下次写入操作时被重复利用。这些操作可以通过调用writeCopyToPath:error:来实现。<br>解决办法：<br>通过调用invalidate，来告诉 Realm 您不再需要那些拷贝到 Realm 的数据了。这可以使我们不必跟踪这些对象的中间版本。在下次出现新版本时，再进行版本更新。<br>您可能在 Realm 使用Grand Central Dispatch时也发现了这个问题。在 dispatch 结束后自动释放调度队列（dispatch queue）时，调度队列（dispatch queue）没有随着程序释放。这造成了直到<br>RLMRealm 对象被释放后，Realm 中间版本的数据空间才会被再利用。为了避免这个问题，您应该在 dispatch 队列中，使用一个显式的自动调度队列（dispatch queue）。</p>
+</li>
+<li><p>Realm 没有自动增长属性<br>Realm 没有线程/进程安全的自动增长属性机制，这在其他数据库中常常用来产生主键。然而，在绝大多数情况下，对于主键来说，我们需要的是一个唯一的、自动生成的值，因此没有必要使用顺序的、连续的、整数的 ID 作为主键。<br>解决办法：<br>在这种情况下，一个独一无二的字符串主键通常就能满足需求了。一个常见的模式是将默认的属性值设置为 [[NSUUID UUID] UUIDString]<br>以产生一个唯一的字符串 ID。<br>自动增长属性另一种常见的动机是为了维持插入之后的顺序。在某些情况下，这可以通过向某个 RLMArray中添加对象，或者使用 [NSDate date]默认值的createdAt属性。</p>
+</li>
+<li><p>所有的数据模型必须直接继承自RealmObject。这阻碍我们利用数据模型中的任意类型的继承。<br>这一点也不算问题，我们只要自己在建立一个model就可以解决这个问题。自己建立的model可以自己随意去继承，这个model专门用来接收网络数据，然后把自己的这个model转换成要存储到表里面的model，即RLMObject对象。这样这个问题也可以解决了。<br>Realm 允许模型能够生成更多的子类，也允许跨模型进行代码复用，但是由于某些 Cocoa 特性使得运行时中丰富的类多态无法使用。以下是可以完成的操作：<br>父类中的类方法，实例方法和属性可以被它的子类所继承<br>子类中可以在方法以及函数中使用父类作为参数<br>以下是不能完成的：<br>多态类之间的转换（例如子类转换成子类，子类转换成父类，父类转换成子类等）<br>同时对多个类进行检索<br>多类容器 (RLMArray以及 RLMResults)</p>
+</li>
+<li><p>Realm不支持集合类型<br>Realm支持以下的属性类型：BOOL、bool、int、NSInteger、long、long long、float、double、NSString、NSDate、NSData以及 被特殊类型标记的NSNumber。CGFloat属性的支持被取消了，因为它不具备平台独立性。<br>这里就是不支持集合，比如说NSArray，NSMutableArray，NSDictionary，NSMutableDictionary，NSSet，NSMutableSet。如果服务器传来的一个字典，key是一个字符串，对应的value就是一个数组，这时候就想存储这个数组就比较困难了。当然Realm里面是有集合的，就是RLMArray，这里面装的都是RLMObject。<br>所以我们想解决这个问题，就需要把数据里面的东西都取出来，如果是model，就先自己接收一下，然后转换成RLMObject的model，再存储到RLMArray里面去，这样转换一遍，还是可以的做到的。</p>
+</li>
+</ol>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>请我喝杯豆浆！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="http://storage1.imgchr.com/images/FullSizeRendereb28d.jpg" alt="winterrain5 WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="http://storage1.imgchr.com/images/FullSizeRender2fa7e1.jpg" alt="winterrain5 Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Realm/" rel="tag">#Realm</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/03/20/框架/RxSwift学习小结/" rel="next" title="RxSwift学习小结">
+                <i class="fa fa-chevron-left"></i> RxSwift学习小结
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/03/23/框架/Realm数据库“入坑”/"
+           data-title="Realm数据库“入坑”" data-url="http://yoursite.com/2017/03/23/框架/Realm数据库“入坑”/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://ww4.sinaimg.cn/mw690/9dac93ccjw9eymcefq449j202s042aa2.jpg"
+               alt="winterrain5" />
+          <p class="site-author-name" itemprop="name">winterrain5</p>
+          <p class="site-description motion-element" itemprop="description">要做一个Nice的人</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">41</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">36</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/winterrain5" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/rain-winter-74" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/u/2645332940/home?topnav=1" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  微博
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Realm-优点"><span class="nav-number">1.</span> <span class="nav-text">Realm 优点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#相关概念"><span class="nav-number">2.</span> <span class="nav-text">相关概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如何使用"><span class="nav-number">3.</span> <span class="nav-text">如何使用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#创建数据库"><span class="nav-number">3.1.</span> <span class="nav-text">创建数据库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#建表"><span class="nav-number">3.2.</span> <span class="nav-text">建表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#关于RLMObject的关系"><span class="nav-number">3.3.</span> <span class="nav-text">关于RLMObject的关系</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#属性"><span class="nav-number">3.4.</span> <span class="nav-text">属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#增"><span class="nav-number">3.5.</span> <span class="nav-text">增</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#删"><span class="nav-number">3.6.</span> <span class="nav-text">删</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#改"><span class="nav-number">3.7.</span> <span class="nav-text">改</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#查"><span class="nav-number">3.8.</span> <span class="nav-text">查</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其他相关特性"><span class="nav-number">4.</span> <span class="nav-text">其他相关特性</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#支持KVC和KVO"><span class="nav-number">4.1.</span> <span class="nav-text">支持KVC和KVO</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#支持数据库加密"><span class="nav-number">4.2.</span> <span class="nav-text">支持数据库加密</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#通知"><span class="nav-number">4.3.</span> <span class="nav-text">通知</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据库迁移"><span class="nav-number">5.</span> <span class="nav-text">数据库迁移</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#需要注意的问题"><span class="nav-number">6.</span> <span class="nav-text">需要注意的问题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#跨线程访问数据库的时候，Realm-对象需要新建一个"><span class="nav-number">6.1.</span> <span class="nav-text">跨线程访问数据库的时候，Realm 对象需要新建一个</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#全局单例对象没作用"><span class="nav-number">6.2.</span> <span class="nav-text">全局单例对象没作用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#事务之间不能嵌套"><span class="nav-number">6.3.</span> <span class="nav-text">事务之间不能嵌套</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#model设置主键"><span class="nav-number">6.4.</span> <span class="nav-text">model设置主键</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#查询也不能跨线程"><span class="nav-number">6.5.</span> <span class="nav-text">查询也不能跨线程</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Realm-数据库当前版本的限制"><span class="nav-number">7.</span> <span class="nav-text">Realm 数据库当前版本的限制</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">winterrain5</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"winterrain5"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("029tUpff0Ph7OrHFjawhv700-gzGzoHsz", "TyyMeX7RfM4IsJWWe33K8yCW");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+</body>
+</html>
