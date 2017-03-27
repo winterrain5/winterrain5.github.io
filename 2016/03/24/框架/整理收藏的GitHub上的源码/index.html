@@ -1,0 +1,1433 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="框架," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2" />
+
+
+
+
+
+
+<meta name="description" content="中国二代身份证光学识别（swift）
+
+中国二代身份证识别（OC）
+
+
+
+
+基于Alamofire封装的上层网络请求库（swift）
+
+带动画效果的label（OC）
+
+
+
+
+为Xcode提供更丰富的颜色选择（OC）
+
+
+
+带弹性效果的转场（swift）
+
+
+
+展示gif图片的框架,内存占用小（OC）
+
+
+
+前端UI库（JS）
+
+提高项目UI开发效率的解决方案（项目框架）
+
+
+
+
+快速生成静态表">
+<meta property="og:type" content="article">
+<meta property="og:title" content="整理收藏的GitHub上的源码">
+<meta property="og:url" content="http://yoursite.com/2016/03/24/框架/整理收藏的GitHub上的源码/index.html">
+<meta property="og:site_name" content="行止由心">
+<meta property="og:description" content="中国二代身份证光学识别（swift）
+
+中国二代身份证识别（OC）
+
+
+
+
+基于Alamofire封装的上层网络请求库（swift）
+
+带动画效果的label（OC）
+
+
+
+
+为Xcode提供更丰富的颜色选择（OC）
+
+
+
+带弹性效果的转场（swift）
+
+
+
+展示gif图片的框架,内存占用小（OC）
+
+
+
+前端UI库（JS）
+
+提高项目UI开发效率的解决方案（项目框架）
+
+
+
+
+快速生成静态表">
+<meta property="og:image" content="https://github.com/zhongfenglee/IDCardRecognition/raw/master/Screenshot/2.PNG?raw=true">
+<meta property="og:image" content="https://camo.githubusercontent.com/90c0fc7a578f988fd5f1fcb5d2d5d8b90f159a47/687474703a2f2f7a697070792e6766796361742e636f6d2f4772697070696e674d65616e4a6176616c696e612e676966">
+<meta property="og:image" content="https://camo.githubusercontent.com/dbc39d8eca900e28956cf951fd2fdf021b07c5fa/687474703a2f2f7a697070792e6766796361742e636f6d2f466f726b65645363616c794b6167752e676966">
+<meta property="og:image" content="https://camo.githubusercontent.com/0ecefb2f67ba489ee62f2daac30ad267a9407417/687474703a2f2f7a697070792e6766796361742e636f6d2f4e65696768626f72696e67536c696768744a756d70696e676265616e2e676966">
+<meta property="og:image" content="https://camo.githubusercontent.com/6a4d4968efed562ae2d32e17df0474d36e14a07a/687474703a2f2f692e696d6775722e636f6d2f516868504648592e676966">
+<meta property="og:image" content="https://github.com/lkzhao/ElasticTransition/raw/master/imgs/demo.gif?raw=true">
+<meta property="og:image" content="https://github.com/Flipboard/FLAnimatedImage/raw/master/images/flanimatedimage-demo-player.gif">
+<meta property="og:image" content="https://ww3.sinaimg.cn/large/006tKfTcgy1fe1hrmxmrfj30pd0a80tc.jpg">
+<meta property="og:image" content="https://github.com/DavdRoman/Bohr/raw/master/Assets/1.gif">
+<meta property="og:image" content="https://github.com/dsxNiubility/Wonderful/raw/master/screenshots/1003.png">
+<meta property="og:image" content="https://github.com/yongyuandouneng/YNNavigationController/raw/master/GifAndImage/YNNavigationControllerSliderGif.gif">
+<meta property="og:image" content="https://github.com/yongyuandouneng/YNNavigationController/raw/master/GifAndImage/YNNavigationControllerScaleGif.gif">
+<meta property="og:image" content="https://github.com/MengLiMing/MLMSegmentPage/raw/master/gif/Center_Line.gif">
+<meta property="og:image" content="https://github.com/MengLiMing/MLMSegmentPage/raw/master/gif/Center_Arrow.gif">
+<meta property="og:image" content="https://github.com/MengLiMing/MLMSegmentPage/raw/master/gif/Center_Slide.gif">
+<meta property="og:image" content="https://github.com/500px/greedo-layout-for-ios/raw/master/screenshot.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/yyued/MagicDrag/master/Readme/preview_teambition.gif">
+<meta property="og:image" content="https://github.com/xmartlabs/Eureka/raw/master/Example/Media/EurekaExample1.gif">
+<meta property="og:image" content="https://raw.githubusercontent.com/MortimerGoro/MGSwipeTableCell/master/readme-assets/border.gif">
+<meta property="og:image" content="https://raw.githubusercontent.com/MortimerGoro/MGSwipeTableCell/master/readme-assets/static.gif">
+<meta property="og:image" content="https://camo.githubusercontent.com/f5211ae92678aa22b6edf2d18e08b0dce63bcaa4/68747470733a2f2f63646e2e7261776769742e636f6d2f6c6b7a68616f2f4865726f2f656262336632632f5265736f75726365732f6665617475726573322e737667">
+<meta property="og:image" content="https://camo.githubusercontent.com/737194a3442f67b2066bd1be40d0ced772c158a1/68747470733a2f2f63646e2e7261776769742e636f6d2f6c6b7a68616f2f4865726f2f656262336632632f5265736f75726365732f64656661756c74416e696d6174696f6e732e737667">
+<meta property="og:image" content="https://raw.githubusercontent.com/dzenbot/UITableView-DataSet/master/Examples/Applications/Screenshots/Screenshots_row1.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/12207480/TYAttributedLabel/master/screenshot/TYAtrributedLabelDemo.gif">
+<meta property="og:image" content="https://github.com/12207480/LovePlayNews/raw/master/ScreenShot/LovePlayNews.gif">
+<meta property="og:image" content="https://raw.githubusercontent.com/andreamazz/AMPopTip/master/assets/screenshot.gif">
+<meta property="og:image" content="https://camo.githubusercontent.com/44098d6ff4f858b06190b4d39afac8f51d4c7803/687474703a2f2f6a76696c6c656c6c612e6769746875622e696f2f4a56466c6f6174696e674472617765722f53637265656e73686f74732f616e696d617465642d6472617765722d6f70656e2d706f7274726169742e676966">
+<meta property="og:image" content="https://camo.githubusercontent.com/054a34f2daf4c17a7aaa46bf7557de1e108cfd2c/68747470733a2f2f7261772e6769746875622e636f6d2f657465726e6974797a2f525744726f70646f776e4d656e752f6d61737465722f53637265656e73686f74732f64656d6f2d6950686f6e652e676966">
+<meta property="og:image" content="https://github.com/Yalantis/StarWars.iOS/raw/master/preview.gif">
+<meta property="og:image" content="https://raw.githubusercontent.com/adad184/MMTweenAnimation/master/Images/2.gif">
+<meta property="og:image" content="https://raw.githubusercontent.com/adad184/MMTweenAnimation/master/Images/9.gif">
+<meta property="og:image" content="https://camo.githubusercontent.com/e30bcc0537ff4aa4adae4f39ad664aeb2fd7db76/68747470733a2f2f646f746a70672e636f2f3862752e706e67">
+<meta property="og:image" content="https://github.com/xhamr/fave-button/raw/master/fave-button1.gif">
+<meta property="og:image" content="https://raw.githubusercontent.com/Ramotion/expanding-collection/master/preview.gif">
+<meta property="og:image" content="https://raw.githubusercontent.com/PhilippeBoisney/AlertOnboarding/master/demo.gif">
+<meta property="og:image" content="https://camo.githubusercontent.com/170b43643d7208c9f7a4ad584bfda8b8f97057d8/687474703a2f2f37786b7674352e636f6d312e7a302e676c622e636c6f7564646e2e636f6d2f6769746875622f5946537461727456696577627574746f6d2e676966">
+<meta property="og:image" content="https://camo.githubusercontent.com/072ef03302b2ba16605c71f8e5e7a19bb700e149/687474703a2f2f692e696d6775722e636f6d2f4a556c514839462e676966">
+<meta property="og:image" content="https://raw.githubusercontent.com/gontovnik/DGElasticPullToRefresh/master/DGElasticPullToRefreshPreview1.gif">
+<meta property="og:image" content="https://github.com/zhxnlai/ZLSwipeableView/raw/master/Previews/swipe.gif">
+<meta property="og:image" content="https://raw.githubusercontent.com/zoonooz/ZFDragableModalTransition/master/Screenshot/ss.gif">
+<meta property="og:image" content="https://github.com/recruit-mp/RMPZoomTransitionAnimator/raw/master/docs/tableview.gif">
+<meta property="og:image" content="https://github.com/recruit-mp/RMPZoomTransitionAnimator/raw/master/docs/collectionview.gif">
+<meta property="og:image" content="https://raw.githubusercontent.com/andreamazz/BubbleTransition/master/assets/screenshot.gif">
+<meta property="og:image" content="https://raw.githubusercontent.com/Ramotion/animated-tab-bar/master/Screenshots/RAMAnimatedTabBarDemo.gif">
+<meta property="og:image" content="https://camo.githubusercontent.com/bb5cfd36b1d0e997105b0011110444652b4e7087/687474703a2f2f666f787765622e6d61726973742e6564752f75736572732f7374626b2f5371756172654361736844656d6f322e676966">
+<meta property="og:image" content="https://raw.githubusercontent.com/ltebean/LTNavigationBar/master/images/demo2.gif">
+<meta property="og:image" content="https://github.com/layerhq/Atlas-iOS/raw/master/Examples/Screenshots/walkthrough.gif">
+<meta property="og:image" content="https://github.com/marty-suzuki/SABlurImageView/raw/master/SampleImage/sample.gif">
+<meta property="og:image" content="https://camo.githubusercontent.com/6158aea2f328f68364672243e4483729c8f661b8/687474703a2f2f7777772e6f72616e6765696e616461792e636f6d2f696d672f4f4452656672657368436f6e74726f6c2e6a7067">
+<meta property="og:image" content="https://raw.github.com/cyndibaby905/TwitterCover/master/TwitterCover.gif">
+<meta property="og:image" content="https://github.com/MartinRGB/Replace-iOS/raw/master/1.gif?raw=true">
+<meta property="og:image" content="https://github.com/KittenYang/KYJellyPullToRefresh/raw/master/ball.gif">
+<meta property="og:image" content="https://github.com/MartinRGB/GiftCard-Implementation/raw/master/Gif/Origami.gif?raw=true">
+<meta property="og:image" content="https://github.com/Roylee-ML/SwipeTableView/raw/master/ScreenShots/screenshot1.gif">
+<meta property="og:image" content="https://github.com/ChenYilong/CollectionViewClassifyMenu/raw/master/CollectionViewClassifyMenu用法展示.gif">
+<meta property="og:image" content="https://github.com/ra1028/RACollectionViewReorderableTripletLayout/raw/master/Assets/animation.gif">
+<meta property="og:image" content="https://raw.githubusercontent.com/Ramotion/folding-cell/master/Screenshots/folding-cell.gif">
+<meta property="og:image" content="https://github.com/xmartlabs/XLForm/raw/master/Examples/Objective-C/Examples/RealExamples/XLForm.gif">
+<meta property="og:image" content="https://s3.amazonaws.com/suyu.test/CBStoreHouseRefreshControl1.gif">
+<meta property="og:image" content="https://github.com/hilen/TSWeChat/raw/master/images/preview1.gif">
+<meta property="og:image" content="https://ww3.sinaimg.cn/large/006tKfTcgy1fe160y0l11j305o0a874r.jpg">
+<meta property="og:image" content="https://camo.githubusercontent.com/d406ac5a03a2b1fa5cf41fadc8d2408cb8709bdc/68747470733a2f2f6431337961637572716a676172612e636c6f756466726f6e742e6e65742f75736572732f3132353035362f73637265656e73686f74732f313635303331372f7265616c6573746174652d70756c6c5f312d322d332e676966">
+<meta property="og:image" content="https://camo.githubusercontent.com/77bdf4e51800f787a673cd60fd0e95d68bafb337/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f666172736869642e67686f64732e6769746875622f706e63686172742d6769662e676966">
+<meta property="og:image" content="https://github.com/6ag/PaymentView/raw/master/paymentViewDemo/1.gif">
+<meta property="og:image" content="https://raw.githubusercontent.com/dogo/SCLAlertView/master/ScreenShots/ScreenShot.png">
+<meta property="og:image" content="https://github.com/adad184/MMPopupView/raw/master/Images/0.jpg">
+<meta property="og:image" content="https://cloud.githubusercontent.com/assets/1491282/9857827/8fa0125e-5b4f-11e5-9c0d-ff955c007360.gif">
+<meta property="og:image" content="https://github.com/airbnb/lottie-ios/raw/master/_Gifs/Examples1.gif">
+<meta property="og:image" content="https://github.com/12207480/TYAlertController/raw/master/screenshot/TYAlertControllerDemo.gif">
+<meta property="og:image" content="https://github.com/Herb-Sun/OKKLineSwift/raw/master/Screenshot/OKKLineSwift-macOS.gif">
+<meta property="og:image" content="https://camo.githubusercontent.com/4e85ee91169c2ad5dc500b3b415a0c974766615d/68747470733a2f2f7261772e6769746875622e636f6d2f5068696c4a61792f4d5043686172742f6d61737465722f73637265656e73686f74732f63756269636c696e6563686172742e706e67">
+<meta property="og:image" content="https://camo.githubusercontent.com/e29d8d3316203700965cc6cc56e67b779f2845bb/68747470733a2f2f7261772e6769746875622e636f6d2f5068696c4a61792f4d5043686172742f6d61737465722f73637265656e73686f74732f636f6d62696e65645f63686172742e706e67">
+<meta property="og:image" content="https://camo.githubusercontent.com/7e8a4a3c938c21d032d44d999edd781b6e146f2a/68747470733a2f2f7261772e6769746875622e636f6d2f5068696c4a61792f4d50416e64726f696443686172742f6d61737465722f73637265656e73686f74732f73696d706c6564657369676e5f7069656368617274312e706e67">
+<meta property="og:image" content="https://camo.githubusercontent.com/7b012a01574edba720fb067fdcf1ccb80f85662d/687474703a2f2f662e636c2e6c792f6974656d732f3344316b33763145324c3067327a326a3362314d2f64656d6f332e676966">
+<meta property="og:image" content="https://github.com/Yalantis/Koloda/raw/master/Koloda_v1_example_animation.gif">
+<meta property="og:image" content="https://camo.githubusercontent.com/2f4b2356b03cae143f4d475499ef24c71d8966d9/68747470733a2f2f79616c616e7469732e636f6d2f6d656469612f636f6e74656e742f636b656469746f722f323031352f30392f33302f6368617274732d616e696d6174696f6e2e676966">
+<meta property="og:image" content="https://camo.githubusercontent.com/e09bb8fc50adba318c9f22174d1751c566f69530/68747470733a2f2f6431337961637572716a676172612e636c6f756466726f6e742e6e65742f75736572732f3439353739322f73637265656e73686f74732f323030333337362f7461625f6261725f616e696d6174696f6e5f66696e2d30322e676966">
+<meta property="og:image" content="https://raw.githubusercontent.com/Yalantis/PullToMakeSoup/master/PullToMakeSoupDemo/Resouces/recipe-finder.gif">
+<meta property="og:image" content="https://github.com/Yalantis/DisplaySwitcher/raw/master/Assets/animation.gif">
+<meta property="og:image" content="https://github.com/Yalantis/Segmentio/raw/master/Assets/animation.gif">
+<meta property="og:image" content="https://camo.githubusercontent.com/46c15734b552ce3afefa7efd1518909046b4677e/68747470733a2f2f6431337961637572716a676172612e636c6f756466726f6e742e6e65742f75736572732f3132353035362f73637265656e73686f74732f313738353237342f39396d696c65732d70726f66696c652d6c696768745f312d312d342e676966">
+<meta property="og:image" content="https://raw.githubusercontent.com/Yalantis/PullToMakeFlight/master/PullToMakeFlightDemo/Resources/tours-pull-airplane.gif">
+<meta property="og:image" content="https://camo.githubusercontent.com/cfa19d4ba7d4b87e1a1d0a54c1d11d0761b69ae7/687474703a2f2f692e67697068792e636f6d2f687743616848414431744e48612e676966">
+<meta property="og:image" content="https://github.com/robbdimitrov/RDVTabBarController/raw/master/Screenshots/iPhone-small.png">
+<meta property="og:image" content="https://cloud.githubusercontent.com/assets/2439146/20638185/d708d542-b353-11e6-8119-fa36c11b66cb.gif">
+<meta property="og:image" content="https://github.com/Huanhoo/VRDemo-Swift/raw/master/demo.gif">
+<meta property="og:image" content="https://github.com/hanton/HTY360Player/raw/master/Screenshot/PlayOnlineVideo.gif">
+<meta property="og:image" content="https://raw.githubusercontent.com/liuzhiyi1992/MyStore/master/ZYSideSlipFilter/ZYSideSlipFilterGif.gif">
+<meta property="og:image" content="https://camo.githubusercontent.com/c0cff71bcd6c94a2c3ae51617cc05cda55a5cbf6/687474703a2f2f696d61676573323031352e636e626c6f67732e636f6d2f626c6f672f3738343134312f3230313630352f3738343134312d32303136303531323233313533373230322d313132313039373735362e676966">
+<meta property="og:image" content="https://camo.githubusercontent.com/7878d80110168ae0722847a68356c383ad6cd0c6/687474703a2f2f696d61676573323031352e636e626c6f67732e636f6d2f626c6f672f3738343134312f3230313631302f3738343134312d32303136313031373233333135393838382d3535373733303334382e706e67">
+<meta property="og:image" content="https://camo.githubusercontent.com/4e57273c6466c11c74fe011a91b9df6ff10b0248/687474703a2f2f696d61676573323031352e636e626c6f67732e636f6d2f626c6f672f3738343134312f3230313631302f3738343134312d32303136313031373233333230363032392d3131313531343535362e706e67">
+<meta property="og:image" content="https://raw.githubusercontent.com/YKXMall/Shop-for-iOS/master/Screenshoot/IMG_6734.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/YKXMall/Shop-for-iOS/master/Screenshoot/IMG_6738.jpg">
+<meta property="og:image" content="https://camo.githubusercontent.com/6648bdbe3d5ea00518aad39132150161213d7a2e/687474703a2f2f7777772e636f736d69636d696e642e636f6d2f6d6174657269616c2f77686974652f6d656e752d636f6e74726f6c6c65722e676966">
+<meta property="og:image" content="https://github.com/alanwangmodify/WXSTransition/raw/master/gif/insideThenPush.gif">
+<meta property="og:image" content="https://raw.githubusercontent.com/WelkinXie/WXWaveView/master/wave.gif">
+<meta property="og:image" content="https://cloud.githubusercontent.com/assets/5310542/17099679/73306598-529c-11e6-9869-8338de6d4d0d.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/ninjaprox/NVActivityIndicatorView/master/Demo.gif">
+<meta property="og:image" content="https://raw.githubusercontent.com/hackiftekhar/IQKeyboardManager/v3.3.0/Screenshot/IQKeyboardManager.gif">
+<meta property="og:image" content="https://github.com/CharlinFeng/CorePhotoBroswerVC">
+<meta property="og:image" content="https://github.com/CharlinFeng/CorePhotoBroswerVC/raw/master/CorePhotoBroswerVC/show/push.gif">
+<meta property="og:image" content="https://camo.githubusercontent.com/076e1656ebd498578beca50b4ae323cd2c35f8b9/687474703a2f2f73746f72616765342e7374617469632e69746d616765732e72752f692f31352f303232342f685f313432343830313439315f393032333237335f313634333739653962642e706e67">
+<meta property="og:image" content="https://github.com/renzifeng/ZFPlayer/raw/master/screen.gif">
+<meta property="og:image" content="https://github.com/zhengwenming/WMPlayer/raw/master/PlayerDemo/WMPlayer.gif">
+<meta property="og:image" content="https://camo.githubusercontent.com/5ec5d6beb2beed93bd4ea41cf1cb0a4994ba9e29/687474703a2f2f672e7265636f726469742e636f2f613848327473497737412e676966">
+<meta property="og:image" content="https://github.com/banchichen/TZImagePickerController/raw/master/TZImagePickerController/ScreenShots/photoPickerVc.PNG">
+<meta property="og:updated_time" content="2017-03-27T09:20:43.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="整理收藏的GitHub上的源码">
+<meta name="twitter:description" content="中国二代身份证光学识别（swift）
+
+中国二代身份证识别（OC）
+
+
+
+
+基于Alamofire封装的上层网络请求库（swift）
+
+带动画效果的label（OC）
+
+
+
+
+为Xcode提供更丰富的颜色选择（OC）
+
+
+
+带弹性效果的转场（swift）
+
+
+
+展示gif图片的框架,内存占用小（OC）
+
+
+
+前端UI库（JS）
+
+提高项目UI开发效率的解决方案（项目框架）
+
+
+
+
+快速生成静态表">
+<meta name="twitter:image" content="https://github.com/zhongfenglee/IDCardRecognition/raw/master/Screenshot/2.PNG?raw=true">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"right","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '6342373090747483000',
+      author: 'Author'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/03/24/框架/整理收藏的GitHub上的源码/"/>
+
+
+  <title> 整理收藏的GitHub上的源码 | 行止由心 </title>
+</head>
+
+<body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">行止由心</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">知识管理，自我管理</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                整理收藏的GitHub上的源码
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-03-24T13:35:14+08:00" content="2016-03-24">
+              2016-03-24
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/03/24/框架/整理收藏的GitHub上的源码/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/24/框架/整理收藏的GitHub上的源码/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/03/24/框架/整理收藏的GitHub上的源码/" class="leancloud_visitors" data-flag-title="整理收藏的GitHub上的源码">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <ul>
+<li><p><a href="https://github.com/KevinGong2013/ChineseIDCardOCR" target="_blank" rel="external">中国二代身份证光学识别（swift）</a></p>
+</li>
+<li><p><a href="https://github.com/zhongfenglee/IDCardRecognition" target="_blank" rel="external">中国二代身份证识别（OC）</a></p>
+</li>
+</ul>
+<p><img src="https://github.com/zhongfenglee/IDCardRecognition/raw/master/Screenshot/2.PNG?raw=true" alt=""></p>
+<ul>
+<li><p><a href="https://github.com/Moya/Moya" target="_blank" rel="external">基于Alamofire封装的上层网络请求库（swift）</a></p>
+</li>
+<li><p><a href="https://github.com/overboming/ZCAnimatedLabel" target="_blank" rel="external">带动画效果的label（OC）</a></p>
+</li>
+</ul>
+<p><img src="https://camo.githubusercontent.com/90c0fc7a578f988fd5f1fcb5d2d5d8b90f159a47/687474703a2f2f7a697070792e6766796361742e636f6d2f4772697070696e674d65616e4a6176616c696e612e676966" alt=""><br><img src="https://camo.githubusercontent.com/dbc39d8eca900e28956cf951fd2fdf021b07c5fa/687474703a2f2f7a697070792e6766796361742e636f6d2f466f726b65645363616c794b6167752e676966" alt=""><br><img src="https://camo.githubusercontent.com/0ecefb2f67ba489ee62f2daac30ad267a9407417/687474703a2f2f7a697070792e6766796361742e636f6d2f4e65696768626f72696e67536c696768744a756d70696e676265616e2e676966" alt=""></p>
+<ul>
+<li><a href="https://github.com/GavinZw/ChameleonFramework" target="_blank" rel="external">为Xcode提供更丰富的颜色选择（OC）</a></li>
+</ul>
+<p><img src="https://camo.githubusercontent.com/6a4d4968efed562ae2d32e17df0474d36e14a07a/687474703a2f2f692e696d6775722e636f6d2f516868504648592e676966" alt=""></p>
+<ul>
+<li><a href="https://github.com/lkzhao/ElasticTransition" target="_blank" rel="external">带弹性效果的转场（swift）</a></li>
+</ul>
+<p><img src="https://github.com/lkzhao/ElasticTransition/raw/master/imgs/demo.gif?raw=true" alt=""></p>
+<ul>
+<li><a href="https://github.com/Flipboard/FLAnimatedImage" target="_blank" rel="external">展示gif图片的框架,内存占用小（OC）</a></li>
+</ul>
+<p><img src="https://github.com/Flipboard/FLAnimatedImage/raw/master/images/flanimatedimage-demo-player.gif" alt=""></p>
+<ul>
+<li><p><a href="https://github.com/Semantic-Org/Semantic-UI" target="_blank" rel="external">前端UI库（JS）</a></p>
+</li>
+<li><p><a href="https://github.com/QMUI/QMUI_iOS" target="_blank" rel="external">提高项目UI开发效率的解决方案（项目框架）</a></p>
+</li>
+</ul>
+<p><img src="https://ww3.sinaimg.cn/large/006tKfTcgy1fe1hrmxmrfj30pd0a80tc.jpg" alt=""></p>
+<ul>
+<li><a href="https://github.com/DavdRoman/Bohr" target="_blank" rel="external">快速生成静态表单（OC）</a></li>
+</ul>
+<p><img src="https://github.com/DavdRoman/Bohr/raw/master/Assets/1.gif" alt=""></p>
+<ul>
+<li><a href="https://github.com/dsxNiubility/Wonderful" target="_blank" rel="external">一个关于色彩的库，提供丰富的颜色（OC）</a></li>
+</ul>
+<p><img src="https://github.com/dsxNiubility/Wonderful/raw/master/screenshots/1003.png" alt=""></p>
+<ul>
+<li><a href="https://github.com/yongyuandouneng/YNNavigationController" target="_blank" rel="external">手势返回，类似36氪和京东 （OC）</a></li>
+</ul>
+<p><img src="https://github.com/yongyuandouneng/YNNavigationController/raw/master/GifAndImage/YNNavigationControllerSliderGif.gif" alt=""></p>
+<p><img src="https://github.com/yongyuandouneng/YNNavigationController/raw/master/GifAndImage/YNNavigationControllerScaleGif.gif" alt=""></p>
+<ul>
+<li><a href="https://github.com/MengLiMing/MLMSegmentPage" target="_blank" rel="external">快速集成顶部菜单栏，样式丰富（OC）</a></li>
+</ul>
+<p><img src="https://github.com/MengLiMing/MLMSegmentPage/raw/master/gif/Center_Line.gif" alt=""><br><img src="https://github.com/MengLiMing/MLMSegmentPage/raw/master/gif/Center_Arrow.gif" alt=""><br><img src="https://github.com/MengLiMing/MLMSegmentPage/raw/master/gif/Center_Slide.gif" alt=""></p>
+<ul>
+<li><a href="https://github.com/500px/greedo-layout-for-ios" target="_blank" rel="external">基于UICollectionView动态计算高度进行图片展示 （OC）</a></li>
+</ul>
+<p><img src="https://github.com/500px/greedo-layout-for-ios/raw/master/screenshot.png" alt=""></p>
+<ul>
+<li><p><a href="https://github.com/orta/ARAnalytics" target="_blank" rel="external">业务埋点（OC）</a></p>
+</li>
+<li><p><a href="https://github.com/steipete/Aspects" target="_blank" rel="external">面向切面编程（OC）</a></p>
+</li>
+<li><p><a href="https://github.com/Zepo/MLeaksFinder" target="_blank" rel="external">程序运行期间自动检测内存泄漏问题,无需一行代码</a></p>
+</li>
+<li><p><a href="https://github.com/forkingdog/UITableView-FDTemplateLayoutCell" target="_blank" rel="external">动态计算及缓存cell高度（OC）</a></p>
+</li>
+<li><p><a href="https://github.com/yyued/MagicDrag" target="_blank" rel="external">动画引导页（swift）</a></p>
+</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/yyued/MagicDrag/master/Readme/preview_teambition.gif" alt=""></p>
+<ul>
+<li><p><a href="https://github.com/lightory/HHRouter" target="_blank" rel="external">路由跳转（OC）</a></p>
+</li>
+<li><p><a href="https://github.com/LeoChensj/LeoPayManager" target="_blank" rel="external">集成主流支付方式（OC）</a></p>
+</li>
+<li><p><a href="https://github.com/soffes/SAMKeychain" target="_blank" rel="external">keyChian的一个上层封装（OC）</a></p>
+</li>
+<li><p><a href="https://github.com/xmartlabs/Eureka" target="_blank" rel="external">表单（swift）</a></p>
+</li>
+</ul>
+<p><img src="https://github.com/xmartlabs/Eureka/raw/master/Example/Media/EurekaExample1.gif" alt=""></p>
+<ul>
+<li><a href="https://github.com/MortimerGoro/MGSwipeTableCell" target="_blank" rel="external">cell左滑展示菜单（OC）</a></li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/MortimerGoro/MGSwipeTableCell/master/readme-assets/border.gif" alt=""><br><img src="https://raw.githubusercontent.com/MortimerGoro/MGSwipeTableCell/master/readme-assets/static.gif" alt=""></p>
+<ul>
+<li><a href="https://github.com/lkzhao/Hero" target="_blank" rel="external">转场动画，只需很少的代码量，支持storyboard（OC）</a></li>
+</ul>
+<p><img src="https://camo.githubusercontent.com/f5211ae92678aa22b6edf2d18e08b0dce63bcaa4/68747470733a2f2f63646e2e7261776769742e636f6d2f6c6b7a68616f2f4865726f2f656262336632632f5265736f75726365732f6665617475726573322e737667" alt=""><br><img src="https://camo.githubusercontent.com/737194a3442f67b2066bd1be40d0ced772c158a1/68747470733a2f2f63646e2e7261776769742e636f6d2f6c6b7a68616f2f4865726f2f656262336632632f5265736f75726365732f64656661756c74416e696d6174696f6e732e737667" alt=""></p>
+<ul>
+<li><p><a href="https://github.com/Instagram/IGListKit" target="_blank" rel="external">数据驱动，更快的创建复杂UICollectionView（OC）</a></p>
+</li>
+<li><p><a href="https://github.com/dzenbot/DZNEmptyDataSet" target="_blank" rel="external">空数据页面（OC）</a></p>
+</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/dzenbot/UITableView-DataSet/master/Examples/Applications/Screenshots/Screenshots_row1.png" alt=""></p>
+<ul>
+<li><p><a href="https://github.com/facebook/AsyncDisplayKit" target="_blank" rel="external">异步UI框架，facebook出品，必属精品（Objective-C++）</a></p>
+</li>
+<li><p><a href="https://github.com/12207480/TYAttributedLabel" target="_blank" rel="external">强大的属性文本控件，支持图文混排等（OC）</a></p>
+</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/12207480/TYAttributedLabel/master/screenshot/TYAtrributedLabelDemo.gif" alt=""></p>
+<ul>
+<li><a href="https://github.com/12207480/LovePlayNews" target="_blank" rel="external">LovePlayNews精仿爱玩iOS app，使用AsyncDisplayKit提高UI流畅性（完整项目）</a></li>
+</ul>
+<p><img src="https://github.com/12207480/LovePlayNews/raw/master/ScreenShot/LovePlayNews.gif" alt=""></p>
+<ul>
+<li><a href="https://github.com/andreamazz/AMPopTip" target="_blank" rel="external">popover弹出的提示view</a></li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/andreamazz/AMPopTip/master/assets/screenshot.gif" alt=""></p>
+<ul>
+<li><p><a href="https://github.com/mdiep/MMMarkdown" target="_blank" rel="external">Markdown转HTML（OC）</a></p>
+</li>
+<li><p><a href="https://github.com/ibireme/YYKit" target="_blank" rel="external">一组庞大的、功能丰富的ios组件 YYKit（OC）</a></p>
+</li>
+<li><p><a href="https://github.com/JVillella/JVFloatingDrawer" target="_blank" rel="external">侧滑菜单（OC）</a></p>
+</li>
+</ul>
+<p><img src="https://camo.githubusercontent.com/44098d6ff4f858b06190b4d39afac8f51d4c7803/687474703a2f2f6a76696c6c656c6c612e6769746875622e696f2f4a56466c6f6174696e674472617765722f53637265656e73686f74732f616e696d617465642d6472617765722d6f70656e2d706f7274726169742e676966" alt=""></p>
+<ul>
+<li><p><a href="https://github.com/rnapier/RNCachingURLProtocol" target="_blank" rel="external">离线缓存UIWebView（OC）</a></p>
+</li>
+<li><p><a href="https://github.com/eternityz/RWDropdownMenu" target="_blank" rel="external">全屏的下拉菜单，支持多个方向（OC）</a></p>
+</li>
+</ul>
+<p><img src="https://camo.githubusercontent.com/054a34f2daf4c17a7aaa46bf7557de1e108cfd2c/68747470733a2f2f7261772e6769746875622e636f6d2f657465726e6974797a2f525744726f70646f776e4d656e752f6d61737465722f53637265656e73686f74732f64656d6f2d6950686f6e652e676966" alt=""></p>
+<ul>
+<li><a href="https://github.com/Yalantis/StarWars.iOS" target="_blank" rel="external">一个炫酷的星星动画（OC）</a></li>
+</ul>
+<p><img src="https://github.com/Yalantis/StarWars.iOS/raw/master/preview.gif" alt=""></p>
+<ul>
+<li><a href="https://github.com/adad184/MMTweenAnimation" target="_blank" rel="external">基于pop的动画框架（OC）</a></li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/adad184/MMTweenAnimation/master/Images/2.gif" alt=""><br><img src="https://raw.githubusercontent.com/adad184/MMTweenAnimation/master/Images/9.gif" alt=""></p>
+<ul>
+<li><p><a href="https://github.com/ameizi/awesome-ios-animation" target="_blank" rel="external">iOS平台下比较炫酷的动画框架</a></p>
+</li>
+<li><p><a href="https://github.com/orazz/CreditCardForm-iOS" target="_blank" rel="external">银行卡输入动画,自动识别银行卡类型（swift）</a></p>
+</li>
+</ul>
+<p><img src="https://camo.githubusercontent.com/e30bcc0537ff4aa4adae4f39ad664aeb2fd7db76/68747470733a2f2f646f746a70672e636f2f3862752e706e67" alt=""></p>
+<ul>
+<li><a href="https://github.com/xhamr/fave-button" target="_blank" rel="external">点赞动画按钮（swift）</a></li>
+</ul>
+<p><img src="https://github.com/xhamr/fave-button/raw/master/fave-button1.gif" alt=""></p>
+<ul>
+<li><a href="https://github.com/Ramotion/expanding-collection" target="_blank" rel="external">卡片式CollectionView,加上流畅的转场动画，<a href="https://github.com/Ramotion" target="_blank" rel="external">Ramotion</a> 出品，他家有很多好东西（swift） </a></li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/Ramotion/expanding-collection/master/preview.gif" alt=""></p>
+<ul>
+<li><a href="https://github.com/PhilippeBoisney/AlertOnboarding" target="_blank" rel="external">APP内部新手引导，多页展示（OC）</a></li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/PhilippeBoisney/AlertOnboarding/master/demo.gif" alt=""></p>
+<ul>
+<li><a href="https://github.com/yeziahehe/YFStartView" target="_blank" rel="external">动画交互的启动图（OC）</a></li>
+</ul>
+<p><img src="https://camo.githubusercontent.com/170b43643d7208c9f7a4ad584bfda8b8f97057d8/687474703a2f2f37786b7674352e636f6d312e7a302e676c622e636c6f7564646e2e636f6d2f6769746875622f5946537461727456696577627574746f6d2e676966" alt=""></p>
+<ul>
+<li><a href="https://github.com/ephread/Instructions" target="_blank" rel="external">APP新手引导，类似聚关灯效果（swift）</a></li>
+</ul>
+<p><img src="https://camo.githubusercontent.com/072ef03302b2ba16605c71f8e5e7a19bb700e149/687474703a2f2f692e696d6775722e636f6d2f4a556c514839462e676966" alt=""></p>
+<ul>
+<li><a href="https://github.com/gontovnik/DGElasticPullToRefresh" target="_blank" rel="external">弹性刷新动画（swift）</a></li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/gontovnik/DGElasticPullToRefresh/master/DGElasticPullToRefreshPreview1.gif" alt=""></p>
+<ul>
+<li><a href="https://github.com/zhxnlai/ZLSwipeableView" target="_blank" rel="external">卡片切换效果（swift&amp;&amp;OC）</a></li>
+</ul>
+<p><img src="https://github.com/zhxnlai/ZLSwipeableView/raw/master/Previews/swipe.gif" alt=""></p>
+<ul>
+<li><a href="https://github.com/zoonooz/ZFDragableModalTransition" target="_blank" rel="external">转场效果，支持storyboard（OC）</a></li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/zoonooz/ZFDragableModalTransition/master/Screenshot/ss.gif" alt=""></p>
+<ul>
+<li><a href="https://github.com/recruit-mp/RMPZoomTransitionAnimator" target="_blank" rel="external">tableView和CollectionView的过渡动画，其实用Hero就很容易实现（OC）</a></li>
+</ul>
+<p><img src="https://github.com/recruit-mp/RMPZoomTransitionAnimator/raw/master/docs/tableview.gif" alt=""><br><img src="https://github.com/recruit-mp/RMPZoomTransitionAnimator/raw/master/docs/collectionview.gif" alt=""></p>
+<ul>
+<li><p><a href="https://github.com/andreamazz/BubbleTransition" target="_blank" rel="external">一个转场动画（OC）</a></p>
+<p>  <img src="https://raw.githubusercontent.com/andreamazz/BubbleTransition/master/assets/screenshot.gif" alt=""></p>
+</li>
+</ul>
+<ul>
+<li><p><a href="https://github.com/Ramotion/animated-tab-bar" target="_blank" rel="external">动画效果的tabbar (swift)</a></p>
+<p>  <img src="https://raw.githubusercontent.com/Ramotion/animated-tab-bar/master/Screenshots/RAMAnimatedTabBarDemo.gif" alt=""></p>
+</li>
+<li><p><a href="https://github.com/bryankeller/BLKFlexibleHeightBar" target="_blank" rel="external">导航栏动效</a></p>
+</li>
+</ul>
+<p><img src="https://camo.githubusercontent.com/bb5cfd36b1d0e997105b0011110444652b4e7087/687474703a2f2f666f787765622e6d61726973742e6564752f75736572732f7374626b2f5371756172654361736844656d6f322e676966" alt=""></p>
+<ul>
+<li><a href="https://github.com/ltebean/LTNavigationBar" target="_blank" rel="external">依旧是导航栏（swift）</a></li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/ltebean/LTNavigationBar/master/images/demo2.gif" alt=""></p>
+<ul>
+<li><a href="https://github.com/layerhq/Atlas-iOS" target="_blank" rel="external">短信应用（OC）</a></li>
+</ul>
+<p><img src="https://github.com/layerhq/Atlas-iOS/raw/master/Examples/Screenshots/walkthrough.gif" alt=""></p>
+<ul>
+<li><a href="https://github.com/marty-suzuki/SABlurImageView" target="_blank" rel="external">模糊遮罩（swift）</a></li>
+</ul>
+<p><img src="https://github.com/marty-suzuki/SABlurImageView/raw/master/SampleImage/sample.gif" alt=""></p>
+<ul>
+<li><a href="https://github.com/Sephiroth87/ODRefreshControl" target="_blank" rel="external">类似QQ的刷新（OC）</a></li>
+</ul>
+<p><img src="https://camo.githubusercontent.com/6158aea2f328f68364672243e4483729c8f661b8/687474703a2f2f7777772e6f72616e6765696e616461792e636f6d2f696d672f4f4452656672657368436f6e74726f6c2e6a7067" alt=""></p>
+<ul>
+<li><a href="https://github.com/cyndibaby905/TwitterCover" target="_blank" rel="external">类似Twitter的下拉头部模糊（OC）</a></li>
+</ul>
+<p><img src="https://raw.github.com/cyndibaby905/TwitterCover/master/TwitterCover.gif" alt=""></p>
+<ul>
+<li><a href="https://github.com/MartinRGB/Replace-iOS" target="_blank" rel="external">刷新特效（OC）</a></li>
+</ul>
+<p><img src="https://github.com/MartinRGB/Replace-iOS/raw/master/1.gif?raw=true" alt=""></p>
+<ul>
+<li><a href="https://github.com/KittenYang/KYJellyPullToRefresh" target="_blank" rel="external">足球刷新效果（OC）</a></li>
+</ul>
+<p><img src="https://github.com/KittenYang/KYJellyPullToRefresh/raw/master/ball.gif" alt=""></p>
+<ul>
+<li><a href="https://github.com/MartinRGB/GiftCard-iOS" target="_blank" rel="external">购买礼物的卡片特效（OC）</a></li>
+</ul>
+<p><img src="https://github.com/MartinRGB/GiftCard-Implementation/raw/master/Gif/Origami.gif?raw=true" alt=""></p>
+<ul>
+<li><a href="https://github.com/Roylee-ML/SwipeTableView" target="_blank" rel="external">类似半糖首页菜单与QQ音乐歌曲列表页面（OC）</a></li>
+</ul>
+<p><img src="https://github.com/Roylee-ML/SwipeTableView/raw/master/ScreenShots/screenshot1.gif" alt=""></p>
+<ul>
+<li><a href="https://github.com/ChenYilong/CollectionViewClassifyMenu" target="_blank" rel="external">CollectionView做的两级菜单，可以折叠第二级菜单（OC）</a></li>
+</ul>
+<p><img src="https://github.com/ChenYilong/CollectionViewClassifyMenu/raw/master/CollectionViewClassifyMenu用法展示.gif" alt=""></p>
+<ul>
+<li><a href="https://github.com/ra1028/RACollectionViewReorderableTripletLayout" target="_blank" rel="external">瀑布流展示图片，并可拖拽（OC）</a></li>
+</ul>
+<p><img src="https://github.com/ra1028/RACollectionViewReorderableTripletLayout/raw/master/Assets/animation.gif" alt=""></p>
+<ul>
+<li><p><a href="https://github.com/imqiuhang/QHPopView" target="_blank" rel="external">卡片动画和弹出动画（OC）</a></p>
+</li>
+<li><p><a href="https://github.com/Ramotion/folding-cell" target="_blank" rel="external">可折叠的cell（swift）</a></p>
+</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/Ramotion/folding-cell/master/Screenshots/folding-cell.gif" alt=""></p>
+<ul>
+<li><a href="https://github.com/xmartlabs/XLForm" target="_blank" rel="external">表单（OC&amp;&amp;Swift）</a></li>
+</ul>
+<p><img src="https://github.com/xmartlabs/XLForm/raw/master/Examples/Objective-C/Examples/RealExamples/XLForm.gif" alt=""></p>
+<ul>
+<li><a href="https://github.com/coolbeet/CBStoreHouseRefreshControl" target="_blank" rel="external">动感特效刷新动画（OC）</a></li>
+</ul>
+<p><img src="https://s3.amazonaws.com/suyu.test/CBStoreHouseRefreshControl1.gif" alt=""></p>
+<ul>
+<li><a href="https://github.com/hilen/TSWeChat" target="_blank" rel="external">仿微信（OC）</a></li>
+</ul>
+<p><img src="https://github.com/hilen/TSWeChat/raw/master/images/preview1.gif" alt=""></p>
+<ul>
+<li><a href="https://github.com/CatchChat/Yep" target="_blank" rel="external">是一款非常小巧而轻量化的社交 App（swift）</a></li>
+</ul>
+<p><img src="https://ww3.sinaimg.cn/large/006tKfTcgy1fe160y0l11j305o0a874r.jpg" alt=""></p>
+<ul>
+<li><a href="https://github.com/Yalantis/Phoenix" target="_blank" rel="external">太阳刷新动画(OC)</a></li>
+</ul>
+<p><img src="https://camo.githubusercontent.com/d406ac5a03a2b1fa5cf41fadc8d2408cb8709bdc/68747470733a2f2f6431337961637572716a676172612e636c6f756466726f6e742e6e65742f75736572732f3132353035362f73637265656e73686f74732f313635303331372f7265616c6573746174652d70756c6c5f312d322d332e676966" alt=""></p>
+<ul>
+<li><a href="https://github.com/kevinzhow/PNChart" target="_blank" rel="external">图表(OC)</a></li>
+</ul>
+<p><img src="https://camo.githubusercontent.com/77bdf4e51800f787a673cd60fd0e95d68bafb337/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f666172736869642e67686f64732e6769746875622f706e63686172742d6769662e676966" alt=""></p>
+<ul>
+<li><p><a href="https://github.com/samvermette/SVPullToRefresh" target="_blank" rel="external">刷新动画（OC）</a></p>
+</li>
+<li><p><a href="https://github.com/6ag/PaymentView" target="_blank" rel="external">利用贝塞尔曲线模仿支付宝支付视图（OC）</a></p>
+</li>
+</ul>
+<p><img src="https://github.com/6ag/PaymentView/raw/master/paymentViewDemo/1.gif" alt=""></p>
+<ul>
+<li><a href="https://github.com/dogo/SCLAlertView" target="_blank" rel="external">漂亮的提示框(OC&amp;&amp;swift)</a></li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/dogo/SCLAlertView/master/ScreenShots/ScreenShot.png" alt=""></p>
+<ul>
+<li><a href="https://github.com/adad184/MMPopupView" target="_blank" rel="external">弹出视图（OC）</a></li>
+</ul>
+<p><img src="https://github.com/adad184/MMPopupView/raw/master/Images/0.jpg" alt=""></p>
+<ul>
+<li><a href="https://github.com/kevin0571/STPopup" target="_blank" rel="external">带导航栏的sheetView(OC)</a></li>
+</ul>
+<p><img src="https://cloud.githubusercontent.com/assets/1491282/9857827/8fa0125e-5b4f-11e5-9c0d-ff955c007360.gif" alt=""></p>
+<ul>
+<li><a href="https://github.com/airbnb/lottie-ios" target="_blank" rel="external">通过AE动画导出json文件做流畅动画（OC）</a></li>
+</ul>
+<p><img src="https://github.com/airbnb/lottie-ios/raw/master/_Gifs/Examples1.gif" alt=""></p>
+<ul>
+<li><a href="https://github.com/12207480/TYAlertController" target="_blank" rel="external">弹出视图（OC）</a></li>
+</ul>
+<p><img src="https://github.com/12207480/TYAlertController/raw/master/screenshot/TYAlertControllerDemo.gif" alt=""></p>
+<ul>
+<li><a href="https://github.com/Herb-Sun/OKKLineSwift" target="_blank" rel="external">股票K线图（swift）</a></li>
+</ul>
+<p><img src="https://github.com/Herb-Sun/OKKLineSwift/raw/master/Screenshot/OKKLineSwift-macOS.gif" alt=""></p>
+<ul>
+<li><p><a href="https://github.com/MengTo/Spring" target="_blank" rel="external">可以通过storyboard设置的动画（swift）</a></p>
+</li>
+<li><p><a href="https://github.com/danielgindi/Charts" target="_blank" rel="external">图表库 高达13000start（swift）</a></p>
+</li>
+</ul>
+<p><img src="https://camo.githubusercontent.com/4e85ee91169c2ad5dc500b3b415a0c974766615d/68747470733a2f2f7261772e6769746875622e636f6d2f5068696c4a61792f4d5043686172742f6d61737465722f73637265656e73686f74732f63756269636c696e6563686172742e706e67" alt=""></p>
+<p><img src="https://camo.githubusercontent.com/e29d8d3316203700965cc6cc56e67b779f2845bb/68747470733a2f2f7261772e6769746875622e636f6d2f5068696c4a61792f4d5043686172742f6d61737465722f73637265656e73686f74732f636f6d62696e65645f63686172742e706e67" alt=""></p>
+<p><img src="https://camo.githubusercontent.com/7e8a4a3c938c21d032d44d999edd781b6e146f2a/68747470733a2f2f7261772e6769746875622e636f6d2f5068696c4a61792f4d50416e64726f696443686172742f6d61737465722f73637265656e73686f74732f73696d706c6564657369676e5f7069656368617274312e706e67" alt=""></p>
+<ul>
+<li><a href="https://github.com/artemSydorenko/ZSSRichTextEditor" target="_blank" rel="external">富文本编辑工具条（OC）</a></li>
+</ul>
+<p><img src="https://camo.githubusercontent.com/7b012a01574edba720fb067fdcf1ccb80f85662d/687474703a2f2f662e636c2e6c792f6974656d732f3344316b33763145324c3067327a326a3362314d2f64656d6f332e676966" alt=""></p>
+<ul>
+<li><a href="https://github.com/Yalantis/Koloda" target="_blank" rel="external">卡片效果（swift）</a></li>
+</ul>
+<p><img src="https://github.com/Yalantis/Koloda/raw/master/Koloda_v1_example_animation.gif" alt=""></p>
+<ul>
+<li><a href="https://github.com/Yalantis/EatFit" target="_blank" rel="external">特效动画（swift）</a></li>
+</ul>
+<p><img src="https://camo.githubusercontent.com/2f4b2356b03cae143f4d475499ef24c71d8966d9/68747470733a2f2f79616c616e7469732e636f6d2f6d656469612f636f6e74656e742f636b656469746f722f323031352f30392f33302f6368617274732d616e696d6174696f6e2e676966" alt=""></p>
+<ul>
+<li><a href="https://github.com/Yalantis/FoldingTabBar.iOS" target="_blank" rel="external">动画效果tabbar(OC)</a></li>
+</ul>
+<p><img src="https://camo.githubusercontent.com/e09bb8fc50adba318c9f22174d1751c566f69530/68747470733a2f2f6431337961637572716a676172612e636c6f756466726f6e742e6e65742f75736572732f3439353739322f73637265656e73686f74732f323030333337362f7461625f6261725f616e696d6174696f6e5f66696e2d30322e676966" alt=""></p>
+<ul>
+<li><a href="https://github.com/Yalantis/PullToMakeSoup" target="_blank" rel="external">刷新动画（swift）</a></li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/Yalantis/PullToMakeSoup/master/PullToMakeSoupDemo/Resouces/recipe-finder.gif" alt=""></p>
+<ul>
+<li><a href="https://github.com/Yalantis/DisplaySwitcher" target="_blank" rel="external">tableView 和CollectionView动画切换（swift）</a></li>
+</ul>
+<p><img src="https://github.com/Yalantis/DisplaySwitcher/raw/master/Assets/animation.gif" alt=""></p>
+<ul>
+<li><a href="https://github.com/Yalantis/Segmentio" target="_blank" rel="external">样式丰富的导航栏菜单（swift）</a></li>
+</ul>
+<p><img src="https://github.com/Yalantis/Segmentio/raw/master/Assets/animation.gif" alt=""></p>
+<ul>
+<li><a href="https://github.com/Yalantis/Context-Menu.iOS" target="_blank" rel="external">菜单（OC）</a></li>
+</ul>
+<p><img src="https://camo.githubusercontent.com/46c15734b552ce3afefa7efd1518909046b4677e/68747470733a2f2f6431337961637572716a676172612e636c6f756466726f6e742e6e65742f75736572732f3132353035362f73637265656e73686f74732f313738353237342f39396d696c65732d70726f66696c652d6c696768745f312d312d342e676966" alt=""></p>
+<ul>
+<li><a href="https://github.com/Yalantis/PullToMakeFlight" target="_blank" rel="external">刷新动画（swift）</a></li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/Yalantis/PullToMakeFlight/master/PullToMakeFlightDemo/Resources/tours-pull-airplane.gif" alt=""></p>
+<ul>
+<li><a href="https://github.com/aslanyanhaik/youtube-iOS" target="_blank" rel="external">YouTube-iOS 完整应用（swift）</a></li>
+</ul>
+<p><img src="https://camo.githubusercontent.com/cfa19d4ba7d4b87e1a1d0a54c1d11d0761b69ae7/687474703a2f2f692e67697068792e636f6d2f687743616848414431744e48612e676966" alt=""></p>
+<ul>
+<li><p><a href="https://github.com/chenliming777/LMLiveStreaming" target="_blank" rel="external">直播推流框架，支持GPUImage，rtmp,flv（OC）</a></p>
+</li>
+<li><p><a href="https://github.com/robbdimitrov/RDVTabBarController" target="_blank" rel="external">高度自定义的tabbar（OC）</a></p>
+</li>
+</ul>
+<p><img src="https://github.com/robbdimitrov/RDVTabBarController/raw/master/Screenshots/iPhone-small.png" alt=""></p>
+<ul>
+<li><a href="https://github.com/patchthecode/JTAppleCalendar" target="_blank" rel="external">高度自定义的日历框架（swift）</a></li>
+</ul>
+<p><img src="https://cloud.githubusercontent.com/assets/2439146/20638185/d708d542-b353-11e6-8119-fa36c11b66cb.gif" alt=""></p>
+<ul>
+<li><a href="https://github.com/Huanhoo/VRDemo-Swift" target="_blank" rel="external">VRDemo是用Swift3.0配合OpenGL ES实现的360度全景播放器 (swift)</a></li>
+</ul>
+<p><img src="https://github.com/Huanhoo/VRDemo-Swift/raw/master/demo.gif" alt=""></p>
+<ul>
+<li><a href="https://github.com/hanton/HTY360Player" target="_blank" rel="external">360度全景播放器（OC）</a></li>
+</ul>
+<p><img src="https://github.com/hanton/HTY360Player/raw/master/Screenshot/PlayOnlineVideo.gif" alt=""></p>
+<ul>
+<li><p><a href="https://github.com/shu223/iOS-10-Sampler" target="_blank" rel="external">ios10新api示例代码（OC）</a></p>
+</li>
+<li><p><a href="https://github.com/shu223/iOS-9-Sampler" target="_blank" rel="external">ios9新API示例代码（OC）</a></p>
+</li>
+<li><p><a href="https://github.com/liuzhiyi1992/ZYSideSlipFilter" target="_blank" rel="external">类似京东的侧边栏筛选（OC）</a></p>
+</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/liuzhiyi1992/MyStore/master/ZYSideSlipFilter/ZYSideSlipFilterGif.gif" alt=""></p>
+<ul>
+<li><a href="https://github.com/yate1996/Y_KLine" target="_blank" rel="external">iOS专业K线第一版：K线主副图、趋势图、成交量、滚动、放大缩小、MACD、KDJ等</a></li>
+</ul>
+<p><img src="https://camo.githubusercontent.com/c0cff71bcd6c94a2c3ae51617cc05cda55a5cbf6/687474703a2f2f696d61676573323031352e636e626c6f67732e636f6d2f626c6f672f3738343134312f3230313630352f3738343134312d32303136303531323233313533373230322d313132313039373735362e676966" alt=""></p>
+<ul>
+<li><a href="https://github.com/yate1996/YYStock" target="_blank" rel="external">iOS股票K线第二版：整合了分时图，日周月K线图，五档图，长按，捏合缩放，全屏非全屏切换自适应</a></li>
+</ul>
+<p><img src="https://camo.githubusercontent.com/7878d80110168ae0722847a68356c383ad6cd0c6/687474703a2f2f696d61676573323031352e636e626c6f67732e636f6d2f626c6f672f3738343134312f3230313631302f3738343134312d32303136313031373233333135393838382d3535373733303334382e706e67" alt=""><br><img src="https://camo.githubusercontent.com/4e57273c6466c11c74fe011a91b9df6ff10b0248/687474703a2f2f696d61676573323031352e636e626c6f67732e636f6d2f626c6f672f3738343134312f3230313631302f3738343134312d32303136313031373233333230363032392d3131313531343535362e706e67" alt=""></p>
+<ul>
+<li><a href="https://github.com/EleTeam/Shop-iOS" target="_blank" rel="external">EleTeam开源项目-电商全套解决方案之iOS版-Shop-iOS。一个类似京东/天猫/淘宝的商城，有对应的服务端支持，由EleTeam团队维护！</a></li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/YKXMall/Shop-for-iOS/master/Screenshoot/IMG_6734.jpg" alt=""><br><img src="https://raw.githubusercontent.com/YKXMall/Shop-for-iOS/master/Screenshoot/IMG_6738.jpg" alt=""></p>
+<ul>
+<li><a href="https://github.com/CosmicMind/Material" target="_blank" rel="external">An animation and graphics framework for Material Design in Swift. </a></li>
+</ul>
+<p><img src="https://camo.githubusercontent.com/6648bdbe3d5ea00518aad39132150161213d7a2e/687474703a2f2f7777772e636f736d69636d696e642e636f6d2f6d6174657269616c2f77686974652f6d656e752d636f6e74726f6c6c65722e676966" alt=""></p>
+<ul>
+<li><a href="https://github.com/alanwangmodify/WXSTransition" target="_blank" rel="external">转场动画集（OC）</a></li>
+</ul>
+<p><img src="https://github.com/alanwangmodify/WXSTransition/raw/master/gif/insideThenPush.gif" alt=""></p>
+<ul>
+<li><a href="https://github.com/WelkinXie/WXWaveView" target="_blank" rel="external">波浪动画（OC）</a></li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/WelkinXie/WXWaveView/master/wave.gif" alt=""></p>
+<ul>
+<li><p><a href="https://github.com/BradLarson/GPUImage" target="_blank" rel="external">滤镜美颜框架（OC）</a></p>
+</li>
+<li><p><a href="https://github.com/Aufree/PHPHub-iOS" target="_blank" rel="external">PHPHub for iOS is the universal iPhone and iPad application for PHPHub 完整应用（OC）</a></p>
+</li>
+</ul>
+<p><img src="https://cloud.githubusercontent.com/assets/5310542/17099679/73306598-529c-11e6-9869-8338de6d4d0d.png" alt=""></p>
+<ul>
+<li><a href="https://github.com/ninjaprox/NVActivityIndicatorView" target="_blank" rel="external">超丰富的加载动画（swift）</a></li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/ninjaprox/NVActivityIndicatorView/master/Demo.gif" alt=""></p>
+<ul>
+<li><a href="https://github.com/hackiftekhar/IQKeyboardManager" target="_blank" rel="external">自动键盘管理（OC）</a></li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/hackiftekhar/IQKeyboardManager/v3.3.0/Screenshot/IQKeyboardManager.gif" alt=""></p>
+<ul>
+<li><a href="https://github.com/CharlinFeng/CorePhotoBroswerVC" target="_blank" rel="external">快速集成高性能照片浏览器，支持本地及网络相册</a></li>
+</ul>
+<p><img src="https://github.com/CharlinFeng/CorePhotoBroswerVC" alt="快速集成高性能照片浏览器，支持本地及网络相册（swift&amp;&amp;OC）"></p>
+<p><img src="https://github.com/CharlinFeng/CorePhotoBroswerVC/raw/master/CorePhotoBroswerVC/show/push.gif" alt=""></p>
+<ul>
+<li><a href="https://github.com/ali312/TLTagsControl" target="_blank" rel="external">标签控件（OC）</a></li>
+</ul>
+<p><img src="https://camo.githubusercontent.com/076e1656ebd498578beca50b4ae323cd2c35f8b9/687474703a2f2f73746f72616765342e7374617469632e69746d616765732e72752f692f31352f303232342f685f313432343830313439315f393032333237335f313634333739653962642e706e67" alt=""></p>
+<ul>
+<li><a href="https://github.com/renzifeng/ZFPlayer" target="_blank" rel="external">基于AVPlayer，支持横屏、竖屏（全屏播放还可锁定屏幕方向），上下滑动调节音量、屏幕亮度，左右滑动调节播放进度(OC)</a></li>
+</ul>
+<p><img src="https://github.com/renzifeng/ZFPlayer/raw/master/screen.gif" alt=""></p>
+<ul>
+<li><a href="https://github.com/zhengwenming/WMPlayer" target="_blank" rel="external">视屏播放器（OC）</a></li>
+</ul>
+<p><img src="https://github.com/zhengwenming/WMPlayer/raw/master/PlayerDemo/WMPlayer.gif" alt=""></p>
+<ul>
+<li><a href="https://github.com/nicklockwood/iCarousel" target="_blank" rel="external">简单、高度自定义、数据驱动的3D轮播（OC）</a></li>
+</ul>
+<p><img src="https://camo.githubusercontent.com/5ec5d6beb2beed93bd4ea41cf1cb0a4994ba9e29/687474703a2f2f672e7265636f726469742e636f2f613848327473497737412e676966" alt=""></p>
+<ul>
+<li><p><a href="https://github.com/marcuswestin/WebViewJavascriptBridge" target="_blank" rel="external">Objective-C and  javascript 桥接框架（OC）</a></p>
+</li>
+<li><p><a href="https://github.com/xiezhongmin/XZMCoreNewFeature" target="_blank" rel="external">版本新特性（OC）</a></p>
+</li>
+<li><p><a href="https://github.com/banchichen/TZImagePickerController" target="_blank" rel="external">一个支持多选、选原图和视频的图片选择器，同时有预览、裁剪功能(OC)</a></p>
+</li>
+</ul>
+<p><img src="https://github.com/banchichen/TZImagePickerController/raw/master/TZImagePickerController/ScreenShots/photoPickerVc.PNG" alt=""></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>请我喝杯豆浆！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="http://storage1.imgchr.com/images/FullSizeRendereb28d.jpg" alt="winterrain5 WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="http://storage1.imgchr.com/images/FullSizeRender2fa7e1.jpg" alt="winterrain5 Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/框架/" rel="tag">#框架</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/10/16/postName/" rel="prev" title="初来乍到">
+                初来乍到 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/03/24/框架/整理收藏的GitHub上的源码/"
+           data-title="整理收藏的GitHub上的源码" data-url="http://yoursite.com/2016/03/24/框架/整理收藏的GitHub上的源码/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://ww4.sinaimg.cn/mw690/9dac93ccjw9eymcefq449j202s042aa2.jpg"
+               alt="winterrain5" />
+          <p class="site-author-name" itemprop="name">winterrain5</p>
+          <p class="site-description motion-element" itemprop="description">要做一个Nice的人</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">42</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">37</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/winterrain5" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/rain-winter-74" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/u/2645332940/home?topnav=1" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  微博
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <p class="post-toc-empty">此文章未包含目录</p>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">winterrain5</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"winterrain5"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("029tUpff0Ph7OrHFjawhv700-gzGzoHsz", "TyyMeX7RfM4IsJWWe33K8yCW");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+</body>
+</html>

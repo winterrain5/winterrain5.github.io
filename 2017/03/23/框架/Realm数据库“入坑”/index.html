@@ -100,7 +100,7 @@
 简单易用：相比CoreData 和 SQLite学习成本更低
 
 可视化：Realm Browser工具">
-<meta property="og:updated_time" content="2017-03-24T02:16:06.000Z">
+<meta property="og:updated_time" content="2017-03-24T02:23:04.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Realm数据库“入坑”">
 <meta name="twitter:description" content="Realm 优点
@@ -375,7 +375,7 @@
 <li>反向（Inverse Relationship）</li>
 </ul>
 <p>链接是单向性的。因此，如果对多关系属性 RLMUser.cars链接了一个 Car实例，而这个实例的对一关系属性 Car.owner又链接到了对应的这个 RLMUser实例，那么实际上这些链接仍然是互相独立的。</p>
-<figure class="highlight swift"><table><tr><td class="code"><pre><div class="line">@interface <span class="type">Car</span> : <span class="type">RLMObject</span>@property</div><div class="line"><span class="type">NSString</span> *carName;</div><div class="line">@property (readonly) <span class="type">RLMLinkingObjects</span> *owners;</div><div class="line">@end</div><div class="line">@implementation <span class="type">Car</span></div><div class="line">+ (<span class="type">NSDictionary</span> *)linkingObjectsProperties &#123;    </div><div class="line">  <span class="keyword">return</span> @&#123; @<span class="string">"owners"</span>: [<span class="type">RLMPropertyDescriptor</span> descriptorWithClass:<span class="type">RLMUser</span>.<span class="keyword">class</span> propertyName:@<span class="string">"cars"</span>]&#125;;</div><div class="line">&#125;</div><div class="line">@end</div></pre></td></tr></table></figure>
+<figure class="highlight swift"><table><tr><td class="code"><pre><div class="line">@interface <span class="type">Car</span> : <span class="type">RLMObject</span></div><div class="line">@property <span class="type">NSString</span> *carName;</div><div class="line">@property (readonly) <span class="type">RLMLinkingObjects</span> *owners;</div><div class="line">@end</div><div class="line">@implementation <span class="type">Car</span></div><div class="line">+ (<span class="type">NSDictionary</span> *)linkingObjectsProperties &#123;    </div><div class="line">  <span class="keyword">return</span> @&#123; @<span class="string">"owners"</span>: [<span class="type">RLMPropertyDescriptor</span> descriptorWithClass:<span class="type">RLMUser</span>.<span class="keyword">class</span> propertyName:@<span class="string">"cars"</span>]&#125;;</div><div class="line">&#125;</div><div class="line">@end</div></pre></td></tr></table></figure>
 <h4 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h4><p>还可以给RLMObject设置主键<code>primaryKey</code>，默认值<code>defaultPropertyValues</code>，忽略的属性<code>ignoredProperties</code>，必要属性<code>requiredProperties</code>，索引<code>indexedProperties</code>。比较有用的是主键和索引。</p>
 <figure class="highlight swift"><table><tr><td class="code"><pre><div class="line">@implementation <span class="type">Book</span></div><div class="line"><span class="comment">//主键</span></div><div class="line">+ (<span class="type">NSString</span> *)primaryKey &#123;    </div><div class="line">  <span class="keyword">return</span> @<span class="string">"ID"</span>;</div><div class="line">&#125;</div><div class="line"><span class="comment">//设置属性默认值</span></div><div class="line">+ (<span class="type">NSDictionary</span> *)defaultPropertyValues&#123;    </div><div class="line">  <span class="keyword">return</span> @&#123;@<span class="string">"carName"</span>:@<span class="string">"测试"</span> &#125;;</div><div class="line">&#125;</div><div class="line"><span class="comment">//设置忽略属性,即不存到realm数据库中</span></div><div class="line">+ (<span class="type">NSArray</span> *)ignoredProperties &#123;    </div><div class="line">  <span class="keyword">return</span> @[@<span class="string">"ID"</span>];</div><div class="line">&#125;</div><div class="line"><span class="comment">//一般来说,属性为nil的话realm会抛出异常,但是如果实现了这个方法的话,就只有name为nil会抛出异常,也就是说现在cover属性可以为空了</span></div><div class="line">+ (<span class="type">NSArray</span> *)requiredProperties &#123;    </div><div class="line">  <span class="keyword">return</span> @[@<span class="string">"name"</span>];</div><div class="line">&#125;</div><div class="line"><span class="comment">//设置索引,可以加快检索的速度+</span></div><div class="line"> (<span class="type">NSArray</span> *)indexedProperties &#123;    </div><div class="line">   <span class="keyword">return</span> @[@<span class="string">"ID"</span>];</div><div class="line">&#125;</div><div class="line">@end</div></pre></td></tr></table></figure>
 <h4 id="增"><a href="#增" class="headerlink" title="增"></a>增</h4><figure class="highlight swift"><table><tr><td class="code"><pre><div class="line"><span class="comment">// (1) 创建一个Car对象，然后设置其属性</span></div><div class="line"><span class="type">Car</span> *car = [[<span class="type">Car</span> alloc] <span class="keyword">init</span>];</div><div class="line">car.carName = @<span class="string">"Lamborghini"</span>;</div><div class="line"><span class="comment">// (2) 通过字典创建Car对象</span></div><div class="line"><span class="type">Car</span> *myOtherCar = [[<span class="type">Car</span> alloc] initWithValue:@&#123;@<span class="string">"name"</span> : @<span class="string">"Rolls-Royce"</span>&#125;];</div><div class="line"><span class="comment">// (3) 通过数组创建狗狗对象</span></div><div class="line"><span class="type">Car</span> *myThirdcar = [[<span class="type">Car</span> alloc] initWithValue:@[@<span class="string">"BMW"</span>]];</div><div class="line"></div><div class="line"><span class="type">RLMRealm</span> *realm = [<span class="type">RLMRealm</span> defaultRealm];</div><div class="line">[realm beginWriteTransaction];</div><div class="line">[realm addObject:<span class="type">Car</span>];</div><div class="line">[realm commitWriteTransaction];</div></pre></td></tr></table></figure>
@@ -580,7 +580,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">41</span>
+              <span class="site-state-item-count">42</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -597,7 +597,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">36</span>
+                <span class="site-state-item-count">37</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
