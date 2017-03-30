@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="随记," />
+  <meta name="keywords" content="框架 Realm," />
 
 
 
@@ -84,16 +84,34 @@
 
 
 
-<meta name="description" content="高山仰止，景行行止。虽不能至，心向往之">
+<meta name="description" content="运算符
+比较操作数可以是属性名称或者常量。至少有一个操作数必须是属性名称。
+
+
+int, long, longlong, float, double和NSDate属性支持比较运算符 ==，&amp;lt;=, &amp;lt;, &amp;gt;=， != 和 BETWEEN。 如 age == 45
+
+identify比较 ==，!=, 例如 [Employee objectsWhere:@&amp;quot;company">
 <meta property="og:type" content="article">
-<meta property="og:title" content="初来乍到">
-<meta property="og:url" content="http://yoursite.com/2016/10/16/postName/index.html">
+<meta property="og:title" content="Realm支持的操作符（OC）">
+<meta property="og:url" content="http://yoursite.com/2017/03/30/框架/Realm支持的操作符（OC）/index.html">
 <meta property="og:site_name" content="行止由心">
-<meta property="og:description" content="高山仰止，景行行止。虽不能至，心向往之">
-<meta property="og:updated_time" content="2017-03-21T03:15:34.000Z">
+<meta property="og:description" content="运算符
+比较操作数可以是属性名称或者常量。至少有一个操作数必须是属性名称。
+
+
+int, long, longlong, float, double和NSDate属性支持比较运算符 ==，&amp;lt;=, &amp;lt;, &amp;gt;=， != 和 BETWEEN。 如 age == 45
+
+identify比较 ==，!=, 例如 [Employee objectsWhere:@&amp;quot;company">
+<meta property="og:updated_time" content="2017-03-30T07:42:01.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="初来乍到">
-<meta name="twitter:description" content="高山仰止，景行行止。虽不能至，心向往之">
+<meta name="twitter:title" content="Realm支持的操作符（OC）">
+<meta name="twitter:description" content="运算符
+比较操作数可以是属性名称或者常量。至少有一个操作数必须是属性名称。
+
+
+int, long, longlong, float, double和NSDate属性支持比较运算符 ==，&amp;lt;=, &amp;lt;, &amp;gt;=， != 和 BETWEEN。 如 age == 45
+
+identify比较 ==，!=, 例如 [Employee objectsWhere:@&amp;quot;company">
 
 
 
@@ -114,10 +132,10 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/10/16/postName/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/03/30/框架/Realm支持的操作符（OC）/"/>
 
 
-  <title> 初来乍到 | 行止由心 </title>
+  <title> Realm支持的操作符（OC） | 行止由心 </title>
 </head>
 
 <body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
@@ -257,7 +275,7 @@
             
             
               
-                初来乍到
+                Realm支持的操作符（OC）
               
             
           </h1>
@@ -269,8 +287,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-10-16T21:16:39+08:00" content="2016-10-16">
-              2016-10-16
+            <time itemprop="dateCreated" datetime="2017-03-30T14:39:04+08:00" content="2017-03-30">
+              2017-03-30
             </time>
           </span>
 
@@ -280,8 +298,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/10/16/postName/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/10/16/postName/" itemprop="commentsCount"></span>
+                <a href="/2017/03/30/框架/Realm支持的操作符（OC）/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/30/框架/Realm支持的操作符（OC）/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -291,7 +309,7 @@
 
           
           
-             <span id="/2016/10/16/postName/" class="leancloud_visitors" data-flag-title="初来乍到">
+             <span id="/2017/03/30/框架/Realm支持的操作符（OC）/" class="leancloud_visitors" data-flag-title="Realm支持的操作符（OC）">
                &nbsp; | &nbsp;
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -313,9 +331,40 @@
       
 
       
-        <blockquote class="blockquote-center">高山仰止，景行行止。虽不能至，心向往之</blockquote>
-
-<hr>
+        <h3 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h3><blockquote>
+<p>比较操作数可以是属性名称或者常量。至少有一个操作数必须是属性名称。</p>
+</blockquote>
+<ul>
+<li><p>int, long, longlong, float, double和NSDate属性支持比较运算符 <code>==</code>，<code>&lt;=</code>, <code>&lt;</code>, <code>&gt;=</code>， <code>!=</code> 和 <code>BETWEEN</code>。 如 age == 45</p>
+</li>
+<li><p>identify比较 <code>==</code>，<code>!=,</code> 例如 <code>[Employee objectsWhere:@&quot;company == %@&quot;,company]</code></p>
+</li>
+<li><p>布尔属性支持比较运算符<code>==</code>，<code>!=</code></p>
+</li>
+<li><p>对于NSString，NSData属性，支持<code>==</code>，<code>!=,</code> <code>BEGINSWITH</code>, <code>CONTAINS</code>, <code>ENDSWITH</code> 运算符。如 <code>name CONTAINS &#39;Ja&#39;</code></p>
+</li>
+<li><p>为NSString属性时，可以使用<code>LIKE</code>操作符，<code>*</code>和<code>?</code>作为通配符，其中<code>?</code>匹配一个字符，<code>*</code>匹配多个字符。如 <code>value LIKE ‘?bc*’</code>匹配字符串，匹配到的结果可以是“abcde”,“cbc”</p>
+</li>
+<li><p>不区分大小写字符串比较<code>[c]</code>，如 <code>name CONTAINS[c] &#39;Ja&#39;</code></p>
+</li>
+<li><p>区分大小写的字符串比较<code>[d]</code>,如 <code>name BEGINSWITH[d] &#39;e&#39;</code></p>
+</li>
+<li><p>Realm 支持以下复合运算符：<code>AND</code>,<code>OR</code>和<code>NOT</code>,如<code>name BEGINSWITH &#39;J&#39; AND age &gt; 32</code></p>
+</li>
+<li><p>容器运算符 <code>IN</code>,如 <code>name IN {&#39;Lisa&#39;,&#39;Spike&#39;,&#39;Hachi&#39;}</code></p>
+</li>
+<li><p>Nil 比较运算符 <code>==</code>,<code>!=</code>,如 <code>[Company objectsWhere:&quot;ceo == nil&quot;]</code>,</p>
+</li>
+<li><p><code>ANY</code> 运算符，如 <code>ANY student.age &lt; 21</code></p>
+</li>
+<li><p><code>RLMArray</code> 和 <code>RLMResults</code> 支持集合公式<code>@count</code>,<code>@min</code>,<code>@max</code>,<code>@avg</code>,如<code>[Company objectsWhere:@&quot;employess.@count &gt; 5&quot;]</code>,查找所有的公司有超过5名员工的</p>
+</li>
+</ul>
+<h3 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h3><p><code>RLMResults</code> 允许根据<code>key path</code>、<code>property</code> 或者一个或多个排序描述指定排序条件和顺序，如下</p>
+<figure class="highlight swift"><table><tr><td class="code"><pre><div class="line"><span class="comment">// Sort tan dogs with names starting with "B" by name</span></div><div class="line"><span class="type">RLMResults</span>&lt;<span class="type">Dog</span> *&gt; *sortedDogs = [[<span class="type">Dog</span> objectsWhere:@<span class="string">"color = 'tan' AND name BEGINSWITH 'B'"</span>]</div><div class="line">                                      sortedResultsUsingKeyPath:@<span class="string">"name"</span> ascending:<span class="type">YES</span>];</div></pre></td></tr></table></figure>
+<p><code>key path</code> 也可以是<code>to-one relationship</code>的属性</p>
+<figure class="highlight swift"><table><tr><td class="code"><pre><div class="line"><span class="type">RLMResults</span>&lt;<span class="type">Person</span> *&gt; *dogOwners = [<span class="type">Person</span> allObjects];</div><div class="line"><span class="type">RLMResults</span>&lt;<span class="type">Person</span> *&gt; *ownersByDogAge = [dogOwners sortedResultsUsingKeyPath:@<span class="string">"dog.age"</span> ascending:<span class="type">YES</span>];</div></pre></td></tr></table></figure>
+<p><code>sortedResultsUsingKeyPath:</code>和<code>sortedResultsUsingProperty:</code>不支持多个属性作为排序条件，并且不能链接（仅最后一次调用sortedResults…将被使用）。要按多个属性排序，请<code>sortedResultsUsingDescriptors:</code>使用多个<code>RLMSortDescriptor</code>对象。</p>
 
       
     </div>
@@ -359,7 +408,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/随记/" rel="tag">#随记</a>
+            <a href="/tags/框架-Realm/" rel="tag">#框架 Realm</a>
           
         </div>
       
@@ -368,17 +417,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/03/24/框架/整理收藏的GitHub上的源码/" rel="next" title="整理收藏的GitHub上的源码">
-                <i class="fa fa-chevron-left"></i> 整理收藏的GitHub上的源码
+              <a href="/2017/03/23/框架/Realm数据库“入坑”/" rel="next" title="Realm数据库“入坑”">
+                <i class="fa fa-chevron-left"></i> Realm数据库“入坑”
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/10/16/Hexo/手把手教你在Mac上搭建Hexo博客/" rel="prev" title="手把手教你在Mac上搭建Hexo博客">
-                手把手教你在Mac上搭建Hexo博客 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -404,8 +449,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/10/16/postName/"
-           data-title="初来乍到" data-url="http://yoursite.com/2016/10/16/postName/">
+      <div class="ds-thread" data-thread-key="2017/03/30/框架/Realm支持的操作符（OC）/"
+           data-title="Realm支持的操作符（OC）" data-url="http://yoursite.com/2017/03/30/框架/Realm支持的操作符（OC）/">
       </div>
     
   </div>
@@ -525,7 +570,7 @@
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#运算符"><span class="nav-number">1.</span> <span class="nav-text">运算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#排序"><span class="nav-number">2.</span> <span class="nav-text">排序</span></a></li></ol></div>
             
           </div>
         </section>
