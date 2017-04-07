@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Xcode8," />
+  <meta name="keywords" content="逆水行舟，不进则退" />
 
 
 
@@ -84,16 +84,30 @@
 
 
 
-<meta name="description" content="插件无效，编辑崩溃xcode升级到8之后 ，发现一写代码就闪退，很是郁闷。。。网上找了一下资料，发现是插件KSImageName的问题，于是把这个插件删除，重启了一下xcode就可以了xcode8插件的路径：~/Library/Developer/Xcode/Plug-ins老版本：~/Library/Developer/Application Support/Developer/Shared/X">
+<meta name="description" content="原文地址
+Bundle 文件
+Bundle文件，即为资源文件包，将许多图片、XIB、文本文件组织在一起，打包成一个bundle文件，方便在其他项目中引用包内的资源。
+Bundle文件是静态的，也就是说，我们包含到包中的资源文件作为一个资源包是不参加项目编译的。也就意味着，bundle包中不能包含可执行文件。它仅仅作为资源，被解析成特定的二进制数据。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Xcode8编辑崩溃解决">
-<meta property="og:url" content="http://yoursite.com/2017/02/15/编程工具/升级Xcode8遇到的问题/index.html">
+<meta property="og:title" content="制作Bundle资源包">
+<meta property="og:url" content="http://yoursite.com/2017/04/07/OC/制作Bundle资源包/index.html">
 <meta property="og:site_name" content="行止由心">
-<meta property="og:description" content="插件无效，编辑崩溃xcode升级到8之后 ，发现一写代码就闪退，很是郁闷。。。网上找了一下资料，发现是插件KSImageName的问题，于是把这个插件删除，重启了一下xcode就可以了xcode8插件的路径：~/Library/Developer/Xcode/Plug-ins老版本：~/Library/Developer/Application Support/Developer/Shared/X">
-<meta property="og:updated_time" content="2017-03-21T03:15:34.000Z">
+<meta property="og:description" content="原文地址
+Bundle 文件
+Bundle文件，即为资源文件包，将许多图片、XIB、文本文件组织在一起，打包成一个bundle文件，方便在其他项目中引用包内的资源。
+Bundle文件是静态的，也就是说，我们包含到包中的资源文件作为一个资源包是不参加项目编译的。也就意味着，bundle包中不能包含可执行文件。它仅仅作为资源，被解析成特定的二进制数据。">
+<meta property="og:image" content="http://images2015.cnblogs.com/blog/993906/201701/993906-20170113002543494-735463940.png">
+<meta property="og:image" content="http://images2015.cnblogs.com/blog/993906/201701/993906-20170113002858650-2099844705.png">
+<meta property="og:image" content="http://images2015.cnblogs.com/blog/993906/201701/993906-20170113002909760-1153498076.png">
+<meta property="og:image" content="http://images2015.cnblogs.com/blog/993906/201701/993906-20170113002921322-801898002.png">
+<meta property="og:updated_time" content="2017-04-07T06:30:45.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Xcode8编辑崩溃解决">
-<meta name="twitter:description" content="插件无效，编辑崩溃xcode升级到8之后 ，发现一写代码就闪退，很是郁闷。。。网上找了一下资料，发现是插件KSImageName的问题，于是把这个插件删除，重启了一下xcode就可以了xcode8插件的路径：~/Library/Developer/Xcode/Plug-ins老版本：~/Library/Developer/Application Support/Developer/Shared/X">
+<meta name="twitter:title" content="制作Bundle资源包">
+<meta name="twitter:description" content="原文地址
+Bundle 文件
+Bundle文件，即为资源文件包，将许多图片、XIB、文本文件组织在一起，打包成一个bundle文件，方便在其他项目中引用包内的资源。
+Bundle文件是静态的，也就是说，我们包含到包中的资源文件作为一个资源包是不参加项目编译的。也就意味着，bundle包中不能包含可执行文件。它仅仅作为资源，被解析成特定的二进制数据。">
+<meta name="twitter:image" content="http://images2015.cnblogs.com/blog/993906/201701/993906-20170113002543494-735463940.png">
 
 
 
@@ -114,10 +128,10 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/02/15/编程工具/升级Xcode8遇到的问题/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/04/07/OC/制作Bundle资源包/"/>
 
 
-  <title> Xcode8编辑崩溃解决 | 行止由心 </title>
+  <title> 制作Bundle资源包 | 行止由心 </title>
 </head>
 
 <body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
@@ -257,7 +271,7 @@
             
             
               
-                Xcode8编辑崩溃解决
+                制作Bundle资源包
               
             
           </h1>
@@ -269,8 +283,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-02-15T16:22:19+08:00" content="2017-02-15">
-              2017-02-15
+            <time itemprop="dateCreated" datetime="2017-04-07T14:14:08+08:00" content="2017-04-07">
+              2017-04-07
             </time>
           </span>
 
@@ -280,8 +294,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2017/02/15/编程工具/升级Xcode8遇到的问题/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/02/15/编程工具/升级Xcode8遇到的问题/" itemprop="commentsCount"></span>
+                <a href="/2017/04/07/OC/制作Bundle资源包/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/04/07/OC/制作Bundle资源包/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -291,7 +305,7 @@
 
           
           
-             <span id="/2017/02/15/编程工具/升级Xcode8遇到的问题/" class="leancloud_visitors" data-flag-title="Xcode8编辑崩溃解决">
+             <span id="/2017/04/07/OC/制作Bundle资源包/" class="leancloud_visitors" data-flag-title="制作Bundle资源包">
                &nbsp; | &nbsp;
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -313,8 +327,62 @@
       
 
       
-        <h3 id="插件无效，编辑崩溃"><a href="#插件无效，编辑崩溃" class="headerlink" title="插件无效，编辑崩溃"></a>插件无效，编辑崩溃</h3><p>xcode升级到8之后 ，发现一写代码就闪退，很是郁闷。。。网上找了一下资料，发现是插件KSImageName的问题，于是把这个插件删除，重启了一下xcode就可以了<br>xcode8插件的路径：~/Library/Developer/Xcode/Plug-ins<br>老版本：~/Library/Developer/Application Support/Developer/Shared/Xcode/Plug-ins </p>
-<h3 id="Unable-to-lookup-service-com-apple-CoreSimulator-host-support-0x3"><a href="#Unable-to-lookup-service-com-apple-CoreSimulator-host-support-0x3" class="headerlink" title="Unable to lookup service com.apple.CoreSimulator.host_support: 0x3"></a>Unable to lookup service com.apple.CoreSimulator.host_support: 0x3</h3><p>这个问题很奇葩，百度上也没有找到类似的，一气之下重新安装了一次，然后就好了，无解~~~</p>
+        <p><a href="http://www.cnblogs.com/QianChia/p/6280435.html" target="_blank" rel="external">原文地址</a></p>
+<h3 id="Bundle-文件"><a href="#Bundle-文件" class="headerlink" title="Bundle 文件"></a>Bundle 文件</h3><ul>
+<li>Bundle文件，即为资源文件包，将许多图片、XIB、文本文件组织在一起，打包成一个bundle文件，方便在其他项目中引用包内的资源。</li>
+<li>Bundle文件是静态的，也就是说，我们包含到包中的资源文件作为一个资源包是不参加项目编译的。也就意味着，bundle包中不能包含可执行文件。它仅仅作为资源，被解析成特定的二进制数据。</li>
+</ul>
+<a id="more"></a>
+<h3 id="制作Bundle文件"><a href="#制作Bundle文件" class="headerlink" title="制作Bundle文件"></a>制作Bundle文件</h3><ul>
+<li>新建项目</li>
+</ul>
+<p>创建名为 SourcesBundle（最后要生成的 Bundle 文件名称）的工程，注意 Bundle 默认是 macOS 系统的，Xcode 高版本中需要在 macOS =&gt; Framework &amp; Library 选项下找到。</p>
+<p><img src="http://images2015.cnblogs.com/blog/993906/201701/993906-20170113002543494-735463940.png" alt=""></p>
+<ul>
+<li><p>修改Bundle配置信息</p>
+<ul>
+<li>因为 Bundle 默认是 macOS 系统的，所有需要修改他的信息，修改成 iOS 系统。</li>
+</ul>
+<p><img src="http://images2015.cnblogs.com/blog/993906/201701/993906-20170113002858650-2099844705.png" alt=""></p>
+<ul>
+<li>设置 Build Setting 中的 COMBINE_HIDPI_IMAGES 为 NO，否则 Bundle 中的图片就是 tiff 格式了。</li>
+</ul>
+<p><img src="http://images2015.cnblogs.com/blog/993906/201701/993906-20170113002909760-1153498076.png" alt=""></p>
+<ul>
+<li>作为资源包，仅仅需要编译就好，无需安装相关的配置，设置 Skip Install 为 YES。同样要删除安装路径 Installation Directory 的值。</li>
+</ul>
+<p><img src="http://images2015.cnblogs.com/blog/993906/201701/993906-20170113002921322-801898002.png" alt=""></p>
+</li>
+</ul>
+<ul>
+<li>添加文件</li>
+</ul>
+<p>将资源文件或文件夹拖动到工程中的 SourcesBundle 文件夹下面。</p>
+<ul>
+<li>编译生成 Bundle 文件</li>
+</ul>
+<p>我们分别选择 Generic iOS Device 和任意一个模拟器各编译一次，编译完后，我们会看到工程中 Products 文件夹下的 SourcesBundle.bundle 由红色变成了黑色。</p>
+<p>然后 show in finder，看看生成的文件。我们看到它为真机和模拟器都生成了 .bundle 资源文件。</p>
+<h3 id="使用Bundle文件"><a href="#使用Bundle文件" class="headerlink" title="使用Bundle文件"></a>使用Bundle文件</h3><ul>
+<li>加载Bundle中的xib文件资源文件</li>
+</ul>
+<figure class="highlight swift"><table><tr><td class="code"><pre><div class="line"><span class="comment">// 设置文件路径</span></div><div class="line">    <span class="type">NSString</span> *bundlePath = [[<span class="type">NSBundle</span> mainBundle] pathForResource:@<span class="string">"SourcesBundle"</span> ofType:@<span class="string">"bundle"</span>];</div><div class="line">    <span class="type">NSBundle</span> *resourceBundle = [<span class="type">NSBundle</span> bundleWithPath:bundlePath];</div><div class="line"></div><div class="line">    <span class="comment">// 加载 nib 文件</span></div><div class="line">    <span class="type">UINib</span> *nib = [<span class="type">UINib</span> nibWithNibName:@<span class="string">"BundleDemo"</span> bundle:resourceBundle];</div><div class="line">    <span class="type">NSArray</span> *viewObjs = [nib instantiateWithOwner:<span class="literal">nil</span> options:<span class="literal">nil</span>];</div><div class="line"></div><div class="line">    <span class="comment">// 获取 xib 文件</span></div><div class="line">    <span class="type">UIView</span> *view = viewObjs.lastObject;</div><div class="line"></div><div class="line">    view.frame = <span class="type">CGRectMake</span>(<span class="number">20</span>, <span class="number">50</span>, <span class="keyword">self</span>.view.bounds.size.width - <span class="number">40</span>, <span class="keyword">self</span>.view.bounds.size.width - <span class="number">40</span>);</div><div class="line">    [<span class="keyword">self</span>.view addSubview:view];</div></pre></td></tr></table></figure>
+<ul>
+<li><p>加载Bundle中的图片资源文件</p>
+<ul>
+<li>指定绝对路径的形式</li>
+</ul>
+<figure class="highlight swift"><table><tr><td class="code"><pre><div class="line"><span class="type">UIImage</span> *image = [<span class="type">UIImage</span> imageNamed:@<span class="string">"SourcesBundle.bundle/demo2.jpg"</span>];</div></pre></td></tr></table></figure>
+<ul>
+<li>拼接路径的形式</li>
+</ul>
+<figure class="highlight swift"><table><tr><td class="code"><pre><div class="line"><span class="type">NSString</span> *bundlePath = [[<span class="type">NSBundle</span> mainBundle] pathForResource:@<span class="string">"SourcesBundle"</span> ofType:@<span class="string">"bundle"</span>];</div><div class="line"><span class="type">NSString</span> *imgPath= [bundlePath stringByAppendingPathComponent:@<span class="string">"demo4"</span>];</div><div class="line"></div><div class="line"><span class="type">UIImage</span> *image = [<span class="type">UIImage</span> imageWithContentsOfFile:imgPath];</div></pre></td></tr></table></figure>
+<ul>
+<li>宏定义的形式</li>
+</ul>
+<figure class="highlight swift"><table><tr><td class="code"><pre><div class="line">#define <span class="type">MYBUNDLE_NAME</span>   @<span class="string">"SourcesBundle.bundle"</span></div><div class="line">#define <span class="type">MYBUNDLE_PATH</span>   [[[<span class="type">NSBundle</span> mainBundle] resourcePath] stringByAppendingPathComponent:<span class="type">MYBUNDLE_NAME</span>]</div><div class="line">#define <span class="type">MYBUNDLE</span>        [<span class="type">NSBundle</span> bundleWithPath:<span class="type">MYBUNDLE_PATH</span>]</div><div class="line"></div><div class="line"><span class="type">NSString</span> *imgPath= [<span class="type">MYBUNDLE_PATH</span> stringByAppendingPathComponent:@<span class="string">"demo4"</span>];</div><div class="line"><span class="type">UIImage</span> *image = [<span class="type">UIImage</span> imageWithContentsOfFile:imgPath];</div></pre></td></tr></table></figure>
+</li>
+</ul>
 
       
     </div>
@@ -356,28 +424,18 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/Xcode8/" rel="tag">#Xcode8</a>
-          
-        </div>
-      
 
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/02/11/ReactNative/RN-FlexBox布局/" rel="next" title="RN(View组件FlexBox布局)">
-                <i class="fa fa-chevron-left"></i> RN(View组件FlexBox布局)
+              <a href="/2017/03/30/转载/objc非主流代码技巧/" rel="next" title="objc非主流代码技巧">
+                <i class="fa fa-chevron-left"></i> objc非主流代码技巧
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/02/17/编程工具/XCode8-2-1Swift代码提示问题/" rel="prev" title="XCode8.2.1Swift代码提示问题">
-                XCode8.2.1Swift代码提示问题 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -403,8 +461,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2017/02/15/编程工具/升级Xcode8遇到的问题/"
-           data-title="Xcode8编辑崩溃解决" data-url="http://yoursite.com/2017/02/15/编程工具/升级Xcode8遇到的问题/">
+      <div class="ds-thread" data-thread-key="2017/04/07/OC/制作Bundle资源包/"
+           data-title="制作Bundle资源包" data-url="http://yoursite.com/2017/04/07/OC/制作Bundle资源包/">
       </div>
     
   </div>
@@ -524,7 +582,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#插件无效，编辑崩溃"><span class="nav-number">1.</span> <span class="nav-text">插件无效，编辑崩溃</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Unable-to-lookup-service-com-apple-CoreSimulator-host-support-0x3"><span class="nav-number">2.</span> <span class="nav-text">Unable to lookup service com.apple.CoreSimulator.host_support: 0x3</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Bundle-文件"><span class="nav-number">1.</span> <span class="nav-text">Bundle 文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#制作Bundle文件"><span class="nav-number">2.</span> <span class="nav-text">制作Bundle文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用Bundle文件"><span class="nav-number">3.</span> <span class="nav-text">使用Bundle文件</span></a></li></ol></div>
             
           </div>
         </section>
