@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="逆水行舟，不进则退" />
+  <meta name="keywords" content="react-native," />
 
 
 
@@ -84,15 +84,16 @@
 
 
 
-<meta name="description" content="要做一个Nice的人">
-<meta property="og:type" content="website">
-<meta property="og:title" content="行止由心">
-<meta property="og:url" content="http://yoursite.com/archives/2016/index.html">
+<meta name="description" content="React-Natvie组件的生命周期大致上可以划分为 实例化阶段、存在阶段、销毁阶段，其中最常用的是 实例化阶段，该阶段是组件的构建、展示时期，需要我们根据几个函数的调用过程，控制好组件的展示和逻辑的处理。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="React Native 组件生命周期">
+<meta property="og:url" content="http://yoursite.com/2017/04/17/前端/React-Native-组件生命周期/index.html">
 <meta property="og:site_name" content="行止由心">
-<meta property="og:description" content="要做一个Nice的人">
+<meta property="og:description" content="React-Natvie组件的生命周期大致上可以划分为 实例化阶段、存在阶段、销毁阶段，其中最常用的是 实例化阶段，该阶段是组件的构建、展示时期，需要我们根据几个函数的调用过程，控制好组件的展示和逻辑的处理。">
+<meta property="og:updated_time" content="2017-04-17T08:21:03.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="行止由心">
-<meta name="twitter:description" content="要做一个Nice的人">
+<meta name="twitter:title" content="React Native 组件生命周期">
+<meta name="twitter:description" content="React-Natvie组件的生命周期大致上可以划分为 实例化阶段、存在阶段、销毁阶段，其中最常用的是 实例化阶段，该阶段是组件的构建、展示时期，需要我们根据几个函数的调用过程，控制好组件的展示和逻辑的处理。">
 
 
 
@@ -113,10 +114,10 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/archives/2016/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/04/17/前端/React-Native-组件生命周期/"/>
 
 
-  <title> 归档 | 行止由心 </title>
+  <title> React Native 组件生命周期 | 行止由心 </title>
 </head>
 
 <body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
@@ -137,7 +138,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-right  page-archive  ">
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
@@ -235,402 +236,200 @@
           <div id="content" class="content">
             
 
-  <section id="posts" class="posts-collapse">
-    <span class="archive-move-on"></span>
-
-    <span class="archive-page-counter">
-      
-      
-       
-      
-      OK! 目前共计 46 篇日志。 继续努力。
-    </span>
-
+  <div id="posts" class="posts-expand">
     
 
-      
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                React Native 组件生命周期
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-04-17T15:08:24+08:00" content="2017-04-17">
+              2017-04-17
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/04/17/前端/React-Native-组件生命周期/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/04/17/前端/React-Native-组件生命周期/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2017/04/17/前端/React-Native-组件生命周期/" class="leancloud_visitors" data-flag-title="React Native 组件生命周期">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
       
       
 
       
+        <p>React-Natvie组件的生命周期大致上可以划分为 <strong>实例化阶段</strong>、<strong>存在阶段</strong>、<strong>销毁阶段</strong>，其中最常用的是 <strong>实例化阶段</strong>，该阶段是组件的构建、展示时期，需要我们根据几个函数的调用过程，控制好组件的展示和逻辑的处理。</p>
+<a id="more"></a>
+<h4 id="实例化阶段函数功能分析"><a href="#实例化阶段函数功能分析" class="headerlink" title="实例化阶段函数功能分析"></a>实例化阶段函数功能分析</h4><ul>
+<li><strong>getDefaultProps</strong></li>
+</ul>
+<p>该函数用于初始化一些默认的配置，通常会将固定的内容放在这个函数中进行初始化和赋值。<br>在组件中，可以利用<code>this.props</code>获取在这里的初始化它的属性，由于组件初始化后，再次使用组件就不会调用<code>getDefaultProps</code>函数。所以组件自己不可以自己修改props，只可以由其他组件调用它时在外部修改。</p>
+<ul>
+<li><strong>getInitialState</strong></li>
+</ul>
+<p>改函数用于对组件的一些状态进行初始化。<br>由于该函数不同于<code>getDefaultProps</code>，在以后的过程中，会再次调用，所以可以将控制控件的状态的一些变量放在这里初始化，如控件上的显示的文字，可以通过<code>this.state</code>获取，通过<code>this.setState</code>修改值。<br>一旦调用了<code>this.setState</code>方法，组件一定会调用render方法，对组件进行再次的渲染。</p>
+<ul>
+<li><strong>componentWillMount</strong></li>
+</ul>
+<p>相当于OC中的ViewWillAppear方法，在组件将要被加载在视图上之前调用，功能相对较少。</p>
+<ul>
+<li><strong>render</strong></li>
+</ul>
+<p>render是一个组件中必须的方法，本质是一个函数，并返回JSX或其他组件来构成DOM。<br>在render函数中，只可以通过<code>this.state</code>和<code>this.props</code>来访问在之前函数中初始化的数据值。</p>
+<ul>
+<li><strong>componentDidMount</strong></li>
+</ul>
+<p>在调用render方法之后，组件加载成功并被成功渲染出来之后，所要执行的后续操作，一般会在这个函数中处理网络请求等加载数据的操作。<br>因为UI已经被渲染出来了，所以放在这个函数里进行请求操作，不会出现UI上的错误。</p>
+<h4 id="存在期阶段函数功能分析"><a href="#存在期阶段函数功能分析" class="headerlink" title="存在期阶段函数功能分析"></a><strong>存在期阶段函数功能分析</strong></h4><ul>
+<li><strong>componentWillReceiveProps</strong></li>
+</ul>
+<p>父元素对组件的props或state进行了修改</p>
+<ul>
+<li><strong>shouldComponentUpdate</strong></li>
+</ul>
+<p>一般用于优化，可以返回false或true来控制是否进行渲染</p>
+<ul>
+<li><strong>componentWillUpdate</strong></li>
+</ul>
+<p>组件刷新前调用</p>
+<ul>
+<li><strong>componentDidUpdate</strong></li>
+</ul>
+<p>更新后的hook</p>
+<h4 id="销毁阶段函数功能分析"><a href="#销毁阶段函数功能分析" class="headerlink" title="销毁阶段函数功能分析"></a>销毁阶段函数功能分析</h4><ul>
+<li><strong>componentWillUnmount</strong></li>
+</ul>
+<p>用于清理一些无用的内容</p>
+
+      
+    </div>
+
+    <div>
+      
         
-        <div class="collection-title">
-          <h2 class="archive-year motion-element" id="archive-year-2016">2016</h2>
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>请我喝杯豆浆！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="http://storage1.imgchr.com/images/FullSizeRendereb28d.jpg" alt="winterrain5 WeChat Pay"/>
+          <p>微信打赏</p>
         </div>
       
       
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="http://storage1.imgchr.com/images/FullSizeRender2fa7e1.jpg" alt="winterrain5 Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
 
       
+    </div>
 
-  <article class="post post-type-normal" itemscope itemtype="//schema.org/Article">
-    <header class="post-header">
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/react-native/" rel="tag">#react-native</a>
+          
+        </div>
+      
 
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/12/25/swift/图片压缩上传服务器解决办法/" itemprop="url">
-              
-                <span itemprop="name">图片压缩上传服务器解决办法</span>
-              
-            </a>
-        
-      </h1>
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/04/07/OC/制作Bundle资源包/" rel="next" title="制作Bundle资源包">
+                <i class="fa fa-chevron-left"></i> 制作Bundle资源包
+              </a>
+            
+          </div>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-12-25T12:43:48+08:00"
-              content="2016-12-25" >
-          12-25
-        </time>
-      </div>
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
 
-    </header>
+      
+      
+    </footer>
   </article>
 
 
 
-    
-
+    <div class="post-spread">
       
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="//schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/12/13/编程工具/更新cocoapod遇到的坑/" itemprop="url">
-              
-                <span itemprop="name">更新cocoapod遇到的坑</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-12-13T17:36:37+08:00"
-              content="2016-12-13" >
-          12-13
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="//schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/12/11/swift/Swift闭包的循环引用/" itemprop="url">
-              
-                <span itemprop="name">Swift闭包的循环引用</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-12-11T13:51:55+08:00"
-              content="2016-12-11" >
-          12-11
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="//schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/12/05/OC/OC中UIScrollView的滑动和侧滑返回并/" itemprop="url">
-              
-                <span itemprop="name">OC中UIScrollView的滑动和侧滑返回</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-12-05T16:29:57+08:00"
-              content="2016-12-05" >
-          12-05
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="//schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/12/05/OC/OC中加载HTML图片过大显示不全的问题/" itemprop="url">
-              
-                <span itemprop="name">OC中加载HTML图片过大显示不全的问题</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-12-05T09:11:12+08:00"
-              content="2016-12-05" >
-          12-05
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="//schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/12/04/swift/swift显示emoji表情/" itemprop="url">
-              
-                <span itemprop="name">swift显示emoji表情</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-12-04T15:46:04+08:00"
-              content="2016-12-04" >
-          12-04
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="//schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/12/02/OC/OC设计模式（单例）/" itemprop="url">
-              
-                <span itemprop="name">OC设计模式（单例）</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-12-02T15:21:43+08:00"
-              content="2016-12-02" >
-          12-02
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="//schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/11/29/OC/OC设计模式（代理）/" itemprop="url">
-              
-                <span itemprop="name">OC设计模式（代理）</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-11-29T18:06:49+08:00"
-              content="2016-11-29" >
-          11-29
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="//schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/11/28/OC/多线程在OC中的应用-NSOperation/" itemprop="url">
-              
-                <span itemprop="name">多线程在OC中的应用(NSOperation)</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-11-28T17:10:16+08:00"
-              content="2016-11-28" >
-          11-28
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="//schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/11/28/前端/JQuery选择器/" itemprop="url">
-              
-                <span itemprop="name">JQuery选择器</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-11-28T10:05:25+08:00"
-              content="2016-11-28" >
-          11-28
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-  </section>
-
-  
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/archives/2016/page/2/">2</a><a class="page-number" href="/archives/2016/page/3/">3</a><a class="extend next" rel="next" href="/archives/2016/page/2/"><i class="fa fa-angle-right"></i></a>
-  </nav>
-
-
+    </div>
+  </div>
 
 
           </div>
@@ -638,6 +437,14 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/04/17/前端/React-Native-组件生命周期/"
+           data-title="React Native 组件生命周期" data-url="http://yoursite.com/2017/04/17/前端/React-Native-组件生命周期/">
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -657,8 +464,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="http://ww4.sinaimg.cn/mw690/9dac93ccjw9eymcefq449j202s042aa2.jpg"
@@ -737,6 +553,17 @@
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#实例化阶段函数功能分析"><span class="nav-number">1.</span> <span class="nav-text">实例化阶段函数功能分析</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#存在期阶段函数功能分析"><span class="nav-number">2.</span> <span class="nav-text">存在期阶段函数功能分析</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#销毁阶段函数功能分析"><span class="nav-number">3.</span> <span class="nav-text">销毁阶段函数功能分析</span></a></li></ol></div>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -840,11 +667,9 @@
 
 
   
-  
-    <script type="text/javascript" id="motion.page.archive">
-      $('.archive-year').velocity('transition.slideLeftIn');
-    </script>
-  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
 
 
   
