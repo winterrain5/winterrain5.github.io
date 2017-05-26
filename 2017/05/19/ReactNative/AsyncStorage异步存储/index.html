@@ -96,7 +96,7 @@ AsyncStorage存储的位置根据系统而有所差异。iOS中类似于NSUserDe
 AsyncStorage是一个简单的、异步的、持久化的key-value存储系统，它对于APP来说是全局的。
 由于它的操作是全局的，官方建议针对AsyncStorage尽心封装再使用。
 AsyncStorage存储的位置根据系统而有所差异。iOS中类似于NSUserDefault,通过plist文件存放在设备中。Android中会存储在RocksDB或者SQLite中。">
-<meta property="og:updated_time" content="2017-05-19T10:00:14.000Z">
+<meta property="og:updated_time" content="2017-05-26T09:05:59.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="AsyncStorage异步存储">
 <meta name="twitter:description" content="AsyncStorage
@@ -327,6 +327,7 @@ AsyncStorage存储的位置根据系统而有所差异。iOS中类似于NSUserDe
 <li>由于它的操作是全局的，官方建议针对<code>AsyncStorage</code>尽心封装再使用。</li>
 <li><code>AsyncStorage</code>存储的位置根据系统而有所差异。iOS中类似于<code>NSUserDefault</code>,通过plist文件存放在设备中。Android中会存储在RocksDB或者SQLite中。</li>
 </ul>
+<a id="more"></a>
 <h3 id="API"><a href="#API" class="headerlink" title="API"></a>API</h3><ul>
 <li><code>static getItem(key: string, callback?: ?(error: ?Error, result: ?string) =&gt; void)</code></li>
 </ul>
@@ -346,13 +347,13 @@ AsyncStorage存储的位置根据系统而有所差异。iOS中类似于NSUserDe
 <p>删除一个字段。返回一个Promise对象。</p>
 </blockquote>
 <ul>
-<li><p><code>static mergeItem(key: string, value: string, callback?: ?(error: ?Error) =&gt; void)</code></p>
+<li><code>static mergeItem(key: string, value: string, callback?: ?(error: ?Error) =&gt; void)</code></li>
+</ul>
 <blockquote>
 <p>假设已有的值和新的值都是字符串化的JSON，则将两个值合并。返回一个Promise对象。还没有被所有原生实现都支持。</p>
 </blockquote>
-</li>
-<li><p><code>static clear(callback?: ?(error: ?Error) =&gt; void)</code></p>
-</li>
+<ul>
+<li><code>static clear(callback?: ?(error: ?Error) =&gt; void)</code></li>
 </ul>
 <blockquote>
 <p>删除全部的AsyncStorage数据，不论来自什么库或调用者。通常不应该调用这个函数——使用removeItem或者multiRemove来清除你自己的key。返回一个Promise对象。</p>
@@ -531,7 +532,7 @@ AsyncStorage存储的位置根据系统而有所差异。iOS中类似于NSUserDe
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">50</span>
+              <span class="site-state-item-count">51</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
