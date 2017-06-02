@@ -1,0 +1,834 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="JSPM," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2" />
+
+
+
+
+
+
+<meta name="description" content="简介JSPM:jspm.io - Frictionless browser package management是一种渐进式的框架，它使得为JavaScript使用ES6依赖项处理语法成为可能。jspm结合：
+Babel,支持使用未来的语言
+SystemJS,一个可了解在用的若干封装形态的模块抽象层
+jspm位于Babel和SystemJS之上，以一致的语法处理它们，通过npm和GitHub等注册">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JSPM：面向未来的前端模块化开发与包管理">
+<meta property="og:url" content="http://yoursite.com/2017/03/17/ReactNative/JSPM：面向未来的前端模块化开发与包管理/index.html">
+<meta property="og:site_name" content="行止由心">
+<meta property="og:description" content="简介JSPM:jspm.io - Frictionless browser package management是一种渐进式的框架，它使得为JavaScript使用ES6依赖项处理语法成为可能。jspm结合：
+Babel,支持使用未来的语言
+SystemJS,一个可了解在用的若干封装形态的模块抽象层
+jspm位于Babel和SystemJS之上，以一致的语法处理它们，通过npm和GitHub等注册">
+<meta property="og:updated_time" content="2017-03-21T03:15:34.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JSPM：面向未来的前端模块化开发与包管理">
+<meta name="twitter:description" content="简介JSPM:jspm.io - Frictionless browser package management是一种渐进式的框架，它使得为JavaScript使用ES6依赖项处理语法成为可能。jspm结合：
+Babel,支持使用未来的语言
+SystemJS,一个可了解在用的若干封装形态的模块抽象层
+jspm位于Babel和SystemJS之上，以一致的语法处理它们，通过npm和GitHub等注册">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"right","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '6342373090747483000',
+      author: 'Author'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/03/17/ReactNative/JSPM：面向未来的前端模块化开发与包管理/"/>
+
+
+  <title> JSPM：面向未来的前端模块化开发与包管理 | 行止由心 </title>
+</head>
+
+<body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">行止由心</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">知识管理，自我管理</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                JSPM：面向未来的前端模块化开发与包管理
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-03-17T15:06:39+08:00" content="2017-03-17">
+              2017-03-17
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/03/17/ReactNative/JSPM：面向未来的前端模块化开发与包管理/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/17/ReactNative/JSPM：面向未来的前端模块化开发与包管理/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2017/03/17/ReactNative/JSPM：面向未来的前端模块化开发与包管理/" class="leancloud_visitors" data-flag-title="JSPM：面向未来的前端模块化开发与包管理">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p><code>JSPM</code>:<a href="Frictionless browser package management">jspm.io - Frictionless browser package management</a>是一种渐进式的框架，它使得为JavaScript使用ES6依赖项处理语法成为可能。jspm结合：</p>
+<p><code>Babel</code>,支持使用未来的语言</p>
+<p><code>SystemJS</code>,一个可了解在用的若干封装形态的模块抽象层</p>
+<p>jspm位于Babel和SystemJS之上，以一致的语法处理它们，通过npm和GitHub等注册表提供自动化的模块解析。该框架还包括对CSS加载和一个开发服务器的支持。</p>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><h4 id="Node-js-和-npm"><a href="#Node-js-和-npm" class="headerlink" title="Node.js 和 npm"></a>Node.js 和 npm</h4><p>首先需要安装Node.js和npm,通过这个<a href="https://docs.npmjs.com/getting-started/installing-node" target="_blank" rel="external">教程</a>可以很快的完成安装。安装后，全局路径上就有两个命令：node 和 npm.</p>
+<h4 id="jspm"><a href="#jspm" class="headerlink" title="jspm"></a>jspm</h4><p>使用管理员权限在全局路径下安装</p>
+<pre><code>npm install jspm -g
+</code></pre><p>一路回车即可安装完成，使用 <code>jspm --version</code> 查看当前版本号</p>
+<h4 id="如何使用"><a href="#如何使用" class="headerlink" title="如何使用"></a>如何使用</h4><p>1、新建文件夹，在当前路径下执行 <code>npm init</code>，完成后该文件夹下会出现package.json,内容如下：<br><figure class="highlight json"><table><tr><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="attr">"name"</span>: <span class="string">"react-native"</span>,</div><div class="line">  <span class="attr">"version"</span>: <span class="string">"1.0.0"</span>,</div><div class="line">  <span class="attr">"description"</span>: <span class="string">""</span>,</div><div class="line">  <span class="attr">"main"</span>: <span class="string">"index.js"</span>,</div><div class="line">  <span class="attr">"scripts"</span>: &#123;</div><div class="line">    <span class="attr">"test"</span>: <span class="string">"echo \"Error: no test specified\" &amp;&amp; exit 1"</span></div><div class="line">  &#125;,</div><div class="line">  <span class="attr">"author"</span>: <span class="string">""</span>,</div><div class="line">  <span class="attr">"license"</span>: <span class="string">"ISC"</span>,</div><div class="line">  <span class="attr">"devDependencies"</span>: &#123;</div><div class="line">    <span class="attr">"jspm"</span>: <span class="string">"^0.16.52"</span></div><div class="line">  &#125;,</div><div class="line">  <span class="attr">"jspm"</span>: &#123;</div><div class="line">    <span class="attr">"dependencies"</span>: &#123;</div><div class="line">      <span class="attr">"css"</span>: <span class="string">"github:systemjs/plugin-css@^0.1.33"</span>,</div><div class="line">      <span class="attr">"jquery"</span>: <span class="string">"npm:jquery@^3.1.1"</span>,</div><div class="line">      <span class="attr">"react"</span>: <span class="string">"npm:react@^15.4.2"</span>,</div><div class="line">      <span class="attr">"react-dom"</span>: <span class="string">"npm:react-dom@^15.4.2"</span>,</div><div class="line">      <span class="attr">"semantic-ui"</span>: <span class="string">"github:Semantic-Org/Semantic-UI@^2.2.9"</span></div><div class="line">    &#125;,</div><div class="line">    <span class="attr">"devDependencies"</span>: &#123;</div><div class="line">      <span class="attr">"babel"</span>: <span class="string">"npm:babel-core@^5.8.24"</span>,</div><div class="line">      <span class="attr">"babel-runtime"</span>: <span class="string">"npm:babel-runtime@^5.8.24"</span>,</div><div class="line">      <span class="attr">"core-js"</span>: <span class="string">"npm:core-js@^1.1.4"</span></div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>2、在当前文件夹下安装jspm</p>
+<pre><code>npm install jspm --save-dev
+</code></pre><p>完成后会出现<code>node_modeules</code>文件夹</p>
+<p>3、创建jspm需要的配置文件</p>
+<pre><code>jspm init
+</code></pre><p>4、下载资源，如jQuery</p>
+<pre><code>jspm install github:components/jquery
+</code></pre><p>下载完毕后，文件名默认是components/jquery,可以这样修改文件名</p>
+<pre><code>jspm install jquery=github:components/jquery
+</code></pre><p>这样文件名就是jquery</p>
+<p>因为jspm用到了<a href="https://github.com/jspm/registry/blob/master/registry.json" target="_blank" rel="external">registey</a>,这里列举了一些常用库的简单名字</p>
+<p>如果想指定版本也可以这样：</p>
+<pre><code>jspm instal jquery@~2.1.0
+</code></pre><p>5、 删除资源</p>
+<pre><code>jspm uninstall jquery
+</code></pre><p>6、为项目创建服务器，这样就可以很方便的监视项目文件的变化</p>
+<ul>
+<li><p>首先需要安装browser-sync</p>
+<pre><code>sudo npm install -g browser-sync
+</code></pre></li>
+<li><p>当前文件夹下执行命令</p>
+<pre><code>browser-sync start —server —no-notify —files ‘[files]’
+</code></pre></li>
+</ul>
+<p>[files] 是你需要监视的文件，多个已逗号分隔    </p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>请我喝杯豆浆！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="http://storage1.imgchr.com/images/FullSizeRendereb28d.jpg" alt="winterrain5 WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="http://storage1.imgchr.com/images/FullSizeRender2fa7e1.jpg" alt="winterrain5 Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/JSPM/" rel="tag">#JSPM</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/03/08/框架/iOS-AOP（面向切片编程）/" rel="next" title="iOS-AOP（面向切片编程）">
+                <i class="fa fa-chevron-left"></i> iOS-AOP（面向切片编程）
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/03/20/框架/SDWebImage原理及使用/" rel="prev" title="SDWebImage原理及使用">
+                SDWebImage原理及使用 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/03/17/ReactNative/JSPM：面向未来的前端模块化开发与包管理/"
+           data-title="JSPM：面向未来的前端模块化开发与包管理" data-url="http://yoursite.com/2017/03/17/ReactNative/JSPM：面向未来的前端模块化开发与包管理/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://ww4.sinaimg.cn/mw690/9dac93ccjw9eymcefq449j202s042aa2.jpg"
+               alt="winterrain5" />
+          <p class="site-author-name" itemprop="name">winterrain5</p>
+          <p class="site-description motion-element" itemprop="description">要做一个Nice的人</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">52</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">43</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/winterrain5" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/rain-winter-74" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/u/2645332940/home?topnav=1" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  微博
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装"><span class="nav-number">2.</span> <span class="nav-text">安装</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Node-js-和-npm"><span class="nav-number">2.1.</span> <span class="nav-text">Node.js 和 npm</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#jspm"><span class="nav-number">2.2.</span> <span class="nav-text">jspm</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#如何使用"><span class="nav-number">2.3.</span> <span class="nav-text">如何使用</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">winterrain5</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"winterrain5"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("029tUpff0Ph7OrHFjawhv700-gzGzoHsz", "TyyMeX7RfM4IsJWWe33K8yCW");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+</body>
+</html>
