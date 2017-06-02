@@ -92,7 +92,7 @@ UDID (Unique Device Identifier)UDID的全称是Unique Device Identifier，顾名
 <meta property="og:site_name" content="行止由心">
 <meta property="og:description" content="原文地址http://www.cnblogs.com/zxykit/p/5320259.html
 UDID (Unique Device Identifier)UDID的全称是Unique Device Identifier，顾名思义，它就是苹果IOS设备的唯一识别码，它由40个字符的字母和数字组成。在很多需要限制一台设备一个账号的应用中经常会用到。在iOS5中可以获取到设备的UDID，后来被苹果">
-<meta property="og:updated_time" content="2017-06-02T02:48:35.000Z">
+<meta property="og:updated_time" content="2017-06-02T02:50:02.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS获取设备唯一标识的各种方法？IDFA、IDFV、UDID分别是什么含义？">
 <meta name="twitter:description" content="原文地址http://www.cnblogs.com/zxykit/p/5320259.html
@@ -318,6 +318,7 @@ UDID (Unique Device Identifier)UDID的全称是Unique Device Identifier，顾名
       
         <p><a href="http://www.cnblogs.com/zxykit/p/5320259.html" target="_blank" rel="external">原文地址http://www.cnblogs.com/zxykit/p/5320259.html</a></p>
 <h3 id="UDID-Unique-Device-Identifier"><a href="#UDID-Unique-Device-Identifier" class="headerlink" title="UDID (Unique Device Identifier)"></a>UDID (Unique Device Identifier)</h3><p>UDID的全称是Unique Device Identifier，顾名思义，它就是苹果IOS设备的唯一识别码，它由40个字符的字母和数字组成。在很多需要限制一台设备一个账号的应用中经常会用到。在iOS5中可以获取到设备的UDID，后来被苹果禁止了。</p>
+<a id="more"></a>
 <h3 id="UUID（Universally-Unique-Identifier）"><a href="#UUID（Universally-Unique-Identifier）" class="headerlink" title="UUID（Universally Unique Identifier）"></a>UUID（Universally Unique Identifier）</h3><p>UUID是Universally Unique Identifier的缩写，中文意思是通用唯一识别码。它是让分布式系统中的所有元素，都能有唯一的辨识资讯，而不需要透过中央控制端来做辨识资讯的指定。这样，每个人都可以建立不与其它人冲突的 UUID。在此情况下，就不需考虑数据库建立时的名称重复问题。苹果公司建议使用UUID为应用生成唯一标识字符串。</p>
 <p>开发者可以在应用第一次启动时调用一 次，然后将该串存储起来，替代UDID来使用。但是，如果用户删除该应用再次安装时，又会生成新的字符串，所以不能保证唯一识别该设备。使用UUID，就要考虑应用被删除后再重新安装时的处理。一个解决的办法是：UUID一般只生成一次，保存在iOS系统里面，如果应用删除了，重装应用之后它的UUID还是一样的，除非系统重置 。但是不能保证在以后的系统升级后还能用（如果系统保存了该信息就能用）。</p>
 <h3 id="MAC-Address"><a href="#MAC-Address" class="headerlink" title="MAC Address"></a>MAC Address</h3><p>用来表示互联网上每一个站点的标识符，采用十六进制数表示，共六个字节（48位）。其中，前三个字节是由IEEE的注册管理机构</p>
