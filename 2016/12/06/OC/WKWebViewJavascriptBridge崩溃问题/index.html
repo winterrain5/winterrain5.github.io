@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="react-native," />
+  <meta name="keywords" content="WKWebViewJavascriptBridge," />
 
 
 
@@ -84,16 +84,22 @@
 
 
 
-<meta name="description" content="React-Natvie组件的生命周期大致上可以划分为 实例化阶段、存在阶段、销毁阶段，其中最常用的是 实例化阶段，该阶段是组件的构建、展示时期，需要我们根据几个函数的调用过程，控制好组件的展示和逻辑的处理。">
+<meta name="description" content="在选用WKWebView+WKWebViewJavascriptBridge加载H5页面时会出现这样一个崩溃
+reason: &apos;Completion handler passed to -[WKWebViewJavascriptBridge webView:didReceiveAuthenticationChallenge:completionHandler:] was not called&apos;
+在">
 <meta property="og:type" content="article">
-<meta property="og:title" content="React Native 组件生命周期">
-<meta property="og:url" content="http://yoursite.com/2017/04/17/ReactNative/React-Native-组件生命周期/index.html">
+<meta property="og:title" content="崩溃问题">
+<meta property="og:url" content="http://yoursite.com/2016/12/06/OC/WKWebViewJavascriptBridge崩溃问题/index.html">
 <meta property="og:site_name" content="行止由心">
-<meta property="og:description" content="React-Natvie组件的生命周期大致上可以划分为 实例化阶段、存在阶段、销毁阶段，其中最常用的是 实例化阶段，该阶段是组件的构建、展示时期，需要我们根据几个函数的调用过程，控制好组件的展示和逻辑的处理。">
-<meta property="og:updated_time" content="2017-05-29T03:36:59.000Z">
+<meta property="og:description" content="在选用WKWebView+WKWebViewJavascriptBridge加载H5页面时会出现这样一个崩溃
+reason: &apos;Completion handler passed to -[WKWebViewJavascriptBridge webView:didReceiveAuthenticationChallenge:completionHandler:] was not called&apos;
+在">
+<meta property="og:updated_time" content="2017-06-06T06:34:49.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="React Native 组件生命周期">
-<meta name="twitter:description" content="React-Natvie组件的生命周期大致上可以划分为 实例化阶段、存在阶段、销毁阶段，其中最常用的是 实例化阶段，该阶段是组件的构建、展示时期，需要我们根据几个函数的调用过程，控制好组件的展示和逻辑的处理。">
+<meta name="twitter:title" content="崩溃问题">
+<meta name="twitter:description" content="在选用WKWebView+WKWebViewJavascriptBridge加载H5页面时会出现这样一个崩溃
+reason: &apos;Completion handler passed to -[WKWebViewJavascriptBridge webView:didReceiveAuthenticationChallenge:completionHandler:] was not called&apos;
+在">
 
 
 
@@ -114,10 +120,10 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/04/17/ReactNative/React-Native-组件生命周期/"/>
+  <link rel="canonical" href="http://yoursite.com/2016/12/06/OC/WKWebViewJavascriptBridge崩溃问题/"/>
 
 
-  <title> React Native 组件生命周期 | 行止由心 </title>
+  <title> 崩溃问题 | 行止由心 </title>
 </head>
 
 <body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
@@ -257,7 +263,7 @@
             
             
               
-                React Native 组件生命周期
+                崩溃问题
               
             
           </h1>
@@ -269,8 +275,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-04-17T15:08:24+08:00" content="2017-04-17">
-              2017-04-17
+            <time itemprop="dateCreated" datetime="2016-12-06T14:27:21+08:00" content="2016-12-06">
+              2016-12-06
             </time>
           </span>
 
@@ -280,8 +286,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2017/04/17/ReactNative/React-Native-组件生命周期/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/04/17/ReactNative/React-Native-组件生命周期/" itemprop="commentsCount"></span>
+                <a href="/2016/12/06/OC/WKWebViewJavascriptBridge崩溃问题/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/06/OC/WKWebViewJavascriptBridge崩溃问题/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -291,7 +297,7 @@
 
           
           
-             <span id="/2017/04/17/ReactNative/React-Native-组件生命周期/" class="leancloud_visitors" data-flag-title="React Native 组件生命周期">
+             <span id="/2016/12/06/OC/WKWebViewJavascriptBridge崩溃问题/" class="leancloud_visitors" data-flag-title="崩溃问题">
                &nbsp; | &nbsp;
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -313,57 +319,10 @@
       
 
       
-        <p>React-Natvie组件的生命周期大致上可以划分为 <strong>实例化阶段</strong>、<strong>存在阶段</strong>、<strong>销毁阶段</strong>，其中最常用的是 <strong>实例化阶段</strong>，该阶段是组件的构建、展示时期，需要我们根据几个函数的调用过程，控制好组件的展示和逻辑的处理。</p>
-<a id="more"></a>
-<h4 id="实例化阶段函数功能分析"><a href="#实例化阶段函数功能分析" class="headerlink" title="实例化阶段函数功能分析"></a>实例化阶段函数功能分析</h4><ul>
-<li><strong>getDefaultProps</strong></li>
-</ul>
-<p>该函数用于初始化一些默认的配置，通常会将固定的内容放在这个函数中进行初始化和赋值。<br>在组件中，可以利用<code>this.props</code>获取在这里的初始化它的属性，由于组件初始化后，再次使用组件就不会调用<code>getDefaultProps</code>函数。所以组件自己不可以自己修改props，只可以由其他组件调用它时在外部修改。</p>
-<ul>
-<li><strong>getInitialState</strong></li>
-</ul>
-<p>改函数用于对组件的一些状态进行初始化。<br>由于该函数不同于<code>getDefaultProps</code>，在以后的过程中，会再次调用，所以可以将控制控件的状态的一些变量放在这里初始化，如控件上的显示的文字，可以通过<code>this.state</code>获取，通过<code>this.setState</code>修改值。<br>一旦调用了<code>this.setState</code>方法，组件一定会调用render方法，对组件进行再次的渲染。</p>
-<ul>
-<li><strong>componentWillMount</strong></li>
-</ul>
-<p>相当于OC中的ViewWillAppear方法，在组件将要被加载在视图上之前调用，功能相对较少。</p>
-<ul>
-<li><strong>render</strong></li>
-</ul>
-<p>render是一个组件中必须的方法，本质是一个函数，并返回JSX或其他组件来构成DOM。<br>在render函数中，只可以通过<code>this.state</code>和<code>this.props</code>来访问在之前函数中初始化的数据值。</p>
-<ul>
-<li><strong>componentDidMount</strong></li>
-</ul>
-<p>在调用render方法之后，组件加载成功并被成功渲染出来之后，所要执行的后续操作，一般会在这个函数中处理网络请求等加载数据的操作。<br>因为UI已经被渲染出来了，所以放在这个函数里进行请求操作，不会出现UI上的错误。</p>
-<h4 id="存在期阶段函数功能分析"><a href="#存在期阶段函数功能分析" class="headerlink" title="存在期阶段函数功能分析"></a><strong>存在期阶段函数功能分析</strong></h4><ul>
-<li><strong>componentWillReceiveProps</strong></li>
-</ul>
-<p>父元素对组件的props或state进行了修改</p>
-<ul>
-<li><strong>shouldComponentUpdate</strong></li>
-</ul>
-<p>一般用于优化，可以返回false或true来控制是否进行渲染</p>
-<ul>
-<li><strong>componentWillUpdate</strong></li>
-</ul>
-<p>组件刷新前调用</p>
-<ul>
-<li><strong>componentDidUpdate</strong></li>
-</ul>
-<p>更新后的hook</p>
-<h4 id="销毁阶段函数功能分析"><a href="#销毁阶段函数功能分析" class="headerlink" title="销毁阶段函数功能分析"></a>销毁阶段函数功能分析</h4><ul>
-<li><strong>componentWillUnmount</strong></li>
-</ul>
-<p>用于清理一些无用的内容</p>
-<h4 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h4><blockquote>
-<p>getDefaultProps 、getInitialState 是基于ES5的写法</p>
-</blockquote>
-<p>例如：<br><figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> touchableDemo = React.createClass(&#123;</div><div class="line"></div><div class="line">  getInitialState() &#123;</div><div class="line">    <span class="keyword">return</span>&#123;</div><div class="line">      <span class="attr">message</span>: <span class="string">'触摸透明度'</span></div><div class="line">    &#125;</div><div class="line">  &#125;,</div><div class="line"></div><div class="line">  getDefaultProps() &#123;</div><div class="line">    <span class="keyword">return</span> &#123;</div><div class="line">      <span class="attr">age</span>: <span class="number">18</span></div><div class="line">    &#125;</div><div class="line">  &#125;,</div><div class="line"></div><div class="line">  _renderPress(event) &#123;</div><div class="line">    <span class="built_in">console</span>.log(event);</div><div class="line">    <span class="keyword">this</span>.setState(&#123;</div><div class="line">      <span class="attr">message</span>: event</div><div class="line">    &#125;);</div><div class="line">  &#125;,</div><div class="line"></div><div class="line">  render() &#123;</div><div class="line">    <span class="keyword">return</span> (</div><div class="line">      &lt;View style=&#123;styles.container&#125;&gt;</div><div class="line">        &lt;TouchableOpacity</div><div class="line">          activeOpacity=&#123;0.6&#125;</div><div class="line">          onPress=&#123;() =&gt; this._renderPress('点击')&#125;</div><div class="line">          onPressIn=&#123;() =&gt; this._renderPress('移入')&#125;</div><div class="line">          onPressOut=&#123;() =&gt; this._renderPress('移出')&#125;</div><div class="line">          onLongPress=&#123;() =&gt; this._renderPress('长按')&#125;&gt;</div><div class="line">          &lt;View style=&#123;styles.welcome&#125;&gt;</div><div class="line">            &lt;Text&gt;我是可以点击的文本&lt;/Text&gt;</div><div class="line">          &lt;/View&gt;</div><div class="line">        &lt;/TouchableOpacity&gt;</div><div class="line">        &lt;View&gt;</div><div class="line">          &lt;Text&gt;&#123;this.state.message&#125;&lt;/Text&gt;</div><div class="line">          &lt;Text&gt;</div><div class="line">            &#123;this.props.age&#125;</div><div class="line">          &lt;/Text&gt;</div><div class="line">        &lt;/View&gt;</div><div class="line">      &lt;/View&gt;</div><div class="line">    );</div><div class="line">  &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
-<blockquote>
-<p>在ES6中初始状态的设置是在<code>constructor()</code>方法实现</p>
-</blockquote>
-<p>例如：<br><figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">touchableDemo</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</div><div class="line">  <span class="keyword">constructor</span>(props) &#123;</div><div class="line">    <span class="keyword">super</span>(props);</div><div class="line">    <span class="keyword">this</span>.state = &#123;</div><div class="line">      <span class="attr">message</span>: <span class="string">'butous'</span></div><div class="line">    &#125;;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  _renderPress(event) &#123;</div><div class="line">    <span class="built_in">console</span>.log(event);</div><div class="line">    <span class="keyword">this</span>.setState(&#123;</div><div class="line">      <span class="attr">message</span>: event</div><div class="line">    &#125;);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  render() &#123;</div><div class="line">    <span class="keyword">return</span> (</div><div class="line">      &lt;View style=&#123;styles.container&#125;&gt;</div><div class="line">        &lt;TouchableOpacity</div><div class="line">          activeOpacity=&#123;0.6&#125;</div><div class="line">          onPress=&#123;() =&gt; this._renderPress('点击')&#125;</div><div class="line">          onPressIn=&#123;() =&gt; this._renderPress('移入')&#125;</div><div class="line">          onPressOut=&#123;() =&gt; this._renderPress('移出')&#125;</div><div class="line">          onLongPress=&#123;() =&gt; this._renderPress('长按')&#125;&gt;</div><div class="line">          &lt;View style=&#123;styles.welcome&#125;&gt;</div><div class="line">            &lt;Text&gt;我是可以点击的文本&lt;/Text&gt;</div><div class="line">          &lt;/View&gt;</div><div class="line">        &lt;/TouchableOpacity&gt;</div><div class="line">        &lt;View&gt;</div><div class="line">          &lt;Text&gt;&#123;this.state.message&#125;&lt;/Text&gt;</div><div class="line">          &lt;Text&gt;</div><div class="line">            &#123;this.props.age&#125;</div><div class="line">          &lt;/Text&gt;</div><div class="line">        &lt;/View&gt;</div><div class="line">      &lt;/View&gt;</div><div class="line">    );</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>更多ES5和ES6语法的区别可参考:<a href="http://bbs.reactnative.cn/topic/15/react-react-native-的es5-es6写法对照表" target="_blank" rel="external">react-react-native-的es5-es6写法对照表</a></p>
+        <p>在选用WKWebView+WKWebViewJavascriptBridge加载H5页面时会出现这样一个崩溃</p>
+<figure class="highlight swift"><table><tr><td class="code"><pre><div class="line">reason: '<span class="type">Completion</span> handler passed to -[<span class="type">WKWebViewJavascriptBridge</span> webView:didReceiveAuthenticationChallenge:completionHandler:] was not called'</div></pre></td></tr></table></figure>
+<p>在它的<a href="https://github.com/marcuswestin/WebViewJavascriptBridge/issues/235" target="_blank" rel="external">close issues</a>中找到了解决方案</p>
+<p>原代理方法中处理有问题 需要加上else分支处理一下<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">- (void)webView:(WKWebView *)webView didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge completionHandler:(void (^)(NSURLSessionAuthChallengeDisposition, NSURLCredential *))completionHandler</div><div class="line">&#123;</div><div class="line">    if (webView != _webView) &#123; return; &#125;</div><div class="line"></div><div class="line">    __strong typeof(_webViewDelegate) strongDelegate = _webViewDelegate;</div><div class="line">    if (strongDelegate &amp;&amp; [strongDelegate respondsToSelector:@selector(webView:didReceiveAuthenticationChallenge:completionHandler:)]) &#123;</div><div class="line">        [strongDelegate webView:webView didReceiveAuthenticationChallenge:challenge completionHandler:completionHandler];</div><div class="line">    &#125;else&#123;</div><div class="line">        completionHandler(0,nil);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -407,7 +366,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/react-native/" rel="tag">#react-native</a>
+            <a href="/tags/WKWebViewJavascriptBridge/" rel="tag">#WKWebViewJavascriptBridge</a>
           
         </div>
       
@@ -416,16 +375,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/04/07/OC/制作Bundle资源包/" rel="next" title="制作Bundle资源包">
-                <i class="fa fa-chevron-left"></i> 制作Bundle资源包
+              <a href="/2016/12/05/OC/OC中UIScrollView的滑动和侧滑返回并/" rel="next" title="OC中UIScrollView的滑动和侧滑返回">
+                <i class="fa fa-chevron-left"></i> OC中UIScrollView的滑动和侧滑返回
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/04/19/swift/Swift初始化方法顺序/" rel="prev" title="Swift初始化方法顺序">
-                Swift初始化方法顺序 <i class="fa fa-chevron-right"></i>
+              <a href="/2016/12/11/swift/Swift闭包的循环引用/" rel="prev" title="Swift闭包的循环引用">
+                Swift闭包的循环引用 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -452,8 +411,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2017/04/17/ReactNative/React-Native-组件生命周期/"
-           data-title="React Native 组件生命周期" data-url="http://yoursite.com/2017/04/17/ReactNative/React-Native-组件生命周期/">
+      <div class="ds-thread" data-thread-key="2016/12/06/OC/WKWebViewJavascriptBridge崩溃问题/"
+           data-title="崩溃问题" data-url="http://yoursite.com/2016/12/06/OC/WKWebViewJavascriptBridge崩溃问题/">
       </div>
     
   </div>
@@ -573,7 +532,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#实例化阶段函数功能分析"><span class="nav-number">1.</span> <span class="nav-text">实例化阶段函数功能分析</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#存在期阶段函数功能分析"><span class="nav-number">2.</span> <span class="nav-text">存在期阶段函数功能分析</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#销毁阶段函数功能分析"><span class="nav-number">3.</span> <span class="nav-text">销毁阶段函数功能分析</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#注意"><span class="nav-number">4.</span> <span class="nav-text">注意</span></a></li></ol></div>
+              <p class="post-toc-empty">此文章未包含目录</p>
             
           </div>
         </section>
