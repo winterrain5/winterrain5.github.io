@@ -84,18 +84,18 @@
 
 
 
-<meta name="description" content="GCD 全称Grand Center Dispatch 
+<meta name="description" content="GCD 全称Grand Center Dispatch
 是 Apple 开发的一个多核编程的解决方法，简单易用，效率高，速度快，基于C语言，更底层更高效，并且不是Cocoa框架的一部分，自动管理线程生命周期（创建线程、调度任务、销毁线程）。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="多线程在OC中的应用（GCD）">
 <meta property="og:url" content="http://yoursite.com/2016/11/26/OC/多线程在OC中的应用（GCD）/index.html">
 <meta property="og:site_name" content="行止由心">
-<meta property="og:description" content="GCD 全称Grand Center Dispatch 
+<meta property="og:description" content="GCD 全称Grand Center Dispatch
 是 Apple 开发的一个多核编程的解决方法，简单易用，效率高，速度快，基于C语言，更底层更高效，并且不是Cocoa框架的一部分，自动管理线程生命周期（创建线程、调度任务、销毁线程）。">
-<meta property="og:updated_time" content="2017-03-21T03:15:34.000Z">
+<meta property="og:updated_time" content="2017-06-07T05:50:09.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="多线程在OC中的应用（GCD）">
-<meta name="twitter:description" content="GCD 全称Grand Center Dispatch 
+<meta name="twitter:description" content="GCD 全称Grand Center Dispatch
 是 Apple 开发的一个多核编程的解决方法，简单易用，效率高，速度快，基于C语言，更底层更高效，并且不是Cocoa框架的一部分，自动管理线程生命周期（创建线程、调度任务、销毁线程）。">
 
 
@@ -286,8 +286,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Objective-C/" itemprop="url" rel="index">
-                    <span itemprop="name">Objective-C</span>
+                  <a href="/categories/OC/" itemprop="url" rel="index">
+                    <span itemprop="name">OC</span>
                   </a>
                 </span>
 
@@ -335,7 +335,7 @@
       
 
       
-        <p><strong>GCD 全称Grand Center Dispatch</strong> </p>
+        <p><strong>GCD 全称Grand Center Dispatch</strong></p>
 <p>是 Apple 开发的一个多核编程的解决方法，简单易用，效率高，速度快，基于C语言，更底层更高效，并且不是Cocoa框架的一部分，自动管理线程生命周期（创建线程、调度任务、销毁线程）。</p>
 <a id="more"></a>
 <h3 id="GCD中的三种队列类型"><a href="#GCD中的三种队列类型" class="headerlink" title="GCD中的三种队列类型"></a>GCD中的三种队列类型</h3><p><strong>GCD编程的核心是dispatch队列，dispatch block的执行最终都会放在某个队列去执行。</strong></p>
@@ -394,17 +394,14 @@
 <li><p>自定义串行队列嵌套执行同步任务，产生死锁。</p>
   <figure class="highlight objc"><table><tr><td class="code"><pre><div class="line"><span class="built_in">dispatch_queue_t</span> serialQueue = dispatch_queue_create(<span class="string">"com.wintrerain5.serialQueue"</span>, DISPATCH_QUEUE_SERIAL);</div><div class="line">   	<span class="built_in">dispatch_sync</span>(serialQueue, ^&#123;</div><div class="line">       	<span class="built_in">NSLog</span>(<span class="string">@"会执行的代码"</span>);</div><div class="line">       	<span class="comment">// 后面的代码都不会执行，程序被死锁在这里</span></div><div class="line">       	<span class="built_in">dispatch_sync</span>(serialQueue, ^&#123;</div><div class="line">          	 <span class="built_in">NSLog</span>(<span class="string">@"不会执行的代码"</span>);</div><div class="line">       	&#125;);</div><div class="line">   	&#125;);</div></pre></td></tr></table></figure>
 </li>
-</ul>
-<ul>
-<li>异步执行串行队列，嵌套同步执行串行队列，同步执行的串行队列中的任务将不会执行。</li>
+<li><p>异步执行串行队列，嵌套同步执行串行队列，同步执行的串行队列中的任务将不会执行。</p>
+</li>
 </ul>
 <p>2、<strong>自定义并发队列</strong></p>
 <ul>
 <li><p>获取自定义并发队列</p>
   <figure class="highlight objc"><table><tr><td class="code"><pre><div class="line"><span class="built_in">dispatch_queue_t</span> conCurrentQueue = dispatch_queue_create(<span class="string">"com.wintrerain5.conCurrentQueue"</span>, DISPATCH_QUEUE_CONCURRENT);</div></pre></td></tr></table></figure>
 </li>
-</ul>
-<ul>
 <li><p>自定义并发队列执行同步任务</p>
   <figure class="highlight objc"><table><tr><td class="code"><pre><div class="line"><span class="built_in">dispatch_queue_t</span> conCurrentQueue = dispatch_queue_create(<span class="string">"com.wintrerain5.serialQueue"</span>, DISPATCH_QUEUE_CONCURRENT);</div><div class="line">    <span class="built_in">NSLog</span>(<span class="string">@"current task"</span>);</div><div class="line">    <span class="built_in">dispatch_sync</span>(conCurrentQueue, ^&#123;</div><div class="line">         <span class="built_in">NSLog</span>(<span class="string">@"先加入队列 currentThread=%@"</span>,[<span class="built_in">NSThread</span> currentThread]);</div><div class="line">    &#125;);</div><div class="line">    <span class="built_in">dispatch_sync</span>(conCurrentQueue, ^&#123;</div><div class="line">        <span class="built_in">NSLog</span>(<span class="string">@"次加入队列 currentThread=%@"</span>,[<span class="built_in">NSThread</span> currentThread]);</div><div class="line">    &#125;);</div><div class="line">    <span class="built_in">NSLog</span>(<span class="string">@"next task"</span>);</div></pre></td></tr></table></figure>
 </li>
@@ -584,7 +581,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-count">10</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -593,7 +590,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">43</span>
+                <span class="site-state-item-count">47</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

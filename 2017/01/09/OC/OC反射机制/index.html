@@ -96,7 +96,7 @@ Objective-C中的反射OC中反射是基于Runtime实现的。
 反射一般表现在字符串和Class转换，字符串和内部方法的转换，字符串和属性的转换（取值和赋值）。
 Objective-C中的反射OC中反射是基于Runtime实现的。
 以执行某个函数为例，我们知道在OC中执行函数，实质上时发送了一个消息给Runtime，然后Runtime再根据这个Class的字符串和这个函数的字符串名，去匹配真正相应的方法的地址，然后再执行。所以中间我们可以利用字符">
-<meta property="og:updated_time" content="2017-03-21T03:15:34.000Z">
+<meta property="og:updated_time" content="2017-06-07T05:49:52.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="OC反射机制">
 <meta name="twitter:description" content="了解反射机制
@@ -292,8 +292,8 @@ Objective-C中的反射OC中反射是基于Runtime实现的。
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Objective-C/" itemprop="url" rel="index">
-                    <span itemprop="name">Objective-C</span>
+                  <a href="/categories/OC/" itemprop="url" rel="index">
+                    <span itemprop="name">OC</span>
                   </a>
                 </span>
 
@@ -369,7 +369,7 @@ Objective-C中的反射OC中反射是基于Runtime实现的。
 <p>遇到这样奇葩的需求，我们当然可以问产品都有哪些情况执行哪些方法，然后写一大堆if else判断或switch判断。<br>但是这种方法实现起来太low了，而且不够灵活，假设后续版本需求变了，还要往其他已有页面中跳转，这不就傻眼了吗….</p>
 <p>这种情况反射机制就派上用场了，我们可以用反射机制动态的创建类并执行方法<br>这时候就需要和后台配合了，我们首先需要和后台商量好返回的数据结构，以及数据格式、类型等，返回后我们按照和后台约定的格式，根据后台返回的信息，直接进行反射和调用即可。</p>
 <p>假设和后台约定格式如下：</p>
-<figure class="highlight objc"><table><tr><td class="code"><pre><div class="line">@&#123;</div><div class="line">     <span class="comment">// 类名</span></div><div class="line">     <span class="string">@"className"</span> : <span class="string">@"UserListViewController"</span>, </div><div class="line">     <span class="comment">// 数据参数</span></div><div class="line">     <span class="string">@"propertys"</span> : @&#123; <span class="string">@"name"</span>: <span class="string">@"liuxiaozhuang"</span>, </div><div class="line">                       <span class="string">@"age"</span>: @<span class="number">3</span> &#125;,</div><div class="line">     <span class="comment">// 调用方法名</span></div><div class="line">     <span class="string">@"method"</span> : <span class="string">@"refreshUserInformation"</span></div><div class="line"> &#125;;</div></pre></td></tr></table></figure>
+<figure class="highlight objc"><table><tr><td class="code"><pre><div class="line">@&#123;</div><div class="line">     <span class="comment">// 类名</span></div><div class="line">     <span class="string">@"className"</span> : <span class="string">@"UserListViewController"</span>,</div><div class="line">     <span class="comment">// 数据参数</span></div><div class="line">     <span class="string">@"propertys"</span> : @&#123; <span class="string">@"name"</span>: <span class="string">@"liuxiaozhuang"</span>,</div><div class="line">                       <span class="string">@"age"</span>: @<span class="number">3</span> &#125;,</div><div class="line">     <span class="comment">// 调用方法名</span></div><div class="line">     <span class="string">@"method"</span> : <span class="string">@"refreshUserInformation"</span></div><div class="line"> &#125;;</div></pre></td></tr></table></figure>
 <p>我们定义一个<code>UserListViewController</code>类，用于测试</p>
 <figure class="highlight objc"><table><tr><td class="code"><pre><div class="line">/<span class="meta">#import <span class="meta-string">&lt;UIKit/UIKit.h&gt;</span></span></div><div class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">UserListViewController</span> : <span class="title">UIViewController</span></span></div><div class="line"><span class="comment">/**用户名*/</span></div><div class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>,<span class="keyword">strong</span>) <span class="built_in">NSString</span> *name;</div><div class="line"><span class="comment">/**年龄*/</span></div><div class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>,<span class="keyword">strong</span>) <span class="built_in">NSNumber</span> *age;</div><div class="line"><span class="comment">/** 使用反射机制反射为SEL后，调用的方法 */</span></div><div class="line">- (<span class="keyword">void</span>)refreshUserInformation;</div><div class="line"><span class="keyword">@end</span></div></pre></td></tr></table></figure>
 <p>接下来通过反射机制简单实现动态跳转控制器及调用方法</p>
@@ -516,7 +516,7 @@ Objective-C中的反射OC中反射是基于Runtime实现的。
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-count">10</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -525,7 +525,7 @@ Objective-C中的反射OC中反射是基于Runtime实现的。
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">43</span>
+                <span class="site-state-item-count">47</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

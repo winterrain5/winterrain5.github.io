@@ -94,7 +94,7 @@
 <meta property="og:description" content="某个页面是webView加载一个网页，有时候图片太大会超出屏幕范围
 解决方法是注入JS脚本设定一个最大的宽度，当图片宽度超过这个上限值的时候，等比例缩放
 -(void)webViewDidFinishLoad:(UIWebView *)webView &amp;#123;    NSString *script = [NSString stringWithFormat:">
-<meta property="og:updated_time" content="2017-03-21T03:15:34.000Z">
+<meta property="og:updated_time" content="2017-06-07T05:49:41.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="OC中加载HTML图片过大显示不全的问题">
 <meta name="twitter:description" content="某个页面是webView加载一个网页，有时候图片太大会超出屏幕范围
@@ -289,8 +289,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Objective-C/" itemprop="url" rel="index">
-                    <span itemprop="name">Objective-C</span>
+                  <a href="/categories/OC/" itemprop="url" rel="index">
+                    <span itemprop="name">OC</span>
                   </a>
                 </span>
 
@@ -341,6 +341,7 @@
         <p>某个页面是webView加载一个网页，有时候图片太大会超出屏幕范围</p>
 <p>解决方法是注入JS脚本设定一个最大的宽度，当图片宽度超过这个上限值的时候，等比例缩放</p>
 <figure class="highlight objc"><table><tr><td class="code"><pre><div class="line">-(<span class="keyword">void</span>)webViewDidFinishLoad:(<span class="built_in">UIWebView</span> *)webView &#123;</div><div class="line">    <span class="built_in">NSString</span> *script = [<span class="built_in">NSString</span> stringWithFormat:</div><div class="line">                        <span class="string">@"var script = document.createElement('script');"</span></div><div class="line">                        <span class="string">"script.type = 'text/javascript';"</span></div><div class="line">                        <span class="string">"script.text = \"function ResizeImages() &#123; "</span></div><div class="line">                        <span class="string">"var img;"</span></div><div class="line">                        <span class="string">"var maxwidth=%f;"</span></div><div class="line">                        <span class="string">"for(i=0;i &lt;document.images.length;i++)&#123;"</span></div><div class="line">                        <span class="string">"img = document.images[i];"</span></div><div class="line">                        <span class="string">"if(img.width &gt; maxwidth)&#123;"</span></div><div class="line">                        <span class="string">"img.width = maxwidth;"</span></div><div class="line">                        <span class="string">"&#125;"</span></div><div class="line">                        <span class="string">"&#125;"</span></div><div class="line">                        <span class="string">"&#125;\";"</span></div><div class="line">                        <span class="string">"document.getElementsByTagName('head')[0].appendChild(script);"</span>, DeviceWidth - <span class="number">20</span>];</div><div class="line">    [webView stringByEvaluatingJavaScriptFromString: script];</div><div class="line">    [webView stringByEvaluatingJavaScriptFromString:<span class="string">@"ResizeImages();"</span>];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
       
     </div>
 
@@ -482,7 +483,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-count">10</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -491,7 +492,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">43</span>
+                <span class="site-state-item-count">47</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

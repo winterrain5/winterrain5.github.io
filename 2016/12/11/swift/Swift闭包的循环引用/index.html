@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="逆水行舟，不进则退" />
+  <meta name="keywords" content="swift," />
 
 
 
@@ -84,16 +84,19 @@
 
 
 
-<meta name="description" content="要做一个Nice的人">
+<meta name="description" content="循环引用一个简单的例子描述循环引用
+class A: NSObject &amp;#123;  let b: B  override init() &amp;#123;    b = B()    super.init()    b.a = self  &amp;#125;  deinit &amp;#123;    print(&quot;A deinit&quot;)  &amp;#125;&amp;#125;class B: NSObject &amp;#123;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Swift闭包的循环引用">
 <meta property="og:url" content="http://yoursite.com/2016/12/11/swift/Swift闭包的循环引用/index.html">
 <meta property="og:site_name" content="行止由心">
-<meta property="og:description" content="要做一个Nice的人">
-<meta property="og:updated_time" content="2017-03-21T03:15:34.000Z">
+<meta property="og:description" content="循环引用一个简单的例子描述循环引用
+class A: NSObject &amp;#123;  let b: B  override init() &amp;#123;    b = B()    super.init()    b.a = self  &amp;#125;  deinit &amp;#123;    print(&quot;A deinit&quot;)  &amp;#125;&amp;#125;class B: NSObject &amp;#123;">
+<meta property="og:updated_time" content="2017-06-07T05:51:49.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Swift闭包的循环引用">
-<meta name="twitter:description" content="要做一个Nice的人">
+<meta name="twitter:description" content="循环引用一个简单的例子描述循环引用
+class A: NSObject &amp;#123;  let b: B  override init() &amp;#123;    b = B()    super.init()    b.a = self  &amp;#125;  deinit &amp;#123;    print(&quot;A deinit&quot;)  &amp;#125;&amp;#125;class B: NSObject &amp;#123;">
 
 
 
@@ -275,6 +278,25 @@
           </span>
 
           
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/swift/" itemprop="url" rel="index">
+                    <span itemprop="name">swift</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
 
           
             
@@ -313,7 +335,33 @@
       
 
       
-        
+        <h3 id="循环引用"><a href="#循环引用" class="headerlink" title="循环引用"></a>循环引用</h3><p>一个简单的例子描述循环引用</p>
+<figure class="highlight swift"><table><tr><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span>: <span class="title">NSObject</span> </span>&#123;</div><div class="line">  <span class="keyword">let</span> b: <span class="type">B</span></div><div class="line">  <span class="keyword">override</span> <span class="keyword">init</span>() &#123;</div><div class="line">    b = <span class="type">B</span>()</div><div class="line">    <span class="keyword">super</span>.<span class="keyword">init</span>()</div><div class="line">    b.a = <span class="keyword">self</span></div><div class="line">  &#125;</div><div class="line">  <span class="keyword">deinit</span> &#123;</div><div class="line">    <span class="built_in">print</span>(<span class="string">"A deinit"</span>)</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span>: <span class="title">NSObject</span> </span>&#123;</div><div class="line">  <span class="keyword">var</span> a: <span class="type">A</span>? = <span class="literal">nil</span></div><div class="line">  <span class="keyword">deinit</span> &#123;</div><div class="line">    <span class="built_in">print</span>(<span class="string">"B deinit"</span>)</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在 A 的初始化⽅法中， 我们⽣成了⼀个 B 的实例并将其存储在属性中。 然后我们⼜将 A 的实例赋值给了 b.a 。 这样 a.b 和 b.a 将在初始化的时候形成⼀个引⽤循环。 现在当有第三⽅的调⽤初始化了 A ， 然后即使⽴即将其释放， A 和 B 两个类实例的 deinit ⽅法也不会被调⽤， 说明它们并没有被释放。</p>
+<figure class="highlight swift"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> obj: <span class="type">A</span>? = <span class="type">A</span>()</div><div class="line">obj = <span class="literal">nil</span></div><div class="line"><span class="comment">// 内存没有释放</span></div></pre></td></tr></table></figure>
+<p>因为即使 obj 不再持有 A 的这个对象， b 中的 b.a 依然引⽤着这个对象， 导致它⽆法释放。 ⽽进⼀步， a 中也持有着 b， 导致 b 也⽆法释放。 在将 obj 设为 nil 之后， 我们在代码⾥再也拿不到对于这个对象的引⽤了， 所以除⾮是杀掉整个进程， 我们已经永远也⽆法将它释放了。</p>
+<p>为了防止循环引用，我们必须给编译器⼀点提⽰， 表明我们不希望它们互相持有。 ⼀般来说我们习惯希望 “被动” 的⼀⽅不要去持有 “主动” 的⼀⽅。 在这⾥ b.a ⾥对 A 的实例的持有是由 A 的⽅法设定的， 我们在之后直接使⽤的也是 A 的实例， 因此认为 b 是被动的⼀⽅。 可以将上⾯的 class B 的声明改为：</p>
+<figure class="highlight swift"><table><tr><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span>: <span class="title">NSObject</span> </span>&#123;</div><div class="line">  <span class="keyword">weak</span> <span class="keyword">var</span> a: <span class="type">A</span>? = <span class="literal">nil</span></div><div class="line">  <span class="keyword">deinit</span> &#123;</div><div class="line">    <span class="built_in">print</span>(<span class="string">"B deinit"</span>)</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在 var a 前⾯加上了 weak ， 向编译器说明我们不希望持有 a。 这时， 当 obj 指向 nil 时， 整个环境中就没有对 A 的这个实例的持有了， 于是这个实例可以得到释放。 接着， 这个被释放的实例上对 b 的引⽤ a.b 也随着这次释放结束了作⽤域， 所以 b 的引⽤也将归零， 得到释放。</p>
+<p>在 Swift 中除了 weak 以外， 还有另⼀个冲着编译器叫喊着类似的<br>“不要引⽤我” 的标识符， 那就是 unowned 。 它们的区别在哪⾥呢？从表⾯的⾏为上来说 unowned 更像以前的 unsafe_unretained ， ⽽ weak 就是以前的weak 。 ⽤通俗的话说， 就是 unowned 设置以后即使它原来引⽤的内容已经被释放了， 它仍然会保持对被已经释放了的对象的⼀个 “⽆效的” 引⽤， 它不能是 Optional 值， 也不会被指向 nil 。 如果你尝试调⽤这个引⽤的⽅法或者访问成员属性的话， 程序就会崩溃。 ⽽ weak 则友好⼀些， 在引⽤的内容被释放后， 标记为 weak 的成员将会⾃动地变成 nil (因此被标记为 @ weak 的变量⼀定需要是 Optional 值)。 关于两者使⽤的选择， Apple 给我们的建议是如果能够确定在访问时不会已被释放的话， 尽量使⽤ unowned ， 如果存在被释放的可能， 那就选择⽤ weak 。</p>
+<p>⽇常⼯作中⼀般使⽤弱引⽤的最常见的场景有两个：</p>
+<ol>
+<li>设置 delegate 时</li>
+<li>在 self 属性存储为闭包时， 其中拥有对 self 引⽤时</li>
+</ol>
+<p>前者是 Cocoa 框架的常见设计模式， ⽐如我们有⼀个负责⽹络请求的类， 它实现了发送请求以及接收请求结果的任务， 其中这个结果是通过实现请求类的 protocol 的⽅式来实现的， 这种时候我们⼀般设置 delegate 为 weak ：</p>
+<figure class="highlight swift"><table><tr><td class="code"><pre><div class="line"><span class="comment">// RequestManager.swift</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">RequestManager</span>: <span class="title">RequestHandler</span> </span>&#123;</div><div class="line">  <span class="meta">@objc</span> <span class="function"><span class="keyword">func</span> <span class="title">requestFinished</span><span class="params">()</span></span> &#123;</div><div class="line">    <span class="built_in">print</span>(<span class="string">"请求完成"</span>)</div><div class="line">  &#125;</div><div class="line">  <span class="function"><span class="keyword">func</span> <span class="title">sendRequest</span><span class="params">()</span></span> &#123;</div><div class="line">    <span class="keyword">let</span> req = <span class="type">Request</span>()</div><div class="line">    req.delegate = <span class="keyword">self</span></div><div class="line">    req.send()</div><div class="line">  &#125;</div><div class="line">  &#125;</div><div class="line">  <span class="comment">// Request.swift</span></div><div class="line">  <span class="meta">@objc</span> <span class="class"><span class="keyword">protocol</span> <span class="title">RequestHandler</span> </span>&#123;</div><div class="line">    <span class="meta">@objc</span> <span class="keyword">optional</span> <span class="function"><span class="keyword">func</span> <span class="title">requestFinished</span><span class="params">()</span></span></div><div class="line">  &#125;</div><div class="line">  <span class="class"><span class="keyword">class</span> <span class="title">Request</span> </span>&#123;</div><div class="line">    <span class="keyword">weak</span> <span class="keyword">var</span> delegate: <span class="type">RequestHandler</span>!;</div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">send</span><span class="params">()</span></span> &#123;</div><div class="line">    <span class="comment">// 发送请求</span></div><div class="line">    <span class="comment">// ⼀般来说会将 req 的引⽤传递给⽹络框架</span></div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">gotResponse</span><span class="params">()</span></span> &#123;</div><div class="line">    <span class="comment">// 请求返回</span></div><div class="line">    delegate?.requestFinished?()</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>req 中以 weak 的⽅式持有了 delegate， 因为⽹络请求是⼀个异步过程， 很可能会遇到⽤户不愿意等待⽽选择放弃的情况。 这种情况下⼀般都会将 RequestManager 进⾏清理， 所以我们其实是⽆法保证在拿到返回时作为 delegate 的 RequestManager 对象是⼀定存在的。 因此我们使⽤了 weak⽽⾮ unowned ， 并在调⽤前进⾏了判断。</p>
+<h3 id="闭包和循环引⽤"><a href="#闭包和循环引⽤" class="headerlink" title="闭包和循环引⽤"></a>闭包和循环引⽤</h3><p>闭包中对任何其他元素的引⽤都是会被闭包⾃动持有的。 如果我们在闭包中写了 self 这样的东⻄的话， 那我们其实也就在闭包内持有了当前的对象。 这⾥就出现了⼀个在实际开发中⽐较隐蔽的陷阱：如果当前的实例直接或者间接地对这个闭包⼜有引⽤的话， 就形成了⼀个 self -&gt; 闭包 -&gt; self 的循环引⽤。 最简单的例⼦是， 我们声<br>明了⼀个闭包⽤来以特定的形式打印 self 中的⼀个字符串：</p>
+<figure class="highlight swift"><table><tr><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</div><div class="line">  <span class="keyword">let</span> name: <span class="type">String</span></div><div class="line">  <span class="built_in">lazy</span> <span class="keyword">var</span> printName: ()-&gt;() = &#123;</div><div class="line">    <span class="built_in">print</span>(<span class="string">"The name is <span class="subst">\(<span class="keyword">self</span>.name)</span>"</span>)</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">init</span>(personName: <span class="type">String</span>) &#123;</div><div class="line">    name = personName</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">deinit</span> &#123;</div><div class="line">    <span class="built_in">print</span>(<span class="string">"Person deinit <span class="subst">\(<span class="keyword">self</span>.name)</span>"</span>)</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> xiaoMing: <span class="type">Person</span>? = <span class="type">Person</span>(personName: <span class="string">"XiaoMing"</span>)</div><div class="line">xiaoMing!.printName()</div><div class="line">xiaoMing = <span class="literal">nil</span></div><div class="line"><span class="comment">// 输出:</span></div><div class="line"><span class="comment">// The name is XiaoMing， 没有被释放</span></div></pre></td></tr></table></figure>
+<p>printName 是 self 的属性， 会被 self 持有， ⽽它本⾝⼜在闭包内持有 self ， 这导致了xiaoMing 的 deinit 在⾃⾝超过作⽤域后还是没有被调⽤， 也就是没有被释放。 为了解决这种闭包内的循环引⽤， 我们需要在闭包开始的时候添加⼀个标注， 来表⽰这个闭包内的某些要素应该以何种特定的⽅式来使⽤。 可以将 printName 修改为这样：</p>
+<figure class="highlight swift"><table><tr><td class="code"><pre><div class="line"><span class="built_in">lazy</span> <span class="keyword">var</span> printName: ()-&gt;() = &#123;</div><div class="line">  [<span class="keyword">weak</span> <span class="keyword">self</span>] <span class="keyword">in</span></div><div class="line">  <span class="keyword">if</span> <span class="keyword">let</span> strongSelf = <span class="keyword">self</span> &#123;</div><div class="line">    <span class="built_in">print</span>(<span class="string">"The name is <span class="subst">\(strongSelf.name)</span>"</span>)</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>如果我们可以确定在整个过程中 self 不会被释放的话， 我们可以将上⾯的 weak 改为unowned ， 这样就不再需要 strongSelf 的判断。 但是如果在过程中 self 被释放了⽽printName 这个闭包没有被释放的话 (⽐如 ⽣成 Person 后， 某个外部变量持有了printName ， 随后这个 Persone 对象被释放了， 但是 printName 已然存在并可能被调⽤)，使⽤ unowned 将造成崩溃。 在这⾥我们需要根据实际的需求来决定是使⽤ weak 还是unowned 。</p>
+</blockquote>
+<p>这种在闭包参数的位置进⾏标注的语法结构是将要标注的内容放在原来参数的前⾯， 并使⽤中括<br>号括起来。 如果有多个需要标注的元素的话， 在同⼀个中括号内⽤逗号隔开， 举个例⼦：</p>
+<figure class="highlight swift"><table><tr><td class="code"><pre><div class="line"><span class="comment">// 标注前</span></div><div class="line">&#123; (number: <span class="type">Int</span>) -&gt; <span class="type">Bool</span> <span class="keyword">in</span></div><div class="line">  <span class="comment">//...</span></div><div class="line">  <span class="keyword">return</span> <span class="literal">true</span></div><div class="line">&#125;</div><div class="line"><span class="comment">// 标注后</span></div><div class="line">&#123; [<span class="keyword">unowned</span> <span class="keyword">self</span>, <span class="keyword">weak</span> someObject] (number: <span class="type">Int</span>) -&gt; <span class="type">Bool</span> <span class="keyword">in</span></div><div class="line">  <span class="comment">//...</span></div><div class="line">  <span class="keyword">return</span> <span class="literal">true</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
       
     </div>
 
@@ -353,6 +401,12 @@
     </div>
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/swift/" rel="tag">#swift</a>
+          
+        </div>
       
 
       
@@ -449,7 +503,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-count">10</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -458,7 +512,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">43</span>
+                <span class="site-state-item-count">47</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -516,7 +570,7 @@
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#循环引用"><span class="nav-number">1.</span> <span class="nav-text">循环引用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#闭包和循环引⽤"><span class="nav-number">2.</span> <span class="nav-text">闭包和循环引⽤</span></a></li></ol></div>
             
           </div>
         </section>
