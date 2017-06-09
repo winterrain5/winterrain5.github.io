@@ -84,26 +84,29 @@
 
 
 
-<meta name="description" content="[] __nw_connection_get_connected_socket_block_invoke XX Connection has no connected handler
+<meta name="description" content="Connection has no connected handler去除该打印：
+Edit Scheme…  -&amp;gt;  Environment Variables -&amp;gt; Add -&amp;gt; Name: “OS_ACTIVITY_MODE”, Value:”disable”
 
-去除该打印：
-Edit Scheme…  -&amp;gt;  Environment Variables -&amp;gt; Add -&amp;gt; Name: “OS_ACTIVITY_MODE”, Value:”disable">
+然后重启Xcode
+jschelpers/JavaScriptCore.h file not foundissu">
 <meta property="og:type" content="article">
 <meta property="og:title" content="react-native 学习笔记">
 <meta property="og:url" content="http://yoursite.com/2017/05/08/ReactNative/react-navtive学习笔记/index.html">
 <meta property="og:site_name" content="行止由心">
-<meta property="og:description" content="[] __nw_connection_get_connected_socket_block_invoke XX Connection has no connected handler
+<meta property="og:description" content="Connection has no connected handler去除该打印：
+Edit Scheme…  -&amp;gt;  Environment Variables -&amp;gt; Add -&amp;gt; Name: “OS_ACTIVITY_MODE”, Value:”disable”
 
-去除该打印：
-Edit Scheme…  -&amp;gt;  Environment Variables -&amp;gt; Add -&amp;gt; Name: “OS_ACTIVITY_MODE”, Value:”disable">
+然后重启Xcode
+jschelpers/JavaScriptCore.h file not foundissu">
 <meta property="og:image" content="http://images2015.cnblogs.com/blog/781239/201702/781239-20170210131613104-94847087.png">
-<meta property="og:updated_time" content="2017-06-07T05:51:18.000Z">
+<meta property="og:updated_time" content="2017-06-09T03:54:27.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="react-native 学习笔记">
-<meta name="twitter:description" content="[] __nw_connection_get_connected_socket_block_invoke XX Connection has no connected handler
+<meta name="twitter:description" content="Connection has no connected handler去除该打印：
+Edit Scheme…  -&amp;gt;  Environment Variables -&amp;gt; Add -&amp;gt; Name: “OS_ACTIVITY_MODE”, Value:”disable”
 
-去除该打印：
-Edit Scheme…  -&amp;gt;  Environment Variables -&amp;gt; Add -&amp;gt; Name: “OS_ACTIVITY_MODE”, Value:”disable">
+然后重启Xcode
+jschelpers/JavaScriptCore.h file not foundissu">
 <meta name="twitter:image" content="http://images2015.cnblogs.com/blog/781239/201702/781239-20170210131613104-94847087.png">
 
 
@@ -343,13 +346,16 @@ Edit Scheme…  -&amp;gt;  Environment Variables -&amp;gt; Add -&amp;gt; Name: �
       
 
       
-        <ul>
-<li><em>[] __nw_connection_get_connected_socket_block_invoke XX Connection has no connected handler</em></li>
-</ul>
-<p>去除该打印：</p>
+        <h4 id="Connection-has-no-connected-handler"><a href="#Connection-has-no-connected-handler" class="headerlink" title="Connection has no connected handler"></a>Connection has no connected handler</h4><p>去除该打印：</p>
 <p>Edit Scheme…  -&gt;  Environment Variables -&gt; Add -&gt; Name: “OS_ACTIVITY_MODE”, Value:”disable”</p>
 <p><img src="http://images2015.cnblogs.com/blog/781239/201702/781239-20170210131613104-94847087.png" alt=""></p>
 <p>然后重启Xcode</p>
+<h4 id="jschelpers-JavaScriptCore-h-file-not-found"><a href="#jschelpers-JavaScriptCore-h-file-not-found" class="headerlink" title="jschelpers/JavaScriptCore.h file not found"></a>jschelpers/JavaScriptCore.h file not found</h4><p><a href="https://github.com/facebook/react-native/issues/13010#issuecomment-293914027" target="_blank" rel="external">issues#13010</a>给了几种解决方法</p>
+<p>1、更新cocopod到1.2.0版本，然而我的早已是1.2.1.beta版本了，该方法无效<br>2、添加libReact.a、libjschelpers.a静态库，然而我只搜索到了libReact.a静态库，加进去后，两个报错少了一个，依然无效<br>3、添加<code>BatchedBridge</code>或者<code>CxxBridge</code> 作为subspecs，完美解决</p>
+<h4 id="undefined-is-not-an-object-evaluating-‘ReactInternals-ReactCurrentOwner’"><a href="#undefined-is-not-an-object-evaluating-‘ReactInternals-ReactCurrentOwner’" class="headerlink" title="undefined is not an object (evaluating ‘ReactInternals.ReactCurrentOwner’)"></a>undefined is not an object (evaluating ‘ReactInternals.ReactCurrentOwner’)</h4><p><a href="https://github.com/facebook/react-native/issues/13874" target="_blank" rel="external">issues#13874</a></p>
+<p>如果你使用react-native版本是0.45,那么请ract版本需要使用16.0.0-alpha.12</p>
+<h4 id="expected-a-component-class-got-object-Object-error"><a href="#expected-a-component-class-got-object-Object-error" class="headerlink" title="expected a component class, got [object Object] error"></a>expected a component class, got [object Object] error</h4><p><a href="https://github.com/facebook/react-native/issues/8443" target="_blank" rel="external">issues8443</a></p>
+<p>请确保组件的大小写正确 比如View写成了view就GG了</p>
 
       
     </div>
@@ -484,7 +490,7 @@ Edit Scheme…  -&amp;gt;  Environment Variables -&amp;gt; Add -&amp;gt; Name: �
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">52</span>
+              <span class="site-state-item-count">53</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -492,7 +498,7 @@ Edit Scheme…  -&amp;gt;  Environment Variables -&amp;gt; Add -&amp;gt; Name: �
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-count">9</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -501,7 +507,7 @@ Edit Scheme…  -&amp;gt;  Environment Variables -&amp;gt; Add -&amp;gt; Name: �
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">47</span>
+                <span class="site-state-item-count">44</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -559,7 +565,7 @@ Edit Scheme…  -&amp;gt;  Environment Variables -&amp;gt; Add -&amp;gt; Name: �
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#Connection-has-no-connected-handler"><span class="nav-number">1.</span> <span class="nav-text">Connection has no connected handler</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#jschelpers-JavaScriptCore-h-file-not-found"><span class="nav-number">2.</span> <span class="nav-text">jschelpers/JavaScriptCore.h file not found</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined-is-not-an-object-evaluating-‘ReactInternals-ReactCurrentOwner’"><span class="nav-number">3.</span> <span class="nav-text">undefined is not an object (evaluating ‘ReactInternals.ReactCurrentOwner’)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#expected-a-component-class-got-object-Object-error"><span class="nav-number">4.</span> <span class="nav-text">expected a component class, got [object Object] error</span></a></li></ol></div>
             
           </div>
         </section>
